@@ -1,0 +1,18 @@
+import { cn } from '@/lib/utils'
+import React from 'react'
+
+interface CardProps {
+  children: React.ReactNode
+  className?: string
+}
+
+export function Card({ children, className }: CardProps) {
+  return (
+    <div className={cn(
+      "bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200",
+      className
+    )}>
+      {children}
+    </div>
+  )
+}

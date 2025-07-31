@@ -1,0 +1,752 @@
+
+> brewquest-blog@0.1.0 dev:local
+> next dev
+
+   ▲ Next.js 15.4.4
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.5:3000
+   - Environments: .env.local
+   - Experiments (use with caution):
+     · optimizePackageImports
+
+ ✓ Starting...
+ ✓ Ready in 1114ms
+ ○ Compiling /about ...
+ ✓ Compiled /about in 2.2s (714 modules)
+ HEAD /about 200 in 2513ms
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ✓ Compiled in 93ms (260 modules)
+ ✓ Compiled /blog in 215ms (701 modules)
+ HEAD /blog 200 in 371ms
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ ✓ Compiled / in 203ms (678 modules)
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET / 200 in 446ms
+ GET / 200 in 91ms
+ HEAD / 200 in 62ms
+ GET / 200 in 54ms
+ ✓ Compiled /about in 102ms (451 modules)
+ HEAD /about 200 in 265ms
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET /about 200 in 66ms
+ GET / 200 in 98ms
+ ✓ Compiled /favicon.ico in 155ms (448 modules)
+ GET /favicon.ico 200 in 240ms
+ ✓ Compiled /about in 57ms (468 modules)
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET /about 200 in 257ms
+ GET / 200 in 123ms
+ GET /favicon.ico 200 in 12ms
+ GET /about 200 in 62ms
+ ✓ Compiled in 195ms (261 modules)
+ GET /about 200 in 53ms
+ ✓ Compiled in 176ms (451 modules)
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET /about 200 in 129ms
+ ✓ Compiled in 111ms (451 modules)
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET /about 200 in 94ms
+ ✓ Compiled in 76ms (451 modules)
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET /about 200 in 81ms
+ ✓ Compiled /blog/[slug] in 437ms (717 modules)
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET /blog/california-craft-beer-renaissance 200 in 929ms
+ GET /blog/california-craft-beer-renaissance 200 in 38ms
+ GET /about 200 in 76ms
+ ✓ Compiled /blog in 157ms (474 modules)
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET /blog 200 in 235ms
+ GET /blog/texas-bbq-beer-pairing 200 in 45ms
+ GET /blog/texas-bbq-beer-pairing 200 in 21ms
+ GET /blog/california-craft-beer-renaissance 200 in 34ms
+ GET / 200 in 85ms
+   Reload env: .env.local
+ ✓ Compiled in 280ms (721 modules)
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET / 200 in 77ms
+ ✓ Compiled in 188ms (474 modules)
+ ✓ Compiled in 76ms (474 modules)
+ ✓ Compiled in 152ms (474 modules)
+ ✓ Compiled in 102ms (474 modules)
+ ✓ Compiled in 135ms (474 modules)
+ ✓ Compiled in 185ms (474 modules)
+ ✓ Compiled in 119ms (261 modules)
+ ✓ Compiled in 91ms (721 modules)
+ ○ Compiling /api/test-db ...
+ ✓ Compiled /api/test-db in 599ms (836 modules)
+ GET /api/test-db 200 in 2117ms
+ ✓ Compiled in 92ms (262 modules)
+ ✓ Compiled in 96ms (836 modules)
+ ✓ Compiled /api/migrate-schema in 125ms (838 modules)
+ GET /api/migrate-schema 200 in 346ms
+ ✓ Compiled /api/populate-beer-reviews in 196ms (838 modules)
+🍺 Starting beer review database population...
+📊 Found 7 beer reviews to insert
+❌ Error inserting beer reviews: {
+  code: 'PGRST204',
+  details: null,
+  hint: null,
+  message: "Could not find the 'description' column of 'beer_reviews' in the schema cache"
+}
+ POST /api/populate-beer-reviews 200 in 550ms
+ ✓ Compiled in 84ms (588 modules)
+ ✓ Compiled in 72ms (588 modules)
+ ✓ Compiled in 71ms (588 modules)
+ ✓ Compiled in 71ms (588 modules)
+ ✓ Compiled in 122ms (588 modules)
+🍺 Starting beer review database population...
+📊 Found 7 beer reviews to insert
+❌ Error inserting beer reviews: {
+  code: '22P02',
+  details: null,
+  hint: null,
+  message: 'invalid input syntax for type uuid: "al-01"'
+}
+ POST /api/populate-beer-reviews 200 in 255ms
+ ✓ Compiled in 96ms (588 modules)
+ ✓ Compiled in 84ms (588 modules)
+🍺 Starting beer review database population...
+📊 Found 7 beer reviews to insert
+❌ Error inserting beer reviews: {
+  code: '22P02',
+  details: null,
+  hint: null,
+  message: 'invalid input syntax for type integer: "3.5"'
+}
+ POST /api/populate-beer-reviews 200 in 202ms
+ ✓ Compiled in 126ms (588 modules)
+🍺 Starting beer review database population...
+📊 Found 7 beer reviews to insert
+✅ Successfully populated 7 beer reviews
+ POST /api/populate-beer-reviews 200 in 282ms
+ ✓ Compiled /api/test-db in 201ms (591 modules)
+ GET /api/test-db 200 in 718ms
+ ✓ Compiled in 162ms (262 modules)
+ ✓ Compiled in 107ms (839 modules)
+ ✓ Compiled /api/verify-beer-data in 105ms (841 modules)
+🔍 Verifying beer review data...
+📊 Found 7 total beer reviews
+📍 Found 7 Alabama beer reviews
+ GET /api/verify-beer-data 200 in 414ms
+🔄 Syncing state progress data with database...
+🗑️ Clearing all beer reviews from database...
+✅ Successfully cleared all beer reviews
+🍺 Starting beer review database population...
+📊 Found 7 beer reviews to insert
+✅ Successfully populated 7 beer reviews
+ POST /api/populate-beer-reviews 200 in 381ms
+ ✓ Compiled in 402ms (722 modules)
+ ✓ Compiled /api/create-alabama-blog-post in 249ms (836 modules)
+🔍 Checking for existing Alabama blog post...
+ GET /api/create-alabama-blog-post 200 in 786ms
+📝 Creating Alabama craft beer blog post...
+✅ Successfully created Alabama blog post with ID: 35a44858-5c4c-47f8-ad2b-a9645c5c8f34
+✅ Successfully linked Alabama beer reviews to blog post
+ POST /api/create-alabama-blog-post 200 in 436ms
+ ✓ Compiled in 150ms (262 modules)
+ ✓ Compiled in 152ms (836 modules)
+ ✓ Compiled /api/verify-alabama-blog-post in 196ms (838 modules)
+🔍 Verifying Alabama blog post creation...
+ GET /api/verify-alabama-blog-post 200 in 578ms
+ ✓ Compiled /api/test-db in 144ms (593 modules)
+ GET /api/test-db 200 in 691ms
+ ✓ Compiled in 166ms (262 modules)
+ ✓ Compiled in 102ms (262 modules)
+ ✓ Compiled in 100ms (262 modules)
+ ✓ Compiled in 95ms (262 modules)
+ ✓ Compiled in 103ms (262 modules)
+ ✓ Compiled in 157ms (262 modules)
+ ✓ Compiled in 99ms (262 modules)
+ ✓ Compiled in 99ms (262 modules)
+ ✓ Compiled in 124ms (262 modules)
+ ✓ Compiled in 173ms (262 modules)
+ ✓ Compiled in 191ms (262 modules)
+ ✓ Compiled in 146ms (262 modules)
+ ✓ Compiled in 117ms (262 modules)
+ ✓ Compiled in 99ms (262 modules)
+ ✓ Compiled in 122ms (262 modules)
+ ✓ Compiled in 145ms (262 modules)
+ ✓ Compiled in 106ms (262 modules)
+ ✓ Compiled in 93ms (262 modules)
+ ✓ Compiled in 96ms (262 modules)
+ ✓ Compiled in 103ms (262 modules)
+ ✓ Compiled in 91ms (262 modules)
+ ✓ Compiled in 119ms (262 modules)
+ ✓ Compiled in 95ms (262 modules)
+ ✓ Compiled in 408ms (738 modules)
+ ✓ Compiled in 91ms (264 modules)
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET /about 200 in 557ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 503ms (728 modules)
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET /_next/static/chunks/app-pages-internals.js 404 in 703ms
+ GET /_next/static/chunks/main-app.js?v=1753602155549 404 in 707ms
+ GET /_next/static/chunks/app/about/page.js 404 in 697ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 120ms
+ GET /_next/static/chunks/main-app.js?v=1753629345064 404 in 122ms
+ GET /_next/static/chunks/app/about/page.js 404 in 120ms
+ GET /about 200 in 291ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 129ms
+ GET /_next/static/chunks/main-app.js?v=1753629489139 404 in 131ms
+ GET /_next/static/chunks/app/about/page.js 404 in 126ms
+ GET /about 200 in 245ms
+ GET /states 404 in 43ms
+ GET /_next/static/chunks/main-app.js?v=1753629493053 404 in 117ms
+ GET /_next/static/chunks/app/page.js 404 in 117ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 118ms
+ GET /_next/static/chunks/main-app.js?v=1753629496293 404 in 112ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 112ms
+ GET /_next/static/chunks/app/about/page.js 404 in 50ms
+ GET /about 200 in 191ms
+ GET /_next/static/chunks/main-app.js?v=1753629499293 404 in 105ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 105ms
+ GET /_next/static/chunks/app/about/page.js 404 in 104ms
+ GET /about 200 in 179ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 112ms
+ GET /_next/static/chunks/main-app.js?v=1753629501507 404 in 112ms
+ GET / 200 in 182ms
+ GET /_next/static/chunks/app/page.js 404 in 48ms
+ GET /_next/static/chunks/main-app.js?v=1753629503312 404 in 108ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 107ms
+ GET /_next/static/chunks/app/about/page.js 404 in 107ms
+ GET /about 200 in 184ms
+ ⨯ ./src/app/about/page.tsx
+Error:   [31mx[0m `ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+    ,-[[36;1;4m/Users/martingeijer/Desktop/Code/brewquest-blog/src/app/about/page.tsx[0m:12:1]
+ [2m 9[0m | import dynamic from 'next/dynamic'
+ [2m10[0m | 
+ [2m11[0m | // Dynamically import USMap to ensure client-side rendering
+ [2m12[0m | const USMap = dynamic(() => import('@/components/interactive/USMap'), { ssr: false })
+    : [35;1m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+ [2m13[0m | 
+ [2m14[0m | export const metadata: Metadata = {
+ [2m15[0m |   title: 'About Hop Harrison | AI-Powered Beer Journey Across America',
+    `----
+
+Import trace for requested module:
+./src/app/about/page.tsx
+ ⨯ ./src/app/about/page.tsx
+Error:   [31mx[0m `ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+    ,-[[36;1;4m/Users/martingeijer/Desktop/Code/brewquest-blog/src/app/about/page.tsx[0m:12:1]
+ [2m 9[0m | import dynamic from 'next/dynamic'
+ [2m10[0m | 
+ [2m11[0m | // Dynamically import USMap to ensure client-side rendering
+ [2m12[0m | const USMap = dynamic(() => import('@/components/interactive/USMap'), { ssr: false })
+    : [35;1m              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+ [2m13[0m | 
+ [2m14[0m | export const metadata: Metadata = {
+ [2m15[0m |   title: 'About Hop Harrison | AI-Powered Beer Journey Across America',
+    `----
+
+Import trace for requested module:
+./src/app/about/page.tsx
+ ✓ Compiled in 639ms (745 modules)
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET /_next/static/chunks/app-pages-internals.js 404 in 117ms
+ GET /_next/static/chunks/app/blog/page.js 404 in 117ms
+ GET /_next/static/chunks/main-app.js?v=1753629652986 404 in 119ms
+ GET /blog 200 in 388ms
+ GET /_next/static/chunks/main-app.js?v=1753629655591 404 in 128ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 128ms
+ GET / 200 in 202ms
+ GET /_next/static/chunks/app/page.js 404 in 50ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 84ms
+ GET /_next/static/chunks/main-app.js?v=1753629656700 404 in 84ms
+ GET /about 200 in 212ms
+ GET /states 404 in 41ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 102ms
+ GET /_next/static/chunks/main-app.js?v=1753629657486 404 in 102ms
+ GET /_next/static/chunks/app/page.js 404 in 103ms
+ GET /_next/static/chunks/main-app.js?v=1753629658755 404 in 147ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 97ms
+ GET /_next/static/chunks/app/blog/page.js 404 in 96ms
+ GET /blog 200 in 205ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 174ms
+ GET /_next/static/chunks/main-app.js?v=1753629659807 404 in 175ms
+ GET /_next/static/chunks/app/page.js 404 in 110ms
+ GET / 200 in 234ms
+ ✓ Compiled in 247ms (272 modules)
+ ✓ Compiled in 260ms (755 modules)
+ ✓ Compiled in 187ms (755 modules)
+ ✓ Compiled in 333ms (757 modules)
+ ✓ Compiled in 182ms (757 modules)
+ ✓ Compiled in 218ms (757 modules)
+ ✓ Compiled in 220ms (757 modules)
+ ✓ Compiled in 213ms (757 modules)
+ ✓ Compiled in 134ms (273 modules)
+ ✓ Compiled in 536ms (723 modules)
+ ✓ Compiled in 355ms (758 modules)
+ ✓ Compiled in 393ms (758 modules)
+ ✓ Compiled in 227ms (773 modules)
+ ✓ Compiled in 553ms (929 modules)
+ ✓ Compiled in 190ms (929 modules)
+ ✓ Compiled in 179ms (929 modules)
+ ✓ Compiled in 207ms (929 modules)
+ ✓ Compiled in 232ms (929 modules)
+ ✓ Compiled in 132ms (343 modules)
+ ✓ Compiled in 111ms (343 modules)
+ ✓ Compiled /api/setup-analytics in 297ms (1015 modules)
+🔄 Setting up analytics schema...
+📋 Found 21 SQL statements to execute
+⚡ Executing statement 1/21
+⚡ Executing statement 2/21
+⚡ Executing statement 3/21
+⚡ Executing statement 4/21
+⚡ Executing statement 5/21
+⚡ Executing statement 6/21
+⚡ Executing statement 7/21
+⚡ Executing statement 8/21
+⚡ Executing statement 9/21
+⚡ Executing statement 10/21
+⚡ Executing statement 11/21
+⚡ Executing statement 12/21
+⚡ Executing statement 13/21
+⚡ Executing statement 14/21
+⚡ Executing statement 15/21
+⚡ Executing statement 16/21
+⚡ Executing statement 17/21
+⚡ Executing statement 18/21
+⚡ Executing statement 19/21
+⚡ Executing statement 20/21
+⚡ Executing statement 21/21
+✅ Analytics schema setup completed successfully
+❌ Error testing analytics insert: {}
+ POST /api/setup-analytics 500 in 4961ms
+ ✓ Compiled in 114ms (343 modules)
+ ✓ Compiled in 103ms (1015 modules)
+ ✓ Compiled /api/setup-analytics-simple in 111ms (1017 modules)
+🔄 Setting up analytics tables...
+Table creation error: {
+  code: 'PGRST202',
+  details: 'Searched for the function public.exec_sql with parameter sql_query or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.',
+  hint: null,
+  message: 'Could not find the function public.exec_sql(sql_query) in the schema cache'
+}
+❌ Error testing analytics insert: {}
+ POST /api/setup-analytics-simple 500 in 360ms
+ ✓ Compiled in 123ms (343 modules)
+ ✓ Compiled in 118ms (1017 modules)
+ ✓ Compiled /api/test-analytics in 153ms (1019 modules)
+🧪 Testing analytics system...
+❌ Insert error: {}
+ POST /api/test-analytics 500 in 339ms
+ ✓ Compiled /api/test-db in 89ms (694 modules)
+ GET /api/test-db 200 in 698ms
+ ✓ Compiled in 110ms (343 modules)
+ ✓ Compiled in 114ms (1019 modules)
+ ✓ Compiled /api/add-analytics-table in 118ms (1021 modules)
+🔄 Adding analytics table to existing schema...
+Could not check existing tables: {
+  code: '42P01',
+  details: null,
+  hint: null,
+  message: 'relation "public.information_schema.tables" does not exist'
+}
+❌ Table does not exist and cannot be created via API
+ POST /api/add-analytics-table 200 in 403ms
+ ✓ Compiled in 437ms (773 modules)
+ ✓ Compiled in 200ms (775 modules)
+ ✓ Compiled in 126ms (283 modules)
+ ✓ Compiled in 123ms (283 modules)
+ ✓ Compiled in 98ms (283 modules)
+ ✓ Compiled in 91ms (760 modules)
+ ✓ Compiled in 263ms (283 modules)
+ ✓ Compiled in 140ms (283 modules)
+ ✓ Compiled in 466ms (777 modules)
+ ✓ Compiled in 743ms (807 modules)
+ ✓ Compiled in 379ms (791 modules)
+ ✓ Compiled in 189ms (807 modules)
+ ✓ Compiled in 177ms (807 modules)
+ ✓ Compiled in 225ms (807 modules)
+ ✓ Compiled in 252ms (300 modules)
+ ✓ Compiled in 534ms (740 modules)
+ ✓ Compiled in 183ms (740 modules)
+ ✓ Compiled in 179ms (740 modules)
+ ✓ Compiled in 224ms (741 modules)
+ ⨯ ./src/components/about/InteractiveMapSection.tsx:4:1
+Module not found: Can't resolve 'react-error-boundary'
+  2 |
+  3 | import React, { Suspense, useState, useEffect } from 'react'
+> 4 | import { ErrorBoundary } from 'react-error-boundary'
+    | ^
+  5 | import dynamic from 'next/dynamic'
+  6 | import { Loader2, AlertTriangle, RotateCcw, Map as MapIcon } from 'lucide-react'
+  7 | import { useSimpleMapAnalytics } from '@/lib/analytics/simpleMapAnalytics'
+
+https://nextjs.org/docs/messages/module-not-found
+ ⨯ ./src/components/about/InteractiveMapSection.tsx:4:1
+Module not found: Can't resolve 'react-error-boundary'
+  2 |
+  3 | import React, { Suspense, useState, useEffect } from 'react'
+> 4 | import { ErrorBoundary } from 'react-error-boundary'
+    | ^
+  5 | import dynamic from 'next/dynamic'
+  6 | import { Loader2, AlertTriangle, RotateCcw, Map as MapIcon } from 'lucide-react'
+  7 | import { useSimpleMapAnalytics } from '@/lib/analytics/simpleMapAnalytics'
+
+https://nextjs.org/docs/messages/module-not-found
+ ✓ Compiled in 345ms (818 modules)
+ ✓ Compiled in 231ms (818 modules)
+ ✓ Compiled in 291ms (818 modules)
+ ✓ Compiled in 370ms (818 modules)
+ ✓ Compiled in 176ms (818 modules)
+ ✓ Compiled in 168ms (818 modules)
+ ✓ Compiled in 456ms (802 modules)
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET /about 200 in 641ms
+ ✓ Compiled /_not-found in 352ms (807 modules)
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET /_next/static/chunks/app-pages-internals.js 404 in 503ms
+ GET /_next/static/chunks/main-app.js?v=1753635085958 404 in 506ms
+ GET /states 404 in 44ms
+ GET /_next/static/chunks/main-app.js?v=1753635087742 404 in 99ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 98ms
+ GET /_next/static/chunks/app/page.js 404 in 39ms
+ GET /_next/static/chunks/main-app.js?v=1753635089589 404 in 110ms
+ GET /_next/static/chunks/app/blog/page.js 404 in 73ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 74ms
+ GET /blog 200 in 192ms
+ GET /_next/static/chunks/main-app.js?v=1753635112982 404 in 113ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 80ms
+ GET /_next/static/chunks/app/blog/page.js 404 in 66ms
+ GET /blog?category=reviews 200 in 181ms
+ GET /_next/static/chunks/main-app.js?v=1753635116090 404 in 110ms
+ GET /_next/static/chunks/app/blog/page.js 404 in 75ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 75ms
+ GET /blog?category=breweries 200 in 171ms
+ GET /_next/static/chunks/main-app.js?v=1753635117870 404 in 105ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 74ms
+ GET /_next/static/chunks/app/blog/page.js 404 in 72ms
+ GET /blog?category=local-culture 200 in 164ms
+ GET /about 200 in 108ms
+ ○ Compiling /api/setup-state-schema ...
+ ✓ Compiled /api/setup-state-schema in 808ms (916 modules)
+🔧 Setting up state progress database schema...
+📋 Creating tables...
+❌ Schema creation error: {
+  code: 'PGRST202',
+  details: 'Searched for the function public.exec_sql with parameter sql_query or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.',
+  hint: null,
+  message: 'Could not find the function public.exec_sql(sql_query) in the schema cache'
+}
+ POST /api/setup-state-schema 500 in 1730ms
+ ✓ Compiled in 266ms (932 modules)
+🔧 Setting up state progress database schema...
+📋 Creating state_progress table...
+🔧 Table does not exist, but we cannot create it via API.
+📝 Please execute the SQL schema manually in your Supabase dashboard.
+ POST /api/setup-state-schema 400 in 441ms
+ ✓ Compiled in 174ms (305 modules)
+ ✓ Compiled in 201ms (916 modules)
+ ✓ Compiled /api/verify-state-schema in 123ms (918 modules)
+🔍 Verifying state progress schema...
+📊 Schema verification complete. Ready: false
+ GET /api/verify-state-schema 200 in 865ms
+ ✓ Compiled in 462ms (818 modules)
+ ✓ Compiled in 183ms (305 modules)
+ ✓ Compiled in 179ms (802 modules)
+ ✓ Compiled /api/database-health in 153ms (917 modules)
+🏥 Fetching database health metrics (24h period)...
+Error fetching database health: {
+  code: 'PGRST202',
+  details: 'Searched for the function public.get_database_health without parameters or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.',
+  hint: null,
+  message: 'Could not find the function public.get_database_health without parameters in the schema cache'
+}
+❌ Error fetching database health: {
+  code: 'PGRST202',
+  details: 'Searched for the function public.get_database_health without parameters or with a single unnamed json/jsonb parameter, but no matches were found in the schema cache.',
+  hint: null,
+  message: 'Could not find the function public.get_database_health without parameters in the schema cache'
+}
+ GET /api/database-health?hours=24&engagement=false 500 in 524ms
+ ✓ Compiled in 449ms (802 modules)
+ ✓ Compiled in 117ms (305 modules)
+ ✓ Compiled in 95ms (802 modules)
+ ✓ Compiled in 142ms (305 modules)
+ ✓ Compiled in 157ms (802 modules)
+ ✓ Compiled in 149ms (305 modules)
+ ✓ Compiled in 97ms (802 modules)
+ ✓ Compiled /api/states/progress in 487ms (918 modules)
+Error fetching state progress: {
+  code: '42P01',
+  details: null,
+  hint: null,
+  message: 'relation "public.state_progress" does not exist'
+}
+Error fetching state progress: {
+  code: '42P01',
+  details: null,
+  hint: null,
+  message: 'relation "public.state_progress" does not exist'
+}
+ GET /api/states/progress?format=summary&include_stats=true 500 in 930ms
+ ✓ Compiled /api/states/analytics in 264ms (918 modules)
+Error tracking map interaction: {}
+Failed to track interactions: {}
+ POST /api/states/analytics 500 in 506ms
+ ⨯ ./src/lib/supabase/queries/stateQueries.ts
+Module parse failed: Identifier 'getCachedStateProgress' has already been declared (516:26)
+| /**
+|  * Get all state progress with caching
+>  */ export async function getCachedStateProgress(filters) {
+|     const cacheKey = `all_states_${JSON.stringify(filters || {})}`;
+|     const cached = stateCache.get(cacheKey);
+
+Import trace for requested module:
+./src/lib/supabase/queries/stateQueries.ts
+./src/app/api/states/progress/route.ts
+ ⨯ ./src/lib/supabase/queries/stateQueries.ts
+Module parse failed: Identifier 'getCachedStateProgress' has already been declared (516:26)
+| /**
+|  * Get all state progress with caching
+>  */ export async function getCachedStateProgress(filters) {
+|     const cacheKey = `all_states_${JSON.stringify(filters || {})}`;
+|     const cached = stateCache.get(cacheKey);
+
+Import trace for requested module:
+./src/lib/supabase/queries/stateQueries.ts
+./src/app/api/states/progress/route.ts
+ ⨯ ./src/lib/supabase/queries/stateQueries.ts
+Module parse failed: Identifier 'getCachedStateProgress' has already been declared (516:26)
+| /**
+|  * Get all state progress with caching
+>  */ export async function getCachedStateProgress(filters) {
+|     const cacheKey = `all_states_${JSON.stringify(filters || {})}`;
+|     const cached = stateCache.get(cacheKey);
+
+Import trace for requested module:
+./src/lib/supabase/queries/stateQueries.ts
+./src/app/api/states/progress/route.ts
+ ○ Compiling /_not-found ...
+ ⨯ ./src/lib/supabase/queries/stateQueries.ts
+Module parse failed: Identifier 'getCachedStateProgress' has already been declared (516:26)
+| /**
+|  * Get all state progress with caching
+>  */ export async function getCachedStateProgress(filters) {
+|     const cacheKey = `all_states_${JSON.stringify(filters || {})}`;
+|     const cached = stateCache.get(cacheKey);
+
+Import trace for requested module:
+./src/lib/supabase/queries/stateQueries.ts
+./src/app/api/states/progress/route.ts
+ GET /api/states/progress?format=basic 500 in 2628ms
+ ✓ Compiled /_error in 265ms (607 modules)
+ ✓ Compiled /api/states/progress in 172ms (723 modules)
+Error fetching state progress: {
+  code: '42P01',
+  details: null,
+  hint: null,
+  message: 'relation "public.state_progress" does not exist'
+}
+Error fetching state progress: {
+  code: '42P01',
+  details: null,
+  hint: null,
+  message: 'relation "public.state_progress" does not exist'
+}
+ GET /api/states/progress?format=basic 500 in 640ms
+ ✓ Compiled in 494ms (452 modules)
+ ✓ Compiled in 122ms (452 modules)
+ ✓ Compiled in 175ms (452 modules)
+ ✓ Compiled in 119ms (452 modules)
+ ✓ Compiled in 362ms (1043 modules)
+ ✓ Compiled in 174ms (452 modules)
+ ⨯ ./src/app/about/page.tsx
+Error:   [31mx[0m `ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+    ,-[[36;1;4m/Users/martingeijer/Desktop/Code/brewquest-blog/src/app/about/page.tsx[0m:12:1]
+ [2m 9[0m |     import dynamic from 'next/dynamic'
+ [2m10[0m |     
+ [2m11[0m |     // Dynamically import InteractiveMapSection to avoid SSR issues
+ [2m12[0m | [35;1m,[0m[35;1m-[0m[35;1m>[0m const InteractiveMapSection = dynamic(() => import('@/components/about/InteractiveMapSection'), {
+ [2m13[0m | [35;1m|[0m     ssr: false,
+ [2m14[0m | [35;1m|[0m     loading: () => (
+ [2m15[0m | [35;1m|[0m       <div className="py-20 bg-white">
+ [2m16[0m | [35;1m|[0m         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+ [2m17[0m | [35;1m|[0m           <div className="w-full h-96 bg-beer-cream/30 rounded-2xl border border-beer-malt/20 flex items-center justify-center">
+ [2m18[0m | [35;1m|[0m             <div className="flex flex-col items-center gap-4 text-beer-malt">
+ [2m19[0m | [35;1m|[0m               <div className="w-8 h-8 border-4 border-beer-malt/30 border-t-beer-malt rounded-full animate-spin" />
+ [2m20[0m | [35;1m|[0m               <div className="text-center">
+ [2m21[0m | [35;1m|[0m                 <p className="font-medium">Loading Interactive Map...</p>
+ [2m22[0m | [35;1m|[0m                 <p className="text-sm opacity-70">Preparing your beer journey visualization</p>
+ [2m23[0m | [35;1m|[0m               </div>
+ [2m24[0m | [35;1m|[0m             </div>
+ [2m25[0m | [35;1m|[0m           </div>
+ [2m26[0m | [35;1m|[0m         </div>
+ [2m27[0m | [35;1m|[0m       </div>
+ [2m28[0m | [35;1m|[0m     )
+ [2m29[0m | [35;1m`[0m[35;1m-[0m[35;1m>[0m })
+ [2m30[0m |     
+ [2m31[0m |     export const metadata: Metadata = {
+ [2m32[0m |       title: 'About Hop Harrison | AI-Powered Beer Journey Across America',
+    `----
+
+Import trace for requested module:
+./src/app/about/page.tsx
+ ✓ Compiled in 119ms (413 modules)
+ ✓ Compiled in 550ms (968 modules)
+ ✓ Compiled in 424ms (1045 modules)
+ ○ Compiling /test-realtime ...
+ ✓ Compiled /test-realtime in 640ms (1223 modules)
+ ⨯ Error: ENOENT: no such file or directory, open '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/vendor-chunks/@swc.js'
+    at <unknown> (.next/server/app/test-realtime/page.js:532:47)
+    at Object.<anonymous> (.next/server/app/test-realtime/page.js:535:3) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/vendor-chunks/@swc.js',
+  page: '/test-realtime'
+}
+ ✓ Compiled /_error in 275ms (1310 modules)
+ ⨯ Error: Cannot find module './548.js'
+Require stack:
+- /Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/webpack-runtime.js
+- /Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/pages/_document.js
+- /Users/martingeijer/Desktop/Code/brewquest-blog/node_modules/next/dist/server/require.js
+- /Users/martingeijer/Desktop/Code/brewquest-blog/node_modules/next/dist/server/load-components.js
+- /Users/martingeijer/Desktop/Code/brewquest-blog/node_modules/next/dist/build/utils.js
+- /Users/martingeijer/Desktop/Code/brewquest-blog/node_modules/next/dist/build/swc/options.js
+- /Users/martingeijer/Desktop/Code/brewquest-blog/node_modules/next/dist/build/swc/index.js
+- /Users/martingeijer/Desktop/Code/brewquest-blog/node_modules/next/dist/build/next-config-ts/transpile-config.js
+- /Users/martingeijer/Desktop/Code/brewquest-blog/node_modules/next/dist/server/config.js
+- /Users/martingeijer/Desktop/Code/brewquest-blog/node_modules/next/dist/server/next.js
+- /Users/martingeijer/Desktop/Code/brewquest-blog/node_modules/next/dist/server/lib/start-server.js
+    at <unknown> (.next/server/pages/_document.js:1:325)
+    at Object.<anonymous> (.next/server/pages/_document.js:1:371) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [Array]
+}
+ GET /test-realtime 500 in 1030ms
+[Error: ENOENT: no such file or directory, stat '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/cache/webpack/server-development/20.pack.gz'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/cache/webpack/server-development/20.pack.gz'
+}
+ ⨯ unhandledRejection: [Error: ENOENT: no such file or directory, stat '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/cache/webpack/server-development/20.pack.gz'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/cache/webpack/server-development/20.pack.gz'
+}
+ ⨯ unhandledRejection:  [Error: ENOENT: no such file or directory, stat '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/cache/webpack/server-development/20.pack.gz'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'stat',
+  path: '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/cache/webpack/server-development/20.pack.gz'
+}
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: ENOENT: no such file or directory, stat '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/cache/webpack/server-development/20.pack.gz'
+ ✓ Compiled in 679ms (1115 modules)
+ ✓ Compiled in 144ms (523 modules)
+ ✓ Compiled in 152ms (523 modules)
+ ✓ Compiled in 179ms (523 modules)
+ ✓ Compiled in 186ms (523 modules)
+ ✓ Compiled in 139ms (523 modules)
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/app/page.js'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/app/page.js',
+  page: '/'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 657ms (1202 modules)
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/pages/_document.js'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/pages/_document.js'
+}
+ GET / 500 in 1036ms
+ ✓ Compiled /_not-found in 224ms (1207 modules)
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET /_next/static/chunks/fallback/webpack.js 404 in 581ms
+ GET /_next/static/chunks/fallback/main.js 404 in 572ms
+ GET /_next/static/chunks/fallback/pages/_error.js 404 in 555ms
+ GET /_next/static/chunks/fallback/react-refresh.js 404 in 571ms
+ GET /_next/static/chunks/fallback/pages/_app.js 404 in 556ms
+ ✓ Compiled in 549ms (1038 modules)
+ ✓ Compiled in 210ms (1054 modules)
+ ✓ Compiled in 203ms (1054 modules)
+ ✓ Compiled in 189ms (1054 modules)
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/app/page.js'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/app/page.js',
+  page: '/'
+}
+ ✓ Compiled /_error in 468ms (1125 modules)
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/pages/_document.js'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/pages/_document.js'
+}
+ HEAD / 500 in 559ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/app/page.js'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/app/page.js',
+  page: '/'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/pages/_document.js'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/pages/_document.js'
+}
+ HEAD / 500 in 45ms
+ ✓ Compiled in 427ms (1141 modules)
+ ✓ Compiled in 209ms (1141 modules)
+ ✓ Compiled in 213ms (1141 modules)
+ ✓ Compiled in 193ms (1141 modules)
+ ✓ Compiled in 213ms (1054 modules)
+ ✓ Compiled in 431ms (1054 modules)
+ ⨯ ReferenceError: InteractiveMapSectionWrapper is not defined
+    at AboutPage (src/app/about/page.tsx:260:7)
+  258 |
+  259 |       {/* Interactive Journey Map Section */}
+> 260 |       <InteractiveMapSectionWrapper stateData={stateProgressData} />
+      |       ^
+  261 |
+  262 |       {/* AI Transparency Section */}
+  263 |       <section className="py-20 bg-beer-cream"> {
+  digest: '2292227495'
+}
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET /about 500 in 665ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/app/blog/page.js'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/app/blog/page.js',
+  page: '/blog'
+}
+ ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 673ms (1125 modules)
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/pages/_document.js'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/martingeijer/Desktop/Code/brewquest-blog/.next/server/pages/_document.js'
+}
+ GET /blog?category=local-culture 500 in 758ms
+ ✓ Compiled /_not-found in 243ms (1130 modules)
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+ GET /_next/static/chunks/fallback/main.js 404 in 560ms
+ GET /_next/static/chunks/fallback/pages/_error.js 404 in 553ms
+ GET /_next/static/chunks/fallback/pages/_app.js 404 in 554ms
+ GET /_next/static/chunks/fallback/react-refresh.js 404 in 557ms
+ GET /_next/static/chunks/fallback/webpack.js 404 in 560ms
+ ✓ Compiled in 335ms (484 modules)
+ ✓ Compiled in 251ms (484 modules)
+ ✓ Compiled in 147ms (484 modules)
+ ✓ Compiled in 166ms (484 modules)
+ ✓ Compiled in 126ms (484 modules)
+ ✓ Compiled in 249ms (484 modules)
+[?25h

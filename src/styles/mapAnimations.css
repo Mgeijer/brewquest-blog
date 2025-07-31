@@ -1,0 +1,382 @@
+/* US Map Interactive Animations */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .state-path,
+  .progress-bar,
+  .tooltip,
+  .celebration {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Base state path styling */
+.state-path {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  transform-origin: center;
+  will-change: transform, filter, fill;
+  /* Ensure clickable on all devices */
+  pointer-events: auto !important;
+  /* Prevent outline on mobile focus */
+  outline: none;
+  /* Increase touch target for mobile */
+  touch-action: manipulation;
+}
+
+/* Hover effects */
+.state-path:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+.state-path:focus {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+  outline: none;
+}
+
+/* Active state for touch devices */
+.state-path:active {
+  transform: scale(1.02);
+  filter: brightness(1.05);
+}
+
+/* Status-based animations */
+.state-completed {
+  animation: completionPulse 0.6s ease-out;
+}
+
+.state-current {
+  animation: currentStatePulse 2s ease-in-out infinite;
+}
+
+.state-activation-glow {
+  animation: activationGlow 0.8s ease-out;
+}
+
+.state-status-change {
+  animation: statusChange 0.4s ease-out;
+}
+
+.state-completion-pulse {
+  animation: completionCelebration 1.2s ease-out;
+}
+
+/* Keyframe animations */
+@keyframes completionPulse {
+  0% { 
+    transform: scale(1); 
+    filter: brightness(1);
+  }
+  50% { 
+    transform: scale(1.1); 
+    filter: brightness(1.3) drop-shadow(0 0 8px rgba(249, 166, 2, 0.6));
+  }
+  100% { 
+    transform: scale(1); 
+    filter: brightness(1);
+  }
+}
+
+@keyframes currentStatePulse {
+  0%, 100% { 
+    opacity: 1; 
+    filter: brightness(1);
+  }
+  50% { 
+    opacity: 0.8; 
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes activationGlow {
+  0% { 
+    filter: brightness(1); 
+  }
+  30% { 
+    filter: brightness(1.4) drop-shadow(0 0 12px rgba(252, 211, 77, 0.8));
+  }
+  100% { 
+    filter: brightness(1.2); 
+  }
+}
+
+@keyframes statusChange {
+  0% { 
+    transform: scale(1); 
+  }
+  50% { 
+    transform: scale(1.03); 
+  }
+  100% { 
+    transform: scale(1); 
+  }
+}
+
+@keyframes completionCelebration {
+  0% { 
+    transform: scale(1); 
+    filter: brightness(1);
+  }
+  20% { 
+    transform: scale(1.15); 
+    filter: brightness(1.5) drop-shadow(0 0 16px rgba(249, 166, 2, 0.9));
+  }
+  40% { 
+    transform: scale(1.05); 
+    filter: brightness(1.3) drop-shadow(0 0 12px rgba(249, 166, 2, 0.7));
+  }
+  60% { 
+    transform: scale(1.1); 
+    filter: brightness(1.4) drop-shadow(0 0 14px rgba(249, 166, 2, 0.8));
+  }
+  100% { 
+    transform: scale(1); 
+    filter: brightness(1);
+  }
+}
+
+/* Progress bar animations */
+.progress-bar {
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: width;
+}
+
+.progress-bar-fill {
+  background: linear-gradient(
+    90deg, 
+    #f59e0b 0%, 
+    #fcd34d 50%, 
+    #f59e0b 100%
+  );
+  background-size: 200% 100%;
+  animation: progressShimmer 2s linear infinite;
+}
+
+@keyframes progressShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Tooltip animations */
+.tooltip {
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.tooltip.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.tooltip.leaving {
+  opacity: 0;
+  transform: translateY(-10px) scale(0.95);
+}
+
+/* Loading animations */
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+.loading-pulse {
+  animation: loadingPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes loadingPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Touch ripple effect */
+.touch-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(252, 211, 77, 0.3);
+  transform: scale(0);
+  animation: ripple 0.6s ease-out;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Celebration effects */
+.celebration-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.celebration-burst {
+  animation: celebrationBurst 2s ease-out forwards;
+}
+
+.celebration-sparkle {
+  animation: sparkle 1.5s ease-out infinite;
+}
+
+@keyframes celebrationBurst {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+/* Map container animations */
+.map-container {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.map-loading {
+  opacity: 0.7;
+}
+
+.map-error {
+  opacity: 0.5;
+  filter: grayscale(0.5);
+}
+
+/* Legend animations */
+.legend-item {
+  transition: all 0.2s ease-in-out;
+  transform-origin: center;
+}
+
+.legend-item:hover {
+  transform: scale(1.05);
+}
+
+/* Mobile-specific animations */
+@media (hover: none) and (pointer: coarse) {
+  .state-path:hover {
+    transform: none;
+    filter: none;
+  }
+  
+  .state-path:active {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+  }
+  
+  .state-path:focus {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+  }
+  
+  /* Enhanced touch feedback */
+  .touch-feedback {
+    background: rgba(249, 166, 2, 0.1);
+    border-radius: 4px;
+    transition: background 0.15s ease-out;
+  }
+  
+  /* Improve touch targets on mobile */
+  .state-path {
+    /* Increase minimum touch target */
+    min-width: 44px;
+    min-height: 44px;
+    /* Better touch responsiveness */
+    -webkit-tap-highlight-color: rgba(249, 166, 2, 0.3);
+    /* Prevent text selection on touch */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .state-path {
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+  
+  .state-completed {
+    fill: #000000;
+  }
+  
+  .state-current {
+    fill: #ffffff;
+    stroke: #000000;
+    stroke-width: 3;
+  }
+  
+  .state-upcoming {
+    fill: #808080;
+  }
+}
+
+/* Focus visible for keyboard navigation */
+.state-path:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Smooth state transitions */
+.state-transition-enter {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.state-transition-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.3s ease-out;
+}
+
+.state-transition-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.state-transition-exit-active {
+  opacity: 0;
+  transform: scale(1.1);
+  transition: all 0.2s ease-in;
+}
+
+/* Performance optimizations */
+.state-path,
+.progress-bar,
+.tooltip {
+  backface-visibility: hidden;
+  perspective: 1000px;
+}

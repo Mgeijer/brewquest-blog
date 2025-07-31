@@ -1,0 +1,285 @@
+/* Mobile-optimized animations for map interactions */
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .mobile-map-transition,
+  .mobile-card-animation,
+  .mobile-swipe-indicator {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Mobile-friendly transitions */
+.mobile-map-transition {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Touch feedback animations */
+.mobile-touch-feedback {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-touch-feedback:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+/* Card animations for mobile list view */
+.mobile-card-enter {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: mobileCardEnter 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes mobileCardEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-card-exit {
+  animation: mobileCardExit 0.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes mobileCardExit {
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* Swipe gesture indicators */
+.mobile-swipe-indicator {
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-swipe-indicator::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease-in-out;
+}
+
+.mobile-swipe-indicator.swiping::after {
+  left: 100%;
+}
+
+/* Pull-to-refresh animation */
+.pull-to-refresh {
+  transform: translateY(-60px);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pull-to-refresh.active {
+  transform: translateY(0);
+}
+
+.pull-to-refresh-spinner {
+  animation: pullToRefreshSpin 1s linear infinite;
+}
+
+@keyframes pullToRefreshSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Region expansion animations */
+.region-expand {
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.region-expand-enter {
+  max-height: 0;
+}
+
+.region-expand-enter-active {
+  max-height: 500px;
+}
+
+.region-expand-exit {
+  max-height: 500px;
+}
+
+.region-expand-exit-active {
+  max-height: 0;
+}
+
+/* Progress bar animations */
+.mobile-progress-bar {
+  background: linear-gradient(90deg, #D97706, #F59E0B, #FCD34D);
+  background-size: 200% 200%;
+  animation: mobileProgressShimmer 2s ease-in-out infinite;
+}
+
+@keyframes mobileProgressShimmer {
+  0% {
+    background-position: 200% 0%;
+  }
+  100% {
+    background-position: -200% 0%;
+  }
+}
+
+/* Haptic feedback visual cue */
+.mobile-haptic-feedback {
+  position: relative;
+}
+
+.mobile-haptic-feedback::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(217, 119, 6, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.mobile-haptic-feedback.triggered::before {
+  animation: hapticRipple 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes hapticRipple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+  }
+}
+
+/* Loading skeleton for mobile */
+.mobile-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: mobileSkeletonLoading 1.5s infinite;
+}
+
+@keyframes mobileSkeletonLoading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Performance optimizations for mobile */
+.mobile-map-container {
+  /* Use transform instead of changing layout properties */
+  transform: translateZ(0);
+  /* Enable hardware acceleration */
+  will-change: transform;
+  /* Optimize for mobile scrolling */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Touch target optimization */
+.mobile-touch-target {
+  min-height: 44px;
+  min-width: 44px;
+  position: relative;
+}
+
+.mobile-touch-target::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-height: 44px;
+  min-width: 44px;
+  z-index: -1;
+}
+
+/* List view optimizations */
+.mobile-list-container {
+  /* Optimize for scrolling performance */
+  contain: layout style paint;
+}
+
+.mobile-list-item {
+  /* Optimize individual items */
+  contain: layout paint;
+  transform: translateZ(0);
+}
+
+/* Dark mode support for mobile */
+@media (prefers-color-scheme: dark) {
+  .mobile-card-dark {
+    background-color: #1f2937;
+    border-color: #374151;
+    color: #f9fafb;
+  }
+  
+  .mobile-skeleton {
+    background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+    background-size: 200% 100%;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .mobile-card-enter,
+  .mobile-card-exit,
+  .mobile-progress-bar,
+  .mobile-skeleton {
+    animation: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .mobile-touch-feedback {
+    border: 2px solid;
+  }
+  
+  .mobile-progress-bar {
+    background: currentColor;
+  }
+}
+
+/* Focus management for mobile accessibility */
+.mobile-focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Safe area handling for mobile devices */
+.mobile-safe-area {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Landscape mode optimizations */
+@media screen and (orientation: landscape) and (max-height: 640px) {
+  .mobile-landscape-header {
+    height: 60px;
+  }
+  
+  .mobile-landscape-content {
+    padding-top: 60px;
+  }
+}
