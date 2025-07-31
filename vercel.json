@@ -8,15 +8,11 @@
   "crons": [
     {
       "path": "/api/cron/daily-publish",
-      "schedule": "0 15 * * *"
-    },
-    {
-      "path": "/api/cron/generate-social-content", 
-      "schedule": "0 14 * * 1"
+      "schedule": "0 20 * * *"
     },
     {
       "path": "/api/cron/weekly-transition",
-      "schedule": "0 16 * * 0"
+      "schedule": "0 21 * * 0"
     }
   ],
   "functions": {
