@@ -97,5 +97,9 @@ When server won't start:
 - TypeScript errors are often non-blocking for development preview
 - Webpack cache issues are common with Next.js 15 - clearing .next usually fixes them
 
+### 📓 Recent Memories
+
+- Let's bring the server back up as right now I am not seeing the loclahost:3000 landing page
+
 ---
 *Last updated: 2024-07-29 - Server startup issues resolved*

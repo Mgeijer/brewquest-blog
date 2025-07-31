@@ -124,7 +124,7 @@ Modern hop breeding now uses gas chromatography to analyze flavor compounds at t
 
 A perfect example of how scientific innovation, agricultural expertise, and market demand create entirely new economic opportunities.
 
-Full analysis: [link to blog]
+Full analysis: www.hopharrison.com
 
 #Agriculture #Innovation #AmericanBusiness #CraftBeer #SupplyChain #FarmToBusiness #AgTech
 
@@ -150,7 +150,7 @@ Fun fact: Modern hop breeding uses gas chromatography to analyze flavor compound
 
 What's your favorite hop-forward beer? Tell us in the comments!
 
-Read the full hop story: [link to blog]
+Read the full hop story: www.hopharrison.com
 
 #AmericanHops #CascadeHops #CraftBeer #IPA #PacificNorthwest #HopFarming #BeerIngredients #HopHarrison #BrewQuestChronicles
 
@@ -164,6 +164,7 @@ Read the full hop story: [link to blog]
 1980s: Sierra Nevada proves citrus character sells  
 2007: Citra brings tropical fruit flavors
 2010s: Hazy IPAs create hop shortage 
+
 2024: 100+ American hop varieties available
 
 From wild vines to $1B+ industry 📈
@@ -219,7 +220,7 @@ Living room tastings and homebrew competitions provided real customer feedback b
 
 These garage entrepreneurs built brands with authentic stories and passionate customer bases - advantages that money can't buy.
 
-Full case studies: [link to blog]
+Full case studies: www.hopharrison.com
 
 #Entrepreneurship #StartupStory #CraftBeer #Innovation #SmallBusiness #Bootstrapping #ProductDevelopment
 
@@ -244,7 +245,7 @@ Today, these "garage startups" employ thousands and have inspired countless othe
 
 What garage startup story inspires you most? Share your thoughts below! 💭
 
-Read all the garage-to-glory stories: [link to blog]
+Read all the garage-to-glory stories: www.hopharrison.com
 
 #Homebrewing #CraftBeerFounders #GarageToGlory #DogfishHead #BellsBrewery #StoneBrewing #Entrepreneurship #StartupStory #HopHarrison #BrewQuestChronicles
 
@@ -360,17 +361,8 @@ Read the complete IPA revolution story: [link to blog]
 
 ### Twitter/X Post
 **Text:**
-🍺 IPA Evolution:
 
-1700s: British colonial necessity
-1980s: American craft experiment  
-1990s: West Coast hop bombs
-2010s: Hazy New England style
-2024: 25% of craft sales, 30M+ barrels
 
-From preservation to passion 📈
-
-#IPA #CraftBeer #BeerHistory #Innovation
 
 ---
 

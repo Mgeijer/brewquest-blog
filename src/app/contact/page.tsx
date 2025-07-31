@@ -1,11 +1,80 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { MessageSquare, Send, CheckCircle, AlertCircle, MapPin } from 'lucide-react'
 
-export default function ContactPage() {
+// Loading skeleton component
+function ContactFormSkeleton() {
+  return (
+    <div className="min-h-screen bg-beer-cream">
+      {/* Hero Section */}
+      <div className="bg-gradient-to-r from-beer-amber to-beer-gold text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="text-center">
+            <div className="w-16 h-16 mx-auto mb-6 bg-beer-cream/20 rounded-full animate-pulse" />
+            <div className="h-12 bg-beer-cream/20 rounded w-3/4 mx-auto mb-4 animate-pulse" />
+            <div className="h-6 bg-beer-cream/20 rounded w-1/2 mx-auto animate-pulse" />
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* Contact Form Skeleton */}
+          <div className="bg-white rounded-xl shadow-md p-8">
+            <div className="h-8 bg-gray-200 rounded w-3/4 mb-6 animate-pulse" />
+            <div className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <div className="h-4 bg-gray-200 rounded w-1/4 animate-pulse" />
+                  <div className="h-12 bg-gray-200 rounded animate-pulse" />
+                </div>
+                <div className="space-y-2">
+                  <div className="h-4 bg-gray-200 rounded w-1/4 animate-pulse" />
+                  <div className="h-12 bg-gray-200 rounded animate-pulse" />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <div className="h-4 bg-gray-200 rounded w-1/3 animate-pulse" />
+                <div className="h-12 bg-gray-200 rounded animate-pulse" />
+              </div>
+              <div className="space-y-2">
+                <div className="h-4 bg-gray-200 rounded w-1/4 animate-pulse" />
+                <div className="h-12 bg-gray-200 rounded animate-pulse" />
+              </div>
+              <div className="space-y-2">
+                <div className="h-4 bg-gray-200 rounded w-1/4 animate-pulse" />
+                <div className="h-32 bg-gray-200 rounded animate-pulse" />
+              </div>
+              <div className="h-12 bg-gray-200 rounded animate-pulse" />
+            </div>
+          </div>
+
+          {/* Contact Info Skeleton */}
+          <div className="space-y-8">
+            <div className="bg-white rounded-xl shadow-md p-8">
+              <div className="h-8 bg-gray-200 rounded w-1/2 mb-6 animate-pulse" />
+              <div className="space-y-4">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="space-y-2">
+                    <div className="h-5 bg-gray-200 rounded w-3/4 animate-pulse" />
+                    <div className="h-4 bg-gray-200 rounded w-full animate-pulse" />
+                    <div className="h-4 bg-gray-200 rounded w-2/3 animate-pulse" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Contact form component with client-side logic
+function ContactForm() {
   const searchParams = useSearchParams()
   const [formData, setFormData] = useState({
     name: '',
@@ -340,5 +409,14 @@ export default function ContactPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+// Main page component with Suspense boundary
+export default function ContactPage() {
+  return (
+    <Suspense fallback={<ContactFormSkeleton />}>
+      <ContactForm />
+    </Suspense>
   )
 }

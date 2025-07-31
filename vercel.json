@@ -5,9 +5,26 @@
   "installCommand": "npm install",
   "devCommand": "npm run dev",
   "regions": ["iad1"],
+  "crons": [
+    {
+      "path": "/api/cron/daily-publish",
+      "schedule": "0 15 * * *"
+    },
+    {
+      "path": "/api/cron/generate-social-content", 
+      "schedule": "0 14 * * 1"
+    },
+    {
+      "path": "/api/cron/weekly-transition",
+      "schedule": "0 16 * * 0"
+    }
+  ],
   "functions": {
     "src/app/api/**/*.ts": {
       "maxDuration": 30
+    },
+    "src/app/api/cron/**/*.ts": {
+      "maxDuration": 300
     }
   },
   "headers": [
