@@ -6,11 +6,18 @@ import StateTransitionEmail from '@/emails/StateTransitionEmail'
 import UnsubscribeEmail from '@/emails/UnsubscribeEmail'
 import crypto from 'crypto'
 
-if (!process.env.RESEND_API_KEY) {
-  throw new Error('RESEND_API_KEY is not set in environment variables')
-}
+// Initialize Resend only when needed to avoid build-time errors
+let resend: Resend | null = null
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+const getResendClient = () => {
+  if (!resend) {
+    if (!process.env.RESEND_API_KEY) {
+      throw new Error('RESEND_API_KEY is not set in environment variables')
+    }
+    resend = new Resend(process.env.RESEND_API_KEY)
+  }
+  return resend
+}
 
 export interface EmailSubscriber {
   id: string
@@ -132,7 +139,7 @@ export class ResendEmailService {
       ? subscriber.first_name.trim() 
       : 'Beer Enthusiast'
     
-    const result = await resend.emails.send({
+    const result = await getResendClient().emails.send({
       from: 'Hop Harrison - BrewQuest Chronicles <hop@hopharrison.com>',
       to: subscriber.email,
       subject: `Welcome to BrewQuest Chronicles - Week ${currentWeek}: ${currentState}!`,
@@ -163,7 +170,7 @@ export class ResendEmailService {
         .filter(subscriber => subscriber.preferences?.weekly_digest !== false)
         .map(async (subscriber) => {
           try {
-            await resend.emails.send({
+            await getResendClient().emails.send({
               from: 'Hop Harrison - BrewQuest Chronicles <hop@hopharrison.com>',
               to: subscriber.email,
               subject: `Week ${weeklyData.weekNumber} Complete: ${weeklyData.stateName} Craft Beer Journey`,
@@ -231,7 +238,7 @@ export class ResendEmailService {
         .filter(subscriber => subscriber.preferences?.state_updates !== false)
         .map(async (subscriber) => {
           try {
-            await resend.emails.send({
+            await getResendClient().emails.send({
               from: 'Hop Harrison - BrewQuest Chronicles <hop@hopharrison.com>',
               to: subscriber.email,
               subject: `🎉 ${completedState} Complete! Next Stop: ${newState} - BrewQuest Chronicles`,
@@ -272,7 +279,7 @@ export class ResendEmailService {
       ? subscriber.first_name.trim() 
       : 'Beer Enthusiast'
       
-    await resend.emails.send({
+    await getResendClient().emails.send({
       from: 'Hop Harrison - BrewQuest Chronicles <hop@hopharrison.com>',
       to: subscriber.email,
       subject: 'Unsubscribed from BrewQuest Chronicles',

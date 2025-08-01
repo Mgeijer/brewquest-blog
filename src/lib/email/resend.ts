@@ -1,10 +1,17 @@
 import { Resend } from 'resend'
 
-if (!process.env.RESEND_API_KEY) {
-  throw new Error('RESEND_API_KEY is not set in environment variables')
-}
+// Initialize Resend only when needed to avoid build-time errors
+let resend: Resend | null = null
 
-export const resend = new Resend(process.env.RESEND_API_KEY)
+const getResendClient = () => {
+  if (!resend) {
+    if (!process.env.RESEND_API_KEY) {
+      throw new Error('RESEND_API_KEY is not set in environment variables')
+    }
+    resend = new Resend(process.env.RESEND_API_KEY)
+  }
+  return resend
+}
 
 export const emailConfig = {
   from: {
@@ -32,7 +39,7 @@ export async function sendEmail({
   replyTo?: string
 }) {
   try {
-    const result = await resend.emails.send({
+    const result = await getResendClient().emails.send({
       from: `${emailConfig.from.name} <${emailConfig.from.email}>`,
       to: Array.isArray(to) ? to : [to],
       subject,
