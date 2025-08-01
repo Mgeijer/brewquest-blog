@@ -1,5 +1,3 @@
-import { ResendEmailService } from '@/lib/email/resendService'
-
 export async function POST(request: Request) {
   try {
     const { adminPassword, emailType, testEmail } = await request.json()
@@ -13,6 +11,8 @@ export async function POST(request: Request) {
       return Response.json({ error: 'Valid test email required' }, { status: 400 })
     }
 
+    // Import and initialize email service only when needed
+    const { ResendEmailService } = await import('@/lib/email/resendService')
     const emailService = new ResendEmailService()
     
     switch (emailType) {

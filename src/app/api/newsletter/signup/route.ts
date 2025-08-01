@@ -1,4 +1,3 @@
-import { ResendEmailService } from '@/lib/email/resendService'
 import { createClient } from '@/lib/supabase/server'
 
 export async function POST(request: Request) {
@@ -9,6 +8,8 @@ export async function POST(request: Request) {
       return Response.json({ error: 'Valid email required' }, { status: 400 })
     }
 
+    // Import email service only when needed
+    const { ResendEmailService } = await import('@/lib/email/resendService')
     const emailService = new ResendEmailService()
     
     // Add subscriber to database with additional metadata

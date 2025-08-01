@@ -1,5 +1,3 @@
-import { ResendEmailService } from '@/lib/email/resendService'
-
 export async function POST(request: Request) {
   try {
     const { email, firstName } = await request.json()
@@ -8,6 +6,8 @@ export async function POST(request: Request) {
       return Response.json({ error: 'Valid email required' }, { status: 400 })
     }
     
+    // Import email service only when needed
+    const { ResendEmailService } = await import('@/lib/email/resendService')
     const emailService = new ResendEmailService()
     
     // Add subscriber to database
