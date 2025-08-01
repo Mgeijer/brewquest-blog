@@ -27,6 +27,17 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error('Newsletter signup error:', error)
     
+    // More detailed error logging for debugging
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+    const errorStack = error instanceof Error ? error.stack : null
+    
+    console.error('Error details:', {
+      message: errorMessage,
+      code: error.code,
+      name: error.name,
+      stack: errorStack
+    })
+    
     if (error.message?.includes('duplicate') || error.code === '23505') {
       return Response.json({
         success: true,
@@ -35,8 +46,10 @@ export async function POST(request: Request) {
       }, { status: 200 })
     }
     
+    // Return more specific error information in development
     return Response.json({ 
-      error: 'Subscription failed. Please try again.' 
+      error: 'Subscription failed. Please try again.',
+      debug: process.env.NODE_ENV === 'development' ? errorMessage : undefined
     }, { status: 500 })
   }
 }
