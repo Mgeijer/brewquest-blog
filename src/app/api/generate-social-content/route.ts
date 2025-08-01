@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { SocialMediaContentGenerator, exampleAlabamaData } from '@/lib/social-media/content-generator';
+import { SocialMediaFileManager } from '@/lib/social-media/file-manager';
 
 export async function POST(request: NextRequest) {
   try {
@@ -14,18 +15,23 @@ export async function POST(request: NextRequest) {
     }
 
     const generator = new SocialMediaContentGenerator();
+    const fileManager = new SocialMediaFileManager();
     
     // For now, using Alabama example data - can be extended with database lookups
     const stateData = exampleAlabamaData;
     
     const contentPack = generator.generateWeeklyContent(weekNumber, stateData, config);
     const formattedOutput = generator.generateFormattedOutput(contentPack);
+    
+    // Save to structured file system
+    const savedFilePath = fileManager.saveContentToFile(contentPack, formattedOutput);
 
     return NextResponse.json({
       success: true,
       data: {
         contentPack,
         formattedOutput,
+        savedFilePath,
         statistics: {
           weekNumber,
           state: stateData.name,

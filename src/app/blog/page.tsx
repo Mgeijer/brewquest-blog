@@ -164,6 +164,37 @@ function BlogContent() {
   
   // If no specific query parameters, show Alabama weekly content by default
   const shouldShowAlabamaByDefault = !category && !featured && selectedState === 'All States'
+
+  // Handle anchor scrolling for interactive map (moved after shouldShowAlabamaByDefault definition)
+  useEffect(() => {
+    // Check if URL contains hash and scroll to element
+    const hash = window.location.hash
+    if (hash) {
+      // Wait longer for content to render and try multiple times
+      const scrollToHash = () => {
+        const element = document.querySelector(hash)
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          })
+          return true
+        }
+        return false
+      }
+
+      // Try immediately
+      if (!scrollToHash()) {
+        // Try after 300ms
+        setTimeout(() => {
+          if (!scrollToHash()) {
+            // Try after 800ms (for USMap to load)
+            setTimeout(scrollToHash, 500)
+          }
+        }, 300)
+      }
+    }
+  }, [shouldShowAlabamaByDefault, isLoadingState]) // Re-run when content changes
   
   // Get content based on category
   const getBreweryStories = () => {

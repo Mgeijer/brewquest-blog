@@ -254,9 +254,10 @@ ${this.formatHashtags(twitterHashtags)}`;
   }
 
   public generateFormattedOutput(contentPack: SocialMediaContentPack): string {
-    return `# Social Media Content Pack - Week ${contentPack.weekNumber}: ${contentPack.state}
+    return `# ${contentPack.state} Social Media Posts - Week ${contentPack.weekNumber}
+## BrewQuest Chronicles: ${contentPack.state} Craft Beer Journey
 
-## Weekly Posts
+### Weekly Overview Posts
 
 ### Instagram Post
 **Caption:**

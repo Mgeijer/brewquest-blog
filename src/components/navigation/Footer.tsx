@@ -16,18 +16,20 @@ export default function Footer() {
     setMessage('')
 
     try {
-      const response = await fetch('/api/newsletter', {
+      const response = await fetch('/api/newsletter/subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ 
+          email,
+        }),
       })
 
       const data = await response.json()
 
       if (response.ok) {
-        setMessage('Successfully subscribed! Thank you for joining.')
+        setMessage(data.message || 'Successfully subscribed! Check your email for a welcome message.')
         setEmail('')
       } else {
         setMessage(data.error || 'Failed to subscribe. Please try again.')
@@ -204,6 +206,13 @@ export default function Footer() {
                     {link.name}
                   </Link>
                 ))}
+                <Link
+                  href="/admin"
+                  className="hover:text-beer-amber transition-colors opacity-30 hover:opacity-100"
+                  title="Admin Access"
+                >
+                  Admin
+                </Link>
               </div>
               <div className="hidden md:block">|</div>
               <p>© {currentYear} Hop Harrison. All rights reserved.</p>

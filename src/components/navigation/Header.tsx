@@ -10,6 +10,7 @@ const navigationItems = [
   { name: 'Blog', href: '/blog' },
   { name: 'States', href: '/states' },
   { name: 'About', href: '/about' },
+  { name: 'Newsletter', href: '/newsletter' },
 ]
 
 export default function Header() {

@@ -1,35 +1,43 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+// Redirect old newsletter API calls to the new signup endpoint
 export async function POST(request: NextRequest) {
   try {
-    const { email } = await request.json()
+    const body = await request.json()
+    
+    // Forward the request to the new signup endpoint
+    const signupResponse = await fetch(`${request.nextUrl.origin}/api/newsletter/signup`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...body,
+        source: 'legacy-api'
+      }),
+    })
 
-    if (!email) {
+    const data = await signupResponse.json()
+    
+    // Return response in the old format for backward compatibility
+    if (signupResponse.ok) {
       return NextResponse.json(
-        { error: 'Email is required' },
-        { status: 400 }
+        { 
+          message: data.alreadySubscribed 
+            ? 'You are already subscribed to BrewQuest Chronicles!' 
+            : 'Successfully subscribed to newsletter!',
+          email: body.email 
+        },
+        { status: 200 }
+      )
+    } else {
+      return NextResponse.json(
+        { error: data.error || 'Failed to subscribe. Please try again later.' },
+        { status: signupResponse.status }
       )
     }
-
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: 'Invalid email format' },
-        { status: 400 }
-      )
-    }
-
-    // For now, just log the subscription (in a real app, you'd save to database)
-    console.log(`Newsletter subscription: ${email}`)
-
-    // Return success response
-    return NextResponse.json(
-      { message: 'Successfully subscribed to newsletter!', email },
-      { status: 200 }
-    )
   } catch (error) {
-    console.error('Newsletter subscription error:', error)
+    console.error('Legacy newsletter subscription error:', error)
     return NextResponse.json(
       { error: 'Failed to subscribe. Please try again later.' },
       { status: 500 }

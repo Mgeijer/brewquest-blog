@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { ResendEmailService } from '@/lib/email/resendService'
 
 /**
  * Weekly State Transition Cron Job
@@ -9,7 +10,9 @@ import { createClient } from '@/lib/supabase/server'
  * - Transitions current state to completed
  * - Moves next upcoming state to current
  * - Updates week numbers and scheduling
+ * - Sends weekly digest emails to all subscribers
  * - Cleans up old social media posts
+ * - Logs analytics and error tracking
  * - Prepares for Monday's content generation
  */
 export async function GET(request: NextRequest) {
@@ -159,11 +162,38 @@ export async function GET(request: NextRequest) {
       updates.push(beerReadiness)
     }
 
+    // 7. Send weekly digest emails for the completed state
+    console.log(`[CRON] Sending weekly digest emails for completed state: ${currentState.state_name}`)
+    let emailResults = { successful: 0, failed: 0, total: 0 }
+    
+    try {
+      const emailService = new ResendEmailService()
+      emailResults = await emailService.sendWeeklyDigest()
+      updates.push(`Weekly digest emails: ${emailResults.successful}/${emailResults.total} sent successfully`)
+      console.log(`[CRON] Weekly digest emails sent: ${emailResults.successful} successful, ${emailResults.failed} failed`)
+    } catch (emailError) {
+      console.error('[CRON] Failed to send weekly digest emails:', emailError)
+      updates.push(`Weekly digest emails failed: ${emailError.message}`)
+      
+      // Log email error but don't fail the entire transition
+      await supabase
+        .from('analytics_events')
+        .insert({
+          event_type: 'weekly_digest_error',
+          event_data: {
+            error_message: emailError instanceof Error ? emailError.message : 'Unknown email error',
+            completed_state: currentState.state_name,
+            timestamp: new Date().toISOString()
+          },
+          created_at: new Date().toISOString()
+        })
+    }
+
     console.log(`[CRON] Weekly transition completed: ${currentState.state_name} → ${nextState.state_name}`)
 
     return NextResponse.json({
       success: true,
-      message: 'Weekly transition completed successfully',
+      message: 'Weekly transition and digest emails completed successfully',
       data: {
         transition: {
           from: {
@@ -174,6 +204,11 @@ export async function GET(request: NextRequest) {
             state: nextState.state_name,
             week: nextState.week_number
           }
+        },
+        email_results: {
+          successful: emailResults.successful,
+          failed: emailResults.failed,
+          total: emailResults.total
         },
         updates_performed: updates,
         beer_readiness: beerReadiness,
