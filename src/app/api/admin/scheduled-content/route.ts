@@ -59,7 +59,8 @@ Read the full Alaska adventure: www.hopharrison.com/states/alaska
             abv: 5.3
           },
           platform: 'Instagram',
-          characterCount: 1247
+          characterCount: 1247,
+          image_url: '/images/Beer images/Alaska/Alaskan Amber.png'
         }
       },
       qualityScore: 9.2,
@@ -102,7 +103,8 @@ Experience Alaska's brewing frontier: www.hopharrison.com/states/alaska
             abv: 5.7
           },
           platform: 'Instagram',
-          characterCount: 1089
+          characterCount: 1089,
+          image_url: '/images/Beer images/Alaska/Sockeye-Red.png'
         }
       },
       qualityScore: 8.8,
@@ -153,7 +155,8 @@ Explore Alaska's brewing diversity: www.hopharrison.com/states/alaska
             abv: 4.8
           },
           platform: 'Instagram',
-          characterCount: 1245
+          characterCount: 1245,
+          image_url: '/images/Beer images/Alaska/HooDoo-German Kolsch.jpg'
         }
       },
       qualityScore: 8.4,
@@ -204,7 +207,8 @@ Discover Alaska's brewing diversity: www.hopharrison.com/states/alaska
             abv: 9.7
           },
           platform: 'Instagram',
-          characterCount: 1398
+          characterCount: 1398,
+          image_url: '/images/Beer images/Alaska/Belgian Triple.jpeg'
         }
       },
       qualityScore: 8.9,
@@ -252,7 +256,8 @@ Experience Anchorage brewing culture: www.hopharrison.com/states/alaska
             abv: 5.9
           },
           platform: 'Instagram',
-          characterCount: 1456
+          characterCount: 1456,
+          image_url: '/images/Beer images/Alaska/Pipeline Stout.jpeg'
         }
       },
       qualityScore: 9.0,
@@ -305,7 +310,8 @@ Navigate Alaska's craft beer waters: www.hopharrison.com/states/alaska
             abv: 6.8
           },
           platform: 'Instagram',
-          characterCount: 1487
+          characterCount: 1487,
+          image_url: '/images/Beer images/Alaska/New England IPA.webp'
         }
       },
       qualityScore: 8.7,
@@ -359,7 +365,8 @@ Explore Alaska's complete brewing story: www.hopharrison.com/states/alaska
             abv: 6.0
           },
           platform: 'Instagram',
-          characterCount: 1342
+          characterCount: 1342,
+          image_url: '/images/Beer images/Alaska/Chocolate Coconut Porter.jpeg'
         }
       },
       qualityScore: 9.1,
@@ -418,6 +425,319 @@ Read the complete Alaska brewing story: www.hopharrison.com/states/alaska
         }
       },
       qualityScore: 9.3,
+      aiGenerated: true,
+      lastModified: new Date().toISOString()
+    },
+
+    // Alabama Week 1 - Day 2 (Tuesday) - Yellowhammer Belgian White
+    {
+      id: 'alabama_day2_belgian',
+      type: 'daily_beer' as const,
+      title: 'Yellowhammer Belgian White - Alabama Week 1 Day 2',
+      scheduledFor: new Date('2025-01-28T15:00:00.000Z').toISOString(),
+      status: getContentStatus('alabama_day2_belgian') as const,
+      content: {
+        body: getContentBody('alabama_day2_belgian', `🍺 Day 2: Yellowhammer's Belgian White - Huntsville's European Tradition! 🇧🇪
+
+Yellowhammer Brewing (Huntsville, 2013)
+Belgian White - 5.2% ABV, Traditional Witbier
+
+From Alabama's Rocket City comes this authentic Belgian witbier that proves Southern brewers understand European traditions. Named after Alabama's state bird, Yellowhammer brings Old World brewing techniques to the Heart of Dixie.
+
+🌾 TRADITIONAL BELGIAN WITBIER:
+Hazy golden appearance with citrus and coriander spice. Brewed with wheat and traditional Belgian yeast strains. Light, refreshing body with subtle complexity that makes it perfect for Alabama's warm climate.
+
+🚀 HUNTSVILLE'S BREWING SCENE:
+Home to NASA's Marshall Space Flight Center, Huntsville combines aerospace innovation with brewing tradition. Yellowhammer's German-trained brewmaster brings authentic European techniques to Alabama.
+
+🇧🇪 AUTHENTIC INGREDIENTS:
+• Belgian wheat and malted barley
+• Traditional coriander and orange peel
+• Authentic Belgian yeast strains
+• Time-honored brewing techniques
+
+Perfect for: BBQ pairings, summer afternoons, or enjoying while watching rocket launches from nearby Redstone Arsenal.
+
+From Belgium to the Rocket City - this is tradition meets innovation.
+
+Experience Alabama's brewing diversity: www.hopharrison.com/states/alabama
+
+#Yellowhammer #BelgianWhite #Huntsville #RocketCity #TraditionalBrewing #Witbier #AlabamaCraft #Week1 #BrewQuestChronicles #BelgianTradition`),
+        metadata: {
+          beer: {
+            name: 'Belgian White',
+            brewery: 'Yellowhammer Brewing',
+            style: 'Belgian Witbier',
+            abv: 5.2
+          },
+          platform: 'Instagram',
+          characterCount: 1267,
+          image_url: '/images/Beer images/Alabama/Belgian White.YellowHammerpng.png'
+        }
+      },
+      qualityScore: 8.6,
+      aiGenerated: true,
+      lastModified: new Date().toISOString()
+    },
+
+    // Alabama Week 1 - Day 3 (Wednesday) - Cahaba Oka Uba IPA
+    {
+      id: 'alabama_day3_ipa',
+      type: 'daily_beer' as const,
+      title: 'Cahaba Oka Uba IPA - Alabama Week 1 Day 3',
+      scheduledFor: new Date('2025-01-29T15:00:00.000Z').toISOString(),
+      status: getContentStatus('alabama_day3_ipa') as const,
+      content: {
+        body: getContentBody('alabama_day3_ipa', `🍺 Day 3: Cahaba's Oka Uba IPA - River-Inspired Alabama Craft! 🌊
+
+Cahaba Brewing Company (Birmingham, 2012)
+Oka Uba IPA - 6.8% ABV, American IPA
+
+Named after the Creek Indian words meaning "water above," this IPA flows with the spirit of the Cahaba River that winds through Birmingham. It's Alabama craft brewing at its most adventurous and flavorful.
+
+🏞️ CAHABA RIVER INSPIRATION:
+Just as the Cahaba River is Alabama's longest free-flowing river, this IPA flows with bold hop character and balanced malt backbone. Clean, refreshing finish perfect for river adventures.
+
+🍺 ALABAMA IPA CHARACTER:
+Bright citrus and pine hop aromas with tropical fruit notes. Medium body with assertive but balanced bitterness. Golden amber color reflects Alabama's beautiful river systems.
+
+🚣 OUTDOOR ADVENTURE BREWING:
+Cahaba Brewing embodies Alabama's outdoor lifestyle:
+• Perfect post-hike refreshment
+• River trip essential
+• Camping cooler staple  
+• Tailgating favorite
+
+Creek Indian heritage meets modern American brewing - "Oka Uba" represents the confluence of Alabama's rich cultural history and innovative craft beer scene.
+
+Perfect for: River adventures, outdoor concerts, Birmingham brewery tours, or anywhere Alabama's wild and scenic beauty calls.
+
+Flow with Alabama's craft beer renaissance: www.hopharrison.com/states/alabama
+
+#Cahaba #OkaUbaIPA #BirminghamBrewing #CahabaRiver #OutdoorBrewing #CreekIndian #AlabamaCraft #Week1 #BrewQuestChronicles #RiverLife`),
+        metadata: {
+          beer: {
+            name: 'Oka Uba IPA',
+            brewery: 'Cahaba Brewing Company',
+            style: 'American IPA',
+            abv: 6.8
+          },
+          platform: 'Instagram',
+          characterCount: 1284,
+          image_url: '/images/Beer images/Alabama/Cahaba Oka Uba IPA.png'
+        }
+      },
+      qualityScore: 8.7,
+      aiGenerated: true,
+      lastModified: new Date().toISOString()
+    },
+
+    // Alabama Week 1 - Day 4 (Thursday) - TrimTab Paradise Now
+    {
+      id: 'alabama_day4_sour',
+      type: 'daily_beer' as const,
+      title: 'TrimTab Paradise Now - Alabama Week 1 Day 4',
+      scheduledFor: new Date('2025-01-30T15:00:00.000Z').toISOString(),
+      status: getContentStatus('alabama_day4_sour') as const,
+      content: {
+        body: getContentBody('alabama_day4_sour', `🍺 Day 4: TrimTab's Paradise Now - Alabama Sour Innovation! 🌺
+
+TrimTab Brewing Company (Birmingham, 2014)
+Paradise Now - Tropical Fruit Sour, 5.5% ABV
+
+In Birmingham's historic warehouse district, TrimTab pushes the boundaries of what Alabama beer can be. Paradise Now is their tropical escape - a fruit-forward sour that transports you to warmer shores without leaving the Magic City.
+
+🏝️ TROPICAL ESCAPE IN ALABAMA:
+Bright pink/orange hue from real tropical fruits. Tart, refreshing acidity balanced by natural fruit sweetness. Passion fruit, guava, and mango create a vacation in every sip.
+
+🧪 INNOVATIVE BREWING APPROACH:
+TrimTab represents Alabama's experimental spirit:
+• Wild yeast fermentation
+• Real fruit additions
+• pH balancing expertise
+• Creative flavor combinations
+
+🌆 BIRMINGHAM'S WAREHOUSE DISTRICT:
+Located in a renovated historic building, TrimTab embodies Birmingham's industrial renaissance. From steel production to sour beer innovation - the Magic City keeps evolving.
+
+"Paradise Now" philosophy: Why wait for paradise when you can create it right here in Alabama?
+
+Perfect for: Summer festivals, poolside relaxation, introducing friends to sour beers, or any time you need a taste of tropical paradise in the Heart of Dixie.
+
+Discover Alabama's creative brewing: www.hopharrison.com/states/alabama
+
+#TrimTab #ParadiseNow #TropicalSour #Birmingham #InnovativeBrewing #SourBeer #AlabamaCraft #Week1 #BrewQuestChronicles #TropicalEscape`),
+        metadata: {
+          beer: {
+            name: 'Paradise Now',
+            brewery: 'TrimTab Brewing Company',
+            style: 'Tropical Fruit Sour',
+            abv: 5.5
+          },
+          platform: 'Instagram',
+          characterCount: 1318,
+          image_url: '/images/Beer images/Alabama/TrimTab Paradise now.jpg'
+        }
+      },
+      qualityScore: 8.9,
+      aiGenerated: true,
+      lastModified: new Date().toISOString()
+    },
+
+    // Alabama Week 1 - Day 5 (Friday) - Avondale Miss Fancy's Triple
+    {
+      id: 'alabama_day5_triple',
+      type: 'daily_beer' as const,
+      title: 'Avondale Miss Fancy\'s Triple - Alabama Week 1 Day 5',
+      scheduledFor: new Date('2025-01-31T15:00:00.000Z').toISOString(),
+      status: getContentStatus('alabama_day5_triple') as const,
+      content: {
+        body: getContentBody('alabama_day5_triple', `🍺 Day 5: Avondale's Miss Fancy's Triple - Belgian Elegance in Alabama! 👸
+
+Avondale Brewing Company (Birmingham, 2014)
+Miss Fancy's Triple - 9.2% ABV, Belgian Tripel
+
+In the historic Avondale neighborhood, this brewery crafts European-style ales with Southern charm. Miss Fancy's Triple is their crown jewel - a sophisticated Belgian tripel that proves Alabama can compete with the world's best.
+
+👑 BELGIAN MONASTERY TRADITION:
+Golden color with complex spicy-fruity esters. Traditional Belgian candi sugar creates subtle sweetness. Deceptively smooth despite high alcohol content. This is Old World craftsmanship in the New South.
+
+🏘️ AVONDALE NEIGHBORHOOD CHARACTER:
+Historic Birmingham neighborhood with tree-lined streets and craftsman homes. Avondale Brewing serves as the community gathering place, bringing European beer culture to Southern hospitality.
+
+🇧🇪 AUTHENTIC TECHNIQUE:
+• Imported Belgian yeast strains
+• Traditional step-mashing process  
+• Belgian candi sugar additions
+• Extended fermentation time
+• Proper Belgian glassware service
+
+"Miss Fancy" represents the refined side of Alabama brewing - proving that Southern brewers can master the most sophisticated European styles.
+
+Perfect for: Special occasions, fine dining pairings, contemplative winter evenings, or impressing visiting beer enthusiasts with Alabama's brewing sophistication.
+
+Experience Alabama's European influences: www.hopharrison.com/states/alabama
+
+#Avondale #MissFancysTriple #BelgianTripel #Birmingham #EuropeanStyle #TraditionalBrewing #AlabamaCraft #Week1 #BrewQuestChronicles #BelgianTradition`),
+        metadata: {
+          beer: {
+            name: 'Miss Fancy\'s Triple',
+            brewery: 'Avondale Brewing Company', 
+            style: 'Belgian Tripel',
+            abv: 9.2
+          },
+          platform: 'Instagram',
+          characterCount: 1402,
+          image_url: '/images/Beer images/Alabama/Avondale Miss Fancy\'s Triple.png'
+        }
+      },
+      qualityScore: 9.0,
+      aiGenerated: true,
+      lastModified: new Date().toISOString()
+    },
+
+    // Alabama Week 1 - Day 6 (Saturday) - Back Forty Snake Handler
+    {
+      id: 'alabama_day6_double_ipa',
+      type: 'daily_beer' as const,
+      title: 'Back Forty Snake Handler - Alabama Week 1 Day 6',
+      scheduledFor: new Date('2025-02-01T15:00:00.000Z').toISOString(),
+      status: getContentStatus('alabama_day6_double_ipa') as const,
+      content: {
+        body: getContentBody('alabama_day6_double_ipa', `🍺 Day 6: Back Forty's Snake Handler - Alabama's Bold Double IPA! 🐍
+
+Back Forty Beer Company (Gadsden, 2009)
+Snake Handler - 9.4% ABV, Imperial IPA
+
+From Alabama's agricultural heartland comes this fearless double IPA. Like handling a venomous snake, this beer demands respect - but rewards the brave with an unforgettable experience of pure hop intensity.
+
+🐍 DANGEROUS GOOD BREWING:
+Named for the bold tradition of Appalachian snake handling, this Imperial IPA brings that same fearless intensity to craft brewing. Citrus and pine hop assault balanced by strong malt backbone.
+
+🌾 AGRICULTURAL ALABAMA ROOTS:
+Gadsden sits in Alabama's farming region where Back Forty takes its name from the back forty acres of farmland. This connection to agriculture shows in their ingredient sourcing and rural values.
+
+🔥 IMPERIAL IPA INTENSITY:
+• Massive hop bill with multiple additions
+• 9.4% ABV provides substantial warmth  
+• Citrus, pine, and tropical hop flavors
+• Balanced by caramel malt sweetness
+• Bold, unapologetic Alabama character
+
+Warning: This snake has a bite! Not for the faint of heart, but essential for hop enthusiasts exploring Alabama's brewing boundaries.
+
+Perfect for: Hop heads seeking intensity, cold winter nights, sharing with fellow beer adventurers, or proving Alabama can brew with the boldest.
+
+Handle Alabama's wild side: www.hopharrison.com/states/alabama
+
+#BackForty #SnakeHandler #DoubleIPA #ImperialIPA #Gadsden #AlabamaBold #HopIntensity #AlabamaCraft #Week1 #BrewQuestChronicles #FearlessBrewing`),
+        metadata: {
+          beer: {
+            name: 'Snake Handler',
+            brewery: 'Back Forty Beer Company',
+            style: 'Imperial IPA',
+            abv: 9.4
+          },
+          platform: 'Instagram',
+          characterCount: 1398,
+          image_url: '/images/Beer images/Alabama/Snake-Handler-Back-Forty.jpg'
+        }
+      },
+      qualityScore: 8.8,
+      aiGenerated: true,
+      lastModified: new Date().toISOString()
+    },
+
+    // Alabama Week 1 - Day 7 (Sunday) - Monday Night Imperial Stout
+    {
+      id: 'alabama_day7_stout',
+      type: 'daily_beer' as const,
+      title: 'Monday Night Imperial Stout - Alabama Week 1 Day 7',
+      scheduledFor: new Date('2025-02-02T15:00:00.000Z').toISOString(),
+      status: getContentStatus('alabama_day7_stout') as const,
+      content: {
+        body: getContentBody('alabama_day7_stout', `🍺 Day 7 FINALE: Monday Night's Imperial Stout - Bold Finish to Alabama Week! ⚫
+
+Monday Night Brewing - Birmingham Social Club
+Imperial Stout - 10.2% ABV, Rich & Complex
+
+What better way to cap Alabama Week than with Monday Night Brewing's most intense creation? This Imperial Stout represents the perfect marriage of Atlanta innovation and Birmingham hospitality - bold, complex, and unforgettable.
+
+🌃 MONDAY NIGHT PHILOSOPHY:
+"Beer is the most social beverage" - Monday Night brings people together through exceptional craft beer. Their Birmingham Social Club embodies Alabama's welcoming spirit with Georgia's brewing innovation.
+
+⚫ IMPERIAL STOUT COMPLEXITY:
+Deep black color with tan head. Rich chocolate, coffee, and dark fruit flavors. Full body with warming alcohol presence. Smooth finish despite intense flavor profile.
+
+🤝 ATLANTA MEETS BIRMINGHAM:
+This collaboration between cities represents the New South's brewing renaissance:
+• Atlanta's urban innovation
+• Birmingham's industrial heritage  
+• Southern hospitality values
+• Community-focused brewing
+
+WEEK 1 COMPLETE! From Good People's flagship IPA to this bold Imperial Stout, Alabama has shown incredible brewing diversity. 45+ breweries, endless creativity, true Southern hospitality.
+
+Perfect for: Celebrating special occasions, contemplative winter evenings, sharing with fellow stout enthusiasts, or toasting Alabama's amazing craft beer journey.
+
+Next week: Which state calls to us for Week 2?
+
+Celebrate Alabama's brewing excellence: www.hopharrison.com/states/alabama
+
+#MondayNight #ImperialStout #BirminghamSocialClub #Week1Complete #AlabamaDone #45Breweries #NewSouth #AlabamaCraft #Week1Finale #BrewQuestChronicles #WhatsNext`),
+        metadata: {
+          beer: {
+            name: 'Imperial Stout',
+            brewery: 'Monday Night Brewing (Birmingham Social Club)',
+            style: 'Imperial Stout',
+            abv: 10.2
+          },
+          platform: 'Instagram',
+          characterCount: 1456,
+          image_url: '/images/Beer images/Alabama/Monday Night Brewing Imperial Stout.png'
+        }
+      },
+      qualityScore: 9.1,
       aiGenerated: true,
       lastModified: new Date().toISOString()
     }
