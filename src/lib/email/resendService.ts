@@ -291,6 +291,14 @@ export class ResendEmailService {
 
   // Helper methods
   private async getCurrentState(): Promise<string> {
+    // Force Alabama until August 5th for launch preparation
+    const launchDate = new Date('2025-08-05T00:00:00.000Z')
+    const now = new Date()
+    
+    if (now < launchDate) {
+      return 'Alabama'
+    }
+    
     const { data } = await this.supabase
       .from('state_progress')
       .select('state_name')
@@ -300,6 +308,14 @@ export class ResendEmailService {
   }
 
   private async getCurrentWeek(): Promise<number> {
+    // Force Week 1 until August 5th for launch preparation
+    const launchDate = new Date('2025-08-05T00:00:00.000Z')
+    const now = new Date()
+    
+    if (now < launchDate) {
+      return 1
+    }
+    
     const { data } = await this.supabase
       .from('state_progress')
       .select('week_number')
