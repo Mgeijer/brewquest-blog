@@ -740,6 +740,404 @@ Celebrate Alabama's brewing excellence: www.hopharrison.com/states/alabama
       qualityScore: 9.1,
       aiGenerated: true,
       lastModified: new Date().toISOString()
+    },
+
+    // Arizona Week 3 - Day 1 (Monday) - Four Peaks Kilt Lifter
+    {
+      id: 'arizona_day1_kilt_lifter',
+      type: 'daily_beer' as const,
+      title: 'Four Peaks Kilt Lifter - Arizona Week 3 Day 1',
+      scheduledFor: new Date('2025-08-11T15:00:00.000Z').toISOString(),
+      status: getContentStatus('arizona_day1_kilt_lifter') as const,
+      content: {
+        body: getContentBody('arizona_day1_kilt_lifter', `🍺 WEEK 3 BEGINS: ARIZONA'S DESERT BREWING REVOLUTION! 🌵☀️
+
+Day 1: Four Peaks Kilt Lifter Scottish-Style Ale (6.0% ABV)
+
+From the shadow of Tempe Butte comes Arizona's brewing pioneer! Four Peaks opened in 1996 as the state's first major craft brewery, and their Kilt Lifter remains the beer that introduced countless Arizonans to craft brewing.
+
+🏴󠁧󠁢󠁳󠁣󠁴󠁿 SCOTTISH SOUL IN THE DESERT:
+Rich amber color with caramel malt sweetness and subtle hop balance. A warming Scottish ale that paradoxically refreshes in 115°F heat. Smooth, approachable, and perfectly crafted for Arizona's climate.
+
+🌵 THE ARIZONA DIFFERENCE:
+• Sonoran Desert brewing challenges create unique opportunities
+• Extreme heat demands perfectly balanced, refreshing beers
+• Elevated brewing (1,100+ feet) affects fermentation  
+• Year-round outdoor drinking culture
+• Water conservation leadership in arid climate
+
+🍺 TEMPE BUTTE LEGACY:
+Located near ASU campus, Four Peaks became Arizona's craft beer university. Their success paved the way for 100+ breweries statewide. From one taproom to state icon - this is Arizona's craft beer foundation.
+
+Scottish tradition meets Southwestern innovation - this is where Arizona's craft beer story begins.
+
+Explore Arizona's brewing frontier: www.hopharrison.com/states/arizona
+
+#FourPeaks #KiltLifter #ScottishAle #Tempe #ArizonaCraft #DesertBrewing #Week3 #BrewQuestChronicles #HopHarrison #SonoranDesert #CraftBeerPioneer`),
+        metadata: {
+          beer: {
+            name: 'Kilt Lifter',
+            brewery: 'Four Peaks Brewing Company',
+            style: 'Scottish-Style Ale',
+            abv: 6.0
+          },
+          platform: 'Instagram',
+          characterCount: 1289,
+          image_url: '/images/Beer images/Arizona/Kilt Lifter.png'
+        }
+      },
+      qualityScore: 9.0,
+      aiGenerated: true,
+      lastModified: new Date().toISOString()
+    },
+
+    // Arizona Week 3 - Day 2 (Tuesday) - Arizona Wilderness Refuge IPA
+    {
+      id: 'arizona_day2_refuge_ipa',
+      type: 'daily_beer' as const,
+      title: 'Arizona Wilderness Refuge IPA - Arizona Week 3 Day 2',
+      scheduledFor: new Date('2025-08-12T15:00:00.000Z').toISOString(),
+      status: getContentStatus('arizona_day2_refuge_ipa') as const,
+      content: {
+        body: getContentBody('arizona_day2_refuge_ipa', `🍺 Day 2: Arizona Wilderness Refuge IPA - Sustainability Meets Flavor! 🌿
+
+Arizona Wilderness Brewing Co. (Gilbert, 2013)
+Refuge IPA - 6.8% ABV, American IPA
+
+Born in a founder's garage and evolved into Arizona's most environmentally conscious brewery. Refuge IPA uses 100% Arizona-grown Sinagua Malt and supports water conservation - every pint helps offset 50+ gallons for Arizona's waterways.
+
+💧 DESERT WATER WARRIORS:
+Arizona Wilderness proves desert brewing can be sustainable. Their water conservation partnerships and local ingredient sourcing create a beer that tastes like Arizona while protecting Arizona's future.
+
+🌾 SINAGUA MALT SHOWCASE:
+Using malt grown right here in Arizona creates a unique terroir - this IPA tastes like the high desert. Bright citrus and pine hop character balanced by locally-grown malt sweetness.
+
+🏜️ ENVIRONMENTAL BREWING:
+• Partners with Billy Goat Hop Farms (Arizona-grown hops)
+• 100% Sinagua Malt from Arizona grain
+• Water conservation offsetting program
+• Desert ecosystem protection advocacy
+• Carbon-neutral brewing goals
+
+From garage startup to environmental leader - this is modern Arizona craft brewing at its most innovative and responsible.
+
+Perfect for: Hiking adventures, pool parties, supporting Arizona agriculture, or any time you want to drink beer that gives back to the desert.
+
+Discover sustainable Arizona brewing: www.hopharrison.com/states/arizona
+
+#ArizonaWilderness #RefugeIPA #SinaguaMalt #SustainableBrewing #Gilbert #WaterConservation #LocalIngredients #Week3 #BrewQuestChronicles #DesertIPA`),
+        metadata: {
+          beer: {
+            name: 'Refuge IPA',
+            brewery: 'Arizona Wilderness Brewing Co.',
+            style: 'American IPA', 
+            abv: 6.8
+          },
+          platform: 'Instagram',
+          characterCount: 1367,
+          image_url: '/images/Beer images/Arizona/Refuge IPA.png'
+        }
+      },
+      qualityScore: 9.2,
+      aiGenerated: true,
+      lastModified: new Date().toISOString()
+    },
+
+    // Arizona Week 3 - Day 3 (Wednesday) - Historic Piehole Porter
+    {
+      id: 'arizona_day3_piehole_porter',
+      type: 'daily_beer' as const,
+      title: 'Historic Piehole Porter - Arizona Week 3 Day 3',
+      scheduledFor: new Date('2025-08-13T15:00:00.000Z').toISOString(),
+      status: getContentStatus('arizona_day3_piehole_porter') as const,
+      content: {
+        body: getContentBody('arizona_day3_piehole_porter', `🍺 Day 3: Historic's Piehole Porter - Dessert Innovation from Flagstaff! 🍒
+
+Historic Brewing Company (Flagstaff, 2012)
+Piehole Porter with Cherry & Vanilla - 5.5% ABV
+
+From the pines of Flagstaff comes Arizona's most beloved dessert beer! This legendary porter became so popular it's now found in nearly every Phoenix bar. Natural cherry and vanilla create a liquid cherry pie experience.
+
+🥧 DESSERT BEER MASTERY:
+Rich, dark porter base enhanced with natural cherry and vanilla flavoring. Smooth, creamy texture with chocolate malt backbone. It's like drinking a slice of cherry pie - seriously!
+
+🏔️ FLAGSTAFF'S HIGH-ALTITUDE BREWING:
+At 7,000 feet elevation, Flagstaff's brewers face unique challenges and opportunities. The cooler mountain climate allows for rich, warming styles that contrast beautifully with the Valley's heat.
+
+🍒 CREATIVE ARIZONA SPIRIT:
+Historic Brewing embodies Arizona's willingness to break boundaries. While other states stick to traditional styles, Arizona brewers fearlessly create memorable, unconventional beers that capture hearts and palates.
+
+This porter proves Arizona craft beer isn't afraid to be fun, bold, and completely unforgettable.
+
+Perfect for: Dessert course, campfire conversations, introducing friends to flavored beers, or any time you want to experience Arizona's creative brewing spirit.
+
+Taste Arizona's sweet side: www.hopharrison.com/states/arizona
+
+#Historic #PieholePorter #Flagstaff #DessertBeer #Cherry #Vanilla #CreativeBrewing #ArizonaCraft #Week3 #BrewQuestChronicles #MountainBrewing`),
+        metadata: {
+          beer: {
+            name: 'Piehole Porter with Cherry & Vanilla',
+            brewery: 'Historic Brewing Company',
+            style: 'Flavored Porter',
+            abv: 5.5
+          },
+          platform: 'Instagram',
+          characterCount: 1298,
+          image_url: '/images/Beer images/Arizona/Piehole Porter.png'
+        }
+      },
+      qualityScore: 8.9,
+      aiGenerated: true,
+      lastModified: new Date().toISOString()
+    },
+
+    // Arizona Week 3 - Day 4 (Thursday) - Dragoon IPA
+    {
+      id: 'arizona_day4_dragoon_ipa',
+      type: 'daily_beer' as const,
+      title: 'Dragoon IPA - Arizona Week 3 Day 4',
+      scheduledFor: new Date('2025-08-14T15:00:00.000Z').toISOString(),
+      status: getContentStatus('arizona_day4_dragoon_ipa') as const,
+      content: {
+        body: getContentBody('arizona_day4_dragoon_ipa', `🍺 Day 4: Dragoon IPA - Tucson's Uncompromising West Coast Classic! 🐎
+
+Dragoon Brewing Company (Tucson, 2012)
+Dragoon IPA - 7.3% ABV, West Coast IPA
+
+In the Old Pueblo, Dragoon embodies Tucson's rebellious spirit. They brew only four year-round beers, focusing on quality over quantity. Their IPA is a bracing, uncompromising West Coast beauty that refuses to follow trends.
+
+🐎 CAVALRY STRENGTH BREWING:
+Bold, aggressive hop character with fruity, floral, and citrus aromas. Clean malt backbone supports intense hop bitterness. This isn't a gentle introduction to IPA - it's a statement of brewing confidence.
+
+🌵 TUCSON'S INDEPENDENT SPIRIT:
+Dragoon represents Southern Arizona's alternative culture. While Phoenix chases growth, Tucson values authenticity. This brewery's limited lineup and uncompromising approach reflects the Old Pueblo's independent character.
+
+🍺 QUALITY OVER QUANTITY PHILOSOPHY:
+Four year-round beers. That's it. No constant releases, no gimmicks - just perfected recipes executed flawlessly. Dragoon IPA proves that sometimes the best approach is focusing on what you do best.
+
+This is West Coast IPA as it should be - bold, beautiful, and unafraid to challenge your palate.
+
+Perfect for: IPA enthusiasts, Tucson adventures, pairing with spicy Southwestern cuisine, or appreciating brewing craftsmanship at its purest.
+
+Experience Tucson's brewing rebellion: www.hopharrison.com/states/arizona
+
+#Dragoon #DragoonIPA #WestCoastIPA #Tucson #QualityBrewing #UncompromisingCraft #OldPueblo #ArizonaCraft #Week3 #BrewQuestChronicles #TucsonSpirit`),
+        metadata: {
+          beer: {
+            name: 'Dragoon IPA',
+            brewery: 'Dragoon Brewing Company',
+            style: 'West Coast IPA',
+            abv: 7.3
+          },
+          platform: 'Instagram',
+          characterCount: 1387,
+          image_url: '/images/Beer images/Arizona/Dragoon IPA.png'
+        }
+      },
+      qualityScore: 8.8,
+      aiGenerated: true,
+      lastModified: new Date().toISOString()
+    },
+
+    // Arizona Week 3 - Day 5 (Friday) - SanTan Devil's Ale
+    {
+      id: 'arizona_day5_devils_ale',
+      type: 'daily_beer' as const,
+      title: 'SanTan Devil\'s Ale - Arizona Week 3 Day 5',
+      scheduledFor: new Date('2025-08-15T15:00:00.000Z').toISOString(),
+      status: getContentStatus('arizona_day5_devils_ale') as const,
+      content: {
+        body: getContentBody('arizona_day5_devils_ale', `🍺 Day 5: SanTan's Devil's Ale - Sinfully Crisp Southwestern Style! 😈
+
+SanTan Brewing Company (Chandler, 2007)
+Devil's Ale - American Pale Ale, 5.5% ABV
+
+With a devilish grin and Arizona attitude, this "sinfully crisp" pale ale embodies the playful irreverence that makes Arizona craft beer memorable. Cascade, Centennial, and Simcoe hops create pine and citrus flavors perfect for desert heat.
+
+😈 SINFULLY GOOD BREWING:
+Golden amber color with pronounced hop aroma. Pine and citrus flavors from carefully selected hop varieties. Clean, crisp finish that refreshes in 115°F heat while maintaining bold American pale ale character.
+
+🌵 SOUTHWEST ATTITUDE:
+SanTan's playful naming and bold flavors represent Arizona's fun-loving approach to craft beer. From "Devil's Ale" to their irreverent marketing, they prove Arizona brewing doesn't take itself too seriously.
+
+🍺 DESERT-PERFECT BALANCE:
+Hop intensity balanced for drinkability in extreme heat. Strong enough for flavor enthusiasts, refreshing enough for poolside sipping. This is how you craft beer for the Sonoran Desert lifestyle.
+
+Friday night in Arizona starts with a Devil's Ale - sinfully crisp and absolutely essential.
+
+Perfect for: Happy hour, pool parties, Southwest BBQ, spicy Mexican food, or any time you need a beer with personality and perfect desert refreshment.
+
+Embrace Arizona's playful side: www.hopharrison.com/states/arizona
+
+#SanTan #DevilsAle #AmericanPaleAle #Chandler #SinfullyGood #DesertRefreshing #SouthwestStyle #ArizonaCraft #Week3 #BrewQuestChronicles #FridayVibes`),
+        metadata: {
+          beer: {
+            name: 'Devil\'s Ale',
+            brewery: 'SanTan Brewing Company',
+            style: 'American Pale Ale',
+            abv: 5.5
+          },
+          platform: 'Instagram',
+          characterCount: 1356,
+          image_url: '/images/Beer images/Arizona/Devils Ale.png'
+        }
+      },
+      qualityScore: 8.7,
+      aiGenerated: true,
+      lastModified: new Date().toISOString()
+    },
+
+    // Arizona Week 3 - Day 6 (Saturday) - Oak Creek Nut Brown Ale
+    {
+      id: 'arizona_day6_nut_brown',
+      type: 'daily_beer' as const,
+      title: 'Oak Creek Nut Brown Ale - Arizona Week 3 Day 6',
+      scheduledFor: new Date('2025-08-16T15:00:00.000Z').toISOString(),
+      status: getContentStatus('arizona_day6_nut_brown') as const,
+      content: {
+        body: getContentBody('arizona_day6_nut_brown', `🍺 Day 6: Oak Creek Nut Brown Ale - Sedona's Red Rock Brewing! 🏔️
+
+Oak Creek Brewery (Sedona, 1995)
+Nut Brown Ale - 5.5% ABV, English Brown Ale
+
+From Sedona's stunning Tlaquepaque arts community comes this award-winning brown ale that captures the earthy, rich tones of red rock country. As Sedona's oldest microbrewery, Oak Creek connects craft beer to Arizona's natural beauty.
+
+🏔️ RED ROCK BREWING:
+Rich brown color that mirrors Sedona's iconic sandstone formations. Nutty, caramel malt flavors with subtle hop balance. Smooth, approachable character perfect for contemplating Sedona's breathtaking vistas.
+
+🎨 TLAQUEPAQUE TRADITION:
+Located in Sedona's premier arts and shopping village, Oak Creek Brewery makes beer part of the complete Sedona cultural experience. This is where Arizona's natural beauty meets craft brewing artistry.
+
+🌄 SEDONA'S BREWING PIONEER:
+Operating since 1995, Oak Creek represents the connection between Arizona's tourism industry and craft beer culture. Their brown ale has welcomed countless visitors to Arizona's brewing scene.
+
+This is Arizona brewing at its most scenic - where every pint comes with a million-dollar view.
+
+Perfect for: Sedona adventures, red rock hiking, arts district exploration, pairing with Southwestern cuisine, or any time you want to taste Arizona's natural beauty.
+
+Experience Sedona's brewing artistry: www.hopharrison.com/states/arizona
+
+#OakCreek #NutBrownAle #Sedona #RedRock #Tlaquepaque #ScenicBrewing #ArtsDistrict #ArizonaCraft #Week3 #BrewQuestChronicles #NaturalBeauty`),
+        metadata: {
+          beer: {
+            name: 'Nut Brown Ale',
+            brewery: 'Oak Creek Brewery',
+            style: 'English Brown Ale',
+            abv: 5.5
+          },
+          platform: 'Instagram',
+          characterCount: 1318,
+          image_url: '/images/Beer images/Arizona/Nut Brown Ale.png'
+        }
+      },
+      qualityScore: 8.6,
+      aiGenerated: true,
+      lastModified: new Date().toISOString()
+    },
+
+    // Arizona Week 3 - Day 7 (Sunday) - Mother Road Tower Station IPA
+    {
+      id: 'arizona_day7_tower_station',
+      type: 'daily_beer' as const,
+      title: 'Mother Road Tower Station IPA - Arizona Week 3 Day 7',
+      scheduledFor: new Date('2025-08-17T15:00:00.000Z').toISOString(),
+      status: getContentStatus('arizona_day7_tower_station') as const,
+      content: {
+        body: getContentBody('arizona_day7_tower_station', `🍺 Day 7 FINALE: Mother Road's Tower Station IPA - Route 66 Adventure Beer! 🛣️
+
+Mother Road Brewing Company (Flagstaff, 2013)
+Tower Station IPA - 6.8% ABV, American IPA
+
+Named for Historic Route 66 (the "Mother Road"), this award-winning IPA celebrates Arizona's role in American adventure culture. From Flagstaff's high country, it captures the spirit of westward exploration and endless horizons.
+
+🛣️ ROUTE 66 HERITAGE:
+Citrus and pine hop characteristics that evoke Arizona's high-desert landscape. Clean, refreshing finish perfect for road trip adventures. This IPA embodies the freedom and excitement of the open road.
+
+🏔️ FLAGSTAFF'S HIGH-COUNTRY BREWING:
+At 7,000 feet elevation, Mother Road creates beers that work from mountain adventures to desert destinations. The cooler climate allows for complex hop character that stays refreshing in any Arizona climate.
+
+🗺️ GATEWAY TO ADVENTURE:
+Arizona has always been America's adventure crossroads - from Route 66 travelers to modern outdoor enthusiasts. Tower Station IPA continues this tradition, fueling explorations across the Grand Canyon State.
+
+WEEK 3 COMPLETE! From Four Peaks' pioneering Scottish ale to Mother Road's adventure IPA, Arizona has shown that desert brewing creates some of America's most innovative and refreshing craft beers.
+
+Perfect for: Road trips, outdoor adventures, celebrating Arizona's spirit, or any time you need a beer that captures the essence of American exploration.
+
+Explore Arizona's brewing highways: www.hopharrison.com/states/arizona
+
+#MotherRoad #TowerStationIPA #Route66 #Flagstaff #AdventureBrewing #Week3Complete #ArizonaDone #100Breweries #DesertInnovation #Week3Finale #BrewQuestChronicles #WhatsNext`),
+        metadata: {
+          beer: {
+            name: 'Tower Station IPA',
+            brewery: 'Mother Road Brewing Company',
+            style: 'American IPA',
+            abv: 6.8
+          },
+          platform: 'Instagram',
+          characterCount: 1421,
+          image_url: '/images/Beer images/Arizona/Tower Station IPA.png'
+        }
+      },
+      qualityScore: 9.0,
+      aiGenerated: true,
+      lastModified: new Date().toISOString()
+    },
+
+    // Arizona Week 3 - Weekly Wrap-up Post (Sunday evening)
+    {
+      id: 'arizona_week_complete',
+      type: 'weekly_state' as const,
+      title: 'Arizona Week 3 Complete - State Summary',
+      scheduledFor: new Date('2025-08-17T19:00:00.000Z').toISOString(),
+      status: getContentStatus('arizona_week_complete') as const,
+      content: {
+        body: getContentBody('arizona_week_complete', `🌵 WEEK 3 COMPLETE: ARIZONA'S DESERT BREWING MASTERY REVEALED! ☀️🍺
+
+From Sonoran Desert innovation to mountain brewing mastery, Arizona has proven that extreme environments create extraordinary beers. Here's what makes the Grand Canyon State's brewing scene legendary:
+
+📊 ARIZONA BY THE NUMBERS:
+• 100+ active breweries across diverse climates
+• 7th nationally in brewery growth rate
+• $2.1B economic impact statewide
+• 8,500+ brewing jobs and related employment
+• 12.3 gallons consumed per drinking-age resident
+• Elevation range: 70 ft (Yuma) to 7,000+ ft (Flagstaff)
+
+🗺️ THIS WEEK'S JOURNEY:
+Day 1: Kilt Lifter (Scottish soul in the desert)
+Day 2: Refuge IPA (Sustainable desert brewing)
+Day 3: Piehole Porter (Creative dessert innovation)
+Day 4: Dragoon IPA (Uncompromising West Coast style)
+Day 5: Devil's Ale (Sinfully crisp Southwest attitude)
+Day 6: Nut Brown Ale (Red rock brewing artistry)
+Day 7: Tower Station IPA (Route 66 adventure spirit)
+
+🌟 ARIZONA'S UNIQUE BREWING ADVANTAGES:
+• Extreme climate challenges drive innovation
+• 300+ days of sunshine enable year-round brewing
+• Desert water conservation creates efficiency leadership
+• Elevation diversity allows multiple brewing styles
+• Southwest culture embraces bold, creative flavors
+• Tourism industry supports brewery destinations
+
+Next week's adventure: Which state beckons for Week 4 of our journey?
+
+Experience Arizona's complete desert brewing story: www.hopharrison.com/states/arizona
+
+#ArizonaComplete #Week3Done #DesertMastery #100Breweries #SonoranDesert #RouteToAdventure #NextAdventure #BrewQuestChronicles #50StateJourney #WhatsNext`),
+        metadata: {
+          state: {
+            name: 'Arizona',
+            week: 3
+          },
+          platform: 'Instagram',
+          characterCount: 1489,
+          image_url: '/images/State Images/Arizona.png'
+        }
+      },
+      qualityScore: 9.1,
+      aiGenerated: true,
+      lastModified: new Date().toISOString()
     }
   ]
 
