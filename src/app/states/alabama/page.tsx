@@ -11,12 +11,21 @@ export default function AlabamaWeeklyPage() {
   const [currentDay, setCurrentDay] = useState(1) // Start with Monday (day 1)
   const currentState = getCurrentState()
   
-  // Get current day of week (1-7, Monday-Sunday) in real-time
+  // Force Monday mode until August 4th launch
   useEffect(() => {
-    const today = new Date()
-    const dayOfWeek = today.getDay() // 0 = Sunday, 1 = Monday, etc.
-    const adjustedDay = dayOfWeek === 0 ? 7 : dayOfWeek // Convert Sunday to 7
-    setCurrentDay(adjustedDay)
+    const launchDate = new Date('2025-08-04T00:00:00.000Z')
+    const now = new Date()
+    
+    if (now < launchDate) {
+      // Stay in Monday mode until launch
+      setCurrentDay(1)
+    } else {
+      // After launch, show real-time progress
+      const today = new Date()
+      const dayOfWeek = today.getDay() // 0 = Sunday, 1 = Monday, etc.
+      const adjustedDay = dayOfWeek === 0 ? 7 : dayOfWeek // Convert Sunday to 7
+      setCurrentDay(adjustedDay)
+    }
   }, [])
 
   if (!currentState || currentState.code !== 'AL') {
