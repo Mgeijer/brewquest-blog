@@ -10,7 +10,7 @@ import ManualOverrides from '@/components/admin/ManualOverrides'
 type TabType = 'automation' | 'content' | 'overrides'
 
 export default function AdminDashboardPage() {
-  const [activeTab, setActiveTab] = useState<TabType>('automation')
+  const [activeTab, setActiveTab] = useState<TabType>('content')
   const router = useRouter()
 
   const handleLogout = async () => {
