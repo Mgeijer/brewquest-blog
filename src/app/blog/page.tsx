@@ -152,15 +152,31 @@ function BlogContent() {
   const isShowingLocalCulture = category === 'local-culture'
   const isShowingFeatured = featured === 'true'
   
-  // Get beer reviews for current week - show Monday through current day
+  // Get beer reviews for current week - force Monday mode until August 4th launch
   const getCurrentDay = () => {
-    const today = new Date()
-    const dayOfWeek = today.getDay() // 0 = Sunday, 1 = Monday, etc.
-    return dayOfWeek === 0 ? 7 : dayOfWeek // Convert Sunday to 7
+    const launchDate = new Date('2025-08-04T00:00:00.000Z')
+    const now = new Date()
+    
+    if (now < launchDate) {
+      // Stay in Monday mode until launch
+      return 1
+    } else {
+      // After launch, show real-time progress
+      const today = new Date()
+      const dayOfWeek = today.getDay() // 0 = Sunday, 1 = Monday, etc.
+      return dayOfWeek === 0 ? 7 : dayOfWeek // Convert Sunday to 7
+    }
   }
   
   const currentDay = getCurrentDay()
-  const beerReviews = currentState?.featuredBeers.filter(beer => beer.dayOfWeek <= currentDay) || []
+  
+  // Force Monday mode until August 4th - only show Monday's beer (day 1)
+  const launchDate = new Date('2025-08-04T00:00:00.000Z')
+  const now = new Date()
+  
+  const beerReviews = now < launchDate 
+    ? currentState?.featuredBeers.filter(beer => beer.dayOfWeek === 1) || [] // Only Monday
+    : currentState?.featuredBeers.filter(beer => beer.dayOfWeek <= currentDay) || [] // Normal progression
   
   // If no specific query parameters, show Alabama weekly content by default
   const shouldShowAlabamaByDefault = !category && !featured && selectedState === 'All States'
