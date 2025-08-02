@@ -1,4 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { AdminStorage } from '@/lib/admin/contentStorage'
+
+// Helper function to get status and content for content item
+const getContentStatus = (contentId: string) => {
+  return AdminStorage.getApprovalStatus(contentId)
+}
+
+const getContentBody = (contentId: string, originalBody: string) => {
+  return AdminStorage.getEditedContent(contentId) || originalBody
+}
 
 // Alaska Week 2 Content - Ready for August 4th Launch
 const getScheduledContent = (filter: string) => {
@@ -19,9 +29,9 @@ const getScheduledContent = (filter: string) => {
       type: 'daily_beer' as const,
       title: 'Alaskan Amber - Alaska Week 2 Day 1',
       scheduledFor: day1.toISOString(),
-      status: 'pending' as const,
+      status: getContentStatus('alaska_day1_amber') as const,
       content: {
-        body: `🍺 WEEK 2 BEGINS: ALASKA'S LAST FRONTIER! 🗻❄️
+        body: getContentBody('alaska_day1_amber', `🍺 WEEK 2 BEGINS: ALASKA'S LAST FRONTIER! 🗻❄️
 
 Day 1: Alaskan Brewing Company's Alaskan Amber (5.3% ABV)
 
@@ -40,7 +50,7 @@ From museum archives to modern craft brewing empire - this is Alaska's pioneerin
 
 Read the full Alaska adventure: www.hopharrison.com/states/alaska
 
-#AlaskanBrewing #AlaskaAmber #GoldRush #LastFrontier #CraftBeer #AlaskaBeer #Week2 #BrewQuestChronicles #HopHarrison #JuneauBrewing #HistoricRecipe`,
+#AlaskanBrewing #AlaskaAmber #GoldRush #LastFrontier #CraftBeer #AlaskaBeer #Week2 #BrewQuestChronicles #HopHarrison #JuneauBrewing #HistoricRecipe`),
         metadata: {
           beer: {
             name: 'Alaskan Amber',
@@ -62,7 +72,7 @@ Read the full Alaska adventure: www.hopharrison.com/states/alaska
       type: 'daily_beer' as const,
       title: 'Sockeye Red IPA - Alaska Week 2 Day 2',
       scheduledFor: day2.toISOString(),
-      status: 'pending' as const,
+      status: getContentStatus('alaska_day2_sockeye') as const,
       content: {
         body: `🍺 Day 2: Midnight Sun's Sockeye Red IPA! 🐟🍻
 
@@ -106,7 +116,7 @@ Experience Alaska's brewing frontier: www.hopharrison.com/states/alaska
       type: 'daily_beer' as const,
       title: 'HooDoo German Kölsch - Alaska Week 2 Day 3',
       scheduledFor: day3.toISOString(),
-      status: 'pending' as const,
+      status: getContentStatus('alaska_day3_kolsch') as const,
       content: {
         body: `🍺 Day 3: HooDoo's German Kölsch from Alaska's Interior! 🍻
 
@@ -156,7 +166,7 @@ Explore Alaska's brewing diversity: www.hopharrison.com/states/alaska
       type: 'daily_beer' as const,
       title: 'Belgian Triple - Alaska Week 2 Day 4',
       scheduledFor: day4.toISOString(),
-      status: 'pending' as const,
+      status: getContentStatus('alaska_day4_triple') as const,
       content: {
         body: `🍺 Day 4: Cynosure's Belgian Triple - European Elegance in Alaska! 🇧🇪
 
@@ -208,7 +218,7 @@ Discover Alaska's brewing diversity: www.hopharrison.com/states/alaska
       type: 'daily_beer' as const,
       title: 'Pipeline Stout - Alaska Week 2 Day 5',
       scheduledFor: day5.toISOString(),
-      status: 'pending' as const,
+      status: getContentStatus('alaska_day5_stout') as const,
       content: {
         body: `🍺 Day 5: Moose's Tooth Pipeline Stout - Alaska's Ultimate Winter Warmer! ⚫🍻
 
@@ -256,7 +266,7 @@ Experience Anchorage brewing culture: www.hopharrison.com/states/alaska
       type: 'daily_beer' as const,
       title: 'New England IPA - Alaska Week 2 Day 6',
       scheduledFor: day6.toISOString(),
-      status: 'pending' as const,
+      status: getContentStatus('alaska_day6_neipa') as const,
       content: {
         body: `🍺 Day 6: Resolution's New England IPA - Modern Hops Meet Maritime History! 🚢
 
@@ -309,7 +319,7 @@ Navigate Alaska's craft beer waters: www.hopharrison.com/states/alaska
       type: 'daily_beer' as const,
       title: 'Chocolate Coconut Porter - Alaska Week 2 Day 7',
       scheduledFor: day7.toISOString(),
-      status: 'pending' as const,
+      status: getContentStatus('alaska_day7_porter') as const,
       content: {
         body: `🍺 Day 7 FINALE: King Street's Chocolate Coconut Porter - Tropical Dreams in the Last Frontier! 🥥🍫
 
@@ -363,7 +373,7 @@ Explore Alaska's complete brewing story: www.hopharrison.com/states/alaska
       type: 'weekly_state' as const,
       title: 'Alaska Week 2 Complete - State Summary',
       scheduledFor: new Date(day7.getTime() + 4 * 60 * 60 * 1000).toISOString(), // 4 hours later
-      status: 'pending' as const,
+      status: getContentStatus('alaska_week_complete') as const,
       content: {
         body: `🏔️ WEEK 2 COMPLETE: ALASKA'S LAST FRONTIER CONQUERED! ❄️🍺
 
@@ -421,11 +431,23 @@ Read the complete Alaska brewing story: www.hopharrison.com/states/alaska
 }
 
 const getContentStats = () => {
+  const allContent = getScheduledContent('all')
+  
+  const totalScheduled = allContent.length
+  const pendingApproval = allContent.filter(c => c.status === 'pending').length
+  const approved = allContent.filter(c => c.status === 'approved').length
+  const rejected = allContent.filter(c => c.status === 'rejected').length
+  
+  // Calculate average quality score
+  const totalQualityScore = allContent.reduce((sum, content) => sum + content.qualityScore, 0)
+  const qualityScoreAvg = totalScheduled > 0 ? totalQualityScore / totalScheduled : 0
+  
   return {
-    totalScheduled: 8,
-    pendingApproval: 8,
-    approved: 0,
-    qualityScoreAvg: 8.9
+    totalScheduled,
+    pendingApproval,
+    approved,
+    rejected,
+    qualityScoreAvg: Math.round(qualityScoreAvg * 10) / 10 // Round to 1 decimal place
   }
 }
 
