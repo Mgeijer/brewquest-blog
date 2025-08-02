@@ -23,9 +23,13 @@ export default function WelcomeEmail({
         <Container style={container}>
           <Section style={header}>
             <div style={avatarContainer}>
-              <div style={avatar}>
-                🍺
-              </div>
+              <Img
+                src="https://www.hopharrison.com/images/HopHarrison%20Profile%20Pic.png"
+                alt="Hop Harrison"
+                width="80"
+                height="80"
+                style={avatarImage}
+              />
               <Text style={avatarText}>Hop Harrison</Text>
             </div>
           </Section>
@@ -96,17 +100,11 @@ const main = { backgroundColor: '#FEF3C7', fontFamily: 'Inter, sans-serif' }
 const container = { margin: '0 auto', padding: '20px 0 48px', width: '600px' }
 const header = { padding: '20px 0', textAlign: 'center' as const }
 const avatarContainer = { textAlign: 'center' as const, margin: '0 auto' }
-const avatar = { 
-  width: '80px',
-  height: '80px',
+const avatarImage = { 
   borderRadius: '50%',
   border: '3px solid #F59E0B',
-  backgroundColor: '#FBBF24',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  fontSize: '32px',
-  margin: '0 auto 8px auto'
+  margin: '0 auto 8px auto',
+  display: 'block'
 }
 const avatarText = { 
   fontSize: '14px', 
