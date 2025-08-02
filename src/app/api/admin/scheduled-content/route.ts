@@ -413,7 +413,8 @@ Read the complete Alaska brewing story: www.hopharrison.com/states/alaska
             week: 2
           },
           platform: 'Instagram',
-          characterCount: 1456
+          characterCount: 1456,
+          image_url: '/images/State Images/Alaska.png'
         }
       },
       qualityScore: 9.3,

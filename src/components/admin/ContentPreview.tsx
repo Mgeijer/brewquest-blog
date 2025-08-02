@@ -24,6 +24,7 @@ interface ScheduledContent {
       }
       platform?: string
       characterCount?: number
+      image_url?: string
     }
   }
   qualityScore: number
@@ -306,6 +307,16 @@ export default function ContentPreview() {
                           {content.content.metadata.characterCount && (
                             <span className="ml-2 text-gray-500">({content.content.metadata.characterCount} chars)</span>
                           )}
+                        </div>
+                      )}
+                      {content.content.metadata.image_url && (
+                        <div className="mt-2">
+                          <div className="text-sm font-medium text-gray-700 mb-1">Featured Image:</div>
+                          <img 
+                            src={content.content.metadata.image_url} 
+                            alt={`${content.title} featured image`}
+                            className="w-32 h-20 object-cover rounded border border-gray-200"
+                          />
                         </div>
                       )}
                     </div>
