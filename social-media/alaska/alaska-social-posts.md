@@ -20,7 +20,7 @@ This week's frozen journey:
 📅 Tue: Sockeye Red IPA - Pacific NW hop aggression
 📅 Wed: Chocolate Coconut Porter - Tropical flavors in frozen land
 📅 Thu: Belgian Triple - Old World techniques, 9.7% strength
-📅 Fri: New England IPA - Hazy tropical perfection
+📅 Fri: A Deal With the Devil - American Barleywine excellence (17% ABV)
 📅 Sat: German Kölsch - Authentic German techniques in Fairbanks
 📅 Sun: Pipeline Stout - Smooth oatmeal stout perfection
 
@@ -50,7 +50,7 @@ Alaska's craft beer story is one of triumph over impossible odds. When Marcy and
 🍺 **Tuesday**: Midnight Sun Sockeye Red IPA - Aggressive Pacific NW hops with red malt complexity
 🍺 **Wednesday**: King Street Chocolate Coconut Porter - Tropical flavors defying Alaska's harsh climate
 🍺 **Thursday**: Cynosure Belgian Triple - 9.7% Old World brewing techniques in the Last Frontier
-🍺 **Friday**: Resolution New England IPA - Modern hazy perfection with Citra and Mosaic hops
+🍺 **Friday**: Anchorage Brewing A Deal With the Devil - Bold American Barleywine (17% ABV) showcasing Alaska's high-gravity brewing expertise
 🍺 **Saturday**: HooDoo German Kölsch - Authentic German techniques in Fairbanks interior
 🍺 **Sunday**: Broken Tooth Pipeline Stout - Smooth oatmeal stout perfect with their famous pizza
 
@@ -252,36 +252,36 @@ www.hopharrison.com/blog/alaska
 [Character count: 195/280]
 ```
 
-### Friday - New England IPA
+### Friday - A Deal With the Devil American Barleywine
 
 #### Instagram Daily Post
 ```
 🍺 Day 5 of Alaska Week! 
 
-Resolution's New England IPA (6.2%) - Soft, luscious mouthfeel with Citra, El Dorado, and Mosaic hops! Notes of mango creamsicle and pineapple.
+Anchorage Brewing's A Deal With the Devil (17% ABV) - Rich, complex American Barleywine with intense malt character, dark fruit notes, and warming alcohol!
 
-Named after Captain Cook's ship HMS Resolution.
+Alaska's boldest high-gravity brewing showcasing Last Frontier extremes.
 
 www.hopharrison.com/blog/alaska
 
-#CraftBeer #AlaskaBeer #ResolutionBrewing #NewEnglandIPA #HazyIPA #TropicalHops #AnchorageEats #BrewQuestChronicles #HopHarrison #Day5
+#CraftBeer #AlaskaBeer #AnchorageBrewingCompany #AmericanBarleywine #HighGravity #BoldBrewing #AnchorageEats #BrewQuestChronicles #HopHarrison #Day5
 
-[Character count: 414/280]
+[Character count: 450/280]
 ```
 
 #### Twitter/X Daily Post
 ```
 🍺 Day 5 of Alaska Week! 
 
-Resolution's New England IPA (6.2%) - hazy perfection with Citra and Mosaic hops
+Anchorage Brewing's A Deal With the Devil (17% ABV) - complex American Barleywine with intense malt character
 
-Double dry-hopped tropical juice character, mango creamsicle notes.
+Dark fruit, caramel, and warming alcohol showcase Alaska's bold approach.
 
 www.hopharrison.com/blog/alaska
 
 #CraftBeer #AlaskaBeer
 
-[Character count: 217/280]
+[Character count: 225/280]
 ```
 
 ### Saturday - German Kölsch
@@ -374,7 +374,7 @@ www.hopharrison.com/blog/alaska
 ### Engagement Guidelines
 - Respond to comments within 2 hours
 - Share in relevant Facebook craft beer groups
-- Tag breweries when appropriate (@alaskanbeer @midnightsunbrewing)
+- Tag breweries when appropriate (@alaskanbeer @midnightsunbrewing @anchoragebrewing)
 - Cross-post with 2-4 hour delays between platforms
 - Pin weekly overview posts for maximum visibility
 
@@ -382,7 +382,7 @@ www.hopharrison.com/blog/alaska
 **Primary:** #Alaska #CraftBeer #LastFrontier #AlaskaBrewing #GlacialWater
 **Cities:** #AnchorageEats #JuneauEats #FairbanksEats #AlaskaDrunk
 **Unique:** #SpruceIPA #AlderSmoked #TongassForest #GoldRushBeer #ExtremeBrewing
-**Breweries:** #AlaskanBrewing #MidnightSunBrewing #KingStreetBrewing #CynosureBrewing
+**Breweries:** #AlaskanBrewing #MidnightSunBrewing #KingStreetBrewing #CynosureBrewing #AnchorageBrewingCompany
 
 ---
 

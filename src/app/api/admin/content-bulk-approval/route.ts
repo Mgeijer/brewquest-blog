@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { AdminStorage } from '@/lib/admin/contentStorage'
+import { AdminStorageDB } from '@/lib/admin/contentStorageDB'
 
 export async function POST(request: NextRequest) {
   try {
-    const { contentIds, status } = await request.json()
+    const { contentIds, status, adminUser } = await request.json()
 
     if (!contentIds || !Array.isArray(contentIds) || !status) {
       return NextResponse.json(
@@ -19,11 +19,18 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Update all content items with the new status using shared storage
-    AdminStorage.bulkSetApprovalStatus(contentIds, status)
+    // Update all content items with the new status using database storage
+    const success = await AdminStorageDB.bulkSetApprovalStatus(contentIds, status, adminUser)
+    
+    if (!success) {
+      return NextResponse.json(
+        { error: 'Failed to bulk update approval status in database' },
+        { status: 500 }
+      )
+    }
     
     const results = contentIds.map(contentId => {
-      console.log(`Content ${contentId} ${status} by admin (bulk operation)`)
+      console.log(`Content ${contentId} ${status} by ${adminUser || 'admin'} (bulk operation)`)
       return { contentId, status }
     })
 
@@ -31,7 +38,8 @@ export async function POST(request: NextRequest) {
       success: true,
       message: `${contentIds.length} items ${status} successfully`,
       results,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      persistedToDatabase: true
     })
 
   } catch (error) {

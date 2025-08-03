@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { AdminStorage } from '@/lib/admin/contentStorage'
+import { AdminStorageDB } from '@/lib/admin/contentStorageDB'
 
 export async function POST(request: NextRequest) {
   try {
-    const { contentId, status } = await request.json()
+    const { contentId, status, adminUser } = await request.json()
 
     if (!contentId || !status) {
       return NextResponse.json(
@@ -19,16 +19,25 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Update content status using shared storage
-    AdminStorage.setApprovalStatus(contentId, status)
-    console.log(`Content ${contentId} ${status} by admin`)
+    // Update content status using database storage
+    const success = await AdminStorageDB.setApprovalStatus(contentId, status, adminUser)
+    
+    if (!success) {
+      return NextResponse.json(
+        { error: 'Failed to update approval status in database' },
+        { status: 500 }
+      )
+    }
+
+    console.log(`Content ${contentId} ${status} by ${adminUser || 'admin'}`)
 
     return NextResponse.json({
       success: true,
       message: `Content ${status} successfully`,
       contentId,
       status,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      persistedToDatabase: true
     })
 
   } catch (error) {
