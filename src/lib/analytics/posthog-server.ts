@@ -1,15 +1,29 @@
 import { PostHog } from 'posthog-node'
 
-// Server-side PostHog client
-export const posthogServer = new PostHog(
-  process.env.POSTHOG_API_KEY!,
-  {
-    host: process.env.POSTHOG_HOST || 'https://app.posthog.com',
-    flushAt: 20, // Flush events after 20 events
-    flushInterval: 10000, // Flush events every 10 seconds
-    requestTimeout: 30000 // 30 second timeout
+// Create PostHog server instance only if API key is available
+const createPostHogServer = () => {
+  const apiKey = process.env.POSTHOG_API_KEY
+  
+  if (!apiKey || apiKey === 'your_posthog_personal_api_key') {
+    console.warn('PostHog server-side API key not configured. Server-side analytics will be disabled.')
+    return null
   }
-)
+
+  try {
+    return new PostHog(apiKey, {
+      host: process.env.POSTHOG_HOST || 'https://app.posthog.com',
+      flushAt: 20, // Flush events after 20 events
+      flushInterval: 10000, // Flush events every 10 seconds
+      requestTimeout: 30000 // 30 second timeout
+    })
+  } catch (error) {
+    console.error('Failed to initialize PostHog server:', error)
+    return null
+  }
+}
+
+// Server-side PostHog client (may be null if not configured)
+export const posthogServer = createPostHogServer()
 
 // Server-side event tracking interfaces
 export interface ServerBeerEvent {
@@ -64,6 +78,13 @@ export const trackServerBeerInteraction = async (
   eventData: ServerBeerEvent,
   distinctId?: string
 ) => {
+  if (!posthogServer) {
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Server-side analytics disabled - would have tracked:', eventData.action)
+    }
+    return false
+  }
+
   try {
     posthogServer.capture({
       distinctId: distinctId || eventData.user_id || 'anonymous',
@@ -74,8 +95,10 @@ export const trackServerBeerInteraction = async (
         environment: process.env.NODE_ENV
       }
     })
+    return true
   } catch (error) {
     console.error('Failed to track server beer interaction:', error)
+    return false
   }
 }
 
@@ -83,6 +106,13 @@ export const trackServerNewsletterEvent = async (
   eventData: ServerNewsletterEvent,
   distinctId?: string
 ) => {
+  if (!posthogServer) {
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Server-side analytics disabled - would have tracked newsletter event')
+    }
+    return false
+  }
+
   try {
     posthogServer.capture({
       distinctId: distinctId || eventData.user_id || 'anonymous',
@@ -106,8 +136,10 @@ export const trackServerNewsletterEvent = async (
         }
       })
     }
+    return true
   } catch (error) {
     console.error('Failed to track server newsletter event:', error)
+    return false
   }
 }
 
@@ -115,6 +147,10 @@ export const trackServerAPICall = async (
   eventData: ServerAPIEvent,
   distinctId?: string
 ) => {
+  if (!posthogServer) {
+    return false // Silently skip API call tracking if not configured
+  }
+
   try {
     posthogServer.capture({
       distinctId: distinctId || eventData.user_id || 'system',
@@ -125,8 +161,10 @@ export const trackServerAPICall = async (
         environment: process.env.NODE_ENV
       }
     })
+    return true
   } catch (error) {
     console.error('Failed to track server API call:', error)
+    return false
   }
 }
 
@@ -134,6 +172,13 @@ export const trackServerContentEvent = async (
   eventData: ServerContentEvent,
   distinctId?: string
 ) => {
+  if (!posthogServer) {
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Server-side analytics disabled - would have tracked content event:', eventData.action)
+    }
+    return false
+  }
+
   try {
     posthogServer.capture({
       distinctId: distinctId || eventData.admin_user || 'system',
@@ -144,8 +189,10 @@ export const trackServerContentEvent = async (
         environment: process.env.NODE_ENV
       }
     })
+    return true
   } catch (error) {
     console.error('Failed to track server content event:', error)
+    return false
   }
 }
 
@@ -154,6 +201,13 @@ export const identifyServerUser = async (
   userId: string,
   properties: Record<string, any>
 ) => {
+  if (!posthogServer) {
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Server-side analytics disabled - would have identified user:', userId)
+    }
+    return false
+  }
+
   try {
     posthogServer.identify({
       distinctId: userId,
@@ -163,17 +217,25 @@ export const identifyServerUser = async (
         server_identified: true
       }
     })
+    return true
   } catch (error) {
     console.error('Failed to identify server user:', error)
+    return false
   }
 }
 
 // Graceful shutdown
 export const shutdownPostHog = async () => {
+  if (!posthogServer) {
+    return false
+  }
+
   try {
     await posthogServer.shutdown()
+    return true
   } catch (error) {
     console.error('Failed to shutdown PostHog:', error)
+    return false
   }
 }
 
@@ -228,11 +290,20 @@ export const batchTrackEvents = async (events: Array<{
   event: string
   properties: Record<string, any>
 }>) => {
+  if (!posthogServer) {
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Server-side analytics disabled - would have batch tracked', events.length, 'events')
+    }
+    return false
+  }
+
   try {
     for (const event of events) {
       posthogServer.capture(event)
     }
+    return true
   } catch (error) {
     console.error('Failed to batch track events:', error)
+    return false
   }
 }

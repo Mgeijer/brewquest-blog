@@ -1,0 +1,136 @@
+
+> brewquest-blog@0.1.0 build
+> next build
+
+   ▲ Next.js 15.4.4
+   - Environments: .env.local
+   - Experiments (use with caution):
+     · optimizePackageImports
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 3.0s
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+   Generating static pages (0/97) ...
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+   Generating static pages (24/97) 
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+   Generating static pages (48/97) 
+   Generating static pages (72/97) 
+ ✓ Generating static pages (97/97)
+InteractiveMapSectionWrapper rendered with stateData: 50 states
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                         Size  First Load JS
+┌ ○ /                                            4.34 kB         127 kB
+├ ○ /_not-found                                    996 B         101 kB
+├ ○ /about                                       5.24 kB         151 kB
+├ ○ /admin                                         624 B         105 kB
+├ ○ /admin/analytics                               275 B         100 kB
+├ ○ /admin/blog                                    275 B         100 kB
+├ ○ /admin/dashboard                             5.34 kB         109 kB
+├ ○ /admin/login                                 2.56 kB         102 kB
+├ ○ /admin/social                                  275 B         100 kB
+├ ○ /admin/states                                10.9 kB         154 kB
+├ ○ /admin/test-db                               2.17 kB         102 kB
+├ ○ /analytics                                   5.58 kB         112 kB
+├ ƒ /api/add-analytics-table                       275 B         100 kB
+├ ƒ /api/admin/analytics                           275 B         100 kB
+├ ƒ /api/admin/auth                                275 B         100 kB
+├ ƒ /api/admin/automation-status                   275 B         100 kB
+├ ƒ /api/admin/content-approval                    275 B         100 kB
+├ ƒ /api/admin/content-bulk-approval               275 B         100 kB
+├ ƒ /api/admin/content-edit                        275 B         100 kB
+├ ƒ /api/admin/emergency-action                    275 B         100 kB
+├ ƒ /api/admin/publish-now                         275 B         100 kB
+├ ƒ /api/admin/scheduled-content                   275 B         100 kB
+├ ƒ /api/admin/states/update                       275 B         100 kB
+├ ƒ /api/admin/system-status                       275 B         100 kB
+├ ƒ /api/admin/test-email                          275 B         100 kB
+├ ƒ /api/content-management/seven-beer-schedule    275 B         100 kB
+├ ƒ /api/content-management/state-content          275 B         100 kB
+├ ƒ /api/create-alabama-blog-post                  275 B         100 kB
+├ ƒ /api/create-blog-posts                         275 B         100 kB
+├ ƒ /api/cron/daily-publish                        275 B         100 kB
+├ ƒ /api/cron/state-transition                     275 B         100 kB
+├ ƒ /api/cron/weekly-digest                        275 B         100 kB
+├ ƒ /api/cron/weekly-transition                    275 B         100 kB
+├ ƒ /api/database-health                           275 B         100 kB
+├ ƒ /api/database-status                           275 B         100 kB
+├ ƒ /api/debug                                     275 B         100 kB
+├ ƒ /api/fix-database                              275 B         100 kB
+├ ƒ /api/generate-social-content                   275 B         100 kB
+├ ƒ /api/health                                    275 B         100 kB
+├ ƒ /api/migrate-schema                            275 B         100 kB
+├ ƒ /api/newsletter                                275 B         100 kB
+├ ƒ /api/newsletter/digest                         275 B         100 kB
+├ ƒ /api/newsletter/signup                         275 B         100 kB
+├ ƒ /api/newsletter/state-transition               275 B         100 kB
+├ ƒ /api/newsletter/subscribe                      275 B         100 kB
+├ ƒ /api/newsletter/test                           275 B         100 kB
+├ ƒ /api/newsletter/unsubscribe                    275 B         100 kB
+├ ƒ /api/populate-beer-reviews                     275 B         100 kB
+├ ƒ /api/populate-complete-database                275 B         100 kB
+├ ƒ /api/populate-database                         275 B         100 kB
+├ ƒ /api/setup-7-beer-schema                       275 B         100 kB
+├ ƒ /api/setup-analytics                           275 B         100 kB
+├ ƒ /api/setup-analytics-simple                    275 B         100 kB
+├ ƒ /api/setup-comprehensive-database              275 B         100 kB
+├ ƒ /api/setup-database                            275 B         100 kB
+├ ƒ /api/setup-newsletter-table                    275 B         100 kB
+├ ƒ /api/setup-state-progress                      275 B         100 kB
+├ ƒ /api/setup-state-schema                        275 B         100 kB
+├ ƒ /api/states/[stateCode]                        275 B         100 kB
+├ ƒ /api/states/analytics                          275 B         100 kB
+├ ƒ /api/states/progress                           275 B         100 kB
+├ ƒ /api/test-analytics                            275 B         100 kB
+├ ƒ /api/test-db                                   275 B         100 kB
+├ ƒ /api/test-db-connection                        275 B         100 kB
+├ ƒ /api/validate-content                          275 B         100 kB
+├ ƒ /api/verify-alabama-blog-post                  275 B         100 kB
+├ ƒ /api/verify-beer-data                          275 B         100 kB
+├ ƒ /api/verify-database                           275 B         100 kB
+├ ƒ /api/verify-state-schema                       275 B         100 kB
+├ ƒ /beers/[id]                                  5.71 kB         119 kB
+├ ○ /beers/alaskan-amber                           210 B         109 kB
+├ ○ /beers/belgian-triple                          210 B         109 kB
+├ ○ /beers/chocolate-coconut-porter                210 B         109 kB
+├ ○ /beers/german-kolsch                           210 B         109 kB
+├ ○ /beers/ne-ipa                                  210 B         109 kB
+├ ○ /beers/pipeline-stout                          210 B         109 kB
+├ ○ /beers/sockeye-red-ipa                         210 B         109 kB
+├ ○ /blog                                        12.7 kB         185 kB
+├ ƒ /blog/[slug]                                   210 B         109 kB
+├ ○ /contact                                     4.03 kB         107 kB
+├ ○ /image-repository                            4.44 kB         109 kB
+├ ○ /mobile-map                                  8.32 kB         120 kB
+├ ○ /newsletter                                  3.47 kB         162 kB
+├ ○ /privacy                                       171 B         103 kB
+├ ○ /social-content-generator                    2.29 kB         102 kB
+├ ○ /states                                      3.98 kB         112 kB
+├ ƒ /states/[state]                                275 B         100 kB
+├ ○ /states/alabama                              7.56 kB         127 kB
+├ ○ /states/alaska                                 210 B         109 kB
+├ ● /stories/[slug]                                210 B         109 kB
+├   ├ /stories/american-beer-renaissance
+├   ├ /stories/hops-across-america
+├   ├ /stories/homebrewer-to-empire
+├   └ [+2 more paths]
+├ ○ /stories/all                                   210 B         109 kB
+├ ○ /terms                                         171 B         103 kB
+├ ○ /test-realtime                               8.81 kB         152 kB
+└ ○ /unsubscribe                                 3.97 kB         107 kB
++ First Load JS shared by all                    99.9 kB
+  ├ chunks/4bd1b696-602635ee57868870.js          54.1 kB
+  ├ chunks/5964-7bb2b019501ffae5.js              43.5 kB
+  └ other shared chunks (total)                  2.19 kB
+
+
+ƒ Middleware                                     33.2 kB
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+
