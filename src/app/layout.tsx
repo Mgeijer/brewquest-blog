@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Footer from "../components/navigation/Footer";
 import Header from "../components/navigation/Header";
+import PostHogProvider from "../components/analytics/PostHogProvider";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], display: 'swap' });
@@ -37,9 +38,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        <Header />
-        {children}
-        <Footer />
+        <PostHogProvider>
+          <Header />
+          {children}
+          <Footer />
+        </PostHogProvider>
       </body>
     </html>
   );

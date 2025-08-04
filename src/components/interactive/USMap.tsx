@@ -16,6 +16,8 @@ import {
 } from './USMapAnimations'
 import { StateTooltip, useStateTooltip } from './StateTooltip'
 import { useSimpleMapAnalytics } from '@/lib/analytics/simpleMapAnalytics'
+import { trackMapInteraction, trackStateExploration } from '@/lib/analytics/posthog'
+import { useAnalytics } from '@/components/analytics/PostHogProvider'
 
 interface USMapProps {
   className?: string
@@ -56,6 +58,7 @@ export default function USMap({
   enableTooltips = true
 }: USMapProps) {
   const router = useRouter()
+  const { trackEvent, trackClick } = useAnalytics()
   const [selectedState, setSelectedState] = useState<StateData | null>(null)
   const [hoveredState, setHoveredState] = useState<string | null>(null)
   const [focusedState, setFocusedState] = useState<string | null>(null)
@@ -204,6 +207,36 @@ export default function USMap({
 
     // Track analytics
     if (enableAnalytics) {
+      // PostHog analytics
+      trackMapInteraction({
+        state_clicked: stateCode,
+        state_status: state.status,
+        interaction_type: 'click',
+        viewport_size: {
+          width: window.innerWidth,
+          height: window.innerHeight
+        }
+      })
+
+      trackStateExploration({
+        state_name: state.name,
+        state_code: stateCode,
+        week_number: state.weekNumber || 0,
+        total_breweries: state.totalBreweries || 0,
+        interaction_type: 'navigate'
+      })
+
+      trackClick('map_state_click', {
+        state_code: stateCode,
+        state_name: state.name,
+        state_status: state.status,
+        week_number: state.weekNumber,
+        region: state.region,
+        device_type: isMobile ? 'mobile' : 'desktop',
+        previous_state: selectedState?.code
+      })
+      
+      // Legacy analytics
       trackStateClick(stateCode, {
         status: state.status,
         stateName: state.name,
@@ -297,8 +330,11 @@ export default function USMap({
 
   // Call onMapLoad when component is ready and setup native event listeners
   useEffect(() => {
-    // Ensure the map SVG is fully rendered before calling onMapLoad
-    const timer = setTimeout(() => {
+    let timer: NodeJS.Timeout
+    let retryTimer: NodeJS.Timeout
+    const eventListeners: Array<{ element: Element; event: string; handler: EventListener }> = []
+    
+    const setupEventListeners = () => {
       // Check if the SVG has been rendered by looking for state paths
       const svgElement = mapRef.current?.querySelector('svg')
       const statePaths = svgElement?.querySelectorAll('path[data-state]')
@@ -310,27 +346,40 @@ export default function USMap({
         statePaths.forEach((path) => {
           const stateCode = path.getAttribute('data-state')
           if (stateCode) {
-            // Remove existing listeners first
-            path.removeEventListener('click', handleNativeClick)
-            path.removeEventListener('touchend', handleNativeTouch)
-            
-            // Add new listeners
+            // Add listeners and track them for cleanup
             path.addEventListener('click', handleNativeClick, { passive: false })
             path.addEventListener('touchend', handleNativeTouch, { passive: false })
+            
+            eventListeners.push(
+              { element: path, event: 'click', handler: handleNativeClick },
+              { element: path, event: 'touchend', handler: handleNativeTouch }
+            )
           }
         })
         
         onMapLoad?.()
       } else {
         // Try again after a short delay if SVG isn't ready
-        setTimeout(() => {
+        retryTimer = setTimeout(() => {
           console.log('Retrying map load check...')
-          onMapLoad?.()
+          setupEventListeners()
         }, 200)
       }
-    }, 50)
+    }
     
-    return () => clearTimeout(timer)
+    // Ensure the map SVG is fully rendered before calling onMapLoad
+    timer = setTimeout(setupEventListeners, 50)
+    
+    return () => {
+      // Clean up timers
+      clearTimeout(timer)
+      clearTimeout(retryTimer)
+      
+      // Clean up all event listeners
+      eventListeners.forEach(({ element, event, handler }) => {
+        element.removeEventListener(event, handler)
+      })
+    }
   }, [onMapLoad, handleNativeClick, handleNativeTouch])
 
   // Keyboard navigation handler

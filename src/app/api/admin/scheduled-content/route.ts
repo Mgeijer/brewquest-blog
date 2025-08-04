@@ -1,17 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { AdminStorage } from '@/lib/admin/contentStorage'
+import { AdminStorageDB } from '@/lib/admin/contentStorageDB'
 
 // Helper function to get status and content for content item
-const getContentStatus = (contentId: string) => {
-  return AdminStorage.getApprovalStatus(contentId)
+const getContentStatus = async (contentId: string) => {
+  const status = await AdminStorageDB.getApprovalStatus(contentId)
+  return status || 'pending'
 }
 
-const getContentBody = (contentId: string, originalBody: string) => {
-  return AdminStorage.getEditedContent(contentId) || originalBody
+const getContentBody = async (contentId: string, originalBody: string) => {
+  const editedContent = await AdminStorageDB.getEditedContent(contentId)
+  return editedContent || originalBody
 }
 
 // Alaska Week 2 Content - Ready for August 4th Launch
-const getScheduledContent = (filter: string) => {
+const getScheduledContent = async (filter: string) => {
   // Set launch date to Monday August 4th, 2025
   const launchDate = new Date('2025-08-04T15:00:00.000Z') // 3 PM EST Monday
   const day1 = new Date(launchDate.getTime() + 0 * 24 * 60 * 60 * 1000) // Monday
@@ -29,9 +31,9 @@ const getScheduledContent = (filter: string) => {
       type: 'daily_beer' as const,
       title: 'Alaskan Amber - Alaska Week 2 Day 1',
       scheduledFor: day1.toISOString(),
-      status: getContentStatus('alaska_day1_amber') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB  
       content: {
-        body: getContentBody('alaska_day1_amber', `🍺 WEEK 2 BEGINS: ALASKA'S LAST FRONTIER! 🗻❄️
+        body: `🍺 WEEK 2 BEGINS: ALASKA'S LAST FRONTIER! 🗻❄️
 
 Day 1: Alaskan Brewing Company's Alaskan Amber (5.3% ABV)
 
@@ -73,7 +75,7 @@ Read the full Alaska adventure: www.hopharrison.com/states/alaska
       type: 'daily_beer' as const,
       title: 'Sockeye Red IPA - Alaska Week 2 Day 2',
       scheduledFor: day2.toISOString(),
-      status: getContentStatus('alaska_day2_sockeye') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: `🍺 Day 2: Midnight Sun's Sockeye Red IPA! 🐟🍻
 
@@ -118,7 +120,7 @@ Experience Alaska's brewing frontier: www.hopharrison.com/states/alaska
       type: 'daily_beer' as const,
       title: 'HooDoo German Kölsch - Alaska Week 2 Day 3',
       scheduledFor: day3.toISOString(),
-      status: getContentStatus('alaska_day3_kolsch') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: `🍺 Day 3: HooDoo's German Kölsch from Alaska's Interior! 🍻
 
@@ -169,7 +171,7 @@ Explore Alaska's brewing diversity: www.hopharrison.com/states/alaska
       type: 'daily_beer' as const,
       title: 'Belgian Triple - Alaska Week 2 Day 4',
       scheduledFor: day4.toISOString(),
-      status: getContentStatus('alaska_day4_triple') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: `🍺 Day 4: Cynosure's Belgian Triple - European Elegance in Alaska! 🇧🇪
 
@@ -222,7 +224,7 @@ Discover Alaska's brewing diversity: www.hopharrison.com/states/alaska
       type: 'daily_beer' as const,
       title: 'Pipeline Stout - Alaska Week 2 Day 5',
       scheduledFor: day5.toISOString(),
-      status: getContentStatus('alaska_day5_stout') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: `🍺 Day 5: Moose's Tooth Pipeline Stout - Alaska's Ultimate Winter Warmer! ⚫🍻
 
@@ -271,7 +273,7 @@ Experience Anchorage brewing culture: www.hopharrison.com/states/alaska
       type: 'daily_beer' as const,
       title: 'New England IPA - Alaska Week 2 Day 6',
       scheduledFor: day6.toISOString(),
-      status: getContentStatus('alaska_day6_neipa') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: `🍺 Day 6: Resolution's New England IPA - Modern Hops Meet Maritime History! 🚢
 
@@ -325,7 +327,7 @@ Navigate Alaska's craft beer waters: www.hopharrison.com/states/alaska
       type: 'daily_beer' as const,
       title: 'Chocolate Coconut Porter - Alaska Week 2 Day 7',
       scheduledFor: day7.toISOString(),
-      status: getContentStatus('alaska_day7_porter') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: `🍺 Day 7 FINALE: King Street's Chocolate Coconut Porter - Tropical Dreams in the Last Frontier! 🥥🍫
 
@@ -380,7 +382,7 @@ Explore Alaska's complete brewing story: www.hopharrison.com/states/alaska
       type: 'weekly_state' as const,
       title: 'Alaska Week 2 Complete - State Summary',
       scheduledFor: new Date(day7.getTime() + 4 * 60 * 60 * 1000).toISOString(), // 4 hours later
-      status: getContentStatus('alaska_week_complete') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: `🏔️ WEEK 2 COMPLETE: ALASKA'S LAST FRONTIER CONQUERED! ❄️🍺
 
@@ -435,9 +437,9 @@ Read the complete Alaska brewing story: www.hopharrison.com/states/alaska
       type: 'daily_beer' as const,
       title: 'Yellowhammer Belgian White - Alabama Week 1 Day 2',
       scheduledFor: new Date('2025-01-28T15:00:00.000Z').toISOString(),
-      status: getContentStatus('alabama_day2_belgian') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
-        body: getContentBody('alabama_day2_belgian', `🍺 Day 2: Yellowhammer's Belgian White - Huntsville's European Tradition! 🇧🇪
+        body: `🍺 Day 2: Yellowhammer's Belgian White - Huntsville's European Tradition! 🇧🇪
 
 Yellowhammer Brewing (Huntsville, 2013)
 Belgian White - 5.2% ABV, Traditional Witbier
@@ -462,7 +464,7 @@ From Belgium to the Rocket City - this is tradition meets innovation.
 
 Experience Alabama's brewing diversity: www.hopharrison.com/states/alabama
 
-#Yellowhammer #BelgianWhite #Huntsville #RocketCity #TraditionalBrewing #Witbier #AlabamaCraft #Week1 #BrewQuestChronicles #BelgianTradition`),
+#Yellowhammer #BelgianWhite #Huntsville #RocketCity #TraditionalBrewing #Witbier #AlabamaCraft #Week1 #BrewQuestChronicles #BelgianTradition`,
         metadata: {
           beer: {
             name: 'Belgian White',
@@ -486,7 +488,7 @@ Experience Alabama's brewing diversity: www.hopharrison.com/states/alabama
       type: 'daily_beer' as const,
       title: 'Cahaba Oka Uba IPA - Alabama Week 1 Day 3',
       scheduledFor: new Date('2025-01-29T15:00:00.000Z').toISOString(),
-      status: getContentStatus('alabama_day3_ipa') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: getContentBody('alabama_day3_ipa', `🍺 Day 3: Cahaba's Oka Uba IPA - River-Inspired Alabama Craft! 🌊
 
@@ -538,7 +540,7 @@ Flow with Alabama's craft beer renaissance: www.hopharrison.com/states/alabama
       type: 'daily_beer' as const,
       title: 'TrimTab Paradise Now - Alabama Week 1 Day 4',
       scheduledFor: new Date('2025-01-30T15:00:00.000Z').toISOString(),
-      status: getContentStatus('alabama_day4_sour') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: getContentBody('alabama_day4_sour', `🍺 Day 4: TrimTab's Paradise Now - Alabama Sour Innovation! 🌺
 
@@ -590,7 +592,7 @@ Discover Alabama's creative brewing: www.hopharrison.com/states/alabama
       type: 'daily_beer' as const,
       title: 'Avondale Miss Fancy\'s Triple - Alabama Week 1 Day 5',
       scheduledFor: new Date('2025-01-31T15:00:00.000Z').toISOString(),
-      status: getContentStatus('alabama_day5_triple') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: getContentBody('alabama_day5_triple', `🍺 Day 5: Avondale's Miss Fancy's Triple - Belgian Elegance in Alabama! 👸
 
@@ -642,7 +644,7 @@ Experience Alabama's European influences: www.hopharrison.com/states/alabama
       type: 'daily_beer' as const,
       title: 'Back Forty Snake Handler - Alabama Week 1 Day 6',
       scheduledFor: new Date('2025-02-01T15:00:00.000Z').toISOString(),
-      status: getContentStatus('alabama_day6_double_ipa') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: getContentBody('alabama_day6_double_ipa', `🍺 Day 6: Back Forty's Snake Handler - Alabama's Bold Double IPA! 🐍
 
@@ -694,7 +696,7 @@ Handle Alabama's wild side: www.hopharrison.com/states/alabama
       type: 'daily_beer' as const,
       title: 'Monday Night Imperial Stout - Alabama Week 1 Day 7',
       scheduledFor: new Date('2025-02-02T15:00:00.000Z').toISOString(),
-      status: getContentStatus('alabama_day7_stout') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: getContentBody('alabama_day7_stout', `🍺 Day 7 FINALE: Monday Night's Imperial Stout - Bold Finish to Alabama Week! ⚫
 
@@ -748,7 +750,7 @@ Celebrate Alabama's brewing excellence: www.hopharrison.com/states/alabama
       type: 'daily_beer' as const,
       title: 'Four Peaks Kilt Lifter - Arizona Week 3 Day 1',
       scheduledFor: new Date('2025-08-11T15:00:00.000Z').toISOString(),
-      status: getContentStatus('arizona_day1_kilt_lifter') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: getContentBody('arizona_day1_kilt_lifter', `🍺 WEEK 3 BEGINS: ARIZONA'S DESERT BREWING REVOLUTION! 🌵☀️
 
@@ -797,7 +799,7 @@ Explore Arizona's brewing frontier: www.hopharrison.com/states/arizona
       type: 'daily_beer' as const,
       title: 'Arizona Wilderness Refuge IPA - Arizona Week 3 Day 2',
       scheduledFor: new Date('2025-08-12T15:00:00.000Z').toISOString(),
-      status: getContentStatus('arizona_day2_refuge_ipa') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: getContentBody('arizona_day2_refuge_ipa', `🍺 Day 2: Arizona Wilderness Refuge IPA - Sustainability Meets Flavor! 🌿
 
@@ -849,7 +851,7 @@ Discover sustainable Arizona brewing: www.hopharrison.com/states/arizona
       type: 'daily_beer' as const,
       title: 'Historic Piehole Porter - Arizona Week 3 Day 3',
       scheduledFor: new Date('2025-08-13T15:00:00.000Z').toISOString(),
-      status: getContentStatus('arizona_day3_piehole_porter') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: getContentBody('arizona_day3_piehole_porter', `🍺 Day 3: Historic's Piehole Porter - Dessert Innovation from Flagstaff! 🍒
 
@@ -897,7 +899,7 @@ Taste Arizona's sweet side: www.hopharrison.com/states/arizona
       type: 'daily_beer' as const,
       title: 'Dragoon IPA - Arizona Week 3 Day 4',
       scheduledFor: new Date('2025-08-14T15:00:00.000Z').toISOString(),
-      status: getContentStatus('arizona_day4_dragoon_ipa') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: getContentBody('arizona_day4_dragoon_ipa', `🍺 Day 4: Dragoon IPA - Tucson's Uncompromising West Coast Classic! 🐎
 
@@ -945,7 +947,7 @@ Experience Tucson's brewing rebellion: www.hopharrison.com/states/arizona
       type: 'daily_beer' as const,
       title: 'SanTan Devil\'s Ale - Arizona Week 3 Day 5',
       scheduledFor: new Date('2025-08-15T15:00:00.000Z').toISOString(),
-      status: getContentStatus('arizona_day5_devils_ale') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: getContentBody('arizona_day5_devils_ale', `🍺 Day 5: SanTan's Devil's Ale - Sinfully Crisp Southwestern Style! 😈
 
@@ -993,7 +995,7 @@ Embrace Arizona's playful side: www.hopharrison.com/states/arizona
       type: 'daily_beer' as const,
       title: 'Oak Creek Nut Brown Ale - Arizona Week 3 Day 6',
       scheduledFor: new Date('2025-08-16T15:00:00.000Z').toISOString(),
-      status: getContentStatus('arizona_day6_nut_brown') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: getContentBody('arizona_day6_nut_brown', `🍺 Day 6: Oak Creek Nut Brown Ale - Sedona's Red Rock Brewing! 🏔️
 
@@ -1041,7 +1043,7 @@ Experience Sedona's brewing artistry: www.hopharrison.com/states/arizona
       type: 'daily_beer' as const,
       title: 'Mother Road Tower Station IPA - Arizona Week 3 Day 7',
       scheduledFor: new Date('2025-08-17T15:00:00.000Z').toISOString(),
-      status: getContentStatus('arizona_day7_tower_station') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: getContentBody('arizona_day7_tower_station', `🍺 Day 7 FINALE: Mother Road's Tower Station IPA - Route 66 Adventure Beer! 🛣️
 
@@ -1089,7 +1091,7 @@ Explore Arizona's brewing highways: www.hopharrison.com/states/arizona
       type: 'weekly_state' as const,
       title: 'Arizona Week 3 Complete - State Summary',
       scheduledFor: new Date('2025-08-17T19:00:00.000Z').toISOString(),
-      status: getContentStatus('arizona_week_complete') as const,
+      status: 'pending' as const, // Will be updated by processContentWithDB
       content: {
         body: getContentBody('arizona_week_complete', `🌵 WEEK 3 COMPLETE: ARIZONA'S DESERT BREWING MASTERY REVEALED! ☀️🍺
 
@@ -1141,16 +1143,28 @@ Experience Arizona's complete desert brewing story: www.hopharrison.com/states/a
     }
   ]
 
-  let filteredContent = allContent
+  // Process all content with database status and edits
+  const processedContent = await Promise.all(
+    allContent.map(async (content) => ({
+      ...content,
+      status: await getContentStatus(content.id),
+      content: {
+        ...content.content,
+        body: await getContentBody(content.id, content.content.body)
+      }
+    }))
+  )
+
+  let filteredContent = processedContent
   if (filter !== 'all') {
-    filteredContent = allContent.filter(content => content.status === filter)
+    filteredContent = processedContent.filter(content => content.status === filter)
   }
 
   return filteredContent
 }
 
-const getContentStats = () => {
-  const allContent = getScheduledContent('all')
+const getContentStats = async () => {
+  const allContent = await getScheduledContent('all')
   
   const totalScheduled = allContent.length
   const pendingApproval = allContent.filter(c => c.status === 'pending').length
@@ -1175,8 +1189,8 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url)
     const filter = searchParams.get('filter') || 'all'
 
-    const content = getScheduledContent(filter)
-    const stats = getContentStats()
+    const content = await getScheduledContent(filter)
+    const stats = await getContentStats()
 
     return NextResponse.json({
       success: true,

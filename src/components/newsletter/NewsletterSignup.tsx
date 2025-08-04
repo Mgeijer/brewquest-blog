@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { Mail, CheckCircle, AlertCircle } from 'lucide-react'
+import { trackNewsletterSignup } from '@/lib/analytics/posthog'
+import { useAnalytics } from '@/components/analytics/PostHogProvider'
 
 interface NewsletterSignupProps {
   source?: string
@@ -20,6 +22,7 @@ export default function NewsletterSignup({
   endpoint = 'signup',
   showStateSelector = true
 }: NewsletterSignupProps) {
+  const { trackFormSubmit, trackEvent } = useAnalytics()
   const [formData, setFormData] = useState({
     email: '',
     firstName: '',
@@ -62,14 +65,57 @@ export default function NewsletterSignup({
         } else {
           setMessage(`Welcome to BrewQuest Chronicles! Check your email for a welcome message featuring ${data.currentState}.`)
         }
+        
+        // Track successful newsletter signup
+        trackNewsletterSignup({
+          email: formData.email,
+          source: source as any,
+          success: true
+        })
+        
+        trackFormSubmit('newsletter_signup', true, {
+          source,
+          endpoint,
+          already_subscribed: data.alreadySubscribed,
+          has_first_name: !!formData.firstName,
+          has_state_interest: !!formData.stateInterest,
+          state_interest: formData.stateInterest
+        })
+        
         setFormData({ email: '', firstName: '', stateInterest: '' })
       } else {
         setMessageType('error')
         setMessage(data.error || 'Failed to subscribe. Please try again.')
+        
+        // Track failed newsletter signup
+        trackNewsletterSignup({
+          source: source as any,
+          success: false,
+          error_message: data.error || 'Unknown error'
+        })
+        
+        trackFormSubmit('newsletter_signup', false, {
+          source,
+          endpoint,
+          error_message: data.error || 'Unknown error'
+        })
       }
     } catch (error) {
       setMessageType('error')
       setMessage('Failed to subscribe. Please check your connection and try again.')
+      
+      // Track network/connection errors
+      trackNewsletterSignup({
+        source: source as any,
+        success: false,
+        error_message: 'Network error'
+      })
+      
+      trackFormSubmit('newsletter_signup', false, {
+        source,
+        endpoint,
+        error_message: 'Network error'
+      })
     } finally {
       setIsSubmitting(false)
     }
@@ -80,6 +126,14 @@ export default function NewsletterSignup({
       ...prev,
       [e.target.name]: e.target.value
     }))
+    
+    // Track form field interactions
+    trackEvent('newsletter_form_interaction', {
+      field_name: e.target.name,
+      field_value_length: e.target.value.length,
+      source,
+      variant
+    })
   }
 
   // Variant styles
