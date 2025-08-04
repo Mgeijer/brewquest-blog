@@ -1140,6 +1140,93 @@ Experience Arizona's complete desert brewing story: www.hopharrison.com/states/a
       qualityScore: 9.1,
       aiGenerated: true,
       lastModified: new Date().toISOString()
+    },
+
+    // Arkansas Week 4 - Blog Post
+    {
+      id: 'arkansas_week4_blog',
+      type: 'weekly_state' as const,
+      title: 'Arkansas Craft Beer Adventure: Natural State Brewing Excellence',
+      scheduledFor: new Date('2025-08-25T15:00:00.000Z').toISOString(),
+      status: 'pending' as const,
+      content: {
+        body: `📝 ARKANSAS WEEK 4: NATURAL STATE BREWING EXCELLENCE
+
+Arkansas may be known for its natural beauty, but the Natural State has also cultivated an impressive craft brewing scene that reflects its diverse landscapes and rich cultural heritage. From the urban sophistication of Little Rock to the mountain traditions of the Ozarks, Arkansas breweries are creating beers that capture the spirit of this beautiful state.
+
+🏔️ A GROWING MOVEMENT
+With over 30 craft breweries across the state, Arkansas has seen remarkable growth in its brewing industry. These breweries combine traditional brewing techniques with innovative approaches, often incorporating local ingredients like Arkansas rice, native fruits, and honey from local apiaries.
+
+🍺 WHAT MAKES ARKANSAS BEER SPECIAL
+• Local Agriculture: Arkansas brewers take advantage of the state's agricultural diversity
+• Mountain Water: Pure water from the Ozark and Ouachita Mountains 
+• Cultural Heritage: Many breweries incorporate the state's rich cultural history
+
+This week, we'll explore different Arkansas breweries and their signature beers, showcasing the diversity and quality of the Natural State's craft beer scene.
+
+Read the full Arkansas adventure: www.hopharrison.com/states/arkansas
+
+#Arkansas #NaturalState #CraftBeer #LittleRock #OzarkMountains #Week4 #BrewQuestChronicles`,
+        metadata: {
+          state: {
+            name: 'Arkansas',
+            week: 4
+          },
+          platform: 'Blog Post',
+          characterCount: 1200,
+          image_url: '/images/State Images/Arkansas.png'
+        }
+      },
+      qualityScore: 8.5,
+      aiGenerated: true,
+      lastModified: new Date().toISOString()
+    },
+
+    // California Week 6 - Blog Post  
+    {
+      id: 'california_week6_blog',
+      type: 'weekly_state' as const,
+      title: 'California Craft Beer Legends: Golden State Brewing Innovation',
+      scheduledFor: new Date('2025-09-08T15:00:00.000Z').toISOString(),
+      status: 'pending' as const,
+      content: {
+        body: `📝 CALIFORNIA WEEK 6: GOLDEN STATE BREWING LEGENDS
+
+California isn't just a state - it's the birthplace of the American craft beer revolution. From Anchor Brewing's 1970s revival to the explosive growth of San Diego's hop-forward IPAs, California has consistently led the nation in brewing innovation, creativity, and quality.
+
+🍺 THE PIONEERS
+California gave birth to the modern American craft beer movement. Breweries like Anchor, Sierra Nevada, and Stone Brewing didn't just make great beer - they showed an entire nation what American beer could be. Today, with over 900 craft breweries, California produces more craft beer than any other state.
+
+🌎 REGIONAL DIVERSITY
+• San Diego County: The hop capital of America
+• Bay Area: Where it all began, combining tradition with innovation
+• Central Coast: Wine country breweries creating sophisticated beers
+• Los Angeles: Urban brewing culture with incredible diversity
+
+🌟 WHAT MAKES CALIFORNIA BEER SPECIAL
+• Innovation Leadership: California breweries consistently push boundaries
+• Quality Ingredients: Access to the world's best hops and malts
+• Diverse Styles: From California Common to experimental sours
+• Cultural Impact: California beer culture has influenced the world
+
+This week, we'll explore legendary California breweries and their iconic beers, showcasing why the Golden State remains the heart of American craft brewing.
+
+Explore California's brewing legacy: www.hopharrison.com/states/california
+
+#California #GoldenState #CraftBeer #SanDiego #SierraNevada #Stone #Week6 #BrewQuestChronicles`,
+        metadata: {
+          state: {
+            name: 'California',
+            week: 6
+          },
+          platform: 'Blog Post',
+          characterCount: 1400,
+          image_url: '/images/State Images/California.png'
+        }
+      },
+      qualityScore: 9.2,
+      aiGenerated: true,
+      lastModified: new Date().toISOString()
     }
   ]
 
