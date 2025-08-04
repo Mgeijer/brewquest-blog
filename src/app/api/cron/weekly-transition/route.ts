@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { emailService } from '@/lib/email/resendService'
 
 /**
  * Weekly State Transition Cron Job
@@ -166,9 +167,6 @@ export async function GET(request: NextRequest) {
     let emailResults = { successful: 0, failed: 0, total: 0 }
     
     try {
-      // Import email service only when needed
-      const { ResendEmailService } = await import('@/lib/email/resendService')
-      const emailService = new ResendEmailService()
       emailResults = await emailService.sendWeeklyDigest()
       updates.push(`Weekly digest emails: ${emailResults.successful}/${emailResults.total} sent successfully`)
       console.log(`[CRON] Weekly digest emails sent: ${emailResults.successful} successful, ${emailResults.failed} failed`)
