@@ -11,9 +11,9 @@ export default function AlabamaWeeklyPage() {
   const [currentDay, setCurrentDay] = useState(1) // Start with Monday (day 1)
   const currentState = getCurrentState()
   
-  // Force Monday mode until August 4th launch
+  // Force Monday mode until August 5th launch
   useEffect(() => {
-    const launchDate = new Date('2025-08-04T00:00:00.000Z')
+    const launchDate = new Date('2025-08-05T00:00:00.000Z')
     const now = new Date()
     
     if (now < launchDate) {

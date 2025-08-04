@@ -152,9 +152,9 @@ function BlogContent() {
   const isShowingLocalCulture = category === 'local-culture'
   const isShowingFeatured = featured === 'true'
   
-  // Get beer reviews for current week - force Monday mode until August 4th launch
+  // Get beer reviews for current week - force Monday mode until August 5th launch
   const getCurrentDay = () => {
-    const launchDate = new Date('2025-08-04T00:00:00.000Z')
+    const launchDate = new Date('2025-08-05T00:00:00.000Z')
     const now = new Date()
     
     if (now < launchDate) {
@@ -170,8 +170,8 @@ function BlogContent() {
   
   const currentDay = getCurrentDay()
   
-  // Force Monday mode until August 4th - only show Monday's beer (day 1)
-  const launchDate = new Date('2025-08-04T00:00:00.000Z')
+  // Force Monday mode until August 5th - only show Monday's beer (day 1)
+  const launchDate = new Date('2025-08-05T00:00:00.000Z')
   const now = new Date()
   
   const beerReviews = now < launchDate 
