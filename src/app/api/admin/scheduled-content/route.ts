@@ -52,7 +52,7 @@ From museum archives to modern craft brewing empire - this is Alaska's pioneerin
 
 Read the full Alaska adventure: www.hopharrison.com/states/alaska
 
-#AlaskanBrewing #AlaskaAmber #GoldRush #LastFrontier #CraftBeer #AlaskaBeer #Week2 #BrewQuestChronicles #HopHarrison #JuneauBrewing #HistoricRecipe`),
+#AlaskanBrewing #AlaskaAmber #GoldRush #LastFrontier #CraftBeer #AlaskaBeer #Week2 #BrewQuestChronicles #HopHarrison #JuneauBrewing #HistoricRecipe`,
         metadata: {
           beer: {
             name: 'Alaskan Amber',

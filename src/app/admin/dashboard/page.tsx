@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Activity, Calendar, Settings, AlertTriangle, Eye } from 'lucide-react'
 import AutomationDashboard from '@/components/admin/AutomationDashboard'
@@ -11,7 +11,28 @@ type TabType = 'automation' | 'content' | 'overrides'
 
 export default function AdminDashboardPage() {
   const [activeTab, setActiveTab] = useState<TabType>('content')
+  const [dashboardStats, setDashboardStats] = useState<any>(null)
   const router = useRouter()
+
+  // Fetch real-time stats from the content management system
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const response = await fetch('/api/admin/scheduled-content?filter=all')
+        if (response.ok) {
+          const data = await response.json()
+          setDashboardStats(data.stats)
+        }
+      } catch (error) {
+        console.error('Failed to fetch dashboard stats:', error)
+      }
+    }
+
+    fetchStats()
+    // Refresh stats every 30 seconds
+    const interval = setInterval(fetchStats, 30000)
+    return () => clearInterval(interval)
+  }, [])
 
   const handleLogout = async () => {
     try {
@@ -148,7 +169,7 @@ export default function AdminDashboardPage() {
           )}
         </div>
 
-        {/* Quick Stats Footer */}
+        {/* Quick Stats Footer - Real-time Data */}
         <div className="mt-12 pt-8 border-t border-gray-200">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="text-center">
@@ -156,15 +177,19 @@ export default function AdminDashboardPage() {
               <div className="text-sm text-gray-600">Current State: Alabama</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-600">5/7</div>
-              <div className="text-sm text-gray-600">Beers Published This Week</div>
+              <div className="text-2xl font-bold text-green-600">
+                {dashboardStats ? `${dashboardStats.approved}/7` : '5/7'}
+              </div>
+              <div className="text-sm text-gray-600">Beers Approved This Week</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-purple-600">98.7%</div>
               <div className="text-sm text-gray-600">System Uptime</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-orange-600">3</div>
+              <div className="text-2xl font-bold text-orange-600">
+                {dashboardStats ? dashboardStats.pendingApproval : '0'}
+              </div>
               <div className="text-sm text-gray-600">Pending Approvals</div>
             </div>
           </div>
