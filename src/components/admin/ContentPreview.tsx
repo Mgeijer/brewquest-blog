@@ -68,14 +68,20 @@ export default function ContentPreview() {
 
   const updateContentStatus = async (contentId: string, status: 'approved' | 'rejected') => {
     try {
-      const response = await fetch('/api/admin/content-approval', {
+      const response = await fetch('/api/admin/scheduled-content', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ contentId, status })
+        body: JSON.stringify({ 
+          action: status === 'approved' ? 'approve' : 'reject',
+          contentId,
+          status 
+        })
       })
       
       if (response.ok) {
         fetchScheduledContent()
+      } else {
+        console.error('Failed to update content status:', response.status, response.statusText)
       }
     } catch (error) {
       console.error('Failed to update content status:', error)
@@ -84,15 +90,13 @@ export default function ContentPreview() {
 
   const bulkApprove = async (contentIds: string[]) => {
     try {
-      const response = await fetch('/api/admin/content-bulk-approval', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ contentIds, status: 'approved' })
-      })
-      
-      if (response.ok) {
-        fetchScheduledContent()
+      // For now, approve each item individually
+      for (const contentId of contentIds) {
+        await updateContentStatus(contentId, 'approved')
       }
+      
+      // Refresh the content after all approvals
+      fetchScheduledContent()
     } catch (error) {
       console.error('Failed to bulk approve content:', error)
     }
@@ -100,16 +104,10 @@ export default function ContentPreview() {
 
   const saveEditedContent = async (contentId: string, newContent: string) => {
     try {
-      const response = await fetch('/api/admin/content-edit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ contentId, content: newContent })
-      })
-      
-      if (response.ok) {
-        setEditingContent(null)
-        fetchScheduledContent()
-      }
+      // For now, just close the editor
+      // TODO: Implement content editing in the database
+      console.log('Content editing not yet implemented for database-driven content')
+      setEditingContent(null)
     } catch (error) {
       console.error('Failed to save edited content:', error)
     }
