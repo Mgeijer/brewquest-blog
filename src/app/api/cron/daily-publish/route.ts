@@ -50,10 +50,44 @@ export async function GET(request: NextRequest) {
 
     if (beerError) {
       console.log(`[CRON] No beer review for day ${dayOfWeek}:`, beerError.message)
+      
+      // Still send newsletter on Monday even if no beer review
+      let emailResults = { successful: 0, failed: 0, total: 0 }
+      if (dayOfWeek === 1) { // Monday - send weekly newsletter
+        console.log(`[CRON] Sending weekly newsletter for current week: ${currentState.state_name}`)
+        
+        try {
+          const { ResendEmailService } = await import('@/lib/email/resendService')
+          const emailService = new ResendEmailService()
+          emailResults = await emailService.sendWeeklyNewsletter(currentState)
+          console.log(`[CRON] Weekly newsletter sent: ${emailResults.successful} successful, ${emailResults.failed} failed`)
+        } catch (emailError) {
+          console.error('[CRON] Failed to send weekly newsletter:', emailError)
+          
+          await supabase
+            .from('analytics_events')
+            .insert({
+              event_type: 'weekly_newsletter_error',
+              event_data: {
+                error_message: emailError instanceof Error ? emailError.message : 'Unknown email error',
+                current_state: currentState.state_name,
+                week_number: currentState.week_number,
+                timestamp: new Date().toISOString()
+              },
+              created_at: new Date().toISOString()
+            })
+        }
+      }
+      
       return NextResponse.json({ 
-        message: `No beer review scheduled for day ${dayOfWeek}`,
+        message: `No beer review scheduled for day ${dayOfWeek}${dayOfWeek === 1 ? ' - Newsletter sent' : ''}`,
         state: currentState.state_name,
-        week: currentState.week_number
+        week: currentState.week_number,
+        newsletter_results: dayOfWeek === 1 ? {
+          successful: emailResults.successful,
+          failed: emailResults.failed,
+          total: emailResults.total
+        } : null
       })
     }
 
@@ -119,6 +153,36 @@ export async function GET(request: NextRequest) {
       console.error('[CRON] Social media content save failed:', socialError)
     }
 
+    // Send weekly newsletter on Monday for the current week
+    let emailResults = { successful: 0, failed: 0, total: 0 }
+    if (dayOfWeek === 1) { // Monday - send weekly newsletter
+      console.log(`[CRON] Sending weekly newsletter for current week: ${currentState.state_name}`)
+      
+      try {
+        // Import and use email service for weekly newsletter
+        const { ResendEmailService } = await import('@/lib/email/resendService')
+        const emailService = new ResendEmailService()
+        emailResults = await emailService.sendWeeklyNewsletter(currentState)
+        console.log(`[CRON] Weekly newsletter sent: ${emailResults.successful} successful, ${emailResults.failed} failed`)
+      } catch (emailError) {
+        console.error('[CRON] Failed to send weekly newsletter:', emailError)
+        
+        // Log email error for monitoring
+        await supabase
+          .from('analytics_events')
+          .insert({
+            event_type: 'weekly_newsletter_error',
+            event_data: {
+              error_message: emailError instanceof Error ? emailError.message : 'Unknown email error',
+              current_state: currentState.state_name,
+              week_number: currentState.week_number,
+              timestamp: new Date().toISOString()
+            },
+            created_at: new Date().toISOString()
+          })
+      }
+    }
+
     console.log(`[CRON] Daily publish completed successfully for ${todaysBeer.beer_name}`)
 
     return NextResponse.json({
@@ -134,7 +198,12 @@ export async function GET(request: NextRequest) {
           style: todaysBeer.beer_style,
           abv: todaysBeer.abv
         },
-        social_posts_created: Object.keys(socialMediaContent).length
+        social_posts_created: Object.keys(socialMediaContent).length,
+        newsletter_results: dayOfWeek === 1 ? {
+          successful: emailResults.successful,
+          failed: emailResults.failed,
+          total: emailResults.total
+        } : null
       }
     })
 

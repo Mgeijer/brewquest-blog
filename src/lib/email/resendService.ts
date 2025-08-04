@@ -154,6 +154,11 @@ export class ResendEmailService {
     console.log('Welcome email sent:', result)
   }
 
+  async sendWeeklyNewsletter(currentState?: any): Promise<{ successful: number; failed: number; total: number }> {
+    // This is an alias for sendWeeklyDigest to maintain compatibility with cron job
+    return this.sendWeeklyDigest()
+  }
+
   async sendWeeklyDigest(): Promise<{ successful: number; failed: number; total: number }> {
     const subscribers = await this.getActiveSubscribers()
     const weeklyData = await this.getWeeklyDigestData()

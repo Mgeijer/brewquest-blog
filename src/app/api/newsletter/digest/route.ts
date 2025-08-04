@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
     // Get active subscribers
     const { data: subscribers, error: subscriberError } = await supabase
       .from('newsletter_subscribers')
-      .select('email, first_name, preferences')
+      .select('email, first_name, preferences, subscribed_at')
       .eq('is_active', true)
 
     if (subscriberError) {

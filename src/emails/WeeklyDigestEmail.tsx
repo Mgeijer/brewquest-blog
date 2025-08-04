@@ -33,22 +33,33 @@ export default function WeeklyDigestEmail({
   nextStateName,
   unsubscribeToken
 }: WeeklyDigestEmailProps) {
-  const getDayName = (dayNumber: number) => {
-    const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-    return days[dayNumber - 1] || 'Monday'
+  const getStateDescription = (state: string) => {
+    const descriptions: Record<string, string> = {
+      'Alabama': `This week, we're diving deep into Alabama's surprising and vibrant craft beer scene. From Birmingham's urban brewing culture to Mobile's coastal flavors, the Heart of Dixie has quietly built one of the South's most authentic and innovative brewing communities.
+
+Alabama's relationship with beer has been complicated. Until 2009, it was illegal to brew beer stronger than 6% ABV in the state. The "Gourmet Beer Bill" changed everything, opening the doors for craft breweries to flourish and for beer lovers to experience the full spectrum of flavors that define modern American brewing.
+
+Today, Alabama is home to 45+ breweries, each telling a unique story of Southern hospitality, local ingredients, and innovative brewing techniques.`,
+      'Alaska': `Coming soon - Alaska's frontier brewing adventure awaits!`,
+      // Add more states as needed
+    }
+    return descriptions[state] || `Discover the unique craft beer culture of ${state} in this week's journey.`
   }
 
-  const getStarRating = (rating: number) => {
-    return '⭐'.repeat(Math.floor(rating))
+  const getWeeklySchedule = (state: string) => {
+    const schedules: Record<string, string[]> = {
+      'Alabama': [
+        'Monday: Good People Brewing Company - The flagship that started it all',
+        'Tuesday: Yellowhammer Brewing - Huntsville\'s German-inspired tradition',
+        'Wednesday: Cahaba Brewing Company - Birmingham\'s river-inspired ales',
+        'Thursday: TrimTab Brewing - Innovation meets drinkability',
+        'Friday: Avondale Brewing - Belgian traditions in Southern soil',
+        'Saturday: Back Forty Beer Company - Gadsden\'s hop-forward approach',
+        'Sunday: Monday Night Brewing - Atlanta meets Birmingham'
+      ]
+    }
+    return schedules[state] || []
   }
-
-  const averageRating = beerReviews.length > 0 
-    ? (beerReviews.reduce((sum, beer) => sum + beer.rating, 0) / beerReviews.length).toFixed(1)
-    : '0.0'
-
-  const topBeer = beerReviews.length > 0
-    ? beerReviews.reduce((prev, current) => (prev.rating > current.rating) ? prev : current)
-    : null
 
   return (
     <Html>
@@ -57,58 +68,47 @@ export default function WeeklyDigestEmail({
       <Body style={main}>
         <Container style={container}>
           <Section style={header}>
-            <Img
-              src="https://www.hopharrison.com/images/hop-harrison-logo.png"
-              width="120"
-              height="40"
-              alt="Hop Harrison"
-              style={logo}
-            />
+            <Text style={logoText}>
+              🍺 BrewQuest Chronicles 🍺
+            </Text>
           </Section>
           
           <Section style={content}>
             <Heading style={heading}>
-              Week {weekNumber} Complete: {stateName} 🍺
+              Week {weekNumber}: {stateName} Beer Adventure 🍺
             </Heading>
             
             <Text style={text}>
-              Hey {subscriberName}! What an incredible week exploring {stateName}'s craft beer scene! 
-              We've discovered {breweryCount} amazing breweries and tasted some truly exceptional beers. 
-              Here's your complete recap of our {stateName} adventure.
+              Hey {subscriberName}! Welcome to Week {weekNumber} of our 50-state craft beer journey! 
+              This week we're exploring {stateName} - {stateName === 'Alabama' ? 'The Heart of Dixie' : 'an incredible craft beer destination'}. 
+              Get ready to discover what makes {stateName}'s brewing scene so special.
             </Text>
 
             {/* State Overview */}
             <Section style={statsBox}>
-              <Text style={statsTitle}>🗺️ {stateName} at a Glance</Text>
+              <Text style={statsTitle}>🗺️ Week {weekNumber}: {stateName}</Text>
               <Text style={statsText}>
-                <strong>Week {weekNumber} of 50</strong><br/>
-                📍 {breweryCount} Featured Breweries<br/>
-                🍺 {beerReviews.length} Beer Reviews<br/>
-                ⭐ Average Rating: {averageRating}/5
+                <strong>Journey Progress: {weekNumber}/50 States</strong><br/>
+                📍 7 Days of Brewery Discoveries<br/>
+                🍺 Daily Featured Beers<br/>
+                🏭 Local Craft Beer Culture
               </Text>
             </Section>
 
-            {/* Top Beer Highlight */}
-            {topBeer && (
-              <Section style={highlightBox}>
-                <Text style={highlightTitle}>🏆 Week's Top Beer</Text>
-                <Text style={highlightText}>
-                  <strong>{topBeer.beer_name}</strong><br/>
-                  {topBeer.brewery_name}<br/>
-                  {getStarRating(topBeer.rating)} {topBeer.rating}/5 • {topBeer.beer_style}
-                </Text>
-              </Section>
-            )}
+            {/* State Description */}
+            <Section style={highlightBox}>
+              <Text style={highlightTitle}>🍺 Discovering {stateName}</Text>
+              <Text style={highlightText}>
+                {getStateDescription(stateName)}
+              </Text>
+            </Section>
             
-            <Heading style={subHeading}>🍻 This Week's Beer Reviews</Heading>
+            <Heading style={subHeading}>📅 This Week's Brewery Schedule</Heading>
             
-            {beerReviews.map((beer, index) => (
+            {getWeeklySchedule(stateName).map((day, index) => (
               <Section key={index} style={beerCard}>
-                <Text style={beerDay}>{getDayName(beer.day_of_week)}</Text>
-                <Text style={beerName}>{beer.beer_name}</Text>
-                <Text style={breweryName}>{beer.brewery_name}</Text>
                 <Text style={beerDetails}>
-                  {getStarRating(beer.rating)} {beer.rating}/5 • {beer.beer_style} • {beer.abv}% ABV
+                  {day}
                 </Text>
               </Section>
             ))}
@@ -117,30 +117,35 @@ export default function WeeklyDigestEmail({
               Read Full {stateName} Reviews 📖
             </Button>
 
-            {/* Next Week Preview */}
-            {nextStateName && (
-              <Section style={nextWeekBox}>
-                <Text style={nextWeekTitle}>🗺️ Next Week: {nextStateName}!</Text>
-                <Text style={text}>
-                  Week {weekNumber + 1} begins now as we set our sights on {nextStateName}'s craft beer landscape. 
-                  I've been researching the breweries and can't wait to share what we discover together!
-                </Text>
-              </Section>
-            )}
+            {/* What Makes This State Special */}
+            <Section style={stateHighlights}>
+              <Text style={stateHighlightTitle}>🌟 What Makes {stateName} Beer Special</Text>
+              <Text style={text}>
+                {stateName === 'Alabama' ? (
+                  <>
+                    • <strong>Local Ingredients:</strong> Alabama brewers take advantage of local agriculture<br/>
+                    • <strong>Southern Innovation:</strong> Creating distinctly Southern interpretations of classic styles<br/>
+                    • <strong>Community Focus:</strong> Every brewery serves as a community gathering place
+                  </>
+                ) : (
+                  `Discover the unique characteristics that make ${stateName}'s craft beer scene extraordinary.`
+                )}
+              </Text>
+            </Section>
 
             {/* Interactive Map */}
             <Text style={text}>
-              Track our progress on the interactive journey map:
+              Follow our complete 50-state journey and see where we've been:
             </Text>
             
-            <Button style={secondaryButton} href="https://www.hopharrison.com/blog#interactive-map">
-              View Journey Map 🗺️
+            <Button style={secondaryButton} href="https://www.hopharrison.com/blog">
+              View Full Journey 🗺️
             </Button>
 
             <Text style={footerText}>
-              Thanks for joining me on this incredible beer journey!<br/>
+              Thanks for joining me on this incredible beer journey across America!<br/>
               Progress: {weekNumber}/50 states • {((weekNumber/50) * 100).toFixed(1)}% complete<br/>
-              🍻 Hop Harrison
+              🍻 Hop Harrison - BrewQuest Chronicles
             </Text>
           </Section>
           
@@ -170,8 +175,8 @@ export default function WeeklyDigestEmail({
 // Styles
 const main = { backgroundColor: '#FEF3C7', fontFamily: 'Inter, sans-serif' }
 const container = { margin: '0 auto', padding: '20px 0 48px', width: '600px' }
-const header = { padding: '20px 0' }
-const logo = { margin: '0 auto' }
+const header = { padding: '20px 0', textAlign: 'center' as const }
+const logoText = { fontSize: '24px', fontWeight: 'bold', color: '#78350F', textAlign: 'center' as const, margin: '0' }
 const content = { padding: '20px 32px' }
 const heading = { fontSize: '28px', fontWeight: 'bold', color: '#78350F', textAlign: 'center' as const }
 const subHeading = { fontSize: '22px', fontWeight: 'bold', color: '#78350F', marginTop: '32px', marginBottom: '16px' }
@@ -197,14 +202,14 @@ const highlightBox = {
 const highlightTitle = { fontSize: '18px', fontWeight: 'bold', color: '#ffffff', margin: '0 0 12px' }
 const highlightText = { fontSize: '16px', color: '#ffffff', margin: '0' }
 
-const nextWeekBox = {
-  backgroundColor: '#92400E',
+const stateHighlights = {
+  backgroundColor: '#ffffff',
+  border: '2px solid #F59E0B',
   padding: '20px',
   borderRadius: '8px',
-  margin: '24px 0',
-  textAlign: 'center' as const
+  margin: '24px 0'
 }
-const nextWeekTitle = { fontSize: '18px', fontWeight: 'bold', color: '#ffffff', margin: '0 0 12px' }
+const stateHighlightTitle = { fontSize: '18px', fontWeight: 'bold', color: '#78350F', margin: '0 0 12px' }
 
 const beerCard = {
   backgroundColor: '#ffffff',
