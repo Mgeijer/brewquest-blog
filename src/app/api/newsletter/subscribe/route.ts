@@ -15,13 +15,29 @@ export async function POST(request: Request) {
     // Add subscriber to database with additional metadata
     const subscriber = await emailService.addSubscriber(email, firstName, source)
     
+    // Get current state for response message
+    const supabase = createClient() 
+    const launchDate = new Date('2025-08-05T00:00:00.000Z')
+    const now = new Date()
+    let currentState = 'Alabama'
+    
+    if (now >= launchDate) {
+      const { data } = await supabase
+        .from('state_progress')
+        .select('state_name')
+        .eq('status', 'current')
+        .single()
+      currentState = data?.state_name || 'Alabama'
+    }
+    
     // Send welcome email
     await emailService.sendWelcomeEmail(subscriber)
     
     return Response.json({
       success: true,
       message: 'Welcome to BrewQuest Chronicles! Check your email for a welcome message.',
-      subscriberId: subscriber.id
+      subscriberId: subscriber.id,
+      currentState
     })
 
   } catch (error) {
