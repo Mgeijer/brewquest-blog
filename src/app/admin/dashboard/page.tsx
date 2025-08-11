@@ -173,8 +173,8 @@ export default function AdminDashboardPage() {
         <div className="mt-12 pt-8 border-t border-gray-200">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600">Week 1</div>
-              <div className="text-sm text-gray-600">Current State: Alabama</div>
+              <div className="text-2xl font-bold text-blue-600">Week 2</div>
+              <div className="text-sm text-gray-600">Current State: Alaska</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-green-600">

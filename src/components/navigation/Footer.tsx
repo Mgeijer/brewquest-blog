@@ -2,13 +2,47 @@
 
 import { Facebook, Instagram, Mail, MapPin, Twitter, Linkedin } from 'lucide-react'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
+interface CurrentState {
+  state_name: string
+  week_number: number
+}
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
   const [email, setEmail] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [message, setMessage] = useState('')
+  const [currentState, setCurrentState] = useState<CurrentState | null>(null)
+  const [completedCount, setCompletedCount] = useState(0)
+
+  useEffect(() => {
+    const fetchCurrentState = async () => {
+      try {
+        const response = await fetch('/api/states/progress?include_stats=true')
+        const data = await response.json()
+        
+        const current = data.states?.find((state: any) => state.status === 'current')
+        const completed = data.statistics?.completed_states || 0
+        
+        if (current) {
+          setCurrentState({
+            state_name: current.state_name,
+            week_number: current.week_number
+          })
+        }
+        setCompletedCount(completed)
+      } catch (error) {
+        console.error('Error fetching current state:', error)
+        // Fallback to default values
+        setCurrentState({ state_name: 'Alabama', week_number: 1 })
+        setCompletedCount(0)
+      }
+    }
+
+    fetchCurrentState()
+  }, [])
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -82,7 +116,12 @@ export default function Footer() {
             <div className="space-y-2 text-sm">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-beer-amber" />
-                <span>Currently exploring: Alabama (State 1 of 50)</span>
+                <span>
+                  {currentState ? 
+                    `Currently exploring: ${currentState.state_name} (State ${currentState.week_number} of 50)` :
+                    'Loading journey progress...'
+                  }
+                </span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-beer-amber" />

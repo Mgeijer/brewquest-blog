@@ -258,8 +258,8 @@ export async function getCurrentJourneyWeek() {
 
     if (error) {
       console.error('Error getting current journey week:', error)
-      // Fallback calculation
-      const startDate = new Date('2024-01-01')
+      // Fallback calculation - BrewQuest started August 5, 2025
+      const startDate = new Date('2025-08-05')
       const now = new Date()
       const weeksDiff = Math.ceil((now.getTime() - startDate.getTime()) / (7 * 24 * 60 * 60 * 1000))
       return { data: Math.max(1, Math.min(50, weeksDiff)), error: null }
@@ -268,7 +268,11 @@ export async function getCurrentJourneyWeek() {
     return { data: data as number, error: null }
   } catch (err) {
     console.error('Exception in getCurrentJourneyWeek:', err)
-    return { data: 1, error: err }
+    // Fallback calculation - BrewQuest started August 5, 2025
+    const startDate = new Date('2025-08-05')
+    const now = new Date()
+    const weeksDiff = Math.ceil((now.getTime() - startDate.getTime()) / (7 * 24 * 60 * 60 * 1000))
+    return { data: Math.max(1, Math.min(50, weeksDiff)), error: err }
   }
 }
 

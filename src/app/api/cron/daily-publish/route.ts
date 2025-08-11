@@ -226,7 +226,7 @@ ${beer.tasting_notes || 'A perfect example of ' + state.state_name + ' craft bre
 
 Join our 50-state beer journey! Link in bio ⬆️
 
-#${state.state_name.replace(/\s+/g, '')}Beer #CraftBeer #${beer.beer_style.replace(/\s+/g, '')} #BrewQuestChronicles #HopHarrison #Week${state.week_number} #Day${beer.day_of_week}
+#${state.state_name.replace(/\s+/g, '')}Beer #CraftBeer #${beer.beer_style.replace(/\s+/g, '')} #BrewQuestChronicles #HopHarrison #Week${state.week_number} #Day${beer.day_of_week} #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 📍 ${beer.brewery_name}, ${state.state_name}`
 }

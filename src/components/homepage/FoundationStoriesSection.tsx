@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Clock, ArrowRight, Calendar, User } from 'lucide-react'
 import { foundationStories } from '@/data/foundationStories'
-import AlabamaLaunchSection from './AlabamaLaunchSection'
+import CurrentStateSection from './CurrentStateSection'
 
 export default function FoundationStoriesSection() {
   // Get the 3 most recent foundation stories for main display
@@ -111,8 +111,8 @@ export default function FoundationStoriesSection() {
         </div>
       </section>
 
-      {/* Alabama Launch Section */}
-      <AlabamaLaunchSection />
+      {/* Current State Section */}
+      <CurrentStateSection />
 
       {/* Additional Stories Teaser */}
       {additionalStories.length > 0 && (

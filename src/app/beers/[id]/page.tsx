@@ -14,6 +14,7 @@ export default function BeerReviewPage() {
   const [beer, setBeer] = useState<BeerReview | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [stateName, setStateName] = useState('')
+  const [weekNumber, setWeekNumber] = useState(1)
 
   // Get the beer ID from params
   const beerId = typeof params?.id === 'string' ? params.id : Array.isArray(params?.id) ? params.id[0] : null
@@ -46,6 +47,7 @@ export default function BeerReviewPage() {
         if (foundBeer) {
           setBeer(foundBeer)
           setStateName(localStateData.name)
+          setWeekNumber(localStateData.weekNumber || 1)
           console.log('✅ Beer loaded successfully:', foundBeer.name)
         } else {
           console.error('❌ Beer not found with ID:', beerId)
@@ -173,7 +175,7 @@ export default function BeerReviewPage() {
                 </div>
                 <div className="flex items-center gap-1">
                   <Calendar className="w-4 h-4" />
-                  Week 1
+                  Week {weekNumber}
                 </div>
               </div>
             </div>

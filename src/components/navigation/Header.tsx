@@ -19,8 +19,22 @@ export default function Header() {
   const pathname = usePathname()
 
   useEffect(() => {
-    // Set to Week 1 for Alabama's journey
-    setCurrentWeek(1)
+    // Fetch current week dynamically
+    const fetchCurrentWeek = async () => {
+      try {
+        const response = await fetch('/api/states/progress')
+        const data = await response.json()
+        const current = data.states?.find((state: any) => state.status === 'current')
+        if (current) {
+          setCurrentWeek(current.week_number)
+        }
+      } catch (error) {
+        console.error('Error fetching current week:', error)
+        setCurrentWeek(1) // Fallback
+      }
+    }
+    
+    fetchCurrentWeek()
   }, [])
 
   // Close mobile menu when clicking outside

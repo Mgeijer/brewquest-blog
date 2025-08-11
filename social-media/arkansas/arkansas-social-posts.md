@@ -130,7 +130,7 @@ Perfect for: Celebrating achievements, introducing friends to Belgian styles, pr
 
 Discover Arkansas's brewing excellence: www.hopharrison.com/states/arkansas
 
-#LostForty #DayDrinker #BelgianBlonde #GABFGold #LittleRock #ArkansasCraft #NaturalState #Week4 #BrewQuestChronicles #GoldMedal #SouthernBrewing
+#LostForty #DayDrinker #BelgianBlonde #GABFGold #LittleRock #ArkansasCraft #NaturalState #Week4 #BrewQuestChronicles #GoldMedal #SouthernBrewing #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 **Twitter/X Post:**
 🏆 WEEK 4: ARKANSAS! 🍺
@@ -170,7 +170,7 @@ Perfect for: Special occasions, dessert course, sharing with fellow beer enthusi
 
 Experience Arkansas's barrel-aging mastery: www.hopharrison.com/states/arkansas
 
-#OzarkBeer #BDCS #BarrelAged #ImperialStout #Rogers #OzarkMountains #BourbonBarrel #ArkansasCraft #Week4 #BrewQuestChronicles #ArkansasBarrels
+#OzarkBeer #BDCS #BarrelAged #ImperialStout #Rogers #OzarkMountains #BourbonBarrel #ArkansasCraft #Week4 #BrewQuestChronicles #ArkansasBarrels #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 **Twitter/X Post:**
 🥃 Day 2: Ozark BDCS - Bourbon barrel-aged imperial stout excellence! 10.0% ABV of Arkansas sophistication using pristine Ozark Mountain water. This is serious barrel-aging artistry!
@@ -208,7 +208,7 @@ Perfect for: Cool Ozark evenings, pairing with hearty Arkansas BBQ, introducing 
 
 Taste Arkansas's Belgian mastery: www.hopharrison.com/states/arkansas
 
-#FossilCove #LaBreaBrown #BelgianBrown #Fayetteville #OzarkMountains #BelgianStyle #ArkansasCraft #Week4 #BrewQuestChronicles #OzarkBrewing
+#FossilCove #LaBreaBrown #BelgianBrown #Fayetteville #OzarkMountains #BelgianStyle #ArkansasCraft #Week4 #BrewQuestChronicles #OzarkBrewing #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 **Twitter/X Post:**
 🏔️ Day 3: Fossil Cove La Brea Brown - Belgian-style brown ale from the Ozarks! European tradition meets Arkansas character in this 6.0% ABV comfort beer with sophistication.
@@ -284,7 +284,7 @@ Perfect for: Friday night celebrations, Arkansas pride moments, supporting brewi
 
 Salute Arkansas brewing heritage: www.hopharrison.com/states/arkansas
 
-#DiamondBear #PresidentialIPA #NorthLittleRock #ArkansasHistory #BrewingPioneers #AmericanIPA #ArkansasCraft #Week4 #BrewQuestChronicles #FridayIPA
+#DiamondBear #PresidentialIPA #NorthLittleRock #ArkansasHistory #BrewingPioneers #AmericanIPA #ArkansasCraft #Week4 #BrewQuestChronicles #FridayIPA #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 **Twitter/X Post:**
 🦅 Day 5: Diamond Bear Presidential IPA - Arkansas brewing royalty! Historic North Little Rock brewery's 6.2% ABV flagship represents decades of Arkansas craft beer heritage. Presidential quality earned through excellence!
@@ -322,7 +322,7 @@ Perfect for: Saturday afternoon relaxation, Arkansas berry season, pairing with 
 
 Taste Arkansas's berry brewing mastery: www.hopharrison.com/states/arkansas
 
-#Flyway #BluewingBerry #WheatBeer #NorthLittleRock #ArkansasBerries #FruitBeer #ArkansasCraft #Week4 #BrewQuestChronicles #BerryBrewing
+#Flyway #BluewingBerry #WheatBeer #NorthLittleRock #ArkansasBerries #FruitBeer #ArkansasCraft #Week4 #BrewQuestChronicles #BerryBrewing #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 **Twitter/X Post:**
 🫐 Day 6: Flyway Bluewing Berry Wheat - Arkansas berry perfection! 4.9% ABV award-winning wheat beer showcasing natural Arkansas fruit flavors. This is how you honor local ingredients!

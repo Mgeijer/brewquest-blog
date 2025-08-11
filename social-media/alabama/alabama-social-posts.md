@@ -102,7 +102,7 @@ Founded in 2008 in Birmingham, Good People proved Alabama was ready for bold, fl
 
 www.hopharrison.com/blog/alabama
 
-#CraftBeer #AlabamaBeer #GoodPeopleBrewing #BirminghamEats #AlabamaIPA #BrewQuestChronicles #HopHarrison #Day1
+#CraftBeer #AlabamaBeer #GoodPeopleBrewing #BirminghamEats #AlabamaIPA #BrewQuestChronicles #HopHarrison #Day1 #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 [Character count: 419/280]
 ```
@@ -134,7 +134,7 @@ Huntsville's authentic European brewing techniques meet Southern hospitality sin
 
 www.hopharrison.com/blog/alabama
 
-#CraftBeer #AlabamaBeer #YellowhammerBrewing #BelgianBeer #HuntsvilleEats #BrewQuestChronicles #HopHarrison #Day2
+#CraftBeer #AlabamaBeer #YellowhammerBrewing #BelgianBeer #HuntsvilleEats #BrewQuestChronicles #HopHarrison #Day2 #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 [Character count: 414/280]
 ```
@@ -166,7 +166,7 @@ Birmingham's river-inspired brewery creating perfect outdoor adventure beers sin
 
 www.hopharrison.com/blog/alabama
 
-#CraftBeer #AlabamaBeer #CahabaBrewing #BirminghamEats #CahabaRiver #OutdoorBeer #BrewQuestChronicles #HopHarrison #Day3
+#CraftBeer #AlabamaBeer #CahabaBrewing #BirminghamEats #CahabaRiver #OutdoorBeer #BrewQuestChronicles #HopHarrison #Day3 #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 [Character count: 438/280]
 ```
@@ -198,7 +198,7 @@ Birmingham's innovative sour beer specialists pushing the boundaries since 2014.
 
 www.hopharrison.com/blog/alabama
 
-#CraftBeer #AlabamaBeer #TrimTabBrewing #SourBeer #BerlinerWeisse #BirminghamEats #Innovation #BrewQuestChronicles #HopHarrison #Day4
+#CraftBeer #AlabamaBeer #TrimTabBrewing #SourBeer #BerlinerWeisse #BirminghamEats #Innovation #BrewQuestChronicles #HopHarrison #Day4 #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 [Character count: 424/280]
 ```
@@ -230,7 +230,7 @@ Historic Avondale district Birmingham brewery bringing old-world techniques to A
 
 www.hopharrison.com/blog/alabama
 
-#CraftBeer #AlabamaBeer #AvondaleBrewing #BelgianTripel #BirminghamEats #OldWorld #BrewQuestChronicles #HopHarrison #Day5
+#CraftBeer #AlabamaBeer #AvondaleBrewing #BelgianTripel #BirminghamEats #OldWorld #BrewQuestChronicles #HopHarrison #Day5 #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 [Character count: 431/280]
 ```
@@ -262,7 +262,7 @@ Gadsden-based brewery showcasing aggressive American hop character since 2009.
 
 www.hopharrison.com/blog/alabama
 
-#CraftBeer #AlabamaBeer #BackFortyBeer #DoubleIPA #DIPA #GadsdenEats #HopForward #BrewQuestChronicles #HopHarrison #Day6
+#CraftBeer #AlabamaBeer #BackFortyBeer #DoubleIPA #DIPA #GadsdenEats #HopForward #BrewQuestChronicles #HopHarrison #Day6 #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 [Character count: 417/280]
 ```
@@ -294,7 +294,7 @@ Atlanta brewery's Birmingham location bringing social atmosphere and bold beers 
 
 www.hopharrison.com/blog/alabama
 
-#CraftBeer #AlabamaBeer #MondayNightBrewing #ImperialStout #BirminghamEats #BoldBeer #BrewQuestChronicles #HopHarrison #Day7
+#CraftBeer #AlabamaBeer #MondayNightBrewing #ImperialStout #BirminghamEats #BoldBeer #BrewQuestChronicles #HopHarrison #Day7 #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 [Character count: 439/280]
 ```

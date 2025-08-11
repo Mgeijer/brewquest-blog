@@ -130,7 +130,7 @@ Perfect for: Understanding craft beer history, introducing newcomers to craft br
 
 Discover California's brewing foundation: www.hopharrison.com/states/california
 
-#SierraNevada #PaleAle #Chico #CaliforniaCraft #GoldenState #Week5 #BrewQuestChronicles #CraftBeerHistory #AmericanPaleAle #KenGrossman
+#SierraNevada #PaleAle #Chico #CaliforniaCraft #GoldenState #Week5 #BrewQuestChronicles #CraftBeerHistory #AmericanPaleAle #KenGrossman #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 **Twitter/X Post:**
 🏆 WEEK 5: CALIFORNIA! 🍺
@@ -170,7 +170,7 @@ Perfect for: IPA lovers, hop heads, celebrating brewing rebellion, or understand
 
 Experience San Diego's hop revolution: www.hopharrison.com/states/california
 
-#StoneBrewing #StoneIPA #Escondido #SanDiego #AggressiveHops #CaliforniaCraft #Week5 #BrewQuestChronicles #IPARevolution #HopArmsRace
+#StoneBrewing #StoneIPA #Escondido #SanDiego #AggressiveHops #CaliforniaCraft #Week5 #BrewQuestChronicles #IPARevolution #HopArmsRace #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 **Twitter/X Post:**
 🔥 Day 2: Stone IPA - San Diego's aggressive hop revolution! 6.9% ABV of unapologetic hop character that launched the American IPA arms race. No subtlety, no apologies!
@@ -208,7 +208,7 @@ Perfect for: Beer pilgrims, DIPA enthusiasts, celebrating brewing artistry, or u
 
 Taste California's brewing legend: www.hopharrison.com/states/california
 
-#RussianRiver #PlinyTheElder #SantaRosa #DoubleIPA #DIPA #SonomaCounty #CaliforniaCraft #Week5 #BrewQuestChronicles #BeerLegend #CraftBeerPilgrimage
+#RussianRiver #PlinyTheElder #SantaRosa #DoubleIPA #DIPA #SonomaCounty #CaliforniaCraft #Week5 #BrewQuestChronicles #BeerLegend #CraftBeerPilgrimage #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 **Twitter/X Post:**
 👑 Day 3: Russian River Pliny the Elder - The Double IPA that created an entire style category! 8.0% ABV of legendary balance from Sonoma wine country. Beer pilgrimage destination!
@@ -246,7 +246,7 @@ Perfect for: Coffee lovers, imperial stout enthusiasts, cold San Diego evenings,
 
 Experience San Diego's dark side excellence: www.hopharrison.com/states/california
 
-#AleSmith #SpeedwayStout #SanDiego #ImperialStout #CoffeeStout #CaliforniaCraft #Week5 #BrewQuestChronicles #GABFMedal #CoffeeAndBeer
+#AleSmith #SpeedwayStout #SanDiego #ImperialStout #CoffeeStout #CaliforniaCraft #Week5 #BrewQuestChronicles #GABFMedal #CoffeeAndBeer #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 **Twitter/X Post:**
 ☕ Day 4: AleSmith Speedway Stout - Imperial coffee stout excellence! 12.0% ABV of San Diego sophistication where premium coffee meets world-class imperial stout brewing. GABF medal perfection!
@@ -284,7 +284,7 @@ Perfect for: California living, beach days, BBQs, introducing friends to craft b
 
 Live the California craft beer lifestyle: www.hopharrison.com/states/california
 
-#FirestoneWalker #805Beer #PasoRobles #CentralCoast #BlondeAle #CaliforniaLifestyle #Week5 #BrewQuestChronicles #CaliforniaNumber1 #BeachBeer
+#FirestoneWalker #805Beer #PasoRobles #CentralCoast #BlondeAle #CaliforniaLifestyle #Week5 #BrewQuestChronicles #CaliforniaNumber1 #BeachBeer #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 **Twitter/X Post:**
 🌊 Day 5: Firestone Walker 805 - California's #1 craft brand! 4.7% ABV blonde ale that conquered the Golden State one beach at a time. Central Coast perfection for California living!
@@ -322,7 +322,7 @@ Perfect for: IPA lovers, Bay Area pride, celebrating innovation, weekend relaxat
 
 Taste Bay Area hop innovation: www.hopharrison.com/states/california
 
-#Lagunitas #LagunitasIPA #Petaluma #BayArea #NorthernCalifornia #WestCoastIPA #CaliforniaCraft #Week5 #BrewQuestChronicles #BayAreaBrewing #HopInnovation
+#Lagunitas #LagunitasIPA #Petaluma #BayArea #NorthernCalifornia #WestCoastIPA #CaliforniaCraft #Week5 #BrewQuestChronicles #BayAreaBrewing #HopInnovation #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 **Twitter/X Post:**
 🌉 Day 6: Lagunitas IPA - Bay Area hop innovation since 1993! 6.2% ABV of Northern California irreverence that helped define West Coast IPA style. From Petaluma to the world!
@@ -360,7 +360,7 @@ Perfect for: Imperial stout lovers, cold coastal evenings, celebrating Californi
 
 Experience California's dark beer excellence: www.hopharrison.com/states/california
 
-#NorthCoast #OldRasputin #RussianImperialStout #FortBragg #MendocinoCoast #Week5Complete #CaliforniaDone #ImperialStout #Week5Finale #BrewQuestChronicles #WhatsNext
+#NorthCoast #OldRasputin #RussianImperialStout #FortBragg #MendocinoCoast #Week5Complete #CaliforniaDone #ImperialStout #Week5Finale #BrewQuestChronicles #WhatsNext #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 **Twitter/X Post:**
 🖤 Day 7 FINALE: North Coast Old Rasputin - Russian Imperial Stout benchmark! 9.0% ABV from Mendocino Coast that set the American standard. WEEK 5 COMPLETE! 

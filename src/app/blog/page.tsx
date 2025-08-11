@@ -178,10 +178,10 @@ function BlogContent() {
     ? currentState?.featuredBeers.filter(beer => beer.dayOfWeek === 1) || [] // Only Monday
     : currentState?.featuredBeers.filter(beer => beer.dayOfWeek <= currentDay) || [] // Normal progression
   
-  // If no specific query parameters, show Alabama weekly content by default
-  const shouldShowAlabamaByDefault = !category && !featured && selectedState === 'All States'
+  // If no specific query parameters, show current state weekly content by default
+  const shouldShowCurrentStateByDefault = !category && !featured && selectedState === 'All States'
 
-  // Handle anchor scrolling for interactive map (moved after shouldShowAlabamaByDefault definition)
+  // Handle anchor scrolling for interactive map (moved after shouldShowCurrentStateByDefault definition)
   useEffect(() => {
     // Check if URL contains hash and scroll to element
     const hash = window.location.hash
@@ -210,7 +210,7 @@ function BlogContent() {
         }, 300)
       }
     }
-  }, [shouldShowAlabamaByDefault, isLoadingState]) // Re-run when content changes
+  }, [shouldShowCurrentStateByDefault, isLoadingState]) // Re-run when content changes
   
   // Get content based on category
   const getBreweryStories = () => {
@@ -320,9 +320,9 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
   // Filter blog posts and handle special categories
   let filteredPosts = blogPosts
   
-  // Show Alabama content by default when no filters applied
-  if (shouldShowAlabamaByDefault) {
-    // Return empty array to show Alabama beer content instead of old blog posts
+  // Show current state content by default when no filters applied
+  if (shouldShowCurrentStateByDefault) {
+    // Return empty array to show current state beer content instead of old blog posts
     filteredPosts = []
   } else if (isShowingBreweryStories) {
     // Show brewery stories for current state
@@ -365,7 +365,7 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
     if (isShowingBreweryStories) return 'Brewery Stories'
     if (isShowingLocalCulture) return 'Local Culture'
     if (isShowingFeatured) return 'Featured Posts'
-    if (shouldShowAlabamaByDefault) return 'Current State: Alabama Beer Reviews'
+    if (shouldShowCurrentStateByDefault) return `Current State: ${currentState?.name || 'Loading'} Beer Reviews`
     return 'The Beer Blog'
   }
 
@@ -374,17 +374,17 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
     if (isShowingBreweryStories) return 'Behind every great beer is an incredible story - meet the brewers and discover their passion'
     if (isShowingLocalCulture) return 'Explore how craft beer shapes and reflects the local culture of America\'s communities'
     if (isShowingFeatured) return 'Our most popular and recommended brewery discoveries'
-    if (shouldShowAlabamaByDefault) return 'Discover exceptional craft beers from Alabama - our current state exploration'
+    if (shouldShowCurrentStateByDefault) return `Discover exceptional craft beers from ${currentState?.name || 'our current state'} - our current state exploration`
     return 'Join Hop Harrison on his journey to discover America\'s best craft beers, one state at a time'
   }
 
   const getItemCount = () => {
-    if (isShowingBeerReviews || shouldShowAlabamaByDefault) return beerReviews.length
+    if (isShowingBeerReviews || shouldShowCurrentStateByDefault) return beerReviews.length
     return filteredPosts.length
   }
 
   const getItemType = () => {
-    if (isShowingBeerReviews || shouldShowAlabamaByDefault) return beerReviews.length === 1 ? 'beer review' : 'beer reviews'
+    if (isShowingBeerReviews || shouldShowCurrentStateByDefault) return beerReviews.length === 1 ? 'beer review' : 'beer reviews'
     return filteredPosts.length === 1 ? 'post' : 'posts'
   }
 
@@ -405,8 +405,8 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Alabama Weekly Content - Show prominently on main blog page */}
-        {shouldShowAlabamaByDefault && (
+        {/* Current State Weekly Content - Show prominently on main blog page */}
+        {shouldShowCurrentStateByDefault && (
           <>
             {/* Loading State */}
             {isLoadingState && (
@@ -570,7 +570,7 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
         )}
 
         {/* Category-specific content */}
-        {!shouldShowAlabamaByDefault && (
+        {!shouldShowCurrentStateByDefault && (
           <>
             {/* Filters - Only show for blog posts, not beer reviews or default Alabama view */}
             {!isShowingBeerReviews && (
@@ -619,7 +619,7 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
         )}
         
         {/* Show count for beer reviews and default Alabama view */}
-        {(isShowingBeerReviews || shouldShowAlabamaByDefault) && (
+        {(isShowingBeerReviews || shouldShowCurrentStateByDefault) && (
           <div className="mb-8 text-center">
             <span className="text-lg text-gray-600">
               Showing {getItemCount()} {getItemType()} from {currentState?.name || 'current state'}
@@ -629,7 +629,7 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
 
         {/* Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {(isShowingBeerReviews || shouldShowAlabamaByDefault) ? (
+          {(isShowingBeerReviews || shouldShowCurrentStateByDefault) ? (
             beerReviews.map((review) => {
               // Get brewery story based on brewery name
               const getBreweryStory = (breweryName: string): string => {
@@ -683,7 +683,7 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
         {getItemCount() === 0 && (
           <div className="text-center py-12">
             <p className="text-gray-600 text-lg">
-              {(isShowingBeerReviews || shouldShowAlabamaByDefault)
+              {(isShowingBeerReviews || shouldShowCurrentStateByDefault)
                 ? 'No beer reviews available yet. Check back soon!' 
                 : 'No blog posts found with the selected filters.'
               }
@@ -694,7 +694,7 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
         )}
 
         {/* Load More Button - Only for blog posts */}
-        {!isShowingBeerReviews && !shouldShowAlabamaByDefault && filteredPosts.length > 0 && (
+        {!isShowingBeerReviews && !shouldShowCurrentStateByDefault && filteredPosts.length > 0 && (
           <div className="text-center">
             <button className="bg-beer-amber hover:bg-beer-gold text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg">
               Load More Posts
@@ -703,7 +703,7 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
         )}
 
         {/* Pagination Alternative - Only for blog posts */}
-        {!isShowingBeerReviews && !shouldShowAlabamaByDefault && filteredPosts.length > 0 && (
+        {!isShowingBeerReviews && !shouldShowCurrentStateByDefault && filteredPosts.length > 0 && (
           <div className="mt-8 flex justify-center">
             <div className="flex items-center space-x-2">
               <button className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-beer-cream transition-colors text-beer-dark font-medium">

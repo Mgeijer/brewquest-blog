@@ -13,8 +13,9 @@ export class SocialMediaContentGenerator {
     const baseHashtags = ['CraftBeer', 'BrewQuestChronicles', 'HopHarrison'];
     const stateHashtags = [`${state}Beer`, `${state}Brewing`, `${state}CraftBeer`];
     const themeHashtags = this.getThemeHashtags(theme);
+    const trendingHashtags = ['craftbeerlife', 'beertography', 'supportlocal', 'drinkcraft', 'craftbeernotcrapbeer'];
     
-    return [...baseHashtags, ...stateHashtags, ...themeHashtags].slice(0, 30);
+    return [...baseHashtags, ...stateHashtags, ...themeHashtags, ...trendingHashtags].slice(0, 30);
   }
 
   private generateTwitterHashtags(state: string, theme: string): string[] {
