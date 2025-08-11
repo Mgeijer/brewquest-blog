@@ -425,28 +425,28 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
                 <div className="flex items-center gap-3 mb-4">
                   <WeekIndicator weekNumber={currentState?.weekNumber || 1} size="large" />
                   <div>
-                    <h2 className="text-2xl font-bold text-beer-dark">Alabama's Craft Beer Renaissance</h2>
-                    <p className="text-beer-malt">Currently exploring the Heart of Dixie's brewing scene</p>
+                    <h2 className="text-2xl font-bold text-beer-dark">{currentState?.name}'s Last Frontier Brewing</h2>
+                    <p className="text-beer-malt">Currently exploring {currentState?.description}</p>
                   </div>
                 </div>
                 
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <img 
-                      src="/images/Craft-Brewery-Landscape.png" 
-                      alt="Alabama Craft Beer Scene" 
+                      src={currentState?.heroImage || "/images/Craft-Brewery-Landscape.png"} 
+                      alt={`${currentState?.name} Craft Beer Scene`} 
                       className="w-full h-48 object-cover rounded-lg"
                     />
                   </div>
                   <div>
                     <p className="text-gray-700 mb-4">
-                      This week, we're diving deep into Alabama's surprising and vibrant craft beer scene. 
-                      From Birmingham's urban brewing culture to Mobile's coastal flavors, the Heart of Dixie 
-                      has quietly built one of the South's most authentic and innovative brewing communities.
+                      This week, we're diving deep into {currentState?.name}'s thriving craft beer scene. 
+                      From pristine glacial waters to midnight sun innovation, {currentState?.name} 
+                      has built one of America's most distinctive and innovative brewing communities.
                     </p>
                     <div className="flex gap-4 text-sm">
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-beer-amber">45</div>
+                        <div className="text-2xl font-bold text-beer-amber">{currentState?.totalBreweries || 0}</div>
                         <div className="text-gray-600">Breweries</div>
                       </div>
                       <div className="text-center">
@@ -454,7 +454,7 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
                         <div className="text-gray-600">Featured Beers</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-beer-amber">0.9</div>
+                        <div className="text-2xl font-bold text-beer-amber">{currentState?.breweryDensity || 0}</div>
                         <div className="text-gray-600">Per 100k People</div>
                       </div>
                     </div>
@@ -463,7 +463,7 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
                 
                 <div className="flex gap-3">
                   <a 
-                    href="/states/alabama"
+                    href={`/states/${currentState?.code.toLowerCase()}`}
                     className="bg-beer-amber text-white px-6 py-3 rounded-lg hover:bg-beer-gold transition-colors font-medium"
                   >
                     Read Full Weekly Journey
@@ -514,7 +514,7 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
               </div>
               <div className="text-center mt-6">
                 <a 
-                  href="/states/alabama"
+                  href={`/states/${currentState?.code.toLowerCase()}`}
                   className="text-beer-amber hover:text-beer-gold font-medium"
                 >
                   View All 7 Beers →

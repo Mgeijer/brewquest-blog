@@ -36,7 +36,7 @@ export const stateProgressData: StateData[] = [
   {
     code: 'AL',
     name: 'Alabama',
-    status: 'current',
+    status: 'completed',
     weekNumber: 1,
     featuredBeers: [
       {
@@ -145,17 +145,109 @@ export const stateProgressData: StateData[] = [
   {
     code: 'AK',
     name: 'Alaska',
-    status: 'upcoming',
+    status: 'current',
     weekNumber: 2,
-    featuredBeers: [], // TODO: Research 7 authentic Alaska craft beers
+    featuredBeers: [
+      {
+        id: 'ak-01',
+        name: 'Alaskan Amber',
+        brewery: 'Alaskan Brewing Company',
+        style: 'American Amber Ale',
+        abv: 5.3,
+        ibu: 18,
+        description: "Based on a Gold Rush-era recipe discovered in historical records, this flagship amber uses traditional Bohemian Saaz hops for a perfectly balanced malt-forward experience.",
+        tastingNotes: 'Rich amber color with caramel sweetness, toasted malt flavors balanced by floral hop character, smooth finish with lingering warmth.',
+        rating: 4,
+        dayOfWeek: 1,
+        imageUrl: '/images/Beer images/Alaska/Alaskan Amber.png'
+      },
+      {
+        id: 'ak-02',
+        name: 'Sockeye Red IPA',
+        brewery: 'Midnight Sun Brewing',
+        style: 'Red IPA',
+        abv: 5.7,
+        ibu: 50,
+        description: "Bold Pacific Northwest-style IPA with distinctive red hue from specialty malts. Aggressively hopped with Centennial, Cascade, and Simcoe varieties.",
+        tastingNotes: 'Deep copper color, citrus and pine hop aroma, caramel malt backbone balances intense hop bitterness, clean dry finish.',
+        rating: 4.5,
+        dayOfWeek: 2,
+        imageUrl: '/images/Beer images/Alaska/Sockeye-Red.png'
+      },
+      {
+        id: 'ak-03',
+        name: 'Chocolate Coconut Porter',
+        brewery: 'King Street Brewing',
+        style: 'Flavored Porter',
+        abv: 6.0,
+        ibu: 35,
+        description: "Robust porter infused with cacao nibs and hand-toasted coconut, creating a smooth, velvety texture with tropical undertones.",
+        tastingNotes: 'Dark brown color, chocolate and coconut aroma, smooth mouthfeel with rich chocolate flavors, subtle coconut finish.',
+        rating: 4,
+        dayOfWeek: 3,
+        imageUrl: '/images/Beer images/Alaska/Chocolate Coconut Porter.jpeg'
+      },
+      {
+        id: 'ak-04',
+        name: 'Belgian Triple',
+        brewery: 'Cynosure Brewing',
+        style: 'Belgian Tripel',
+        abv: 9.7,
+        ibu: 25,
+        description: "Deceptively smooth despite its strength, featuring subtle spice and fruit tones with pale gold appearance and complex Belgian yeast character.",
+        tastingNotes: 'Golden color with white head, spicy phenolic aroma, fruity esters balanced by warming alcohol, dry crisp finish.',
+        rating: 4.5,
+        dayOfWeek: 4,
+        imageUrl: '/images/Beer images/Alaska/Belgian Triple.jpeg'
+      },
+      {
+        id: 'ak-05',
+        name: 'New England IPA',
+        brewery: 'Resolution Brewing',
+        style: 'New England IPA',
+        abv: 6.2,
+        ibu: 40,
+        description: "Soft, luscious mouthfeel with Citra, El Dorado, and Mosaic hops creating notes of mango creamcicle and pineapple. Double dry-hopped perfection.",
+        tastingNotes: 'Hazy golden appearance, tropical fruit aroma, creamy texture with mango and pineapple flavors, smooth low bitterness.',
+        rating: 4.5,
+        dayOfWeek: 5,
+        imageUrl: '/images/Beer images/Alaska/A deal with the devil.jpg'
+      },
+      {
+        id: 'ak-06',
+        name: 'German Kölsch',
+        brewery: 'HooDoo Brewing',
+        style: 'Kölsch',
+        abv: 4.8,
+        ibu: 20,
+        description: "Authentic German-style Kölsch brewed with traditional techniques in Alaska's interior. Light, crisp, and refreshing with subtle fruit notes.",
+        tastingNotes: 'Pale golden color, clean grainy aroma, light body with subtle sweetness, crisp finish with delicate hop presence.',
+        rating: 4,
+        dayOfWeek: 6,
+        imageUrl: '/images/Beer images/Alaska/HooDoo-German Kolsch.jpg'
+      },
+      {
+        id: 'ak-07',
+        name: 'Pipeline Stout',
+        brewery: 'Broken Tooth Brewing',
+        style: 'Imperial Stout',
+        abv: 5.9,
+        ibu: 42,
+        description: "Rich, full-bodied stout with notes of coffee and dark chocolate. Brewed with Alaska's pristine glacier water for exceptional smoothness.",
+        tastingNotes: 'Dark black color, coffee and chocolate aroma, medium body with roasted malt character, smooth finish with balanced bitterness.',
+        rating: 4,
+        dayOfWeek: 7,
+        imageUrl: '/images/Beer images/Alaska/Pipeline Stout.jpeg'
+      }
+    ],
     blogPostSlug: 'alaska-craft-beer-journey',
-    heroImage: '/images/alaska-hero.jpg',
+    heroImage: '/images/State Images/Alaska.png',
     description: 'Last frontier brewing with glacier water and midnight sun innovation.',
-    totalBreweries: 35,
+    totalBreweries: 49,
     region: 'west',
     capital: 'Juneau',
     population: 733391,
-    breweryDensity: 4.8
+    breweryDensity: 6.7
   },
 
   // Week 3: Arizona
