@@ -34,7 +34,7 @@ const alaskaBeers = [
     style: 'Red IPA',
     abv: 5.7,
     description: 'Bold Pacific Northwest-style IPA with distinctive red hue from specialty malts. Aggressively hopped with Centennial, Cascade, and Simcoe varieties.',
-    image: '/images/Beer images/Alaska/Sockeye Red IPA.png',
+    image: '/images/Beer images/Alaska/Sockeye-Red.png',
     featured: true
   },
   {
@@ -45,7 +45,7 @@ const alaskaBeers = [
     style: 'Flavored Porter',
     abv: 6.0,
     description: 'Robust porter infused with cacao nibs and hand-toasted coconut, creating a smooth, velvety texture with tropical undertones.',
-    image: '/images/Beer images/Alaska/Chocolate Coconut Porter.png',
+    image: '/images/Beer images/Alaska/Chocolate Coconut Porter.jpeg',
     featured: true
   },
   {
@@ -56,7 +56,7 @@ const alaskaBeers = [
     style: 'Belgian Tripel',
     abv: 9.7,
     description: 'Deceptively smooth despite its strength, featuring subtle spice and fruit tones with pale gold appearance and complex Belgian yeast character.',
-    image: '/images/Beer images/Alaska/Belgian Triple.png',
+    image: '/images/Beer images/Alaska/Belgian Triple.jpeg',
     featured: true
   },
   {
@@ -67,7 +67,7 @@ const alaskaBeers = [
     style: 'New England IPA',
     abv: 6.2,
     description: 'Soft, luscious mouthfeel with Citra, El Dorado, and Mosaic hops creating notes of mango creamsicle and pineapple. Double dry-hopped perfection.',
-    image: '/images/Beer images/Alaska/New England IPA.png',
+    image: '/images/Beer images/Alaska/A deal with the devil.jpg',
     featured: true
   },
   {
@@ -78,7 +78,7 @@ const alaskaBeers = [
     style: 'Kölsch',
     abv: 4.8,
     description: 'Authentic German-style Kölsch brewed with traditional techniques in Alaska\'s interior. Light, crisp, and refreshing with subtle fruit notes.',
-    image: '/images/Beer images/Alaska/German Kolsch.png',
+    image: '/images/Beer images/Alaska/HooDoo-German Kolsch.jpg',
     featured: true
   },
   {
@@ -89,7 +89,7 @@ const alaskaBeers = [
     style: 'Oatmeal Stout',
     abv: 5.9,
     description: 'Full-bodied oatmeal stout with smooth, creamy texture. Roasted malt character with hints of chocolate and coffee, perfect with their famous pizza.',
-    image: '/images/Beer images/Alaska/Pipeline Stout.png',
+    image: '/images/Beer images/Alaska/Pipeline Stout.jpeg',
     featured: true
   }
 ]
