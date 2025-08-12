@@ -1,90 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import Head from 'next/head'
-import { ArrowRight, Mountain, Snowflake, Anchor, Clock } from 'lucide-react'
+import { ArrowRight, Mountain, Snowflake, Anchor } from 'lucide-react'
+import DynamicBeerSection from '@/components/states/DynamicBeerSection'
 
-const alaskaBeers = [
-  {
-    id: 'alaskan-amber',
-    name: 'Alaskan Amber',
-    brewery: 'Alaskan Brewing Company',
-    location: 'Juneau',
-    style: 'American Amber Ale',
-    abv: 5.3,
-    description: 'Based on a Gold Rush-era recipe discovered in historical records, this flagship amber uses traditional Bohemian Saaz hops for a perfectly balanced malt-forward experience.',
-    image: '/images/Beer images/Alaska/Alaskan Amber.png',
-    featured: true
-  },
-  {
-    id: 'sockeye-red-ipa',
-    name: 'Sockeye Red IPA',
-    brewery: 'Midnight Sun Brewing',
-    location: 'Anchorage',
-    style: 'Red IPA',
-    abv: 5.7,
-    description: 'Bold Pacific Northwest-style IPA with distinctive red hue from specialty malts. Aggressively hopped with Centennial, Cascade, and Simcoe varieties.',
-    image: '/images/Beer images/Alaska/Sockeye-Red.png',
-    featured: true
-  },
-  {
-    id: 'chocolate-coconut-porter',
-    name: 'Chocolate Coconut Porter',
-    brewery: 'King Street Brewing',
-    location: 'Anchorage',
-    style: 'Flavored Porter',
-    abv: 6.0,
-    description: 'Robust porter infused with cacao nibs and hand-toasted coconut, creating a smooth, velvety texture with tropical undertones.',
-    image: '/images/Beer images/Alaska/Chocolate Coconut Porter.jpeg',
-    featured: true
-  },
-  {
-    id: 'belgian-triple',
-    name: 'Belgian Triple',
-    brewery: 'Cynosure Brewing',
-    location: 'Anchorage',
-    style: 'Belgian Tripel',
-    abv: 9.7,
-    description: 'Deceptively smooth despite its strength, featuring subtle spice and fruit tones with pale gold appearance and complex Belgian yeast character.',
-    image: '/images/Beer images/Alaska/Belgian Triple.jpeg',
-    featured: true
-  },
-  {
-    id: 'ne-ipa',
-    name: 'New England IPA',
-    brewery: 'Resolution Brewing',
-    location: 'Anchorage',
-    style: 'New England IPA',
-    abv: 6.2,
-    description: 'Soft, luscious mouthfeel with Citra, El Dorado, and Mosaic hops creating notes of mango creamsicle and pineapple. Double dry-hopped perfection.',
-    image: '/images/Beer images/Alaska/A deal with the devil.jpg',
-    featured: true
-  },
-  {
-    id: 'german-kolsch',
-    name: 'German Kölsch',
-    brewery: 'HooDoo Brewing',
-    location: 'Fairbanks',
-    style: 'Kölsch',
-    abv: 4.8,
-    description: 'Authentic German-style Kölsch brewed with traditional techniques in Alaska\'s interior. Light, crisp, and refreshing with subtle fruit notes.',
-    image: '/images/Beer images/Alaska/HooDoo-German Kolsch.jpg',
-    featured: true
-  },
-  {
-    id: 'pipeline-stout',
-    name: 'Pipeline Stout',
-    brewery: 'Broken Tooth Brewing',
-    location: 'Anchorage',
-    style: 'Oatmeal Stout',
-    abv: 5.9,
-    description: 'Full-bodied oatmeal stout with smooth, creamy texture. Roasted malt character with hints of chocolate and coffee, perfect with their famous pizza.',
-    image: '/images/Beer images/Alaska/Pipeline Stout.jpeg',
-    featured: true
-  }
-]
 
 const brewingFacts = [
   {
@@ -105,65 +26,16 @@ const brewingFacts = [
 ]
 
 export default function AlaskaPage() {
-  const [publishedBeers, setPublishedBeers] = useState<any[]>([])
-  const [loading, setLoading] = useState(true)
-  const [totalPublished, setTotalPublished] = useState(0)
-  
-  useEffect(() => {
-    const fetchPublishedBeers = async () => {
-      try {
-        const response = await fetch('/api/states/alaska/published-beers')
-        if (response.ok) {
-          const data = await response.json()
-          
-          // Map database beer reviews to display format
-          const mappedBeers = data.published_beers.map((beer: any) => ({
-            id: beer.id,
-            name: beer.beer_name,
-            brewery: beer.brewery_name,
-            location: beer.brewery_location || 'Alaska',
-            style: beer.beer_style,
-            abv: beer.abv,
-            description: beer.tasting_notes || beer.description || `Exceptional ${beer.beer_style} from Alaska's craft beer scene.`,
-            image: getImagePath(beer.beer_name),
-            featured: true,
-            rating: beer.rating,
-            day_of_week: beer.day_of_week
-          }))
-          
-          setPublishedBeers(mappedBeers)
-          setTotalPublished(data.total_published)
-        } else {
-          console.error('Failed to fetch published beers')
-          // Fallback to showing no beers instead of all 7
-          setPublishedBeers([])
-        }
-      } catch (error) {
-        console.error('Error fetching published beers:', error)
-        setPublishedBeers([])
-      } finally {
-        setLoading(false)
-      }
-    }
-    
-    fetchPublishedBeers()
-  }, [])
-  
-  // Helper function to map beer names to image paths
-  const getImagePath = (beerName: string) => {
-    const imageMap: Record<string, string> = {
-      'Alaskan Amber': '/images/Beer images/Alaska/Alaskan Amber.png',
-      'Sockeye Red IPA': '/images/Beer images/Alaska/Sockeye-Red.png',
-      'Chocolate Coconut Porter': '/images/Beer images/Alaska/Chocolate Coconut Porter.jpeg',
-      'Belgian Triple': '/images/Beer images/Alaska/Belgian Triple.jpeg',
-      'New England IPA': '/images/Beer images/Alaska/A deal with the devil.jpg',
-      'German Kölsch': '/images/Beer images/Alaska/HooDoo-German Kolsch.jpg',
-      'Pipeline Stout': '/images/Beer images/Alaska/Pipeline Stout.jpeg'
-    }
-    return imageMap[beerName] || '/images/Beer images/placeholder.png'
+  // Alaska beer image mapping for the dynamic component
+  const alaskaImageMapping = {
+    'Alaskan Amber': '/images/Beer images/Alaska/Alaskan Amber.png',
+    'Sockeye Red IPA': '/images/Beer images/Alaska/Sockeye-Red.png',
+    'Chocolate Coconut Porter': '/images/Beer images/Alaska/Chocolate Coconut Porter.jpeg',
+    'Belgian Triple': '/images/Beer images/Alaska/Belgian Triple.jpeg',
+    'New England IPA': '/images/Beer images/Alaska/A deal with the devil.jpg',
+    'German Kölsch': '/images/Beer images/Alaska/HooDoo-German Kolsch.jpg',
+    'Pipeline Stout': '/images/Beer images/Alaska/Pipeline Stout.jpeg'
   }
-  
-  const featuredBeers = publishedBeers
 
   return (
     <>
@@ -346,96 +218,15 @@ export default function AlaskaPage() {
         </div>
       </section>
 
-      {/* Featured Beers Section */}
-      <section id="beers" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Alaska's Daily Beer Journey
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              {loading ? (
-                'Loading the latest published beers...'
-              ) : totalPublished === 0 ? (
-                'Beer reviews are published daily. Check back soon for Alaska\'s featured craft beer selections!'
-              ) : totalPublished === 7 ? (
-                'All seven of Alaska\'s featured beers have been published! Discover the complete Last Frontier brewing journey.'
-              ) : (
-                `${totalPublished} of 7 Alaska craft beers published so far. New beers are added daily as part of our week-long Alaska exploration.`
-              )}
-            </p>
-            
-            {!loading && totalPublished > 0 && totalPublished < 7 && (
-              <div className="mt-4 flex items-center justify-center space-x-2 text-sm text-blue-600">
-                <Clock className="w-4 h-4" />
-                <span>Next beer publishes daily at 3 PM EST</span>
-              </div>
-            )}
-          </div>
-          
-          {loading ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="bg-gray-100 rounded-xl h-96 animate-pulse"></div>
-              ))}
-            </div>
-          ) : featuredBeers.length === 0 ? (
-            <div className="text-center py-12">
-              <Mountain className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-700 mb-2">No beers published yet</h3>
-              <p className="text-gray-500">
-                Alaska's craft beer journey begins soon! Beer reviews are published daily starting Monday.
-              </p>
-            </div>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {featuredBeers.map((beer, index) => (
-              <Link
-                key={beer.id}
-                href={`/beers/${beer.id}`}
-                className="group bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border hover:border-blue-200"
-              >
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={beer.image}
-                    alt={`${beer.name} from ${beer.brewery}`}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4">
-                    <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                      {beer.abv}% ABV
-                    </span>
-                  </div>
-                </div>
-                
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-3">
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-                        {beer.name}
-                      </h3>
-                      <p className="text-blue-600 font-semibold">{beer.brewery}</p>
-                      <p className="text-sm text-gray-500">{beer.location} • {beer.style}</p>
-                    </div>
-                  </div>
-                  
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {beer.description}
-                  </p>
-                  
-                  <div className="mt-4 flex items-center text-blue-600 text-sm font-semibold group-hover:text-blue-700 transition-colors">
-                    Read Full Review
-                    <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </div>
-              </Link>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
+      {/* Dynamic Beer Section */}
+      <DynamicBeerSection
+        stateCode="AK"
+        stateName="Alaska"
+        title="Alaska's Signature Seven"
+        description="From Gold Rush recipes to barrel-aged monsters, these seven beers showcase Alaska's brewing innovation and connection to the Last Frontier landscape."
+        imagePathMapping={alaskaImageMapping}
+        fallbackDescription="Exceptional craft beer from Alaska's Last Frontier brewing scene."
+      />
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-blue-900 to-slate-800">
