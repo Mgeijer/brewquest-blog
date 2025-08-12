@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import NewsletterSignup from '@/components/newsletter/NewsletterSignup'
 import { Mail, MapPin, Calendar, Users, Star, Zap } from 'lucide-react'
+import DynamicCurrentState from '@/components/newsletter/DynamicCurrentState'
 
 export const metadata: Metadata = {
   title: 'Join BrewQuest Chronicles Newsletter | Hop Harrison',
@@ -86,14 +87,7 @@ export default function NewsletterPage() {
           </div>
 
           {/* Current State Highlight */}
-          <div className="bg-white rounded-lg p-6 shadow-lg border border-beer-amber/20 mb-12 max-w-md mx-auto">
-            <div className="flex items-center justify-center gap-3 mb-3">
-              <MapPin className="w-5 h-5 text-beer-amber" />
-              <span className="font-semibold text-beer-dark">Currently Exploring</span>
-            </div>
-            <div className="text-2xl font-bold text-beer-amber mb-2">Alabama</div>
-            <div className="text-sm text-gray-600">State 1 of 50 • Week 1</div>
-          </div>
+          <DynamicCurrentState />
         </div>
       </section>
 
@@ -163,7 +157,7 @@ export default function NewsletterPage() {
                 From: hop@hopharrison.com
               </div>
               <h3 className="text-xl font-bold text-beer-dark">
-                🍺 Week 1 Complete: Alabama Craft Beer Journey
+                🍺 Week Complete: Alaska Last Frontier Brewing Journey
               </h3>
               <p className="text-sm text-gray-500">Sunday, January 7, 2024</p>
             </div>
@@ -172,22 +166,22 @@ export default function NewsletterPage() {
               <p><strong>Hey Beer Enthusiast!</strong></p>
               
               <p>
-                What a week it's been exploring Alabama's craft beer scene! From Birmingham's 
-                historic Good People Brewing to the innovative brews at TrimTab in Birmingham, 
-                this state has surprised me at every turn.
+                What a week it's been exploring Alaska's craft beer scene! From Alaskan Brewing's 
+                historic Gold Rush recipes to innovative glacial water brewing across 49 breweries, 
+                the Last Frontier has amazed me with its brewing ingenuity.
               </p>
 
               <p><strong>🌟 This Week's Standout Beers:</strong></p>
               <ul className="list-disc list-inside ml-4 space-y-1">
-                <li>Good People IPA (4.2/5) - Perfectly balanced citrus notes</li>
-                <li>Avondale Miss Fancy's Triple (4.5/5) - Belgian-style excellence</li>
-                <li>Back Forty Snake Handler Double IPA (4.0/5) - Bold hop character</li>
+                <li>Alaskan Amber (4.0/5) - Historic Gold Rush-era recipe</li>
+                <li>Sockeye Red IPA (4.5/5) - Bold Pacific Northwest-style hops</li>
+                <li>Belgian Triple (4.5/5) - Complex yeast character and strength</li>
               </ul>
 
-              <p><strong>🏭 Brewery Spotlight:</strong> TrimTab Brewing</p>
+              <p><strong>🏭 Brewery Spotlight:</strong> Alaskan Brewing Company</p>
               <p>
-                Founded by two engineers with a passion for precision, TrimTab represents 
-                Alabama's commitment to innovation in craft brewing...
+                Founded in 1986 by Marcy and Geoff Larson, Alaskan Brewing represents 
+                Alaska's pioneering spirit, using glacial water and Gold Rush-era recipes to create truly unique beers...
               </p>
 
               <p className="text-center text-gray-500 italic">
@@ -248,7 +242,7 @@ export default function NewsletterPage() {
           <div className="bg-white/10 backdrop-blur rounded-lg p-6 max-w-md mx-auto">
             <p className="text-sm mb-4 opacity-90">
               📧 Next email: Sunday at 9 AM EST<br/>
-              🍺 Current focus: Alabama craft breweries<br/>
+              🍺 Current focus: Alaska craft breweries<br/>
               👥 Join 2,500+ subscribers
             </p>
             <a 
