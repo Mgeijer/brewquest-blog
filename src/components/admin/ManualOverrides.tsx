@@ -52,6 +52,8 @@ export default function ManualOverrides() {
   const [rescheduleTime, setRescheduleTime] = useState('')
   const [newsletterSending, setNewsletterSending] = useState(false)
   const [newsletterResult, setNewsletterResult] = useState<string | null>(null)
+  const [publishSending, setPublishSending] = useState(false)
+  const [publishResult, setPublishResult] = useState<string | null>(null)
 
   const emergencyActions: EmergencyAction[] = [
     {
@@ -226,6 +228,30 @@ export default function ManualOverrides() {
     }
   }
 
+  const triggerDailyPublish = async () => {
+    setPublishSending(true)
+    setPublishResult(null)
+    
+    try {
+      const response = await fetch('/api/admin/trigger-daily-publish', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      })
+      
+      const data = await response.json()
+      
+      if (response.ok) {
+        setPublishResult(`✅ Daily publish triggered successfully! ${data.result?.data?.beer?.name || 'Beer'} published.`)
+      } else {
+        setPublishResult(`❌ Failed to trigger daily publish: ${data.error || data.details}`)
+      }
+    } catch (error) {
+      setPublishResult(`❌ Network error: ${error instanceof Error ? error.message : 'Unknown error'}`)
+    } finally {
+      setPublishSending(false)
+    }
+  }
+
   if (loading) {
     return (
       <div className="bg-white rounded-lg shadow-md p-6">
@@ -386,6 +412,61 @@ export default function ManualOverrides() {
 
           <p className="text-xs text-gray-500 mt-2">
             Note: Arizona newsletter will automatically send this Sunday (Aug 17) at 8 PM PDT
+          </p>
+        </div>
+      </div>
+
+      {/* Daily Beer Publishing Section */}
+      <div className="bg-white rounded-lg shadow-md">
+        <div className="p-6 border-b border-gray-200">
+          <h2 className="text-lg font-semibold text-gray-900 flex items-center space-x-2">
+            <Calendar className="w-5 h-5 text-green-500" />
+            <span>Daily Beer Publishing</span>
+          </h2>
+          <p className="text-sm text-gray-600 mt-1">
+            Manually trigger today's beer publication for the current state.
+          </p>
+        </div>
+
+        <div className="p-6">
+          <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+            <div className="flex items-start space-x-3">
+              <Calendar className="w-5 h-5 text-green-600 mt-0.5" />
+              <div>
+                <h3 className="font-medium text-green-900">Publish Today's Beer</h3>
+                <p className="text-sm text-green-700 mt-1">
+                  Trigger daily beer publishing cron job to publish today's scheduled beer review for Alaska.
+                  This will mark the beer as published and trigger social media content generation.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {publishResult && (
+            <div className={`mb-4 p-3 rounded-lg ${
+              publishResult.includes('✅') 
+                ? 'bg-green-50 border border-green-200 text-green-800' 
+                : 'bg-red-50 border border-red-200 text-red-800'
+            }`}>
+              {publishResult}
+            </div>
+          )}
+
+          <button
+            onClick={triggerDailyPublish}
+            disabled={publishSending}
+            className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-colors ${
+              publishSending
+                ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
+                : 'bg-green-600 text-white hover:bg-green-700'
+            }`}
+          >
+            <Calendar className="w-5 h-5" />
+            <span>{publishSending ? 'Publishing Today\'s Beer...' : 'Publish Today\'s Beer Now'}</span>
+          </button>
+
+          <p className="text-xs text-gray-500 mt-2">
+            Note: This publishes the beer for today's day of the week and creates social media content
           </p>
         </div>
       </div>
