@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { Resend } from 'resend'
+import { render } from '@react-email/render'
+import AlaskaNewsletterEmail from '@/emails/AlaskaNewsletterEmail'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -110,58 +112,44 @@ The Last Frontier's brewing scene continues to push boundaries, creating beers t
       }, { status: 404 })
     }
 
+    // Get Alaska beer data from database for the email template
+    const { data: alaskaBeerData } = await supabase
+      .from('beer_reviews')
+      .select('*')
+      .eq('state_code', 'AK')
+      .order('day_of_week', { ascending: true })
+
+    // Generate the professional Alaska newsletter email
+    const emailHtml = await render(
+      AlaskaNewsletterEmail({
+        subscriberName: 'Beer Enthusiast', // Will be personalized per subscriber
+        weekNumber: 2,
+        beerReviews: alaskaBeerData || [],
+        unsubscribeToken: undefined // Will be set per subscriber
+      })
+    )
+
     // Send emails to all subscribers
     let successful = 0
     let failed = 0
 
     for (const subscriber of subscribers) {
       try {
+        // Generate personalized email with unsubscribe token
+        const personalizedEmailHtml = await render(
+          AlaskaNewsletterEmail({
+            subscriberName: subscriber.first_name || 'Beer Enthusiast',
+            weekNumber: 2,
+            beerReviews: alaskaBeerData || [],
+            unsubscribeToken: 'placeholder_token' // In production, generate actual tokens
+          })
+        )
+
         await resend.emails.send({
           from: 'Hop Harrison <hop@hopharrison.com>',
           to: subscriber.email,
-          subject: '🍺 Week 2 Complete: Alaska Last Frontier Brewing Excellence',
-          html: `
-            <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-              <div style="text-align: center; margin-bottom: 30px;">
-                <h1 style="color: #1e40af; font-size: 28px; margin-bottom: 10px;">BrewQuest Chronicles</h1>
-                <p style="color: #6b7280; font-size: 16px;">Week 2: Alaska's Last Frontier Brewing</p>
-              </div>
-              
-              <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-                <p style="margin: 0; color: #374151; font-size: 16px;">Hey ${subscriber.first_name || 'Beer Enthusiast'}!</p>
-              </div>
-              
-              <div style="line-height: 1.6; color: #374151;">
-                ${approvedContent.content.split('\n').map(line => {
-                  if (line.startsWith('# ')) {
-                    return `<h1 style="color: #1e40af; font-size: 24px; margin: 30px 0 15px 0;">${line.substring(2)}</h1>`
-                  } else if (line.startsWith('## ')) {
-                    return `<h2 style="color: #1e40af; font-size: 20px; margin: 25px 0 10px 0;">${line.substring(3)}</h2>`
-                  } else if (line.startsWith('### ')) {
-                    return `<h3 style="color: #059669; font-size: 18px; margin: 20px 0 8px 0;">${line.substring(4)}</h3>`
-                  } else if (line.startsWith('**') && line.endsWith('**')) {
-                    return `<p style="margin: 10px 0; font-weight: bold; color: #374151;">${line.substring(2, line.length - 2)}</p>`
-                  } else if (line.startsWith('*') && line.endsWith('*')) {
-                    return `<p style="margin: 8px 0; font-style: italic; color: #6b7280; background: #f9fafb; padding: 12px; border-left: 3px solid #059669;">${line.substring(1, line.length - 1)}</p>`
-                  } else if (line.trim()) {
-                    return `<p style="margin: 12px 0; color: #374151;">${line}</p>`
-                  }
-                  return ''
-                }).join('')}
-              </div>
-              
-              <div style="text-align: center; margin-top: 40px; padding: 20px; background: #1e40af; border-radius: 8px;">
-                <p style="margin: 0; color: white; font-size: 16px;">
-                  <strong>Next Week:</strong> Arizona's Desert Brewing Oasis<br>
-                  Sunday, August 17th at 8 PM PDT
-                </p>
-              </div>
-              
-              <div style="text-align: center; margin-top: 20px; font-size: 12px; color: #9ca3af;">
-                <p>Hop Harrison's BrewQuest Chronicles | hopharrison.com</p>
-              </div>
-            </div>
-          `
+          subject: '🍺 Week 2 Complete: Alaska\'s Last Frontier Brewing Excellence',
+          html: personalizedEmailHtml
         })
         
         successful++

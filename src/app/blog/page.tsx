@@ -161,7 +161,7 @@ function BlogContent() {
     // Convert to our beer schedule: Monday = 1, Tuesday = 2, ..., Sunday = 7
     const beerDay = dayOfWeek === 0 ? 7 : dayOfWeek
     
-    console.log(`Today: ${today.toDateString()}, JS getDay(): ${dayOfWeek}, Beer day: ${beerDay}`)
+    console.log(`DEBUG: Today: ${today.toDateString()}, JS getDay(): ${dayOfWeek}, Beer day: ${beerDay}`)
     
     return beerDay
   }
