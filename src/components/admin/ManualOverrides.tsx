@@ -12,7 +12,8 @@ import {
   Clock,
   CheckCircle,
   XCircle,
-  Settings
+  Settings,
+  Mail
 } from 'lucide-react'
 
 interface EmergencyAction {
@@ -49,6 +50,8 @@ export default function ManualOverrides() {
   const [emergencyReason, setEmergencyReason] = useState('')
   const [rescheduleDate, setRescheduleDate] = useState('')
   const [rescheduleTime, setRescheduleTime] = useState('')
+  const [newsletterSending, setNewsletterSending] = useState(false)
+  const [newsletterResult, setNewsletterResult] = useState<string | null>(null)
 
   const emergencyActions: EmergencyAction[] = [
     {
@@ -183,6 +186,46 @@ export default function ManualOverrides() {
     }
   }
 
+  const sendAlaskaNewsletter = async () => {
+    setNewsletterSending(true)
+    setNewsletterResult(null)
+    
+    try {
+      const response = await fetch('/api/cron/weekly-digest', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_CRON_SECRET || 'fallback-secret'}`
+        }
+      })
+      
+      const data = await response.json()
+      
+      if (response.ok) {
+        setNewsletterResult(`✅ Alaska newsletter sent successfully! ${data.stats?.successful || 0} emails delivered.`)
+      } else {
+        // Try alternative endpoint
+        const altResponse = await fetch('/api/admin/send-weekly-digest', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ admin: 'admin-request' })
+        })
+        
+        const altData = await altResponse.json()
+        
+        if (altResponse.ok) {
+          setNewsletterResult(`✅ Alaska newsletter sent successfully! ${altData.stats?.successful || 0} emails delivered.`)
+        } else {
+          setNewsletterResult(`❌ Failed to send newsletter: ${data.error || altData.error}`)
+        }
+      }
+    } catch (error) {
+      setNewsletterResult(`❌ Network error: ${error instanceof Error ? error.message : 'Unknown error'}`)
+    } finally {
+      setNewsletterSending(false)
+    }
+  }
+
   if (loading) {
     return (
       <div className="bg-white rounded-lg shadow-md p-6">
@@ -290,6 +333,61 @@ export default function ManualOverrides() {
             </p>
           </div>
         )}
+      </div>
+
+      {/* Alaska Newsletter Section */}
+      <div className="bg-white rounded-lg shadow-md">
+        <div className="p-6 border-b border-gray-200">
+          <h2 className="text-lg font-semibold text-gray-900 flex items-center space-x-2">
+            <Mail className="w-5 h-5 text-blue-500" />
+            <span>Manual Newsletter</span>
+          </h2>
+          <p className="text-sm text-gray-600 mt-1">
+            Send the Alaska newsletter immediately to all subscribers.
+          </p>
+        </div>
+
+        <div className="p-6">
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+            <div className="flex items-start space-x-3">
+              <Mail className="w-5 h-5 text-blue-600 mt-0.5" />
+              <div>
+                <h3 className="font-medium text-blue-900">Alaska Newsletter</h3>
+                <p className="text-sm text-blue-700 mt-1">
+                  Send "Week 2 Complete: Alaska Last Frontier Brewing" newsletter to all active subscribers.
+                  This will include all Alaska beer reviews, brewery stories, and upcoming Arizona preview.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {newsletterResult && (
+            <div className={`mb-4 p-3 rounded-lg ${
+              newsletterResult.includes('✅') 
+                ? 'bg-green-50 border border-green-200 text-green-800' 
+                : 'bg-red-50 border border-red-200 text-red-800'
+            }`}>
+              {newsletterResult}
+            </div>
+          )}
+
+          <button
+            onClick={sendAlaskaNewsletter}
+            disabled={newsletterSending}
+            className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-colors ${
+              newsletterSending
+                ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
+                : 'bg-blue-600 text-white hover:bg-blue-700'
+            }`}
+          >
+            <Mail className="w-5 h-5" />
+            <span>{newsletterSending ? 'Sending Alaska Newsletter...' : 'Send Alaska Newsletter Now'}</span>
+          </button>
+
+          <p className="text-xs text-gray-500 mt-2">
+            Note: Arizona newsletter will automatically send this Sunday (Aug 17) at 8 PM PDT
+          </p>
+        </div>
       </div>
 
       {/* Emergency Actions */}
