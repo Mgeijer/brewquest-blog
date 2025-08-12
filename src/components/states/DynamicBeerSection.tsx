@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, Mountain, Clock, Calendar } from 'lucide-react'
+import { getStateByCode } from '@/lib/data/stateProgress'
 
 interface Beer {
   id: string
@@ -68,13 +69,50 @@ export default function DynamicBeerSection({
           setStateStatus(data.status)
         } else {
           console.error(`Failed to fetch published beers for ${stateCode}`)
-          setPublishedBeers([])
+          // Fallback to local state data if API fails
+          tryLocalDataFallback()
         }
       } catch (error) {
         console.error(`Error fetching published beers for ${stateCode}:`, error)
-        setPublishedBeers([])
+        // Fallback to local state data if API fails
+        tryLocalDataFallback()
       } finally {
         setLoading(false)
+      }
+    }
+    
+    const tryLocalDataFallback = () => {
+      console.log(`Attempting fallback to local data for ${stateCode}`)
+      const stateData = getStateByCode(stateCode)
+      
+      if (stateData && stateData.featuredBeers && stateData.featuredBeers.length > 0) {
+        // For current states, show all beers; for upcoming states, show none
+        const beersToShow = stateData.status === 'current' || stateData.status === 'completed' 
+          ? stateData.featuredBeers 
+          : []
+        
+        const mappedBeers = beersToShow.map((beer) => ({
+          id: beer.id,
+          name: beer.name,
+          brewery: beer.brewery,
+          location: stateName,
+          style: beer.style,
+          abv: beer.abv,
+          description: beer.tastingNotes || beer.description,
+          image: getImagePath(beer.name),
+          rating: beer.rating,
+          day_of_week: beer.dayOfWeek
+        }))
+        
+        setPublishedBeers(mappedBeers)
+        setTotalPublished(beersToShow.length)
+        setWeekNumber(stateData.weekNumber)
+        setStateStatus(stateData.status)
+        console.log(`Loaded ${beersToShow.length} beers from local data for ${stateData.name}`)
+      } else {
+        console.log(`No local data found for ${stateCode}`)
+        setPublishedBeers([])
+        setTotalPublished(0)
       }
     }
     

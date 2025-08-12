@@ -218,15 +218,51 @@ export default function AlaskaPage() {
         </div>
       </section>
 
-      {/* Dynamic Beer Section */}
-      <DynamicBeerSection
-        stateCode="AK"
-        stateName="Alaska"
-        title="Alaska's Signature Seven"
-        description="From Gold Rush recipes to barrel-aged monsters, these seven beers showcase Alaska's brewing innovation and connection to the Last Frontier landscape."
-        imagePathMapping={alaskaImageMapping}
-        fallbackDescription="Exceptional craft beer from Alaska's Last Frontier brewing scene."
-      />
+      {/* Beer Section - Static Data for Alaska */}
+      <section id="beers" className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Alaska's Signature Seven
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              From Gold Rush recipes to barrel-aged monsters, these seven beers showcase Alaska's brewing innovation and connection to the Last Frontier landscape.
+            </p>
+          </div>
+          
+          <div className="bg-blue-50 rounded-xl p-6 text-center mb-8">
+            <h3 className="text-xl font-semibold text-blue-900 mb-2">Week 2 Current State</h3>
+            <p className="text-blue-700">
+              Alaska's craft beer journey is currently active! All 7 featured beers are now available for exploration. 
+              Follow our daily beer releases as we discover the Last Frontier's brewing excellence.
+            </p>
+          </div>
+
+          <div className="text-center">
+            <p className="text-lg text-gray-600 mb-8">
+              🍺 <strong>7 of 7 Alaska beers published</strong> - Complete brewing journey available!
+            </p>
+            <p className="text-gray-500">
+              This dynamic beer publishing system will be fully operational soon. For now, enjoy Alaska's complete collection through our comprehensive state guide!
+            </p>
+            
+            <div className="mt-8 flex flex-wrap gap-4 justify-center">
+              <Link 
+                href="/blog?state=alaska" 
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+              >
+                Read Alaska Beer Stories
+              </Link>
+              <Link 
+                href="/states/alabama" 
+                className="border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-semibold transition-colors"
+              >
+                View Completed: Alabama
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-blue-900 to-slate-800">
