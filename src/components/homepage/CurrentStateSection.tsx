@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Calendar, MapPin, Star, ArrowRight } from 'lucide-react'
+import { getCurrentState } from '@/lib/data/stateProgress'
 
 interface StateProgress {
   state_code: string
@@ -35,10 +36,41 @@ export default function CurrentStateSection() {
         const current = data.states?.find((state: StateProgress) => state.status === 'current')
         const completed = data.statistics?.completed_states || 0
         
-        setCurrentState(current)
+        // If API data is incomplete (no breweries), use local fallback
+        if (current && current.total_breweries === 0) {
+          const localState = getCurrentState()
+          if (localState) {
+            const enhancedState = {
+              ...current,
+              total_breweries: localState.totalBreweries || 0,
+              featured_beers_count: localState.featuredBeers?.length || 0,
+              description: localState.description
+            }
+            setCurrentState(enhancedState)
+          } else {
+            setCurrentState(current)
+          }
+        } else {
+          setCurrentState(current)
+        }
         setCompletedCount(completed)
       } catch (error) {
         console.error('Error fetching current state:', error)
+        // Fallback to local data if API fails
+        const localState = getCurrentState()
+        if (localState) {
+          const fallbackState = {
+            state_code: localState.code,
+            state_name: localState.name,
+            status: localState.status,
+            week_number: localState.weekNumber,
+            total_breweries: localState.totalBreweries || 0,
+            featured_beers_count: localState.featuredBeers?.length || 0,
+            description: localState.description
+          }
+          setCurrentState(fallbackState)
+          setCompletedCount(localState.status === 'completed' ? 1 : 0)
+        }
       } finally {
         setLoading(false)
       }
