@@ -86,6 +86,32 @@ export default function DynamicBeerSection({
     return imagePathMapping[beerName] || '/images/Beer images/placeholder.png'
   }
 
+  // Helper function to get brewery websites
+  const getBreweryWebsite = (breweryName: string): string | null => {
+    const breweryWebsites: Record<string, string> = {
+      // Alaska breweries
+      'Alaskan Brewing Company': 'https://alaskanbeer.com',
+      'Midnight Sun Brewing': 'https://midnightsunbrewing.com',
+      'King Street Brewing': 'https://kingstreetbrewing.com',
+      'Cynosure Brewing': 'https://cynosurebrewing.com',
+      'Resolution Brewing': 'https://resolutionbrewing.com',
+      'HooDoo Brewing': 'https://hoodoobrewing.com',
+      'Broken Tooth Brewing': 'https://brokentoothbrewing.com',
+      
+      // Alabama breweries
+      'Good People Brewing Company': 'https://goodpeoplebrewing.com',
+      'Yellowhammer Brewing': 'https://yellowhammerbrewery.com',
+      'Cahaba Brewing Company': 'https://cahababrewing.com',
+      'TrimTab Brewing Company': 'https://trimtabbrewing.com',
+      'Avondale Brewing Company': 'https://avondalebrewing.com',
+      'Back Forty Beer Company': 'https://backfortybeer.com',
+      'Monday Night Brewing (Birmingham Social Club)': 'https://mondaynight.beer/birmingham',
+      
+      // Add more brewery websites as needed for other states
+    }
+    return breweryWebsites[breweryName] || null
+  }
+
   const sectionTitle = title || `${stateName}'s Daily Beer Journey`
   const sectionDescription = description || 
     (loading ? 
@@ -179,7 +205,20 @@ export default function DynamicBeerSection({
                       <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
                         {beer.name}
                       </h3>
-                      <p className="text-blue-600 font-semibold">{beer.brewery}</p>
+                      <div className="flex items-center space-x-2">
+                        <p className="text-blue-600 font-semibold">{beer.brewery}</p>
+                        {getBreweryWebsite(beer.brewery) && (
+                          <a
+                            href={getBreweryWebsite(beer.brewery)!}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-500 hover:text-blue-700 text-sm"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            Visit Website →
+                          </a>
+                        )}
+                      </div>
                       <p className="text-sm text-gray-500">{beer.location} • {beer.style}</p>
                     </div>
                   </div>

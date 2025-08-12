@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Eye, Edit, CheckCircle, XCircle, Calendar, Clock, Star, AlertTriangle } from 'lucide-react'
+import { Eye, Edit, CheckCircle, XCircle, Calendar, Clock, Star, AlertTriangle, Send } from 'lucide-react'
 
 interface ScheduledContent {
   id: string
@@ -46,6 +46,7 @@ export default function ContentPreview() {
   const [selectedContent, setSelectedContent] = useState<ScheduledContent | null>(null)
   const [filter, setFilter] = useState<'all' | 'pending' | 'approved' | 'rejected'>('all')
   const [editingContent, setEditingContent] = useState<string | null>(null)
+  const [publishingContent, setPublishingContent] = useState<string | null>(null)
 
   useEffect(() => {
     fetchScheduledContent()
@@ -110,6 +111,45 @@ export default function ContentPreview() {
       setEditingContent(null)
     } catch (error) {
       console.error('Failed to save edited content:', error)
+    }
+  }
+
+  const publishNow = async (contentId: string, contentType: string) => {
+    setPublishingContent(contentId)
+    try {
+      if (contentType === 'weekly_state') {
+        // For weekly newsletters, use the Alaska newsletter endpoint
+        const response = await fetch('/api/admin/trigger-weekly-digest', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ contentId, admin: 'manual-publish' })
+        })
+        
+        if (response.ok) {
+          await updateContentStatus(contentId, 'approved')
+          fetchScheduledContent()
+        } else {
+          console.error('Failed to publish weekly content:', response.status)
+        }
+      } else {
+        // For daily beers, use the daily publish endpoint
+        const response = await fetch('/api/admin/trigger-daily-publish', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ contentId })
+        })
+        
+        if (response.ok) {
+          await updateContentStatus(contentId, 'approved')
+          fetchScheduledContent()
+        } else {
+          console.error('Failed to publish daily content:', response.status)
+        }
+      }
+    } catch (error) {
+      console.error('Failed to publish content:', error)
+    } finally {
+      setPublishingContent(null)
     }
   }
 
@@ -385,6 +425,25 @@ export default function ContentPreview() {
                   >
                     <CheckCircle className="w-4 h-4" />
                     <span>Approve</span>
+                  </button>
+                </div>
+              )}
+              
+              {content.status === 'approved' && (
+                <div className="flex justify-end space-x-2 mt-4">
+                  <button
+                    onClick={() => publishNow(content.id, content.type)}
+                    disabled={publishingContent === content.id}
+                    className={`flex items-center space-x-1 px-4 py-2 rounded font-semibold transition-colors ${
+                      publishingContent === content.id
+                        ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
+                        : 'bg-blue-600 text-white hover:bg-blue-700'
+                    }`}
+                  >
+                    <Send className="w-4 h-4" />
+                    <span>
+                      {publishingContent === content.id ? 'Publishing...' : 'Publish Now'}
+                    </span>
                   </button>
                 </div>
               )}
