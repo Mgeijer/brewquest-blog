@@ -4,36 +4,39 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, MapPin, Star, ExternalLink, ArrowLeft } from 'lucide-react'
-import { getCurrentState } from '@/lib/data/stateProgress'
+import { getStateByCode } from '@/lib/data/stateProgress'
 import BeerReviewCard from '@/components/blog/BeerReviewCard'
 
 export default function AlabamaWeeklyPage() {
-  const [currentDay, setCurrentDay] = useState(1) // Start with Monday (day 1)
-  const currentState = getCurrentState()
+  const [currentDay, setCurrentDay] = useState(7) // Show all 7 days since Alabama is completed
+  const alabamaState = getStateByCode('AL')
   
-  // Force Monday mode until August 5th launch
+  // For completed states, show all content
   useEffect(() => {
-    const launchDate = new Date('2025-08-05T00:00:00.000Z')
-    const now = new Date()
-    
-    if (now < launchDate) {
-      // Stay in Monday mode until launch
-      setCurrentDay(1)
+    if (alabamaState?.status === 'completed') {
+      setCurrentDay(7) // Show all days for completed state
     } else {
-      // After launch, show real-time progress
-      const today = new Date()
-      const dayOfWeek = today.getDay() // 0 = Sunday, 1 = Monday, etc.
-      const adjustedDay = dayOfWeek === 0 ? 7 : dayOfWeek // Convert Sunday to 7
-      setCurrentDay(adjustedDay)
+      // Keep original logic for other states
+      const launchDate = new Date('2025-08-05T00:00:00.000Z')
+      const now = new Date()
+      
+      if (now < launchDate) {
+        setCurrentDay(1)
+      } else {
+        const today = new Date()
+        const dayOfWeek = today.getDay()
+        const adjustedDay = dayOfWeek === 0 ? 7 : dayOfWeek
+        setCurrentDay(adjustedDay)
+      }
     }
-  }, [])
+  }, [alabamaState])
 
-  if (!currentState || currentState.code !== 'AL') {
+  if (!alabamaState) {
     return <div>Alabama data not found</div>
   }
 
   // Get beers up to current day (for in-progress week)
-  const availableBeers = currentState.featuredBeers.filter(beer => beer.dayOfWeek <= currentDay)
+  const availableBeers = alabamaState.featuredBeers.filter(beer => beer.dayOfWeek <= currentDay)
   const isWeekComplete = currentDay >= 7
 
   const weeklyContent = {
@@ -139,7 +142,7 @@ Ready to explore? Let's dive into each brewery and discover what makes Alabama's
           <div className="text-white">
             <div className="flex items-center gap-2 mb-4">
               <div className="bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-medium">
-                Week {currentState.weekNumber}
+                Week {alabamaState.weekNumber}
               </div>
               <span className="text-white/90">•</span>
               <span className="text-white/90">{isWeekComplete ? 'Completed' : 'In Progress'}</span>
@@ -158,7 +161,7 @@ Ready to explore? Let's dive into each brewery and discover what makes Alabama's
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
-                {currentState.name}
+                {alabamaState.name}
               </div>
             </div>
           </div>
@@ -319,7 +322,7 @@ Ready to explore? Let's dive into each brewery and discover what makes Alabama's
                     tasting_notes: beer.tastingNotes,
                     image_url: beer.imageUrl,
                     unique_feature: beer.description,
-                    brewery_location: currentState.name,
+                    brewery_location: alabamaState.name,
                     brewery_website: getBreweryWebsite(beer.brewery),
                     brewery_story: getBreweryDescription(beer.brewery),
                     day_of_week: beer.dayOfWeek,
@@ -339,7 +342,7 @@ Ready to explore? Let's dive into each brewery and discover what makes Alabama's
               </div>
               <p className="text-gray-700">
                 Check back tomorrow for the next beer review in our Alabama journey. 
-                We'll be featuring {currentState.featuredBeers.find(b => b.dayOfWeek === currentDay + 1)?.brewery || 'another amazing brewery'} 
+                We'll be featuring {alabamaState.featuredBeers.find(b => b.dayOfWeek === currentDay + 1)?.brewery || 'another amazing brewery'} 
                 with their signature brew.
               </p>
             </div>
