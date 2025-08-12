@@ -1,18 +1,10 @@
-import { Metadata } from 'next'
+'use client'
+
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, Mountain, Snowflake, Anchor } from 'lucide-react'
-
-export const metadata: Metadata = {
-  title: 'Alaska Craft Beer Guide - Last Frontier Brewing | BrewQuest Chronicles',
-  description: 'Discover Alaska\'s remarkable craft beer scene, from Alaskan Brewing Company\'s Gold Rush-era recipes to innovative breweries using spruce tips and alder-smoked malts. Explore 49 breweries across the Last Frontier.',
-  keywords: 'Alaska craft beer, Alaskan Brewing Company, Midnight Sun Brewing, Alaska breweries, Anchorage beer, Fairbanks beer, Juneau beer, smoked porter, spruce tip IPA',
-  openGraph: {
-    title: 'Alaska Craft Beer Guide - Last Frontier Brewing',
-    description: 'From glacial water to spruce tip IPAs - discover Alaska\'s unique craft beer renaissance',
-    images: ['/images/State Images/Alaska.png']
-  }
-}
+import Head from 'next/head'
+import { ArrowRight, Mountain, Snowflake, Anchor, Clock } from 'lucide-react'
 
 const alaskaBeers = [
   {
@@ -113,10 +105,78 @@ const brewingFacts = [
 ]
 
 export default function AlaskaPage() {
-  const featuredBeers = alaskaBeers.filter(beer => beer.featured)
+  const [publishedBeers, setPublishedBeers] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+  const [totalPublished, setTotalPublished] = useState(0)
+  
+  useEffect(() => {
+    const fetchPublishedBeers = async () => {
+      try {
+        const response = await fetch('/api/states/alaska/published-beers')
+        if (response.ok) {
+          const data = await response.json()
+          
+          // Map database beer reviews to display format
+          const mappedBeers = data.published_beers.map((beer: any) => ({
+            id: beer.id,
+            name: beer.beer_name,
+            brewery: beer.brewery_name,
+            location: beer.brewery_location || 'Alaska',
+            style: beer.beer_style,
+            abv: beer.abv,
+            description: beer.tasting_notes || beer.description || `Exceptional ${beer.beer_style} from Alaska's craft beer scene.`,
+            image: getImagePath(beer.beer_name),
+            featured: true,
+            rating: beer.rating,
+            day_of_week: beer.day_of_week
+          }))
+          
+          setPublishedBeers(mappedBeers)
+          setTotalPublished(data.total_published)
+        } else {
+          console.error('Failed to fetch published beers')
+          // Fallback to showing no beers instead of all 7
+          setPublishedBeers([])
+        }
+      } catch (error) {
+        console.error('Error fetching published beers:', error)
+        setPublishedBeers([])
+      } finally {
+        setLoading(false)
+      }
+    }
+    
+    fetchPublishedBeers()
+  }, [])
+  
+  // Helper function to map beer names to image paths
+  const getImagePath = (beerName: string) => {
+    const imageMap: Record<string, string> = {
+      'Alaskan Amber': '/images/Beer images/Alaska/Alaskan Amber.png',
+      'Sockeye Red IPA': '/images/Beer images/Alaska/Sockeye-Red.png',
+      'Chocolate Coconut Porter': '/images/Beer images/Alaska/Chocolate Coconut Porter.jpeg',
+      'Belgian Triple': '/images/Beer images/Alaska/Belgian Triple.jpeg',
+      'New England IPA': '/images/Beer images/Alaska/A deal with the devil.jpg',
+      'German Kölsch': '/images/Beer images/Alaska/HooDoo-German Kolsch.jpg',
+      'Pipeline Stout': '/images/Beer images/Alaska/Pipeline Stout.jpeg'
+    }
+    return imageMap[beerName] || '/images/Beer images/placeholder.png'
+  }
+  
+  const featuredBeers = publishedBeers
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <>
+      <Head>
+        <title>Alaska Craft Beer Guide - Last Frontier Brewing | BrewQuest Chronicles</title>
+        <meta name="description" content="Discover Alaska's remarkable craft beer scene, from Alaskan Brewing Company's Gold Rush-era recipes to innovative breweries using spruce tips and alder-smoked malts. Explore 49 breweries across the Last Frontier." />
+        <meta name="keywords" content="Alaska craft beer, Alaskan Brewing Company, Midnight Sun Brewing, Alaska breweries, Anchorage beer, Fairbanks beer, Juneau beer, smoked porter, spruce tip IPA" />
+        <meta property="og:title" content="Alaska Craft Beer Guide - Last Frontier Brewing" />
+        <meta property="og:description" content="From glacial water to spruce tip IPAs - discover Alaska's unique craft beer renaissance" />
+        <meta property="og:image" content="/images/State Images/Alaska.png" />
+      </Head>
+      
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-r from-slate-900 via-blue-900 to-slate-800">
         <div className="absolute inset-0 bg-black/20"></div>
@@ -291,16 +351,45 @@ export default function AlaskaPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Alaska's Signature Seven
+              Alaska's Daily Beer Journey
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              From Gold Rush recipes to barrel-aged monsters, these seven beers showcase 
-              Alaska's brewing innovation and connection to the Last Frontier landscape.
+              {loading ? (
+                'Loading the latest published beers...'
+              ) : totalPublished === 0 ? (
+                'Beer reviews are published daily. Check back soon for Alaska\'s featured craft beer selections!'
+              ) : totalPublished === 7 ? (
+                'All seven of Alaska\'s featured beers have been published! Discover the complete Last Frontier brewing journey.'
+              ) : (
+                `${totalPublished} of 7 Alaska craft beers published so far. New beers are added daily as part of our week-long Alaska exploration.`
+              )}
             </p>
+            
+            {!loading && totalPublished > 0 && totalPublished < 7 && (
+              <div className="mt-4 flex items-center justify-center space-x-2 text-sm text-blue-600">
+                <Clock className="w-4 h-4" />
+                <span>Next beer publishes daily at 3 PM EST</span>
+              </div>
+            )}
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredBeers.map((beer, index) => (
+          {loading ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="bg-gray-100 rounded-xl h-96 animate-pulse"></div>
+              ))}
+            </div>
+          ) : featuredBeers.length === 0 ? (
+            <div className="text-center py-12">
+              <Mountain className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+              <h3 className="text-xl font-semibold text-gray-700 mb-2">No beers published yet</h3>
+              <p className="text-gray-500">
+                Alaska's craft beer journey begins soon! Beer reviews are published daily starting Monday.
+              </p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {featuredBeers.map((beer, index) => (
               <Link
                 key={beer.id}
                 href={`/beers/${beer.id}`}
@@ -342,8 +431,9 @@ export default function AlaskaPage() {
                   </div>
                 </div>
               </Link>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -374,6 +464,7 @@ export default function AlaskaPage() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   )
 }
