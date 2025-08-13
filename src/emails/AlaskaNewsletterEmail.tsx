@@ -28,84 +28,11 @@ export default function AlaskaNewsletterEmail({
   unsubscribeToken,
   previewMode = false
 }: AlaskaNewsletterEmailProps) {
-  
-  const alaskaBeerData = [
-    {
-      day: 'Monday',
-      brewery: 'Alaskan Brewing Company - Juneau',
-      beer: 'Alaskan Amber',
-      style: 'Amber Ale',
-      abv: '5.3%',
-      image: 'https://www.hopharrison.com/images/Beer%20images/Alaska/Alaskan%20Amber.png',
-      description: 'Deep amber with copper highlights, crystal clear with creamy off-white head. Rich caramel malt sweetness with floral Saaz hop character and subtle bread notes.',
-      story: 'Our Alaska journey begins with the state\'s pioneering brewery, founded in 1986. This flagship beer\'s authenticity comes from a recipe discovered in the Juneau-Douglas City Museum from the Gold Rush era (1899-1907).'
-    },
-    {
-      day: 'Tuesday',
-      brewery: 'Midnight Sun Brewing - Anchorage',
-      beer: 'Sockeye Red IPA',
-      style: 'Red IPA',
-      abv: '5.7%',
-      image: 'https://www.hopharrison.com/images/Beer%20images/Alaska/Sockeye-Red.png',
-      description: 'Deep amber-red with copper highlights, hazy with persistent off-white head. Explosive citrus and pine with grapefruit, orange peel, and resinous hop character.',
-      story: 'Founded in 1995, Midnight Sun represents Alaska\'s bold brewing attitude with aggressive hop-forward beers and experimental barrel-aging programs.'
-    },
-    {
-      day: 'Wednesday',
-      brewery: 'King Street Brewing - Anchorage',
-      beer: 'Chocolate Coconut Porter',
-      style: 'Porter',
-      abv: '6.0%',
-      image: 'https://www.hopharrison.com/images/Beer%20images/Alaska/Chocolate%20Coconut%20Porter.jpeg',
-      description: 'Deep black with ruby highlights, tan head with excellent retention. Rich chocolate, toasted coconut, vanilla, coffee with smooth chocolate and coconut sweetness.',
-      story: 'King Street specializes in creative flavor combinations that bring warmth to Alaska\'s long winters, using hand-toasted coconut and premium cacao nibs.'
-    },
-    {
-      day: 'Thursday',
-      brewery: 'Cynosure Brewing - Anchorage',
-      beer: 'Belgian Triple',
-      style: 'Belgian Tripel',
-      abv: '9.7%',
-      image: 'https://www.hopharrison.com/images/Beer%20images/Alaska/Belgian%20Triple.jpeg',
-      description: 'Pale gold with crystal clarity, white foam head with good retention. Spicy phenolics, fruity esters, honey, coriander with smooth honey sweetness and warming alcohol.',
-      story: 'Cynosure specializes in traditional European beer styles, bringing Old World brewing techniques to Alaska\'s frontier environment.'
-    },
-    {
-      day: 'Friday',
-      brewery: 'Resolution Brewing - Anchorage',
-      beer: 'New England IPA',
-      style: 'NEIPA',
-      abv: '6.2%',
-      image: 'https://www.hopharrison.com/images/Beer%20images/Alaska/A%20deal%20with%20the%20devil.jpg',
-      description: 'Hazy orange-gold with minimal head retention. Tropical fruit explosion with mango, pineapple, citrus. Creamy mouthfeel, low bitterness, tropical juice character.',
-      story: 'Named after Captain James Cook\'s ship HMS Resolution, this brewery represents modern craft brewing\'s exploration spirit in Alaska.'
-    },
-    {
-      day: 'Saturday',
-      brewery: 'HooDoo Brewing - Fairbanks',
-      beer: 'German Kölsch',
-      style: 'Kölsch',
-      abv: '4.8%',
-      image: 'https://www.hopharrison.com/images/Beer%20images/Alaska/HooDoo-German%20Kolsch.jpg',
-      description: 'Pale straw gold, crystal clear with white foam head and excellent clarity. Clean malt sweetness with subtle fruit notes, delicate floral hop character.',
-      story: 'Founded in 2012 in Fairbanks, HooDoo brings authentic German brewing techniques to Alaska\'s interior, where winter temperatures reach -40°F.'
-    },
-    {
-      day: 'Sunday',
-      brewery: 'Broken Tooth Brewing - Anchorage',
-      beer: 'Pipeline Stout',
-      style: 'Stout',
-      abv: '5.9%',
-      image: 'https://www.hopharrison.com/images/Beer%20images/Alaska/Pipeline%20Stout.jpeg',
-      description: 'Deep black with ruby highlights, tan head with excellent retention. Roasted malt, dark chocolate, coffee notes with oatmeal smoothness and creamy texture.',
-      story: 'Operating within Moose\'s Tooth Pub & Pizzeria, this brewery represents Alaska\'s community-focused approach where breweries serve as neighborhood gathering places.'
-    }
-  ]
 
   return (
     <Html>
       <Head />
-      <Preview>Week {weekNumber}: Alaska's Last Frontier Brewing Excellence - BrewQuest Chronicles</Preview>
+      <Preview>Week {weekNumber}: Alaska's Last Frontier Brewing Renaissance - Where Gold Rush History Meets Modern Innovation</Preview>
       <Body style={main}>
         <Container style={container}>
           
@@ -113,7 +40,7 @@ export default function AlaskaNewsletterEmail({
           <Section style={header}>
             <Img
               src="https://www.hopharrison.com/images/State%20Images/Alaska.png"
-              alt="Alaska's Last Frontier Brewing Scene"
+              alt="Alaska's Last Frontier - From Denali to Coastal Breweries"
               style={heroImage}
             />
             <div style={headerOverlay}>
@@ -121,10 +48,10 @@ export default function AlaskaNewsletterEmail({
                 🍺 BrewQuest Chronicles 🍺
               </Text>
               <Heading style={heroHeading}>
-                Week {weekNumber}: Alaska's Last Frontier Brewing
+                Alaska: The Last Frontier's<br/>Brewing Renaissance
               </Heading>
               <Text style={heroSubtext}>
-                From Gold Rush recipes to frontier innovation
+                Where -40°F winters and midnight sun create America's most resilient beer culture
               </Text>
             </div>
           </Section>
@@ -133,19 +60,202 @@ export default function AlaskaNewsletterEmail({
             {/* Welcome Message */}
             <Section style={welcomeBox}>
               <Text style={welcomeText}>
-                Hey {subscriberName}! 👋
+                Welcome to the Last Frontier, {subscriberName}! 🏔️
               </Text>
               <Text style={text}>
-                Welcome to Week {weekNumber} of our 50-state craft beer journey! This week we're exploring 
-                Alaska's remarkable Last Frontier brewing scene. From Juneau's Gold Rush-era recipes to 
-                Anchorage's innovative breweries using pristine glacial water and indigenous ingredients 
-                like spruce tips and alder-smoked malts.
+                This week we're venturing into one of America's most extreme brewing environments. Alaska's 
+                49 breweries don't just survive in conditions that would challenge any brewer - they've 
+                turned isolation, harsh weather, and limited supply chains into sources of innovation that 
+                define what frontier brewing truly means.
               </Text>
             </Section>
 
-            {/* Alaska Overview Stats */}
+            {/* Alaska: The Brewing Frontier Story */}
+            <Section style={storySection}>
+              <Heading style={storyHeading}>🎯 The Last Frontier Brewing Story</Heading>
+              
+              <Text style={storyText}>
+                In 1986, when Marcy and Geoff Larson founded Alaskan Brewing Company in Juneau, 
+                there were only 67 independent breweries in the entire United States. Today, Alaska 
+                ranks #4 nationally in breweries per capita - a testament to the state's fierce 
+                independence and innovative spirit.
+              </Text>
+              
+              <Text style={storyText}>
+                What makes Alaska brewing extraordinary isn't just the numbers - it's the necessity-driven 
+                innovation. When your brewery operates where winter temperatures hit -40°F and supply 
+                chains can be cut off for weeks, you develop solutions that push the entire industry forward.
+              </Text>
+            </Section>
+
+            {/* The Alaska Advantage */}
+            <Section style={advantageSection}>
+              <Heading style={advantageHeading}>❄️ The Alaska Brewing Advantage</Heading>
+              
+              <div style={advantageGrid}>
+                <div style={advantageCard}>
+                  <Text style={advantageTitle}>🏔️ Pristine Glacial Water</Text>
+                  <Text style={advantageText}>
+                    Juneau Icefield provides some of the world's purest brewing water. Alaskan Brewing's 
+                    water source has been flowing for over 3,000 years - no municipal treatment needed.
+                  </Text>
+                </div>
+                
+                <div style={advantageCard}>
+                  <Text style={advantageTitle}>🌲 Wild Indigenous Ingredients</Text>
+                  <Text style={advantageText}>
+                    Sitka spruce tips from Tongass National Forest, alder-smoked malts, wild berries, 
+                    and even kelp create flavors impossible to replicate anywhere else.
+                  </Text>
+                </div>
+                
+                <div style={advantageCard}>
+                  <Text style={advantageTitle}>♻️ Pioneering Sustainability</Text>
+                  <Text style={advantageText}>
+                    Necessity bred innovation: Alaskan Brewing's CO₂ recovery system and steam generation 
+                    from spent grain were industry firsts, now adopted worldwide.
+                  </Text>
+                </div>
+                
+                <div style={advantageCard}>
+                  <Text style={advantageTitle}>📜 Living History</Text>
+                  <Text style={advantageText}>
+                    Alaskan Amber's recipe comes from actual Gold Rush-era shipping records (1899-1907) 
+                    discovered in the Juneau-Douglas City Museum.
+                  </Text>
+                </div>
+              </div>
+            </Section>
+
+            {/* Brewery Spotlight */}
+            <Section style={spotlightSection}>
+              <Heading style={spotlightHeading}>🏆 Alaska's Brewing Pioneers</Heading>
+              
+              <div style={brewerySpotlight}>
+                <Text style={breweryName}>Alaskan Brewing Company - Juneau (1986)</Text>
+                <Text style={breweryStory}>
+                  The state's founding brewery began when Geoff Larson, a former chemical engineer, 
+                  discovered historical brewing records in Juneau's museum. Their flagship Amber became 
+                  a Gold Rush recipe brought back to life, proving that authenticity and innovation 
+                  could coexist.
+                </Text>
+                <Text style={breweryAchievement}>
+                  🏅 First brewery to implement CO₂ recovery in the US
+                </Text>
+              </div>
+              
+              <div style={brewerySpotlight}>
+                <Text style={breweryName}>Midnight Sun Brewing - Anchorage (1995)</Text>
+                <Text style={breweryStory}>
+                  Known for boundary-pushing beers like their 27% ABV "M" barleywine, Midnight Sun 
+                  represents Alaska's "go big or go home" mentality. They've mastered barrel-aging 
+                  in extreme temperatures that would ruin most beer.
+                </Text>
+                <Text style={breweryAchievement}>
+                  🥃 Pioneers of extreme temperature barrel-aging
+                </Text>
+              </div>
+
+              <div style={brewerySpotlight}>
+                <Text style={breweryName}>HooDoo Brewing - Fairbanks (2012)</Text>
+                <Text style={breweryStory}>
+                  Operating where temperatures reach -40°F, HooDoo proves German precision works in 
+                  Alaska's interior. Their authentic Kölsch and Hefeweizen maintain traditional 
+                  character despite challenging conditions.
+                </Text>
+                <Text style={breweryAchievement}>
+                  🌡️ Successfully brewing European styles at -40°F
+                </Text>
+              </div>
+            </Section>
+
+            {/* Cultural Impact */}
+            <Section style={cultureSection}>
+              <Heading style={cultureHeading}>🤝 Beer as Community in the Last Frontier</Heading>
+              
+              <Text style={cultureText}>
+                In Alaska, breweries aren't just businesses - they're survival hubs. During Anchorage's 
+                long winters, places like Broken Tooth Brewing (inside Moose's Tooth Pub) become 
+                essential gathering spaces where neighbors check on each other over locally-made beer.
+              </Text>
+              
+              <Text style={cultureText}>
+                This community focus drives innovation too. When supply chains fail, brewers share 
+                ingredients. When equipment breaks, they fix each other's. The result? A brewing 
+                community that's tighter and more collaborative than anywhere else in America.
+              </Text>
+              
+              <div style={cultureStats}>
+                <Text style={cultureStatText}>
+                  <strong>Community Impact:</strong> Alaska breweries generate $332 million annually 
+                  while employing 2,800+ Alaskans in communities from Ketchikan to Fairbanks.
+                </Text>
+              </div>
+            </Section>
+
+            {/* Innovation Spotlight */}
+            <Section style={innovationSection}>
+              <Heading style={innovationHeading}>💡 Alaska's Brewing Innovations</Heading>
+              
+              <div style={innovationGrid}>
+                <div style={innovationCard}>
+                  <Text style={innovationTitle}>🔥 Alder Wood Smoking</Text>
+                  <Text style={innovationText}>
+                    Alaskan Brewing's Smoked Porter uses alder wood from Tongass National Forest, 
+                    creating flavors so unique it won gold at the 2024 European Beer Star competition.
+                  </Text>
+                </div>
+                
+                <div style={innovationCard}>
+                  <Text style={innovationTitle}>🌿 Foraged Ingredients</Text>
+                  <Text style={innovationText}>
+                    Alaska brewers forage cloudberries, salmonberries, and rose hips, creating seasonal 
+                    beers that capture the state's wild essence in liquid form.
+                  </Text>
+                </div>
+                
+                <div style={innovationCard}>
+                  <Text style={innovationTitle}>❄️ Cold-Weather Logistics</Text>
+                  <Text style={innovationText}>
+                    Alaska breweries pioneered cold-weather brewing techniques and developed supply 
+                    chain solutions that work when roads freeze and planes can't fly.
+                  </Text>
+                </div>
+              </div>
+            </Section>
+
+            {/* The Week Ahead */}
+            <Section style={weekAheadSection}>
+              <Heading style={weekAheadHeading}>🗓️ Your Alaska Beer Journey</Heading>
+              
+              <Text style={weekAheadText}>
+                This week on hopharrison.com, we're releasing daily beer reviews that tell Alaska's 
+                brewing story. Each day reveals a different aspect of Last Frontier brewing - from 
+                Gold Rush authenticity to modern innovation. Follow along as we explore:
+              </Text>
+              
+              <div style={journeyPreview}>
+                <Text style={journeyItem}>
+                  🥉 Historical authenticity with Gold Rush-era recipes
+                </Text>
+                <Text style={journeyItem}>
+                  🍺 Extreme climate brewing techniques and solutions  
+                </Text>
+                <Text style={journeyItem}>
+                  🌲 Wild ingredient sourcing and foraging traditions
+                </Text>
+                <Text style={journeyItem}>
+                  🏔️ Community resilience and collaboration stories
+                </Text>
+                <Text style={journeyItem}>
+                  ♻️ Sustainability innovations born from necessity
+                </Text>
+              </div>
+            </Section>
+
+            {/* Alaska Stats */}
             <Section style={statsContainer}>
-              <Text style={statsTitle}>🗺️ Alaska Brewing by the Numbers</Text>
+              <Text style={statsTitle}>📊 Alaska Brewing by the Numbers</Text>
               <div style={statsGrid}>
                 <div style={statItem}>
                   <Text style={statNumber}>49</Text>
@@ -153,92 +263,35 @@ export default function AlaskaNewsletterEmail({
                 </div>
                 <div style={statItem}>
                   <Text style={statNumber}>#4</Text>
-                  <Text style={statLabel}>Per Capita Ranking</Text>
+                  <Text style={statLabel}>Per Capita Nationally</Text>
+                </div>
+                <div style={statItem}>
+                  <Text style={statNumber}>6.7</Text>
+                  <Text style={statLabel}>Per 100k Residents</Text>
                 </div>
                 <div style={statItem}>
                   <Text style={statNumber}>$332M</Text>
                   <Text style={statLabel}>Economic Impact</Text>
                 </div>
-              </div>
-            </Section>
-
-            {/* Journey Overview */}
-            <Section style={journeyBox}>
-              <Text style={journeyTitle}>🍺 This Week's Alaska Adventure</Text>
-              <Text style={journeyText}>
-                Alaska's craft beer scene represents one of America's most challenging and rewarding brewing 
-                environments. Where winter temperatures can reach -40°F and summer brings midnight sun, 
-                brewers have created a unique culture that combines historical authenticity, extreme innovation, 
-                and community resilience. Our seven-day journey reveals breweries that don't just survive 
-                Alaska's conditions - they thrive in them.
-              </Text>
-            </Section>
-            
-            {/* Daily Beer Reviews */}
-            <Heading style={sectionHeading}>📅 Seven Days of Last Frontier Brewing</Heading>
-            
-            {alaskaBeerData.map((beer, index) => (
-              <Section key={index} style={beerCard}>
-                <div style={beerCardHeader}>
-                  <Text style={beerDay}>{beer.day}</Text>
-                  <Text style={beerRating}>⭐⭐⭐⭐⭐</Text>
+                <div style={statItem}>
+                  <Text style={statNumber}>2,800+</Text>
+                  <Text style={statLabel}>Jobs Created</Text>
                 </div>
-                
-                <div style={beerCardContent}>
-                  <div style={beerImageContainer}>
-                    <Img
-                      src={beer.image}
-                      alt={`${beer.beer} from ${beer.brewery}`}
-                      style={beerImage}
-                    />
-                  </div>
-                  
-                  <div style={beerDetails}>
-                    <Heading style={beerName}>{beer.beer}</Heading>
-                    <Text style={breweryName}>{beer.brewery}</Text>
-                    <Text style={beerStyle}>
-                      {beer.style} • {beer.abv} ABV
-                    </Text>
-                    
-                    <Text style={tastingNotes}>
-                      <strong>Tasting Notes:</strong> {beer.description}
-                    </Text>
-                    
-                    <Text style={breweryStory}>
-                      {beer.story}
-                    </Text>
-                  </div>
+                <div style={statItem}>
+                  <Text style={statNumber}>9.3</Text>
+                  <Text style={statLabel}>Gallons Per Person</Text>
                 </div>
-              </Section>
-            ))}
-
-            {/* Alaska Special Features */}
-            <Section style={specialFeaturesBox}>
-              <Text style={featuresTitle}>🌟 What Makes Alaska Beer Special</Text>
-              <div style={featuresList}>
-                <Text style={featureItem}>
-                  ❄️ <strong>Pristine Glacial Water:</strong> Sourced from the Juneau Icefield for exceptionally pure brewing
-                </Text>
-                <Text style={featureItem}>
-                  🌲 <strong>Indigenous Ingredients:</strong> Sitka spruce tips and alder-smoked malts create unique Alaska flavors
-                </Text>
-                <Text style={featureItem}>
-                  🏔️ <strong>Frontier Innovation:</strong> Extreme weather drives sustainability practices and brewing innovation
-                </Text>
-                <Text style={featureItem}>
-                  📜 <strong>Gold Rush Heritage:</strong> Modern recipes based on historical brewing records from the 1800s
-                </Text>
               </div>
             </Section>
 
             {/* Call to Action */}
             <Section style={ctaSection}>
               <Button style={primaryButton} href="https://www.hopharrison.com/states/alaska">
-                Read Full Alaska Reviews 🍺
+                Explore Alaska's Breweries 🏔️
               </Button>
               
               <Button style={secondaryButton} href="https://www.hopharrison.com/blog">
-                View Complete Journey 🗺️
+                Follow Daily Beer Journey 🍺
               </Button>
             </Section>
 
@@ -248,7 +301,8 @@ export default function AlaskaNewsletterEmail({
               <Text style={nextWeekText}>
                 <strong>Week 3: Arizona's Desert Brewing Oasis</strong><br/>
                 From Sedona's red rock breweries to Phoenix's innovative desert-inspired ales, 
-                discover how Arizona's craft beer scene thrives in the Sonoran Desert.
+                discover how Arizona's craft beer scene thrives in the Sonoran Desert where 
+                summer temperatures reach 115°F.
               </Text>
             </Section>
 
@@ -267,10 +321,11 @@ export default function AlaskaNewsletterEmail({
 
             {/* Footer Message */}
             <Text style={footerMessage}>
-              Thanks for joining me on this incredible beer journey across America! Alaska's pioneering 
-              spirit lives on in every glass, proving that great beer can be made anywhere with enough 
-              passion and determination.
+              Alaska proves that great beer isn't just about perfect conditions - it's about passion, 
+              innovation, and community. These brewers don't just make beer; they preserve history, 
+              build communities, and show us what's possible when you refuse to be limited by your environment.
               <br/><br/>
+              Keep exploring,<br/>
               🍻 Hop Harrison - BrewQuest Chronicles
             </Text>
           </Section>
@@ -278,17 +333,17 @@ export default function AlaskaNewsletterEmail({
           {/* Email Footer */}
           <Section style={footer}>
             <Text style={footerSmall}>
-              You're receiving this weekly digest as a BrewQuest Chronicles subscriber.
+              You're receiving this because you're part of the BrewQuest Chronicles community.
               <br/>
               {unsubscribeToken ? (
                 <>
                   <a href={`https://www.hopharrison.com/unsubscribe?token=${unsubscribeToken}`} style={link}>Unsubscribe</a> | 
-                  <a href="https://www.hopharrison.com/newsletter" style={link}>Update Preferences</a>
+                  <a href="https://www.hopharrison.com/newsletter" style={link}>Manage Preferences</a>
                 </>
               ) : (
                 <>
                   <a href="https://www.hopharrison.com/unsubscribe" style={link}>Unsubscribe</a> | 
-                  <a href="https://www.hopharrison.com/newsletter" style={link}>Update Preferences</a>
+                  <a href="https://www.hopharrison.com/newsletter" style={link}>Manage Preferences</a>
                 </>
               )}
               <br/>
@@ -703,4 +758,232 @@ const footerSmall = {
 const link = { 
   color: '#3b82f6', 
   textDecoration: 'underline' 
+}
+
+// New styles for enhanced content sections
+const storySection = {
+  backgroundColor: '#ffffff',
+  border: '1px solid #e2e8f0',
+  padding: '24px',
+  borderRadius: '12px',
+  margin: '24px 0'
+}
+
+const storyHeading = {
+  fontSize: '20px',
+  fontWeight: 'bold',
+  color: '#1e40af',
+  margin: '0 0 16px'
+}
+
+const storyText = {
+  fontSize: '16px',
+  lineHeight: '1.6',
+  color: '#374151',
+  margin: '0 0 16px'
+}
+
+const advantageSection = {
+  backgroundColor: '#f8fafc',
+  padding: '24px',
+  borderRadius: '12px',
+  margin: '24px 0'
+}
+
+const advantageHeading = {
+  fontSize: '20px',
+  fontWeight: 'bold',
+  color: '#1e40af',
+  margin: '0 0 20px',
+  textAlign: 'center' as const
+}
+
+const advantageGrid = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+  gap: '16px'
+}
+
+const advantageCard = {
+  backgroundColor: '#ffffff',
+  border: '1px solid #e2e8f0',
+  padding: '16px',
+  borderRadius: '8px'
+}
+
+const advantageTitle = {
+  fontSize: '14px',
+  fontWeight: 'bold',
+  color: '#1e40af',
+  margin: '0 0 8px'
+}
+
+const advantageText = {
+  fontSize: '13px',
+  lineHeight: '1.5',
+  color: '#374151',
+  margin: '0'
+}
+
+const spotlightSection = {
+  backgroundColor: '#ffffff',
+  border: '1px solid #e2e8f0',
+  padding: '24px',
+  borderRadius: '12px',
+  margin: '24px 0'
+}
+
+const spotlightHeading = {
+  fontSize: '20px',
+  fontWeight: 'bold',
+  color: '#1e40af',
+  margin: '0 0 20px',
+  textAlign: 'center' as const
+}
+
+const brewerySpotlight = {
+  backgroundColor: '#f8fafc',
+  border: '1px solid #e2e8f0',
+  padding: '16px',
+  borderRadius: '8px',
+  margin: '0 0 16px'
+}
+
+const breweryName = {
+  fontSize: '16px',
+  fontWeight: 'bold',
+  color: '#1e40af',
+  margin: '0 0 8px'
+}
+
+const breweryStory = {
+  fontSize: '14px',
+  lineHeight: '1.5',
+  color: '#374151',
+  margin: '0 0 8px'
+}
+
+const breweryAchievement = {
+  fontSize: '13px',
+  fontWeight: '500',
+  color: '#059669',
+  margin: '0',
+  fontStyle: 'italic'
+}
+
+const cultureSection = {
+  backgroundColor: '#eff6ff',
+  border: '2px solid #3b82f6',
+  padding: '24px',
+  borderRadius: '12px',
+  margin: '24px 0'
+}
+
+const cultureHeading = {
+  fontSize: '20px',
+  fontWeight: 'bold',
+  color: '#1e40af',
+  margin: '0 0 16px',
+  textAlign: 'center' as const
+}
+
+const cultureText = {
+  fontSize: '16px',
+  lineHeight: '1.6',
+  color: '#374151',
+  margin: '0 0 16px'
+}
+
+const cultureStats = {
+  backgroundColor: '#dbeafe',
+  padding: '16px',
+  borderRadius: '8px',
+  margin: '16px 0 0'
+}
+
+const cultureStatText = {
+  fontSize: '14px',
+  color: '#1e40af',
+  margin: '0',
+  textAlign: 'center' as const
+}
+
+const innovationSection = {
+  backgroundColor: '#ffffff',
+  border: '1px solid #e2e8f0',
+  padding: '24px',
+  borderRadius: '12px',
+  margin: '24px 0'
+}
+
+const innovationHeading = {
+  fontSize: '20px',
+  fontWeight: 'bold',
+  color: '#1e40af',
+  margin: '0 0 20px',
+  textAlign: 'center' as const
+}
+
+const innovationGrid = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+  gap: '16px'
+}
+
+const innovationCard = {
+  backgroundColor: '#f8fafc',
+  border: '1px solid #e2e8f0',
+  padding: '16px',
+  borderRadius: '8px'
+}
+
+const innovationTitle = {
+  fontSize: '14px',
+  fontWeight: 'bold',
+  color: '#1e40af',
+  margin: '0 0 8px'
+}
+
+const innovationText = {
+  fontSize: '13px',
+  lineHeight: '1.5',
+  color: '#374151',
+  margin: '0'
+}
+
+const weekAheadSection = {
+  backgroundColor: '#fef3c7',
+  border: '2px solid #f59e0b',
+  padding: '24px',
+  borderRadius: '12px',
+  margin: '24px 0'
+}
+
+const weekAheadHeading = {
+  fontSize: '20px',
+  fontWeight: 'bold',
+  color: '#92400e',
+  margin: '0 0 16px',
+  textAlign: 'center' as const
+}
+
+const weekAheadText = {
+  fontSize: '16px',
+  lineHeight: '1.6',
+  color: '#78350f',
+  margin: '0 0 16px',
+  textAlign: 'center' as const
+}
+
+const journeyPreview = {
+  display: 'flex',
+  flexDirection: 'column' as const,
+  gap: '8px'
+}
+
+const journeyItem = {
+  fontSize: '14px',
+  color: '#78350f',
+  margin: '0',
+  lineHeight: '1.5'
 }
