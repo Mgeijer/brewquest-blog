@@ -133,7 +133,7 @@ export default function AlaskaNewsletterEmail({
               
               <div style={brewerySpotlight}>
                 <Text style={spotlightBreweryName}>Alaskan Brewing Company - Juneau (1986)</Text>
-                <Text style={breweryStory}>
+                <Text style={spotlightBreweryStory}>
                   The state's founding brewery began when Geoff Larson, a former chemical engineer, 
                   discovered historical brewing records in Juneau's museum. Their flagship Amber became 
                   a Gold Rush recipe brought back to life, proving that authenticity and innovation 
@@ -146,7 +146,7 @@ export default function AlaskaNewsletterEmail({
               
               <div style={brewerySpotlight}>
                 <Text style={spotlightBreweryName}>Midnight Sun Brewing - Anchorage (1995)</Text>
-                <Text style={breweryStory}>
+                <Text style={spotlightBreweryStory}>
                   Known for boundary-pushing beers like their 27% ABV "M" barleywine, Midnight Sun 
                   represents Alaska's "go big or go home" mentality. They've mastered barrel-aging 
                   in extreme temperatures that would ruin most beer.
@@ -158,7 +158,7 @@ export default function AlaskaNewsletterEmail({
 
               <div style={brewerySpotlight}>
                 <Text style={spotlightBreweryName}>HooDoo Brewing - Fairbanks (2012)</Text>
-                <Text style={breweryStory}>
+                <Text style={spotlightBreweryStory}>
                   Operating where temperatures reach -40°F, HooDoo proves German precision works in 
                   Alaska's interior. Their authentic Kölsch and Hefeweizen maintain traditional 
                   character despite challenging conditions.
@@ -856,7 +856,7 @@ const spotlightBreweryName = {
   margin: '0 0 8px'
 }
 
-const breweryStory = {
+const spotlightBreweryStory = {
   fontSize: '14px',
   lineHeight: '1.5',
   color: '#374151',
