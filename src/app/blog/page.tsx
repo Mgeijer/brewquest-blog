@@ -475,7 +475,7 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
             <div className="mb-12">
               <h3 className="text-2xl font-bold text-beer-dark mb-6">This Week's Beer Journey</h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {beerReviews.slice(0, 3).map((beer) => (
+                {beerReviews.map((beer) => (
                   <a 
                     key={beer.id} 
                     href={`/beers/${beer.id}`}
