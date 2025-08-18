@@ -4,6 +4,7 @@ import { Calendar, MapPin, Menu, User, X } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { getCurrentState } from '@/lib/data/stateProgress'
 
 const navigationItems = [
   { name: 'Home', href: '/' },
@@ -19,22 +20,22 @@ export default function Header() {
   const pathname = usePathname()
 
   useEffect(() => {
-    // Fetch current week dynamically
-    const fetchCurrentWeek = async () => {
+    // Get current week from local state data
+    const loadCurrentWeek = () => {
       try {
-        const response = await fetch('/api/states/progress')
-        const data = await response.json()
-        const current = data.states?.find((state: any) => state.status === 'current')
-        if (current) {
-          setCurrentWeek(current.week_number)
+        const currentState = getCurrentState()
+        if (currentState) {
+          setCurrentWeek(currentState.weekNumber)
+        } else {
+          setCurrentWeek(1) // Fallback
         }
       } catch (error) {
-        console.error('Error fetching current week:', error)
+        console.error('Error loading current week:', error)
         setCurrentWeek(1) // Fallback
       }
     }
     
-    fetchCurrentWeek()
+    loadCurrentWeek()
   }, [])
 
   // Close mobile menu when clicking outside
