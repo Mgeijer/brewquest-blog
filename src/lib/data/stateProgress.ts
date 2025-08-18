@@ -1,3 +1,4 @@
+// Cache bust: 2025-08-18 - Arizona is current state
 export interface BeerReview {
   id: string
   name: string
