@@ -145,7 +145,7 @@ export const stateProgressData: StateData[] = [
   {
     code: 'AK',
     name: 'Alaska',
-    status: 'current',
+    status: 'completed',
     weekNumber: 2,
     featuredBeers: [
       {
@@ -254,17 +254,109 @@ export const stateProgressData: StateData[] = [
   {
     code: 'AZ',
     name: 'Arizona',
-    status: 'upcoming',
+    status: 'current',
     weekNumber: 3,
-    featuredBeers: [], // TODO: Research 7 authentic Arizona craft beers
+    featuredBeers: [
+      {
+        id: 'az-01',
+        name: 'Kilt Lifter Scottish Ale',
+        brewery: 'Four Peaks Brewing Company',
+        style: 'Scottish Ale',
+        abv: 6.0,
+        ibu: 25,
+        description: "Arizona's flagship beer since 1996, this smooth Scottish ale showcases caramel malts and subtle hop character that pairs perfectly with desert heat.",
+        tastingNotes: 'Rich copper color, caramel and toffee aromas, smooth malt sweetness balanced by mild hop bitterness, clean dry finish.',
+        rating: 4,
+        dayOfWeek: 1,
+        imageUrl: '/images/Beer images/Arizona/Kilt Lifter.png'
+      },
+      {
+        id: 'az-02',
+        name: 'Desert Botanical Wheat',
+        brewery: 'SanTan Brewing Company',
+        style: 'American Wheat Beer',
+        abv: 4.8,
+        ibu: 18,
+        description: 'Chandler-based brewery\'s refreshing wheat beer perfect for Arizona\'s year-round outdoor culture and scorching summers.',
+        tastingNotes: 'Hazy golden color, citrus and coriander notes, light body with wheat smoothness, crisp refreshing finish.',
+        rating: 4,
+        dayOfWeek: 2,
+        imageUrl: '/images/Beer images/Arizona/Desert Botanical Wheat.png'
+      },
+      {
+        id: 'az-03',
+        name: 'Prickly Pear Wheat',
+        brewery: 'Sonoran Brewing Company',
+        style: 'Fruit Beer',
+        abv: 4.5,
+        ibu: 12,
+        description: 'Uniquely Arizona beer featuring prickly pear cactus fruit, creating a distinctive pink hue and subtle desert terroir.',
+        tastingNotes: 'Beautiful pink color, light fruit aroma, subtle prickly pear sweetness, smooth wheat base, refreshing desert character.',
+        rating: 4.5,
+        dayOfWeek: 3,
+        imageUrl: '/images/Beer images/Arizona/Prickly Pear Wheat.png'
+      },
+      {
+        id: 'az-04',
+        name: 'Flagstaff IPA',
+        brewery: 'Mother Percolator',
+        style: 'American IPA',
+        abv: 6.8,
+        ibu: 65,
+        description: 'High-altitude IPA from Flagstaff showcasing citrus and pine hop character with mountain water and cooler brewing conditions.',
+        tastingNotes: 'Golden amber color, intense citrus and pine aroma, bold hop flavor with caramel malt backbone, lingering bitter finish.',
+        rating: 4,
+        dayOfWeek: 4,
+        imageUrl: '/images/Beer images/Arizona/Flagstaff IPA.png'
+      },
+      {
+        id: 'az-05',
+        name: 'Desert Stout',
+        brewery: 'Wren House Brewing',
+        style: 'American Stout',
+        abv: 5.8,
+        ibu: 35,
+        description: 'Phoenix neighborhood brewery\'s take on the classic stout, proving dark beers work in the desert when crafted with skill.',
+        tastingNotes: 'Dark black color, coffee and chocolate aromas, medium body with roasted malt character, smooth finish despite the heat.',
+        rating: 4,
+        dayOfWeek: 5,
+        imageUrl: '/images/Beer images/Arizona/Desert Stout.png'
+      },
+      {
+        id: 'az-06',
+        name: 'Sedona Red',
+        brewery: 'Oak Creek Brewing Company',
+        style: 'Red Ale',
+        abv: 5.4,
+        ibu: 28,
+        description: 'Named after the iconic red rocks of Sedona, this amber ale captures the spirit of Arizona\'s most beautiful landscape.',
+        tastingNotes: 'Deep red-amber color matching Sedona rocks, caramel and toasted malt flavors, balanced hop character, smooth malty finish.',
+        rating: 4,
+        dayOfWeek: 6,
+        imageUrl: '/images/Beer images/Arizona/Sedona Red.png'
+      },
+      {
+        id: 'az-07',
+        name: 'Grand Canyon Porter',
+        brewery: 'Grand Canyon Brewing Company',
+        style: 'Porter',
+        abv: 6.2,
+        ibu: 30,
+        description: 'Dark, rich porter inspired by the majesty of the Grand Canyon, brewed with chocolate and coffee notes for desert evening enjoyment.',
+        tastingNotes: 'Deep brown color, coffee and dark chocolate aromas, full body with roasted malt complexity, warming finish perfect for desert nights.',
+        rating: 4.5,
+        dayOfWeek: 7,
+        imageUrl: '/images/Beer images/Arizona/Grand Canyon Porter.png'
+      }
+    ],
     blogPostSlug: 'arizona-craft-beer-journey',
-    heroImage: '/images/arizona-hero.jpg',
-    description: 'Desert brewing oasis with year-round outdoor drinking culture.',
-    totalBreweries: 123,
+    heroImage: '/images/State Images/Arizona.png',
+    description: 'Desert brewing oasis with year-round outdoor drinking culture and unique ingredients.',
+    totalBreweries: 108,
     region: 'southwest',
     capital: 'Phoenix',
     population: 7151502,
-    breweryDensity: 1.7
+    breweryDensity: 1.5
   },
 
   // Week 4: Arkansas
