@@ -3,6 +3,7 @@
 import { Facebook, Instagram, Mail, MapPin, Twitter, Linkedin } from 'lucide-react'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import { getCurrentState } from '@/lib/data/stateProgress'
 
 interface CurrentState {
   state_name: string
@@ -18,30 +19,31 @@ export default function Footer() {
   const [completedCount, setCompletedCount] = useState(0)
 
   useEffect(() => {
-    const fetchCurrentState = async () => {
+    const loadCurrentState = () => {
       try {
-        const response = await fetch('/api/states/progress?include_stats=true')
-        const data = await response.json()
-        
-        const current = data.states?.find((state: any) => state.status === 'current')
-        const completed = data.statistics?.completed_states || 0
-        
-        if (current) {
+        // Use local state data for consistency
+        const localCurrentState = getCurrentState()
+        if (localCurrentState) {
           setCurrentState({
-            state_name: current.state_name,
-            week_number: current.week_number
+            state_name: localCurrentState.name,
+            week_number: localCurrentState.weekNumber
           })
+          // Calculate completed count from local data: current week - 1
+          setCompletedCount(localCurrentState.weekNumber - 1)
+        } else {
+          // Fallback to default values
+          setCurrentState({ state_name: 'Alabama', week_number: 1 })
+          setCompletedCount(0)
         }
-        setCompletedCount(completed)
       } catch (error) {
-        console.error('Error fetching current state:', error)
+        console.error('Error loading current state:', error)
         // Fallback to default values
         setCurrentState({ state_name: 'Alabama', week_number: 1 })
         setCompletedCount(0)
       }
     }
 
-    fetchCurrentState()
+    loadCurrentState()
   }, [])
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {

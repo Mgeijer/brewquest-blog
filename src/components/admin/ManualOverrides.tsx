@@ -15,6 +15,7 @@ import {
   Settings,
   Mail
 } from 'lucide-react'
+import { getCurrentState, getStateTitle } from '@/lib/data/stateProgress'
 
 interface EmergencyAction {
   id: string
@@ -44,6 +45,8 @@ interface SystemStatus {
 }
 
 export default function ManualOverrides() {
+  const currentState = getCurrentState()
+  const stateTitle = getStateTitle(currentState?.code || '')
   const [systemStatus, setSystemStatus] = useState<SystemStatus | null>(null)
   const [loading, setLoading] = useState(true)
   const [confirmingAction, setConfirmingAction] = useState<string | null>(null)
@@ -369,7 +372,7 @@ export default function ManualOverrides() {
             <span>Manual Newsletter</span>
           </h2>
           <p className="text-sm text-gray-600 mt-1">
-            Send the Alaska newsletter immediately to all subscribers.
+            Send the {currentState?.name || 'current state'} newsletter immediately to all subscribers.
           </p>
         </div>
 
@@ -378,10 +381,10 @@ export default function ManualOverrides() {
             <div className="flex items-start space-x-3">
               <Mail className="w-5 h-5 text-blue-600 mt-0.5" />
               <div>
-                <h3 className="font-medium text-blue-900">Alaska Newsletter</h3>
+                <h3 className="font-medium text-blue-900">{currentState?.name || 'Current State'} Newsletter</h3>
                 <p className="text-sm text-blue-700 mt-1">
-                  Send "Week 2 Complete: Alaska Last Frontier Brewing" newsletter to all active subscribers.
-                  This will include all Alaska beer reviews, brewery stories, and upcoming Arizona preview.
+                  Send "Week {currentState?.weekNumber || 1} Complete: {currentState?.name || 'Current State'} {stateTitle}" newsletter to all active subscribers.
+                  This will include all {currentState?.name || 'current state'} beer reviews, brewery stories, and upcoming preview.
                 </p>
               </div>
             </div>

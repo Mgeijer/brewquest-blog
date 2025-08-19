@@ -92,51 +92,24 @@ export default function USMap({
     }
   }
 
-  // Load state data from Supabase with fallback
+  // Load state data - prioritizing local data for consistency
   const loadStateData = useCallback(async () => {
     setIsLoadingData(true)
     setDataError(null)
     
     try {
-      console.log('🔄 Loading state data from Supabase...')
-      const { data: supabaseStates, error } = await getAllStateProgress()
+      // Use local state data first for better consistency
+      console.log('🔄 Loading state data from local source...')
+      const { getAllStatesData } = await import('@/lib/data/stateProgress')
+      const localStates = getAllStatesData()
+      console.log('✅ Loaded', localStates.length, 'states from local data')
+      setStateProgressData(localStates)
       
-      if (error) {
-        console.error('❌ Error loading state data:', error)
-        // Fallback to local state data instead of showing error
-        console.log('🔄 Falling back to local state data...')
-        const { getAllStatesData } = await import('@/lib/data/stateProgress')
-        const fallbackStates = getAllStatesData()
-        console.log('✅ Loaded', fallbackStates.length, 'states from fallback')
-        setStateProgressData(fallbackStates)
-        return
-      }
-
-      if (supabaseStates && supabaseStates.length > 0) {
-        console.log('✅ Loaded', supabaseStates.length, 'states from Supabase')
-        const convertedStates = supabaseStates.map(convertToStateData)
-        setStateProgressData(convertedStates)
-      } else {
-        console.warn('⚠️ No state data returned from Supabase, using fallback')
-        // Fallback to local state data
-        const { getAllStatesData } = await import('@/lib/data/stateProgress')
-        const fallbackStates = getAllStatesData()
-        console.log('✅ Loaded', fallbackStates.length, 'states from fallback')
-        setStateProgressData(fallbackStates)
-      }
+      // Note: We're prioritizing local data to ensure map shows current state correctly
+      // Supabase sync can be done separately for analytics and admin features
     } catch (err) {
       console.error('❌ Exception loading state data:', err)
-      // Fallback to local state data instead of showing error
-      try {
-        console.log('🔄 Falling back to local state data...')
-        const { getAllStatesData } = await import('@/lib/data/stateProgress')
-        const fallbackStates = getAllStatesData()
-        console.log('✅ Loaded', fallbackStates.length, 'states from fallback')
-        setStateProgressData(fallbackStates)
-      } catch (fallbackErr) {
-        console.error('❌ Fallback also failed:', fallbackErr)
-        setDataError('Failed to load state data')
-      }
+      setDataError('Failed to load state data')
     } finally {
       setIsLoadingData(false)
     }

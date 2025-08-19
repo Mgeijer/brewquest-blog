@@ -2,7 +2,7 @@ import AITransparencyDisclosure from '@/components/about/AITransparencyDisclosur
 import CommunityEngagement from '@/components/about/CommunityEngagement'
 import InteractiveMapSectionWrapper from '@/components/about/InteractiveMapSectionWrapper'
 import StoryTimeline from '@/components/about/StoryTimeline'
-import { getJourneyProgress, getAllStatesData } from '@/lib/data/stateProgress'
+import { getJourneyProgress, getAllStatesData, getCurrentState } from '@/lib/data/stateProgress'
 import { MapPin, TrendingUp } from 'lucide-react'
 import { Metadata } from 'next'
 import Image from 'next/image'
@@ -39,6 +39,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   const progress = getJourneyProgress()
   const stateProgressData = getAllStatesData()
+  const currentState = getCurrentState()
 
   return (
     <div className="min-h-screen bg-beer-cream">
@@ -88,7 +89,7 @@ export default function AboutPage() {
               <div className="flex items-center justify-center lg:justify-start gap-2 mb-6">
                 <MapPin className="w-6 h-6 text-beer-cream" />
                 <span className="text-beer-cream/90 font-medium">
-                  Currently exploring: Week 1 of 50
+                  Currently exploring: Week {currentState?.weekNumber || 1} of 50
                 </span>
                 <TrendingUp className="w-4 h-4 text-beer-cream/70" />
               </div>

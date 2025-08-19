@@ -2,6 +2,7 @@ import { Metadata } from 'next'
 import NewsletterSignup from '@/components/newsletter/NewsletterSignup'
 import { Mail, MapPin, Calendar, Users, Star, Zap } from 'lucide-react'
 import DynamicCurrentState from '@/components/newsletter/DynamicCurrentState'
+import { getCurrentState, getStateTitle } from '@/lib/data/stateProgress'
 
 export const metadata: Metadata = {
   title: 'Join BrewQuest Chronicles Newsletter | Hop Harrison',
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
 }
 
 export default function NewsletterPage() {
+  const currentState = getCurrentState()
+  const stateTitle = getStateTitle(currentState?.code || '')
   const benefits = [
     {
       icon: Calendar,
@@ -157,7 +160,7 @@ export default function NewsletterPage() {
                 From: hop@hopharrison.com
               </div>
               <h3 className="text-xl font-bold text-beer-dark">
-                🍺 Week Complete: Alaska Last Frontier Brewing Journey
+                🍺 Week Complete: {currentState?.name || 'Current State'} {stateTitle}
               </h3>
               <p className="text-sm text-gray-500">Sunday, January 7, 2024</p>
             </div>
@@ -166,22 +169,25 @@ export default function NewsletterPage() {
               <p><strong>Hey Beer Enthusiast!</strong></p>
               
               <p>
-                What a week it's been exploring Alaska's craft beer scene! From Alaskan Brewing's 
-                historic Gold Rush recipes to innovative glacial water brewing across 49 breweries, 
-                the Last Frontier has amazed me with its brewing ingenuity.
+                What a week it's been exploring {currentState?.name || 'the current state'}'s craft beer scene! From innovative brewing techniques to unique local ingredients across {currentState?.totalBreweries || 'numerous'} breweries, 
+                {currentState?.name || 'this state'} has amazed me with its brewing ingenuity.
               </p>
 
               <p><strong>🌟 This Week's Standout Beers:</strong></p>
               <ul className="list-disc list-inside ml-4 space-y-1">
-                <li>Alaskan Amber (4.0/5) - Historic Gold Rush-era recipe</li>
-                <li>Sockeye Red IPA (4.5/5) - Bold Pacific Northwest-style hops</li>
-                <li>Belgian Triple (4.5/5) - Complex yeast character and strength</li>
+                {currentState?.featuredBeers?.slice(0, 3).map((beer, index) => (
+                  <li key={index}>{beer.name} ({beer.rating}/5) - {beer.description.split('.')[0]}</li>
+                )) || [
+                  <li key="1">Featured Beer 1 (4.0/5) - Flagship offering</li>,
+                  <li key="2">Featured Beer 2 (4.5/5) - Innovative brewing</li>,
+                  <li key="3">Featured Beer 3 (4.5/5) - Local favorite</li>
+                ]}
               </ul>
 
-              <p><strong>🏭 Brewery Spotlight:</strong> Alaskan Brewing Company</p>
+              <p><strong>🏭 Brewery Spotlight:</strong> {currentState?.featuredBeers?.[0]?.brewery || 'Featured Brewery'}</p>
               <p>
-                Founded in 1986 by Marcy and Geoff Larson, Alaskan Brewing represents 
-                Alaska's pioneering spirit, using glacial water and Gold Rush-era recipes to create truly unique beers...
+                {currentState?.featuredBeers?.[0]?.brewery || 'This brewery'} represents 
+                {currentState?.name || 'the state'}'s craft beer innovation, using local ingredients and traditional techniques to create unique and memorable beers...
               </p>
 
               <p className="text-center text-gray-500 italic">
@@ -242,7 +248,7 @@ export default function NewsletterPage() {
           <div className="bg-white/10 backdrop-blur rounded-lg p-6 max-w-md mx-auto">
             <p className="text-sm mb-4 opacity-90">
               📧 Next email: Sunday at 9 AM EST<br/>
-              🍺 Current focus: Alaska craft breweries<br/>
+              🍺 Current focus: {currentState?.name || 'Current state'} craft breweries<br/>
               👥 Join 2,500+ subscribers
             </p>
             <a 

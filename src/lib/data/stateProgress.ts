@@ -1176,6 +1176,62 @@ export const getRegionalStatistics = () => {
   return regionStats
 }
 
+export const getStateTitle = (stateCode: string): string => {
+  const titles: { [key: string]: string } = {
+    'AL': 'Heart of Dixie Brewing',
+    'AK': 'Last Frontier Brewing',
+    'AZ': 'Desert Brewing Renaissance',
+    'AR': 'Natural State Brewing',
+    'CA': 'Golden State Brewing',
+    'CO': 'High-Altitude Brewing',
+    'CT': 'Constitution State Brewing',
+    'DE': 'First State Brewing',
+    'FL': 'Sunshine State Brewing',
+    'GA': 'Peach State Brewing',
+    'HI': 'Aloha State Brewing',
+    'ID': 'Gem State Brewing',
+    'IL': 'Prairie State Brewing',
+    'IN': 'Hoosier State Brewing',
+    'IA': 'Hawkeye State Brewing',
+    'KS': 'Sunflower State Brewing',
+    'KY': 'Bluegrass State Brewing',
+    'LA': 'Pelican State Brewing',
+    'ME': 'Pine Tree State Brewing',
+    'MD': 'Old Line State Brewing',
+    'MA': 'Bay State Brewing',
+    'MI': 'Great Lakes State Brewing',
+    'MN': 'Land of 10,000 Lakes Brewing',
+    'MS': 'Magnolia State Brewing',
+    'MO': 'Show-Me State Brewing',
+    'MT': 'Big Sky Country Brewing',
+    'NE': 'Cornhusker State Brewing',
+    'NV': 'Silver State Brewing',
+    'NH': 'Live Free or Die Brewing',
+    'NJ': 'Garden State Brewing',
+    'NM': 'Land of Enchantment Brewing',
+    'NY': 'Empire State Brewing',
+    'NC': 'Tar Heel State Brewing',
+    'ND': 'Peace Garden State Brewing',
+    'OH': 'Buckeye State Brewing',
+    'OK': 'Sooner State Brewing',
+    'OR': 'Pacific Northwest Brewing',
+    'PA': 'Keystone State Brewing',
+    'RI': 'Ocean State Brewing',
+    'SC': 'Palmetto State Brewing',
+    'SD': 'Mount Rushmore State Brewing',
+    'TN': 'Volunteer State Brewing',
+    'TX': 'Lone Star State Brewing',
+    'UT': 'Beehive State Brewing',
+    'VT': 'Green Mountain State Brewing',
+    'VA': 'Old Dominion Brewing',
+    'WA': 'Emerald City Brewing',
+    'WV': 'Mountain State Brewing',
+    'WI': 'Badger State Brewing',
+    'WY': 'Equality State Brewing'
+  }
+  return titles[stateCode] || 'Craft Beer Journey'
+}
+
 export const getJourneyStatistics = () => {
   const completed = getCompletedStates()
   const current = getCurrentState()

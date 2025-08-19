@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Clock, Calendar, User, ArrowLeft } from 'lucide-react'
 import { foundationStories } from '@/data/foundationStories'
+import { getCurrentState, getStateTitle } from '@/lib/data/stateProgress'
 
 export const metadata = {
   title: 'All Beer Culture Stories - BrewQuest Chronicles',
@@ -9,6 +10,8 @@ export const metadata = {
 }
 
 export default function AllStoriesPage() {
+  const currentState = getCurrentState()
+  const stateTitle = getStateTitle(currentState?.code || '')
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50">
       {/* Header */}
@@ -126,12 +129,12 @@ export default function AllStoriesPage() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  Starting Soon: Week 1 - Alabama
+                  {currentState?.status === 'current' ? 'Now Exploring' : 'Starting Soon'}: Week {currentState?.weekNumber || 1} - {currentState?.name || 'Current State'}
                 </h3>
                 <p className="text-gray-700 mb-6">
-                  Join us as we kick off our journey in the Heart of Dixie, 
-                  exploring Alabama's surprising craft beer renaissance with 
-                  7 featured breweries and their signature beers.
+                  Join us as we {currentState?.status === 'current' ? 'explore' : 'kick off our journey in'} {stateTitle.replace(' Brewing', '')}, 
+                  {currentState?.status === 'current' ? 'currently discovering' : 'exploring'} {currentState?.name || 'the state'}'s {currentState?.status === 'current' ? 'thriving' : 'surprising'} craft beer {currentState?.status === 'current' ? 'scene' : 'renaissance'} with 
+                  {currentState?.featuredBeers?.length || 7} featured breweries and their signature beers.
                 </p>
                 <button className="bg-amber-600 text-white px-6 py-3 rounded-lg hover:bg-amber-700 transition-colors font-semibold">
                   Get Notified

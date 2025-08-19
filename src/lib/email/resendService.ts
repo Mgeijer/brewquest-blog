@@ -294,39 +294,19 @@ export class ResendEmailService {
     })
   }
 
-  // Helper methods
+  // Helper methods  
   private async getCurrentState(): Promise<string> {
-    // Force Alabama until August 5th for launch preparation
-    const launchDate = new Date('2025-08-05T00:00:00.000Z')
-    const now = new Date()
-    
-    if (now < launchDate) {
-      return 'Alabama'
-    }
-    
-    const { data } = await this.supabase
-      .from('state_progress')
-      .select('state_name')
-      .eq('status', 'current')
-      .single()
-    return data?.state_name || 'Alabama'
+    // Import and use the centralized getCurrentState function
+    const { getCurrentState } = await import('@/lib/data/stateProgress')
+    const currentState = getCurrentState()
+    return currentState?.name || 'Current State'
   }
 
   private async getCurrentWeek(): Promise<number> {
-    // Force Week 1 until August 5th for launch preparation
-    const launchDate = new Date('2025-08-05T00:00:00.000Z')
-    const now = new Date()
-    
-    if (now < launchDate) {
-      return 1
-    }
-    
-    const { data } = await this.supabase
-      .from('state_progress')
-      .select('week_number')
-      .eq('status', 'current')
-      .single()
-    return data?.week_number || 1
+    // Use the centralized getCurrentState function
+    const { getCurrentState } = await import('@/lib/data/stateProgress')
+    const currentState = getCurrentState()
+    return currentState?.weekNumber || 1
   }
 
   private async getStateData(stateName: string) {
@@ -375,7 +355,7 @@ export class ResendEmailService {
 
     return {
       weekNumber: currentStateData?.week_number || 1,
-      stateName: currentStateData?.state_name || 'Alabama',
+      stateName: currentStateData?.state_name || 'Current State',
       stateCode: currentStateData?.state_code || 'AL',
       beerReviews: beerReviews || [],
       breweryCount: [...new Set(beerReviews?.map(b => b.brewery_name) || [])].length,

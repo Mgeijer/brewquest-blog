@@ -10,7 +10,7 @@ import WeekIndicator from '@/components/blog/WeekIndicator'
 import { getAllStateProgress } from '@/lib/supabase/functions/stateProgressFunctions'
 import { BlogPost } from '@/lib/types/blog'
 import { foundationStories } from '@/data/foundationStories'
-import { getCurrentState } from '@/lib/data/stateProgress'
+import { getCurrentState, getStateTitle } from '@/lib/data/stateProgress'
 
 // Dynamic import for USMap to avoid SSR issues
 const USMap = dynamic(() => import('@/components/interactive/USMap'), {
@@ -99,42 +99,18 @@ function BlogContent() {
   const category = searchParams.get('category')
   const featured = searchParams.get('featured')
 
-  // Load current state data from Supabase
+  // Load current state data from local source for consistency
   useEffect(() => {
-    const loadCurrentState = async () => {
+    const loadCurrentState = () => {
       try {
         setIsLoadingState(true)
-        const { data: allStates, error } = await getAllStateProgress()
-        
-        if (error) {
-          console.error('Error loading states:', error)
-          return
-        }
-
-        if (allStates) {
-          const current = allStates.find(state => state.status === 'current')
-          if (current) {
-            // Get local state data with featured beers
-            const localStateData = getCurrentState()
-            
-            // Convert to legacy format for compatibility, merging Supabase and local data
-            setCurrentState({
-              code: current.state_code,
-              name: current.state_name,
-              status: current.status,
-              weekNumber: current.week_number,
-              featuredBeers: localStateData?.featuredBeers || [], // Use local data for featured beers
-              totalBreweries: current.total_breweries,
-              region: current.region,
-              description: current.description
-            })
-          }
+        // Use local state data for consistency across the application
+        const localStateData = getCurrentState()
+        if (localStateData) {
+          setCurrentState(localStateData)
+          console.log('✅ Blog page loaded current state:', localStateData.name, 'Week', localStateData.weekNumber)
         } else {
-          // Fallback to local data if Supabase is unavailable
-          const localStateData = getCurrentState()
-          if (localStateData) {
-            setCurrentState(localStateData)
-          }
+          console.warn('⚠️ No current state found in local data')
         }
       } catch (err) {
         console.error('Exception loading current state:', err)
@@ -154,7 +130,7 @@ function BlogContent() {
   
   // Get current day in week - Tuesday August 12 should return 2
   const getCurrentDay = () => {
-    // For Alaska Week 2: Monday Aug 11 = Day 1, Tuesday Aug 12 = Day 2, etc.
+    // For current state week: Monday = Day 1, Tuesday = Day 2, etc.
     const today = new Date()
     const dayOfWeek = today.getDay() // 0 = Sunday, 1 = Monday, 2 = Tuesday, etc.
     
@@ -207,75 +183,76 @@ function BlogContent() {
   
   // Get content based on category
   const getBreweryStories = () => {
-    // Get brewery stories from current state (Alabama) - link to weekly Alabama post
+    // Get brewery stories from current state - link to weekly state post
     if (!currentState?.featuredBeers || currentState.featuredBeers.length === 0) {
       // Fallback content when Supabase data isn't available
       return [{
         id: 'brewery-fallback-1',
-        title: 'Alabama Craft Beer Stories - Database Loading',
-        excerpt: 'We\'re loading the latest brewery stories from Alabama\'s vibrant craft beer scene. Please check back in a moment or visit our Alabama state page directly.',
-        content: 'Alabama brewery stories are being loaded from our database. For the complete Alabama craft beer journey, visit our states page.',
+        title: `${currentState?.name || 'Current State'} Craft Beer Stories - Database Loading`,
+        excerpt: `We\'re loading the latest brewery stories from ${currentState?.name || 'the current state'}\'s vibrant craft beer scene. Please check back in a moment or visit our ${currentState?.name || 'state'} page directly.`,
+        content: `${currentState?.name || 'Current state'} brewery stories are being loaded from our database. For the complete ${currentState?.name || 'state'} craft beer journey, visit our states page.`,
         featured_image_url: '/images/Craft-Brewery-Landscape.png',
-        state: 'Alabama',
-        week_number: 1,
+        state: currentState?.name || 'Current State',
+        week_number: currentState?.weekNumber || 1,
         read_time: 5,
         published_at: new Date(),
         created_at: new Date(),
-        seo_meta_description: 'Alabama brewery stories loading from database.',
-        seo_keywords: ['alabama', 'craft beer', 'brewery story', 'loading'],
+        seo_meta_description: `${currentState?.name || 'Current state'} brewery stories loading from database.`,
+        seo_keywords: [currentState?.name?.toLowerCase() || 'state', 'craft beer', 'brewery story', 'loading'],
         view_count: 0,
         is_featured: false,
-        slug: 'states/alabama'
+        slug: `states/${currentState?.name?.toLowerCase() || 'current-state'}`
       }]
     }
     
     return currentState.featuredBeers.map(beer => ({
       id: `brewery-${beer.id}`,
-      title: `${beer.brewery} - Craft Beer Excellence in Alabama`,
-      excerpt: `Discover the story behind ${beer.brewery}, one of Alabama's premier craft beer destinations featured in our weekly state exploration.`,
-      content: `Learn more about ${beer.brewery} and their ${beer.name} in our comprehensive Alabama craft beer journey.`,
+      title: `${beer.brewery} - Craft Beer Excellence in ${currentState?.name}`,
+      excerpt: `Discover the story behind ${beer.brewery}, one of ${currentState?.name}'s premier craft beer destinations featured in our weekly state exploration.`,
+      content: `Learn more about ${beer.brewery} and their ${beer.name} in our comprehensive ${currentState?.name} craft beer journey.`,
       featured_image_url: beer.imageUrl,
-      state: currentState?.name || 'Alabama',
+      state: currentState?.name || 'Current State',
       week_number: currentState?.weekNumber || 1,
       read_time: 5,
       published_at: new Date(),
       created_at: new Date(),
-      seo_meta_description: `Learn about ${beer.brewery} and their contribution to Alabama's craft beer scene.`,
-      seo_keywords: [beer.brewery.toLowerCase(), 'alabama', 'craft beer', 'brewery story'],
+      seo_meta_description: `Learn about ${beer.brewery} and their contribution to ${currentState?.name}'s craft beer scene.`,
+      seo_keywords: [beer.brewery.toLowerCase(), currentState?.name?.toLowerCase() || 'state', 'craft beer', 'brewery story'],
       view_count: Math.floor(Math.random() * 500) + 100,
       is_featured: false,
-      slug: 'states/alabama'
+      slug: `states/${currentState?.name?.toLowerCase().replace(/\s+/g, '-') || 'current-state'}`
     })) || []
   }
   
   const getLocalCultureStories = () => {
-    // Get local culture stories for Alabama - link to actual weekly state post
+    // Get local culture stories for current state - link to actual weekly state post
+    const stateTitle = getStateTitle(currentState?.code || '')
     return [{
-      id: 'alabama-culture-1',
-      title: 'Week 1: Alabama\'s Craft Beer Renaissance - Heart of Dixie Brewing',
-      excerpt: 'This week, we\'re diving deep into Alabama\'s surprising and vibrant craft beer scene. From Birmingham\'s urban brewing culture to Mobile\'s coastal flavors, the Heart of Dixie has quietly built one of the South\'s most authentic and innovative brewing communities.',
+      id: `${currentState?.code?.toLowerCase() || 'current'}-culture-1`,
+      title: `Week ${currentState?.weekNumber || 1}: ${currentState?.name || 'Current State'}\'s Craft Beer Renaissance - ${stateTitle}`,
+      excerpt: `This week, we\'re diving deep into ${currentState?.name || 'the current state'}\'s surprising and vibrant craft beer scene. ${currentState?.description || 'Discover the unique brewing culture and innovative techniques that define this state\'s craft beer community.'}`,
       content: `
-# Welcome to Alabama: The Heart of Dixie's Brewing Renaissance
+# Welcome to ${currentState?.name || 'Current State'}: ${stateTitle}
 
-This week, we're diving deep into Alabama's surprising and vibrant craft beer scene. From Birmingham's urban brewing culture to Mobile's coastal flavors, the Heart of Dixie has quietly built one of the South's most authentic and innovative brewing communities.
+This week, we're diving deep into ${currentState?.name || 'the current state'}'s craft beer scene. ${currentState?.description || 'Discover the unique brewing culture and innovative techniques that define this state\'s craft beer community.'}
 
-## A State Transformed by Craft
+## A State's Brewing Journey
 
-Alabama's relationship with beer has been complicated. Until 2009, it was illegal to brew beer stronger than 6% ABV in the state. The "Gourmet Beer Bill" changed everything, opening the doors for craft breweries to flourish and for beer lovers to experience the full spectrum of flavors that define modern American brewing.
+${currentState?.name || 'This state'} has developed a distinctive craft beer identity, with ${currentState?.totalBreweries || 'numerous'} breweries each telling a unique story of local ingredients, innovative brewing techniques, and community spirit.
 
-Today, Alabama is home to 45+ breweries, each telling a unique story of Southern hospitality, local ingredients, and innovative brewing techniques. From Good People Brewing's flagship IPA that's been Alabama's #1 selling IPA for over a decade, to TrimTab's experimental sours that push the boundaries of what beer can be.
+Today, ${currentState?.name || 'this state'} is home to ${currentState?.totalBreweries || 'many'} breweries, each contributing to the region's growing reputation for quality brewing and authentic flavors.
       `,
-      featured_image_url: '/images/Beer images/Alabama/Good People IPA.png',
-      state: 'Alabama',
-      week_number: 1,
+      featured_image_url: currentState?.heroImage || '/images/Craft-Brewery-Landscape.png',
+      state: currentState?.name || 'Current State',
+      week_number: currentState?.weekNumber || 1,
       read_time: 12,
       published_at: new Date('2025-01-27'),
       created_at: new Date('2025-01-27'),
-      seo_meta_description: 'Explore Alabama\'s craft beer culture and the weekly journey through the Heart of Dixie\'s brewing renaissance.',
-      seo_keywords: ['alabama', 'local culture', 'craft beer', 'weekly journey', 'brewing history', 'birmingham'],
+      seo_meta_description: `Explore ${currentState?.name || 'the current state'}\'s craft beer culture and the weekly journey through ${stateTitle}.`,
+      seo_keywords: [currentState?.name?.toLowerCase() || 'state', 'local culture', 'craft beer', 'weekly journey', 'brewing history', currentState?.capital?.toLowerCase() || 'capital'],
       view_count: 567,
       is_featured: true,
-      slug: 'states/alabama'
+      slug: `states/${currentState?.name?.toLowerCase().replace(/\s+/g, '-') || 'current-state'}`
     }]
   }
   
@@ -405,7 +382,7 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
             {isLoadingState && (
               <div className="text-center py-12">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-beer-amber mx-auto mb-4"></div>
-                <p className="text-gray-600">Loading Alabama weekly content...</p>
+                <p className="text-gray-600">Loading weekly content...</p>
               </div>
             )}
             
@@ -418,8 +395,8 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
                 <div className="flex items-center gap-3 mb-4">
                   <WeekIndicator weekNumber={currentState?.weekNumber || 1} size="large" />
                   <div>
-                    <h2 className="text-2xl font-bold text-beer-dark">{currentState?.name}'s Last Frontier Brewing</h2>
-                    <p className="text-beer-malt">Currently exploring {currentState?.description}</p>
+                    <h2 className="text-2xl font-bold text-beer-dark">{currentState?.name}'s Desert Brewing Renaissance</h2>
+                    <p className="text-beer-malt">Currently exploring {currentState?.description || `${currentState?.name} brewing culture`}</p>
                   </div>
                 </div>
                 
@@ -434,7 +411,7 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
                   <div>
                     <p className="text-gray-700 mb-4">
                       This week, we're diving deep into {currentState?.name}'s thriving craft beer scene. 
-                      From pristine glacial waters to midnight sun innovation, {currentState?.name} 
+                      From desert innovation to year-round outdoor drinking culture, {currentState?.name} 
                       has built one of America's most distinctive and innovative brewing communities.
                     </p>
                     <div className="flex gap-4 text-sm">
@@ -548,13 +525,13 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
             {/* Fallback when no currentState data */}
             {!isLoadingState && !currentState && (
               <div className="text-center py-12">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Alabama Week 1 - Loading</h3>
-                <p className="text-gray-600 mb-6">We're setting up Alabama's craft beer journey. Please check back in a moment!</p>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Loading Current State</h3>
+                <p className="text-gray-600 mb-6">We're setting up the current week's craft beer journey. Please check back in a moment!</p>
                 <div className="bg-yellow-100 p-4 rounded-lg border border-yellow-300">
                   <p className="text-sm text-yellow-800">
                     <strong>Temporary:</strong> If you see this message, the database connection is still loading. 
-                    You can visit <a href="/states/alabama" className="underline text-yellow-900">/states/alabama</a> directly 
-                    to see the full Alabama craft beer story.
+                    You can visit <a href="/states" className="underline text-yellow-900">our states page</a> directly 
+                    to see the current craft beer journey.
                   </p>
                 </div>
               </div>
@@ -626,14 +603,30 @@ Today, Alabama is home to 45+ breweries, each telling a unique story of Southern
             beerReviews.map((review) => {
               // Get brewery story based on brewery name
               const getBreweryStory = (breweryName: string): string => {
+                // State-specific brewery stories
                 const breweryStories: Record<string, string> = {
+                  // Alabama breweries
                   'Good People Brewing Company': 'Founded in 2008 in Birmingham, Good People Brewing is Alabama\'s largest craft brewery. Their mission is simple: to make good beer for good people. Known for their flagship IPA that\'s been Alabama\'s #1 selling craft beer for over a decade.',
                   'Cahaba Brewing Company': 'Established in 2012, Cahaba Brewing takes its name from the Cahaba River that flows through Birmingham. They\'re known for creating approachable, drinkable beers that pair perfectly with Alabama\'s outdoor lifestyle and river adventures.',
                   'TrimTab Brewing Company': 'Founded in 2014, TrimTab Brewing is known for their innovative approach to beer making, especially their exceptional sour beers and fruit-forward creations. Located in Birmingham\'s historic warehouse district.',
                   'Avondale Brewing Company': 'Opening in 2014 in the historic Avondale neighborhood of Birmingham, this brewery focuses on Belgian-inspired ales and traditional European styles, bringing old-world brewing techniques to Alabama.',
-                  'Monday Night Brewing (Birmingham Social Club)': 'The Birmingham location of the popular Atlanta-based brewery, known for their bold, innovative beers and strong community focus. They bring their signature style and social atmosphere to Alabama.'
+                  'Monday Night Brewing (Birmingham Social Club)': 'The Birmingham location of the popular Atlanta-based brewery, known for their bold, innovative beers and strong community focus. They bring their signature style and social atmosphere to Alabama.',
+                  
+                  // Alaska breweries
+                  'Alaskan Brewing Company': 'Founded in 1986, Alaskan Brewing Company is Alaska\'s oldest operating brewery, known for using historical recipes and traditional brewing methods with pristine glacier water.',
+                  'Midnight Sun Brewing': 'Established in 1995 in Anchorage, Midnight Sun Brewing is known for their bold, hop-forward ales and creative seasonal offerings that capture Alaska\'s adventurous spirit.',
+                  'King Street Brewing': 'Located in Anchorage, King Street Brewing combines traditional brewing techniques with innovative flavors, creating unique beers that reflect Alaska\'s diverse culinary landscape.',
+                  
+                  // Arizona breweries
+                  'Four Peaks Brewing Company': 'Founded in 1996, Four Peaks is Arizona\'s flagship brewery, known for their Kilt Lifter Scottish Ale and their role in establishing Arizona\'s craft beer scene.',
+                  'SanTan Brewing Company': 'Established in 2007 in Chandler, SanTan Brewing creates refreshing beers perfect for Arizona\'s year-round outdoor culture and desert climate.',
+                  'Sonoran Brewing Company': 'Known for their innovative use of desert ingredients like prickly pear cactus, Sonoran Brewing captures the unique terroir of the Arizona landscape.',
+                  'Mother Percolator': 'A Flagstaff-based brewery that takes advantage of high-altitude brewing conditions to create exceptional IPAs and mountain-inspired ales.',
+                  'Wren House Brewing': 'A Phoenix neighborhood brewery known for their community focus and expertly crafted beers that prove dark styles work even in the desert.',
+                  'Oak Creek Brewing Company': 'Located near Sedona, this brewery captures the spirit of Arizona\'s red rock country in their beautifully crafted ales.',
+                  'Grand Canyon Brewing Company': 'Inspired by one of the world\'s natural wonders, this brewery creates beers as impressive as the landscape that surrounds them.'
                 }
-                return breweryStories[breweryName] || `${breweryName} is one of Alabama's craft beer pioneers, contributing to the state's growing reputation for quality brewing.`
+                return breweryStories[breweryName] || `${breweryName} is one of ${currentState?.name || 'the state'}\'s craft beer pioneers, contributing to the region\'s growing reputation for quality brewing.`
               }
 
               return (

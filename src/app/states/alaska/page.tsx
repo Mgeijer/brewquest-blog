@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Head from 'next/head'
 import { ArrowRight, Mountain, Snowflake, Anchor } from 'lucide-react'
 import DynamicBeerSection from '@/components/states/DynamicBeerSection'
+import { getStateByCode } from '@/lib/data/stateProgress'
 
 
 const brewingFacts = [
@@ -26,6 +27,7 @@ const brewingFacts = [
 ]
 
 export default function AlaskaPage() {
+  const alaskaData = getStateByCode('AK')
   // Alaska beer image mapping for the dynamic component
   const alaskaImageMapping = {
     'Alaskan Amber': '/images/Beer images/Alaska/Alaskan Amber.png',
@@ -231,7 +233,7 @@ export default function AlaskaPage() {
           </div>
           
           <div className="bg-blue-50 rounded-xl p-6 text-center mb-8">
-            <h3 className="text-xl font-semibold text-blue-900 mb-2">Week 2 Current State</h3>
+            <h3 className="text-xl font-semibold text-blue-900 mb-2">Week {alaskaData?.weekNumber || 2} Current State</h3>
             <p className="text-blue-700">
               Alaska's craft beer journey is currently active! All 7 featured beers are now available for exploration. 
               Follow our daily beer releases as we discover the Last Frontier's brewing excellence.
