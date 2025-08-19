@@ -16,48 +16,9 @@ export default function DynamicCurrentState() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const fetchCurrentState = async () => {
+    const loadCurrentState = () => {
       try {
-        // First try to get from API
-        const response = await fetch('/api/states/progress')
-        if (response.ok) {
-          const data = await response.json()
-          const current = data.states?.find((state: any) => state.status === 'current')
-          
-          if (current) {
-            setCurrentState({
-              code: current.state_code,
-              name: current.state_name,
-              weekNumber: current.week_number,
-              status: current.status
-            })
-          } else {
-            // Fallback to local data
-            const localState = getCurrentState()
-            if (localState) {
-              setCurrentState({
-                code: localState.code,
-                name: localState.name,
-                weekNumber: localState.weekNumber,
-                status: localState.status
-              })
-            }
-          }
-        } else {
-          // API failed, use local data
-          const localState = getCurrentState()
-          if (localState) {
-            setCurrentState({
-              code: localState.code,
-              name: localState.name,
-              weekNumber: localState.weekNumber,
-              status: localState.status
-            })
-          }
-        }
-      } catch (error) {
-        console.error('Error fetching current state:', error)
-        // Fallback to local data
+        // Use local data as primary source for consistency
         const localState = getCurrentState()
         if (localState) {
           setCurrentState({
@@ -67,12 +28,14 @@ export default function DynamicCurrentState() {
             status: localState.status
           })
         }
+      } catch (error) {
+        console.error('Error loading current state:', error)
       } finally {
         setLoading(false)
       }
     }
 
-    fetchCurrentState()
+    loadCurrentState()
   }, [])
 
   if (loading) {
