@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { Resend } from 'resend'
 import { render } from '@react-email/render'
-import AlaskaNewsletterEmail from '@/emails/AlaskaNewsletterEmail'
+import ArizonaNewsletterEmail from '@/emails/ArizonaNewsletterEmail'
+import { getCurrentState, getStateTitle } from '@/lib/data/stateProgress'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -18,14 +19,19 @@ export async function POST(request: NextRequest) {
     console.log(`[ADMIN] Sending specific approved content: ${contentId}`)
 
     const supabase = createClient()
-
-    // Get the specific approved content from the admin system
-    // Note: This would need to be adapted based on how the admin content is actually stored
-    // For now, I'll simulate getting the approved Alaska content
+    const currentState = getCurrentState()
+    const stateTitle = getStateTitle(currentState?.code || '')
     
+    if (!currentState) {
+      return NextResponse.json({
+        success: false,
+        error: 'No current state found'
+      }, { status: 400 })
+    }
+
     const approvedContent = {
       id: contentId,
-      title: "Alaska Craft Beer Journey: Last Frontier Brewing Excellence",
+      title: `${currentState.name} Craft Beer Journey: ${stateTitle}`,
       content: `# Alaska Craft Beer Journey: Last Frontier Brewing Excellence
 
 Alaska's craft beer scene represents one of America's most challenging and rewarding brewing environments. Where winter temperatures can reach -40°F and summer brings midnight sun, brewers have created a unique culture that combines historical authenticity, extreme innovation, and community resilience. Our seven-day journey through the Last Frontier reveals breweries that don't just survive Alaska's conditions - they thrive in them.
@@ -135,12 +141,11 @@ The Last Frontier's brewing scene continues to push boundaries, creating beers t
 
     for (const subscriber of subscribers) {
       try {
-        // Generate personalized email with unsubscribe token
+        // Generate personalized email with current state data
         const personalizedEmailHtml = await render(
-          AlaskaNewsletterEmail({
+          ArizonaNewsletterEmail({
             subscriberName: subscriber.first_name || 'Beer Enthusiast',
-            weekNumber: 2,
-            beerReviews: alaskaBeerData || [],
+            weekNumber: currentState.weekNumber,
             unsubscribeToken: 'placeholder_token' // In production, generate actual tokens
           })
         )
@@ -148,12 +153,12 @@ The Last Frontier's brewing scene continues to push boundaries, creating beers t
         await resend.emails.send({
           from: 'Hop Harrison <hop@hopharrison.com>',
           to: subscriber.email,
-          subject: '🍺 Week 2 Complete: Alaska\'s Last Frontier Brewing Excellence',
+          subject: `🍺 Week ${currentState.weekNumber} Complete: ${currentState.name}'s ${stateTitle}`,
           html: personalizedEmailHtml
         })
         
         successful++
-        console.log(`Sent approved Alaska content to ${subscriber.email}`)
+        console.log(`Sent approved ${currentState.name} content to ${subscriber.email}`)
         
       } catch (error) {
         console.error(`Failed to send approved content to ${subscriber.email}:`, error)
