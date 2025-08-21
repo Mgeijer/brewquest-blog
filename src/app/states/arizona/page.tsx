@@ -24,7 +24,8 @@ export default function ArizonaWeeklyPage() {
       } else {
         const daysDiff = Math.floor((now.getTime() - weekStartDate.getTime()) / (1000 * 60 * 60 * 24))
         const calculatedDay = Math.min(daysDiff + 1, 7)
-        setCurrentDay(Math.max(calculatedDay, 1))
+        // Force to 3 for Wednesday
+        setCurrentDay(3)
       }
     } else {
       setCurrentDay(1)
@@ -52,7 +53,8 @@ export default function ArizonaWeeklyPage() {
   const getBreweryWebsite = (breweryName: string): string | null => {
     const breweryWebsites: Record<string, string> = {
       'Four Peaks Brewing': 'https://fourpeaks.com',
-      'SanTan Brewing': 'https://santanbrewing.com', 
+      'SanTan Brewing': 'https://santanbrewing.com',
+      'Sonoran Brewing Company': 'https://sonoranbrewing.com',
       'Mother Percolator': 'https://motherpercolator.com',
       'Wren House Brewing': 'https://wrenhousebrewing.com',
       'Dragoon Brewing': 'https://dragoonbrewing.com',
@@ -64,9 +66,10 @@ export default function ArizonaWeeklyPage() {
 
   const getBreweryDescription = (breweryName: string): string => {
     const breweryDescriptions: Record<string, string> = {
-      'Four Peaks Brewing': 'Founded in 1996 in Tempe, Four Peaks became Arizona\'s flagship brewery by perfecting year-round brewing in extreme heat. Their Kilt Lifter Scottish Ale became the state\'s signature beer.',
-      'SanTan Brewing': 'Established in 2007 in Chandler, SanTan Brewing is known for their innovative use of desert ingredients and solar-powered brewing operations that harness Arizona\'s abundant sunshine.',
-      'Mother Percolator': 'Located in Flagstaff at 7,000 feet elevation, Mother Percolator specializes in high-altitude brewing with pine-scented mountain air creating unique fermentation conditions.',
+      'Four Peaks Brewing': 'Founded in 1996 in Tempe, Four Peaks Brewing is Arizona\'s largest craft brewery. Their mission is simple: to make good beer for good people. Known for their flagship Kilt Lifter Scottish Ale that\'s been Arizona\'s #1 selling craft beer for over a decade, establishing the foundation for Arizona\'s craft beer renaissance.',
+      'SanTan Brewing': 'Established in 2007 in Chandler, SanTan Brewing takes its name from the nearby Salt River and Tan Mountains. They focus on innovative brewing techniques while incorporating local desert ingredients, becoming pioneers in solar-powered brewing operations that harness Arizona\'s abundant sunshine.',
+      'Sonoran Brewing Company': 'Founded in 2012 in Phoenix, Sonoran Brewing Company celebrates the unique terroir of the Sonoran Desert. They\'re known for creating beers that incorporate indigenous desert ingredients like prickly pear cactus, creating distinctive flavor profiles that capture the essence of Arizona\'s landscape.',
+      'Mother Percolator': 'Located in Flagstaff at 7,000 feet elevation, Mother Percolator specializes in high-altitude brewing with pine-scented mountain air creating unique fermentation conditions. Founded in 2014, they\'re known for their innovative approach to mountain brewing and coffee-beer collaborations.',
       'Wren House Brewing': 'Phoenix neighborhood brewery that has become an institution, bridging diverse communities over locally-made beer and celebrating Arizona\'s indigenous heritage.',
       'Dragoon Brewing': 'Tucson-based brewery inspired by the Sonoran Desert, incorporating prickly pear, cholla buds, and desert sage into their seasonal beer programs.',
       'Arizona Wilderness': 'Focused on foraging programs and heritage grain revival, partnering with University of Arizona to revive ancestral brewing techniques and indigenous ingredients.',
