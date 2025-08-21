@@ -173,8 +173,8 @@ export default function StateNewsletterTemplate({
                 </Text>
               ))}
               
-              <div style={{...cultureStats, backgroundColor: stateData.colorScheme.accent}}>
-                <Text style={{...cultureStatText, color: stateData.colorScheme.primary}}>
+              <div style={{...cultureStats, backgroundColor: stateData.colorScheme.primary}}>
+                <Text style={{...cultureStatText, color: '#ffffff'}}>
                   <strong>Community Impact:</strong> {stateData.culturalStory.impactStats}
                 </Text>
               </div>
@@ -230,30 +230,30 @@ export default function StateNewsletterTemplate({
             </Section>
 
             {/* Enhanced Statistics */}
-            <Section style={{...statsContainer, backgroundColor: stateData.colorScheme.secondary}}>
+            <Section style={{...statsContainer, backgroundColor: stateData.colorScheme.primary}}>
               <Text style={statsTitle}>📊 {stateData.stateName} Brewing by the Numbers</Text>
               <div style={enhancedStatsGrid}>
                 <div style={statItem}>
-                  <Text style={{...statNumber, color: stateData.colorScheme.accent}}>
+                  <Text style={{...statNumber, color: '#ffffff'}}>
                     {stateData.stats.breweries}
                   </Text>
                   <Text style={statLabel}>Active Breweries</Text>
                 </div>
                 <div style={statItem}>
-                  <Text style={{...statNumber, color: stateData.colorScheme.accent}}>
+                  <Text style={{...statNumber, color: '#ffffff'}}>
                     {stateData.stats.perCapitaRank}
                   </Text>
                   <Text style={statLabel}>Per Capita Ranking</Text>
                 </div>
                 <div style={statItem}>
-                  <Text style={{...statNumber, color: stateData.colorScheme.accent}}>
+                  <Text style={{...statNumber, color: '#ffffff'}}>
                     {stateData.stats.economicImpact}
                   </Text>
                   <Text style={statLabel}>Economic Impact</Text>
                 </div>
                 {stateData.stats.additionalStats.map((stat, index) => (
                   <div key={index} style={statItem}>
-                    <Text style={{...statNumber, color: stateData.colorScheme.accent}}>
+                    <Text style={{...statNumber, color: '#ffffff'}}>
                       {stat.value}
                     </Text>
                     <Text style={statLabel}>{stat.label}</Text>
@@ -266,7 +266,7 @@ export default function StateNewsletterTemplate({
             <Section style={ctaSection}>
               <Button 
                 style={{...primaryButton, backgroundColor: stateData.colorScheme.primary}} 
-                href={`https://www.hopharrison.com/states/${stateData.stateCode.toLowerCase()}`}
+                href={`https://www.hopharrison.com/states/${stateData.stateName.toLowerCase()}`}
               >
                 Explore {stateData.stateName}'s Breweries 🍺
               </Button>

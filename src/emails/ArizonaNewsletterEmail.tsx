@@ -21,10 +21,10 @@ export default function ArizonaNewsletterEmail({
     tagline: 'Where desert innovation meets thousand-year brewing traditions',
     heroImage: 'https://www.hopharrison.com/images/State%20Images/Arizona.png',
     colorScheme: {
-      primary: '#dc2626', // Red rock inspired
-      secondary: '#ea580c', // Desert sunset
-      accent: '#f97316', // Arizona orange
-      light: '#fef2f2' // Light red tint
+      primary: '#b91c1c', // Deep red rock - better contrast
+      secondary: '#92400e', // Muted desert sunset - readable on light backgrounds
+      accent: '#d97706', // Refined Arizona orange - balanced contrast
+      light: '#fefbf2' // Warm cream - softer than stark red tint
     },
     stats: {
       breweries: 108,
