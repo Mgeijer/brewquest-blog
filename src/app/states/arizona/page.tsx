@@ -24,8 +24,7 @@ export default function ArizonaWeeklyPage() {
       } else {
         const daysDiff = Math.floor((now.getTime() - weekStartDate.getTime()) / (1000 * 60 * 60 * 24))
         const calculatedDay = Math.min(daysDiff + 1, 7)
-        // Force to 3 for Wednesday
-        setCurrentDay(3)
+        setCurrentDay(Math.max(calculatedDay, 1))
       }
     } else {
       setCurrentDay(1)
