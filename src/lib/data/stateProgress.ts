@@ -1,4 +1,4 @@
-// Cache bust: 2025-08-18 - Arizona is current state
+// Cache bust: 2025-08-21 - Arizona beer images fixed, no spaces in URLs
 export interface BeerReview {
   id: string
   name: string
@@ -282,7 +282,7 @@ export const stateProgressData: StateData[] = [
         tastingNotes: 'Hazy golden color, citrus and coriander notes, light body with wheat smoothness, crisp refreshing finish.',
         rating: 4,
         dayOfWeek: 2,
-        imageUrl: '/images/Beer images/Arizona/Desert Botanical Wheat.png'
+        imageUrl: '/images/Beer images/Arizona/DesertBotanicalWheat.png'
       },
       {
         id: 'az-03',
@@ -295,7 +295,7 @@ export const stateProgressData: StateData[] = [
         tastingNotes: 'Beautiful pink color, light fruit aroma, subtle prickly pear sweetness, smooth wheat base, refreshing desert character.',
         rating: 4.5,
         dayOfWeek: 3,
-        imageUrl: '/images/Beer images/Arizona/Prickly Pear Wheat.png'
+        imageUrl: '/images/Beer images/Arizona/PricklyPearWheat.png'
       },
       {
         id: 'az-04',
@@ -308,7 +308,7 @@ export const stateProgressData: StateData[] = [
         tastingNotes: 'Golden amber color, intense citrus and pine aroma, bold hop flavor with caramel malt backbone, lingering bitter finish.',
         rating: 4,
         dayOfWeek: 4,
-        imageUrl: '/images/Beer images/Arizona/Flagstaff IPA.png'
+        imageUrl: '/images/Beer images/Arizona/FlagstaffIPA.png'
       },
       {
         id: 'az-05',
