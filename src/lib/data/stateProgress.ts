@@ -282,7 +282,7 @@ export const stateProgressData: StateData[] = [
         tastingNotes: 'Hazy golden color, citrus and coriander notes, light body with wheat smoothness, crisp refreshing finish.',
         rating: 4,
         dayOfWeek: 2,
-        imageUrl: '/images/Beer images/Arizona/DesertBotanicalWheat.png'
+        imageUrl: '/images/Beer images/Arizona/DesertBotanicalWheat.png?v=2'
       },
       {
         id: 'az-03',
@@ -295,7 +295,7 @@ export const stateProgressData: StateData[] = [
         tastingNotes: 'Beautiful pink color, light fruit aroma, subtle prickly pear sweetness, smooth wheat base, refreshing desert character.',
         rating: 4.5,
         dayOfWeek: 3,
-        imageUrl: '/images/Beer images/Arizona/PricklyPearWheat.png'
+        imageUrl: '/images/Beer images/Arizona/PricklyPearWheat.png?v=2'
       },
       {
         id: 'az-04',
@@ -308,7 +308,7 @@ export const stateProgressData: StateData[] = [
         tastingNotes: 'Golden amber color, intense citrus and pine aroma, bold hop flavor with caramel malt backbone, lingering bitter finish.',
         rating: 4,
         dayOfWeek: 4,
-        imageUrl: '/images/Beer images/Arizona/FlagstaffIPA.png'
+        imageUrl: '/images/Beer images/Arizona/FlagstaffIPA.png?v=2'
       },
       {
         id: 'az-05',
