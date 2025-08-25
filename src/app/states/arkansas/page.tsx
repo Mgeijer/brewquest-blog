@@ -5,7 +5,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, MapPin, Star, ExternalLink, ArrowLeft } from 'lucide-react'
 import { getStateByCode } from '@/lib/data/stateProgress'
-import BeerReviewCard from '@/components/blog/BeerReviewCard'
 
 export default function ArkansasWeeklyPage() {
   const [currentDay, setCurrentDay] = useState(7) // Show all for now to avoid build issues
@@ -149,22 +148,56 @@ Arkansas proves that exceptional brewing can emerge from unexpected places, comb
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {availableBeers.map((beer) => (
-              <BeerReviewCard
-                key={beer.id}
-                id={beer.id}
-                name={beer.name}
-                brewery={beer.brewery}
-                style={beer.style}
-                abv={beer.abv}
-                rating={beer.rating}
-                description={beer.description}
-                tastingNotes={beer.tastingNotes}
-                imageUrl={beer.imageUrl}
-                dayOfWeek={beer.dayOfWeek}
-                stateCode="AR"
-                stateName="Arkansas"
-                weekNumber={4}
-              />
+              <div key={beer.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-green-400/40 transform hover:-translate-y-1 overflow-hidden">
+                {/* Beer Image */}
+                <div className="relative h-64 bg-gradient-to-br from-green-50 to-emerald-50">
+                  {beer.imageUrl && (
+                    <Image
+                      src={beer.imageUrl}
+                      alt={`${beer.name} by ${beer.brewery}`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  )}
+                  
+                  {/* Day Badge */}
+                  <div className="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                    Day {beer.dayOfWeek}
+                  </div>
+                  
+                  {/* Rating */}
+                  <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-lg">
+                    <div className="flex items-center gap-1">
+                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                      <span className="text-sm font-bold">{beer.rating}</span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Beer Info */}
+                <div className="p-6">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-1">{beer.name}</h3>
+                      <p className="text-green-600 font-medium">{beer.brewery}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-4 mb-4 text-sm text-gray-600">
+                    <span className="bg-gray-100 px-2 py-1 rounded">{beer.style}</span>
+                    <span className="font-medium">{beer.abv}% ABV</span>
+                    {beer.ibu && <span>{beer.ibu} IBU</span>}
+                  </div>
+                  
+                  <p className="text-gray-700 text-sm mb-4 line-clamp-3">{beer.description}</p>
+                  
+                  <div className="border-t pt-4">
+                    <h4 className="font-semibold text-gray-900 mb-2">Tasting Notes</h4>
+                    <p className="text-sm text-gray-600">{beer.tastingNotes}</p>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
           
