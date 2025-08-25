@@ -269,7 +269,7 @@ export const stateProgressData: StateData[] = [
         tastingNotes: 'Rich copper color, caramel and toffee aromas, smooth malt sweetness balanced by mild hop bitterness, clean dry finish.',
         rating: 4,
         dayOfWeek: 1,
-        imageUrl: '/images/Beer images/Arizona/Kilt Lifter.png?v=3'
+        imageUrl: '/images/Beer images/Arizona/Kilt Lifter.png?v=20250824'
       },
       {
         id: 'az-02',
