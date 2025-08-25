@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Calendar, Clock, MapPin, Star, ExternalLink, ArrowLeft } from 'lucide-react'
 import { getStateByCode } from '@/lib/data/stateProgress'
+import BeerReviewCard from '@/components/blog/BeerReviewCard'
 
 export default function ArkansasWeeklyPage() {
   const [currentDay, setCurrentDay] = useState(1) // Start with Day 1 for current states
@@ -24,6 +25,33 @@ export default function ArkansasWeeklyPage() {
       setCurrentDay(1) // Upcoming states show Day 1
     }
   }, [arkansasState])
+
+  // Helper functions
+  const getBreweryWebsite = (breweryName: string): string | null => {
+    const breweryWebsites: Record<string, string> = {
+      'Lost Forty Brewing': 'https://lostforty.com',
+      'Ozark Beer Company': 'https://ozarkbeer.com', 
+      'Fossil Cove Brewing Company': 'https://fossilcove.com',
+      'Core Brewing & Distilling Company': 'https://corebrewing.com',
+      'Diamond Bear Brewing Company': 'https://diamondbear.com',
+      'Flyway Brewing Company': 'https://flywaybrewing.beer',
+      'Superior Bathhouse Brewery': 'https://superiorbathhouse.com'
+    }
+    return breweryWebsites[breweryName] || null
+  }
+
+  const getBreweryDescription = (breweryName: string): string => {
+    const breweryDescriptions: Record<string, string> = {
+      'Lost Forty Brewing': 'Founded in 2014 in Little Rock, Lost Forty Brewing is Arkansas\'s most awarded craft brewery. Their mission is to create world-class beer while preserving Arkansas\'s natural heritage. Known for their 2020 GABF Gold Medal winning Day Drinker Belgian Blonde, Lost Forty combines environmental consciousness with exceptional brewing craftsmanship.',
+      'Ozark Beer Company': 'Founded in 2012 in Rogers, Ozark Beer Company was named one of America\'s "Most Underrated Breweries" by Paste Magazine. Their mission is to craft honest beer with Ozark Mountain pride. Known for their award-winning BDCS barrel-aged imperial stout and commitment to Northwest Arkansas craft beer culture.',
+      'Fossil Cove Brewing Company': 'Founded in 2013 in Fayetteville, Fossil Cove Brewing Company draws inspiration from Arkansas\'s fossil-rich geology and brewing heritage. Their mission is to create approachable craft beer that reflects the Natural State\'s character. Known for their La Brea Brown and commitment to community-focused brewing.',
+      'Core Brewing & Distilling Company': 'Founded in 2012 in Springdale, Core Brewing & Distilling Company is Arkansas\'s first combined brewery and distillery. Their mission is to produce premium craft beverages using Northwest Arkansas ingredients. Known for their Los Santos IPA and innovative approach to craft beverage production.',
+      'Diamond Bear Brewing Company': 'Founded in 1993 in North Little Rock, Diamond Bear Brewing Company is Arkansas\'s first modern craft brewery. Their mission is to brew presidential-quality beer for the people of Arkansas. Known for their Presidential IPA and pioneering role in establishing Arkansas\'s craft beer industry.',
+      'Flyway Brewing Company': 'Founded in 2018 in North Little Rock, Flyway Brewing Company focuses on innovative fruit-forward beers and traditional styles. Their mission is to create unique beers that showcase Arkansas\'s agricultural bounty. Known for their Bluewing Berry Wheat and creative approach to regional ingredients.',
+      'Superior Bathhouse Brewery': 'Founded in 2013 in Hot Springs, Superior Bathhouse Brewery is the only brewery located in a U.S. National Park. Their mission is to brew craft beer using the legendary thermal spring water of Hot Springs National Park. Known for their historic location in a 1922 bathhouse and unique brewing water source.'
+    }
+    return breweryDescriptions[breweryName] || `${breweryName} is one of Arkansas's craft beer pioneers, contributing to the state's remarkable brewing renaissance.`
+  }
 
   if (!arkansasState) {
     return <div>Arkansas data not found</div>
@@ -127,91 +155,55 @@ Arkansas proves that exceptional brewing can emerge from unexpected places, comb
       {/* Beer Reviews Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Arkansas's Featured Beers
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
-              {arkansasState.status === 'current' 
-                ? `Experience Arkansas's brewing excellence through our daily journey. Currently showing ${currentDay} of 7 featured beers.`
-                : "Discover all 7 featured beers from Arkansas's finest breweries, showcasing the Natural State's brewing diversity."
-              }
-            </p>
-            
-            {arkansasState.status === 'current' && (
-              <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium">
-                <MapPin className="w-4 h-4" />
-                Currently exploring: Arkansas (Day {currentDay} of 7)
-              </div>
-            )}
-          </div>
+          <div className="bg-white rounded-xl p-8">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold text-beer-dark">
+                Featured Beers {!isWeekComplete && `(So Far)`}
+              </h2>
+              <span className="text-sm text-gray-600">
+                {availableBeers.length} of 7 beers reviewed
+              </span>
+            </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {availableBeers.map((beer) => (
-              <div key={beer.id} className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-green-400/40 transform hover:-translate-y-1 overflow-hidden">
-                {/* Beer Image */}
-                <div className="relative h-64 bg-gradient-to-br from-green-50 to-emerald-50">
-                  {beer.imageUrl && (
-                    <Image
-                      src={beer.imageUrl}
-                      alt={`${beer.name} by ${beer.brewery}`}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                  )}
-                  
-                  {/* Day Badge */}
-                  <div className="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                    Day {beer.dayOfWeek}
-                  </div>
-                  
-                  {/* Rating */}
-                  <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-lg">
-                    <div className="flex items-center gap-1">
-                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      <span className="text-sm font-bold">{beer.rating}</span>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Beer Info */}
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-3">
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-1">{beer.name}</h3>
-                      <p className="text-green-600 font-medium">{beer.brewery}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-center gap-4 mb-4 text-sm text-gray-600">
-                    <span className="bg-gray-100 px-2 py-1 rounded">{beer.style}</span>
-                    <span className="font-medium">{beer.abv}% ABV</span>
-                    {beer.ibu && <span>{beer.ibu} IBU</span>}
-                  </div>
-                  
-                  <p className="text-gray-700 text-sm mb-4 line-clamp-3">{beer.description}</p>
-                  
-                  <div className="border-t pt-4">
-                    <h4 className="font-semibold text-gray-900 mb-2">Tasting Notes</h4>
-                    <p className="text-sm text-gray-600">{beer.tastingNotes}</p>
-                  </div>
-                </div>
-              </div>
+              <BeerReviewCard
+                key={beer.id}
+                review={{
+                  id: beer.id,
+                  beer_name: beer.name,
+                  brewery_name: beer.brewery,
+                  beer_style: beer.style,
+                  abv: beer.abv,
+                  ibu: beer.ibu,
+                  rating: beer.rating,
+                  tasting_notes: beer.tastingNotes,
+                  image_url: beer.imageUrl,
+                  unique_feature: beer.description,
+                  brewery_location: arkansasState.name,
+                  brewery_website: getBreweryWebsite(beer.brewery),
+                  brewery_story: getBreweryDescription(beer.brewery),
+                  day_of_week: beer.dayOfWeek,
+                  created_at: new Date(),
+                  blog_post_id: '',
+                }}
+                size="large"
+              />
             ))}
           </div>
           
-          {!isWeekComplete && arkansasState.status === 'current' && (
-            <div className="text-center mt-12 p-8 bg-white rounded-xl border border-gray-200">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">More Arkansas Beers Coming Soon</h3>
-              <p className="text-gray-600 mb-4">
-                We're revealing new Arkansas craft beers daily. Check back tomorrow for the next featured brewery and beer!
-              </p>
-              <div className="text-sm text-gray-500">
-                {7 - currentDay} more beers to discover this week
+            {!isWeekComplete && arkansasState.status === 'current' && (
+              <div className="text-center mt-12 p-8 bg-green-50 rounded-xl border border-green-200">
+                <h3 className="text-xl font-bold text-beer-dark mb-4">Coming Tomorrow</h3>
+                <p className="text-gray-600 mb-4">
+                  Day {currentDay + 1} of our Arkansas adventure brings another amazing brewery and craft beer discovery!
+                </p>
+                <div className="text-sm text-gray-500">
+                  {7 - currentDay} more beers to discover this week
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </section>
     </div>
