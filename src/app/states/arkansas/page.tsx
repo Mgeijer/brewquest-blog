@@ -7,21 +7,21 @@ import { Calendar, Clock, MapPin, Star, ExternalLink, ArrowLeft } from 'lucide-r
 import { getStateByCode } from '@/lib/data/stateProgress'
 
 export default function ArkansasWeeklyPage() {
-  const [currentDay, setCurrentDay] = useState(7) // Show all for now to avoid build issues
+  const [currentDay, setCurrentDay] = useState(1) // Start with Day 1 for current states
   const arkansasState = getStateByCode('AR')
   
   // For current states, show progressive content based on day
   useEffect(() => {
-    // Only run this on client side to avoid build issues
-    if (typeof window !== 'undefined') {
-      if (arkansasState?.status === 'current') {
-        const today = new Date()
-        const dayOfWeek = today.getDay()
-        const adjustedDay = dayOfWeek === 0 ? 7 : dayOfWeek
-        setCurrentDay(adjustedDay)
-      } else if (arkansasState?.status === 'completed') {
-        setCurrentDay(7) // Show all days for completed state
-      }
+    if (arkansasState?.status === 'current') {
+      // For current states, show progressive content based on actual day
+      const today = new Date()
+      const dayOfWeek = today.getDay()
+      const adjustedDay = dayOfWeek === 0 ? 7 : dayOfWeek
+      setCurrentDay(adjustedDay)
+    } else if (arkansasState?.status === 'completed') {
+      setCurrentDay(7) // Show all days for completed state
+    } else {
+      setCurrentDay(1) // Upcoming states show Day 1
     }
   }, [arkansasState])
 
