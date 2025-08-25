@@ -255,7 +255,7 @@ export const stateProgressData: StateData[] = [
   {
     code: 'AZ',
     name: 'Arizona',
-    status: 'completed',
+    status: 'current',
     weekNumber: 3,
     featuredBeers: [
       {
@@ -364,103 +364,9 @@ export const stateProgressData: StateData[] = [
   {
     code: 'AR',
     name: 'Arkansas',
-    status: 'current',
+    status: 'upcoming',
     weekNumber: 4,
-    featuredBeers: [
-      {
-        id: 'ar-01',
-        name: 'Day Drinker Belgian Blonde Ale',
-        brewery: 'Lost Forty Brewing',
-        style: 'Belgian Blonde Ale',
-        abv: 4.8,
-        ibu: 20,
-        description: '2020 Great American Beer Festival Gold Medal winner that put Arkansas craft beer on the national map with perfect Belgian blonde excellence.',
-        tastingNotes: 'Light, crisp Belgian blonde with delicate spice notes and smooth finish. Perfect balance of traditional Belgian yeast character with Arkansas refinement.',
-        rating: 5,
-        dayOfWeek: 1,
-        imageUrl: '/images/Beer images/Arkansas/Day Drinker.jpg'
-      },
-      {
-        id: 'ar-02',
-        name: 'BDCS (Bourbon Barrel-Aged Double Cream Stout)',
-        brewery: 'Ozark Beer Company',
-        style: 'Imperial Stout (Barrel-Aged)',
-        abv: 10.0,
-        ibu: 40,
-        description: 'Award-winning barrel-aged imperial stout showcasing Arkansas\'s serious barrel-aging expertise using pristine Ozark Mountain water.',
-        tastingNotes: 'Rich imperial stout aged in bourbon barrels creates layers of vanilla, caramel, and dark chocolate. Smooth cream character balanced by bourbon warmth.',
-        rating: 5,
-        dayOfWeek: 2,
-        imageUrl: '/images/Beer images/Arkansas/ozark Beer Company-bdcs.jpg'
-      },
-      {
-        id: 'ar-03',
-        name: 'La Brea Brown',
-        brewery: 'Fossil Cove Brewing Company',
-        style: 'Brown Ale - Belgian',
-        abv: 6.0,
-        ibu: 18,
-        description: 'Belgian-style brown ale from the Ozarks proving Arkansas understands European brewing traditions with dinosaur-themed branding.',
-        tastingNotes: 'Rich amber-brown color with caramel malt sweetness and subtle Belgian yeast complexity. Smooth, warming character with notes of bread, toffee, and gentle spice.',
-        rating: 4,
-        dayOfWeek: 3,
-        imageUrl: '/images/Beer images/Arkansas/Fossil-Cove-La-Brea-Brown.jpg'
-      },
-      {
-        id: 'ar-04',
-        name: 'Los Santos IPA',
-        brewery: 'Core Brewing & Distilling Company',
-        style: 'American IPA',
-        abv: 6.2,
-        ibu: 65,
-        description: 'Northwest Arkansas hop excellence proving Arkansas can compete with any hop-loving region from established Springdale brewery.',
-        tastingNotes: 'Bright citrus and pine hop character with clean malt backbone. Perfect balance of bitterness and drinkability with fresh, vibrant hop aroma.',
-        rating: 4,
-        dayOfWeek: 4,
-        imageUrl: '/images/Beer images/Arkansas/Los-Santos-IPA.png'
-      },
-      {
-        id: 'ar-05',
-        name: 'Presidential IPA',
-        brewery: 'Diamond Bear Brewing Company',
-        style: 'American IPA',
-        abv: 6.2,
-        ibu: 70,
-        description: 'Presidential quality Arkansas IPA representing brewing history and pioneer heritage from Arkansas\'s first craft brewery since 1993.',
-        tastingNotes: 'Bold American IPA with assertive hop character and solid malt foundation. Citrus and pine hop notes with enough bitterness to satisfy serious IPA drinkers.',
-        rating: 4,
-        dayOfWeek: 5,
-        imageUrl: '/images/Beer images/Arkansas/diamond-bear-presidential-ipa.jpg'
-      },
-      {
-        id: 'ar-06',
-        name: 'Bluewing Berry Wheat',
-        brewery: 'Flyway Brewing Company',
-        style: 'Wheat Beer - Fruited (Witbier)',
-        abv: 4.9,
-        ibu: 15,
-        description: 'Arkansas berry brewing mastery showing sophisticated fruit beer integration from 2023 Toast of the Town winner.',
-        tastingNotes: 'Light, refreshing wheat beer enhanced with natural berry flavors. Smooth wheat character provides perfect canvas for Arkansas regional berries.',
-        rating: 4,
-        dayOfWeek: 6,
-        imageUrl: '/images/Beer images/Arkansas/bluewing Berry Wheat.jpg'
-      },
-      {
-        id: 'ar-07',
-        name: 'Hitchcock Spring Kölsch',
-        brewery: 'Superior Bathhouse Brewery',
-        style: 'Kölsch',
-        abv: 4.9,
-        ibu: 20,
-        description: 'Thermal spring water Kölsch from America\'s most unique National Park brewery location using legendary Hot Springs water.',
-        tastingNotes: 'Crisp, clean Kölsch brewed with legendary Hot Springs thermal water. Light, refreshing character with subtle fruit notes and perfect carbonation.',
-        rating: 5,
-        dayOfWeek: 7,
-        imageUrl: '/images/Beer images/Arkansas/Superior Bathhouse Kolsch.jpg'
-      }
-    ],
-    blogPostSlug: 'arkansas-craft-beer-journey',
-    heroImage: '/images/State Images/Arkansas.png',
+    featuredBeers: [], // TODO: Research 7 authentic Arkansas craft beers
     description: 'Natural State brewing with mountain water and delta hospitality.',
     totalBreweries: 38,
     region: 'southeast',
