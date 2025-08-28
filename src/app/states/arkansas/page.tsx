@@ -151,6 +151,75 @@ Arkansas proves that exceptional brewing can emerge from unexpected places, comb
         </div>
       </div>
 
+      {/* Weekly Article Content */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <article className="bg-white rounded-xl p-8 mb-8">
+            <div className="prose prose-lg max-w-none">
+              <h1 className="text-3xl font-bold text-beer-dark mb-6">Welcome to Arkansas: Natural State Brewing Excellence</h1>
+              
+              <div className="bg-green-600/10 border-l-4 border-green-600 p-6 mb-8 rounded-r-lg">
+                <p className="text-lg text-beer-dark font-medium">
+                  This week marks Arkansas's emergence as a serious craft beer destination, crowned by Lost Forty Brewing's historic 2020 GABF Gold Medal victory. From the Ozark Mountains to the Mississippi Delta, the Natural State combines pristine water sources, innovative brewing techniques, and conservation-minded brewing to create a truly unique beer culture.
+                </p>
+              </div>
+
+              {/* Arkansas State Image */}
+              <div className="relative h-64 md:h-80 rounded-lg overflow-hidden mb-8">
+                <Image 
+                  src="/images/State Images/Arkansas.png" 
+                  alt="Arkansas State Landscape" 
+                  fill 
+                  className="object-cover" 
+                />
+                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-md">
+                  <p className="text-sm font-medium text-gray-900">Arkansas's pristine Ozark Mountain water and thermal springs create perfect brewing conditions</p>
+                </div>
+              </div>
+
+              <h2 className="text-2xl font-bold text-beer-dark mb-4">A State Transformed by Craft Innovation</h2>
+              <p className="text-gray-700 leading-relaxed mb-6">
+                Arkansas's craft beer story is one of innovation rising from unexpected places. With Lost Forty Brewing's 2020 GABF Gold Medal victory putting the state on the national map, Arkansas has proven that exceptional brewing can emerge anywhere passion meets pristine natural resources.
+              </p>
+
+              <h2 className="text-2xl font-bold text-beer-dark mb-4">What Makes Arkansas Beer Special</h2>
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                  <h3 className="font-bold text-green-800 mb-2">🏔️ Ozark Mountain Water</h3>
+                  <p className="text-sm text-gray-700">Pure, mineral-rich water filtered through ancient limestone provides the perfect brewing foundation, rivaling the best brewing water in America.</p>
+                </div>
+                <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                  <h3 className="font-bold text-green-800 mb-2">♨️ Thermal Spring Innovation</h3>
+                  <p className="text-sm text-gray-700">Hot Springs National Park hosts America's only National Park brewery, using legendary 143°F thermal spring water for brewing that exists nowhere else on Earth.</p>
+                </div>
+                <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                  <h3 className="font-bold text-green-800 mb-2">🌿 Conservation Brewing</h3>
+                  <p className="text-sm text-gray-700">Arkansas breweries like Lost Forty combine world-class brewing with environmental stewardship, proving craft beer can be both excellent and sustainable.</p>
+                </div>
+              </div>
+
+              <h2 className="text-2xl font-bold text-beer-dark mb-4">This Week's Journey</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                {arkansasState.featuredBeers.slice(0, 7).map((beer, index) => (
+                  <div key={beer.id} className="bg-gray-50 rounded-lg p-4 text-center">
+                    <div className="text-sm font-medium text-green-600 mb-1">
+                      Day {beer.dayOfWeek}
+                    </div>
+                    <div className="font-bold text-beer-dark text-sm">{beer.brewery}</div>
+                    <div className="text-xs text-gray-600">{beer.name}</div>
+                  </div>
+                ))}
+              </div>
+
+              <h2 className="text-2xl font-bold text-beer-dark mb-4">Supporting Arkansas Breweries</h2>
+              <p className="text-gray-700 leading-relaxed">
+                When you visit these Arkansas breweries, you're not just buying exceptional beer—you're supporting local jobs, environmental conservation, and communities that value both innovation and tradition. Arkansas's craft beer scene represents the perfect balance of natural advantages and brewing excellence.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
       {/* Beer Reviews Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
