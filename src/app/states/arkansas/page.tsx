@@ -97,13 +97,22 @@ Arkansas proves that exceptional brewing can emerge from unexpected places, comb
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Navigation */}
+      <div className="bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <Link 
+            href="/blog"
+            className="inline-flex items-center gap-2 text-beer-amber hover:text-beer-gold transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Blog
+          </Link>
+        </div>
+      </div>
+
       {/* Header Section */}
       <div className="bg-gradient-to-br from-green-900 via-green-800 to-emerald-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <Link href="/states" className="inline-flex items-center text-green-200 hover:text-white mb-8 group">
-            <ArrowLeft className="mr-2 w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-            Back to All States
-          </Link>
           
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -121,19 +130,9 @@ Arkansas proves that exceptional brewing can emerge from unexpected places, comb
                 </span>
               </h1>
               
-              <p className="text-xl text-green-100 leading-relaxed mb-8">
+              <p className="text-xl text-green-100 leading-relaxed">
                 Natural State brewing excellence with thermal springs, Ozark water, and GABF Gold Medal achievements showcasing Arkansas's remarkable craft beer renaissance.
               </p>
-              
-              <div className="flex flex-wrap gap-4">
-                <Link 
-                  href="/blog"
-                  className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors inline-flex items-center"
-                >
-                  Read Full Story
-                  <ExternalLink className="ml-2 w-5 h-5" />
-                </Link>
-              </div>
             </div>
             
             <div className="relative">
