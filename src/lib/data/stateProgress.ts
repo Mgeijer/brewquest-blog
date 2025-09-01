@@ -364,7 +364,7 @@ export const stateProgressData: StateData[] = [
   {
     code: 'AR',
     name: 'Arkansas',
-    status: 'current',
+    status: 'completed',
     weekNumber: 4,
     featuredBeers: [
       {
@@ -473,10 +473,104 @@ export const stateProgressData: StateData[] = [
   {
     code: 'CA',
     name: 'California',
-    status: 'upcoming',
+    status: 'current',
     weekNumber: 5,
-    featuredBeers: [], // TODO: Research 7 authentic California craft beers
-    description: 'Craft beer capital with hop-forward IPAs and experimental brewing.',
+    featuredBeers: [
+      {
+        id: 'ca-01',
+        name: 'Stone IPA',
+        brewery: 'Stone Brewing',
+        style: 'American IPA',
+        abv: 6.9,
+        ibu: 77,
+        description: 'The legendary West Coast IPA that helped define the style. Aggressively hopped with citrus and pine character from Centennial, Chinook, and Columbus hops.',
+        tastingNotes: 'Intense citrus and pine hop aroma, full-bodied with substantial malt backbone, aggressive hop bitterness balanced by caramel sweetness, long bitter finish.',
+        rating: 5,
+        dayOfWeek: 1,
+        imageUrl: '/images/Beer images/California/Stone IPA.jpg'
+      },
+      {
+        id: 'ca-02',
+        name: 'Firestone Walker 805',
+        brewery: 'Firestone Walker Brewing Company',
+        style: 'Blonde Ale',
+        abv: 4.7,
+        ibu: 20,
+        description: 'Central Coast blonde ale inspired by Southern California beach culture. Light, crisp, and perfectly balanced for year-round sunshine drinking.',
+        tastingNotes: 'Light golden color, clean grain aroma, smooth malt character with subtle hop balance, crisp refreshing finish perfect for California weather.',
+        rating: 4,
+        dayOfWeek: 2,
+        imageUrl: '/images/Beer images/California/Firestone-Walker-805.jpg'
+      },
+      {
+        id: 'ca-03',
+        name: 'Russian River Pliny the Elder',
+        brewery: 'Russian River Brewing Company',
+        style: 'Double IPA',
+        abv: 8.0,
+        ibu: 100,
+        description: 'The most famous Double IPA in America, setting the standard for hop-forward brewing excellence since 2000.',
+        tastingNotes: 'Complex hop bouquet with citrus, pine, and floral notes, full malt body balances intense hop character, dangerously drinkable despite strength.',
+        rating: 5,
+        dayOfWeek: 3,
+        imageUrl: '/images/Beer images/California/Pliny-the-Elder.jpg'
+      },
+      {
+        id: 'ca-04',
+        name: 'AleSmith Speedway Stout',
+        brewery: 'AleSmith Brewing Company',
+        style: 'Imperial Stout',
+        abv: 12.0,
+        ibu: 55,
+        description: 'Coffee-enhanced imperial stout brewed with locally roasted coffee beans. A San Diego classic showcasing bold imperial stout craftsmanship.',
+        tastingNotes: 'Rich coffee aroma, full-bodied with intense coffee and dark chocolate flavors, warming alcohol balanced by roasted bitterness, smooth finish.',
+        rating: 5,
+        dayOfWeek: 4,
+        imageUrl: '/images/Beer images/California/AleSmith Speedway Stout.jpg'
+      },
+      {
+        id: 'ca-05',
+        name: 'Lagunitas IPA',
+        brewery: 'Lagunitas Brewing Company',
+        style: 'American IPA',
+        abv: 6.2,
+        ibu: 51,
+        description: 'Petaluma-based brewery\'s flagship IPA showcasing the Northern California approach to hop-forward brewing with balance and drinkability.',
+        tastingNotes: 'Fresh citrus hop aroma, medium body with caramel malt backbone, balanced hop bitterness with grapefruit and pine notes, clean finish.',
+        rating: 4,
+        dayOfWeek: 5,
+        imageUrl: '/images/Beer images/California/Lagunitas-IPA.jpg'
+      },
+      {
+        id: 'ca-06',
+        name: 'Anchor Steam Beer',
+        brewery: 'Anchor Brewing Company',
+        style: 'California Common (Steam Beer)',
+        abv: 4.9,
+        ibu: 35,
+        description: 'San Francisco\'s historic steam beer, a uniquely American style created during the Gold Rush era. The beer that saved American brewing tradition.',
+        tastingNotes: 'Amber color, distinctive fruity-floral aroma from Northern Brewer hops, medium body with caramel maltiness, crisp finish with unique character.',
+        rating: 4,
+        dayOfWeek: 6,
+        imageUrl: '/images/Beer images/California/Anchor-Steam.jpg'
+      },
+      {
+        id: 'ca-07',
+        name: 'Sierra Nevada Pale Ale',
+        brewery: 'Sierra Nevada Brewing Company',
+        style: 'American Pale Ale',
+        abv: 5.6,
+        ibu: 38,
+        description: 'The beer that launched the American craft beer revolution. Chico-based brewery\'s flagship pale ale has inspired countless brewers since 1980.',
+        tastingNotes: 'Classic Cascade hop aroma, golden color, perfect balance of citrus hops and caramel malt, clean bitter finish, the template for American Pale Ale.',
+        rating: 5,
+        dayOfWeek: 7,
+        imageUrl: '/images/Beer images/California/Sierra-Nevada-Pale-Ale.jpg'
+      }
+    ],
+    blogPostSlug: 'california-craft-beer-journey',
+    heroImage: '/images/State Images/California.png',
+    description: 'Golden State brewing excellence - birthplace of American craft beer revolution.',
     totalBreweries: 958,
     region: 'west',
     capital: 'Sacramento',
