@@ -473,7 +473,7 @@ export const stateProgressData: StateData[] = [
   {
     code: 'CA',
     name: 'California',
-    status: 'current',
+    status: 'completed',
     weekNumber: 5,
     featuredBeers: [
       {
@@ -582,7 +582,7 @@ export const stateProgressData: StateData[] = [
   {
     code: 'CO',
     name: 'Colorado',
-    status: 'upcoming',
+    status: 'current',
     weekNumber: 6,
     featuredBeers: [], // TODO: Research 7 authentic Colorado craft beers
     description: 'High-altitude brewing with mountain water and outdoor culture.',
