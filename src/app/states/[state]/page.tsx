@@ -16,6 +16,7 @@ export default function StatePage({ params }: StatePageProps) {
     'az': 'arizona',
     'ar': 'arkansas',
     'ca': 'california',
+    'co': 'colorado',
     // Add more as needed
   }
   
