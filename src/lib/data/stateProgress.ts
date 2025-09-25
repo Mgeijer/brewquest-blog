@@ -513,7 +513,7 @@ export const stateProgressData: StateData[] = [
         tastingNotes: 'Complex hop bouquet with citrus, pine, and floral notes, full malt body balances intense hop character, dangerously drinkable despite strength.',
         rating: 5,
         dayOfWeek: 3,
-        imageUrl: '/images/Beer images/California/Pliny-the-Elder.jpg'
+        imageUrl: '/images/Beer images/California/Pliny the Elder.jpg'
       },
       {
         id: 'ca-04',
@@ -539,7 +539,7 @@ export const stateProgressData: StateData[] = [
         tastingNotes: 'Fresh citrus hop aroma, medium body with caramel malt backbone, balanced hop bitterness with grapefruit and pine notes, clean finish.',
         rating: 4,
         dayOfWeek: 5,
-        imageUrl: '/images/Beer images/California/Lagunitas-IPA.jpg'
+        imageUrl: '/images/Beer images/California/lagunitas-brewing-ipa.jpg'
       },
       {
         id: 'ca-06',
@@ -552,7 +552,7 @@ export const stateProgressData: StateData[] = [
         tastingNotes: 'Amber color, distinctive fruity-floral aroma from Northern Brewer hops, medium body with caramel maltiness, crisp finish with unique character.',
         rating: 4,
         dayOfWeek: 6,
-        imageUrl: '/images/Beer images/California/Anchor-Steam.jpg'
+        imageUrl: '/images/default-beer-post.jpg'
       },
       {
         id: 'ca-07',
@@ -565,7 +565,7 @@ export const stateProgressData: StateData[] = [
         tastingNotes: 'Classic Cascade hop aroma, golden color, perfect balance of citrus hops and caramel malt, clean bitter finish, the template for American Pale Ale.',
         rating: 5,
         dayOfWeek: 7,
-        imageUrl: '/images/Beer images/California/Sierra-Nevada-Pale-Ale.jpg'
+        imageUrl: '/images/Beer images/California/sierra-nevada-pale-ale.jpg'
       }
     ],
     blogPostSlug: 'california-craft-beer-journey',
