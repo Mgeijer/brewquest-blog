@@ -136,7 +136,7 @@ Founded in 1986, this flagship launched Alaska's craft beer renaissance.
 
 www.hopharrison.com/blog/alaska
 
-#CraftBeer #AlaskaBeer #AlaskanBrewing #JuneauEats #GoldRush #HistoricBeer #BrewQuestChronicles #HopHarrison #Day1
+#CraftBeer #AlaskaBeer #AlaskanBrewing #JuneauEats #GoldRush #HistoricBeer #BrewQuestChronicles #HopHarrison #Day1 #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 [Character count: 368/280]
 ```
@@ -168,7 +168,7 @@ Anchorage's flagship representing Alaska hop attitude since 1995.
 
 www.hopharrison.com/blog/alaska
 
-#CraftBeer #AlaskaBeer #MidnightSunBrewing #RedIPA #AnchorageEats #PacificNorthwest #BrewQuestChronicles #HopHarrison #Day2
+#CraftBeer #AlaskaBeer #MidnightSunBrewing #RedIPA #AnchorageEats #PacificNorthwest #BrewQuestChronicles #HopHarrison #Day2 #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 [Character count: 439/280]
 ```
@@ -200,7 +200,7 @@ Tropical flavors defying Alaska's harsh climate.
 
 www.hopharrison.com/blog/alaska
 
-#CraftBeer #AlaskaBeer #KingStreetBrewing #ChocolateCoconut #TropicalPorter #AnchorageEats #BrewQuestChronicles #HopHarrison #Day3
+#CraftBeer #AlaskaBeer #KingStreetBrewing #ChocolateCoconut #TropicalPorter #AnchorageEats #BrewQuestChronicles #HopHarrison #Day3 #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 [Character count: 407/280]
 ```
@@ -232,7 +232,7 @@ Old World brewing techniques in the Last Frontier.
 
 www.hopharrison.com/blog/alaska
 
-#CraftBeer #AlaskaBeer #CynosureBrewing #BelgianTripel #OldWorld #AnchorageEats #HighABV #BrewQuestChronicles #HopHarrison #Day4
+#CraftBeer #AlaskaBeer #CynosureBrewing #BelgianTripel #OldWorld #AnchorageEats #HighABV #BrewQuestChronicles #HopHarrison #Day4 #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 [Character count: 381/280]
 ```
@@ -264,7 +264,7 @@ Alaska's boldest high-gravity brewing showcasing Last Frontier extremes.
 
 www.hopharrison.com/blog/alaska
 
-#CraftBeer #AlaskaBeer #AnchorageBrewingCompany #AmericanBarleywine #HighGravity #BoldBrewing #AnchorageEats #BrewQuestChronicles #HopHarrison #Day5
+#CraftBeer #AlaskaBeer #AnchorageBrewingCompany #AmericanBarleywine #HighGravity #BoldBrewing #AnchorageEats #BrewQuestChronicles #HopHarrison #Day5 #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 [Character count: 450/280]
 ```
@@ -296,7 +296,7 @@ Fairbanks brewery bringing Old World precision to the Last Frontier.
 
 www.hopharrison.com/blog/alaska
 
-#CraftBeer #AlaskaBeer #HooDooBrewing #GermanKolsch #FairbanksEats #AuthenticBrewing #OldWorld #BrewQuestChronicles #HopHarrison #Day6
+#CraftBeer #AlaskaBeer #HooDooBrewing #GermanKolsch #FairbanksEats #AuthenticBrewing #OldWorld #BrewQuestChronicles #HopHarrison #Day6 #craftbeerlife #beertography #supportlocal #drinkcraft #craftbeernotcrapbeer
 
 [Character count: 426/280]
 ```
