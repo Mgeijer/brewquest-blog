@@ -37,6 +37,7 @@ export default function BeerReviewCard({ review, size = 'medium' }: BeerReviewCa
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            unoptimized={review.image_url.includes('Beer images')}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
