@@ -552,7 +552,7 @@ export const stateProgressData: StateData[] = [
         tastingNotes: 'Amber color, distinctive fruity-floral aroma from Northern Brewer hops, medium body with caramel maltiness, crisp finish with unique character.',
         rating: 4,
         dayOfWeek: 6,
-        imageUrl: '/images/Beer images/California/anchor-steam-beer-new.jpg'
+        imageUrl: '/images/Beer images/California/anchor-steam-beer.jpg'
       },
       {
         id: 'ca-07',
