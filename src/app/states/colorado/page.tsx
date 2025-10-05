@@ -29,11 +29,14 @@ export default function ColoradoWeeklyPage() {
   // Helper functions
   const getBreweryWebsite = (breweryName: string): string | null => {
     const breweryWebsites: Record<string, string> = {
+      'Westbound & Down Brewing': 'https://westbounddown.com',
       'New Belgium Brewing Company': 'https://www.newbelgium.com',
-      'Great Divide Brewing Company': 'https://greatdivide.com', 
-      'Left Hand Brewing Company': 'https://lefthandbrewing.com',
       'Odell Brewing Company': 'https://www.odellbrewing.com',
+      'WeldWerks Brewing Company': 'https://weldwerksbrewing.com',
       'Avery Brewing Company': 'https://www.averybrewing.com',
+      'Upslope Brewing Company': 'https://upslopebrewing.com',
+      'Great Divide Brewing Company': 'https://greatdivide.com',
+      'Left Hand Brewing Company': 'https://lefthandbrewing.com',
       'Oskar Blues Brewery': 'https://oskarblues.com',
       'Breckenridge Brewery': 'https://www.breckbrew.com'
     }
@@ -42,125 +45,36 @@ export default function ColoradoWeeklyPage() {
 
   const getBreweryDescription = (breweryName: string): string => {
     const breweryDescriptions: Record<string, string> = {
+      'Westbound & Down Brewing': 'Founded in 2016 in Idaho Springs, Westbound & Down brings California brewing expertise to Colorado\'s mountains. Their GABF Gold-winning Select IPA represents the perfect fusion of West Coast hop character with Rocky Mountain water.',
       'New Belgium Brewing Company': 'Founded in 1991 in Fort Collins by Jeff Lebesch and Kim Jordan, New Belgium is famous for Fat Tire Amber Ale and environmental sustainability. As America\'s first carbon-neutral brewery, they perfectly embody Colorado\'s outdoor lifestyle and pioneering spirit in craft brewing.',
+      'Odell Brewing Company': 'Founded in 1989 in Fort Collins by Doug Odell, Odell Brewing is known for their flagship IPA and represents the evolution of traditional brewing in the American craft context with Rocky Mountain character.',
+      'WeldWerks Brewing Company': 'Founded in 2015 in Greeley, WeldWerks has rapidly become Colorado\'s most awarded brewery, earning national recognition for their exceptional New England IPAs like Juicy Bits and setting new standards for hop-forward brewing.',
+      'Avery Brewing Company': 'Founded in 1993 in Boulder by Adam Avery, Avery created Colorado\'s first packaged IPA, pioneering the state\'s hop-forward beer culture and helping establish Colorado as a major player in the American IPA revolution.',
+      'Upslope Brewing Company': 'Founded in 2008 in Boulder, Upslope Brewing is named after Colorado\'s famous snow-dumping weather pattern. Their Craft Lager showcases pure mountain brewing with all-malted barley and authentic Colorado character.',
       'Great Divide Brewing Company': 'Founded in 1994 in Denver by Brian Dunn, Great Divide is renowned for bold, intense beers like Yeti Imperial Stout. They represent Colorado\'s fearless approach to brewing big beers that stand up to the rugged Rocky Mountain environment.',
       'Left Hand Brewing Company': 'Founded in 1993 in Longmont by Eric Wallace and Dick Doore, Left Hand pioneered nitro canning technology with their famous Milk Stout Nitro. They represent Colorado\'s technical brewing excellence and innovation in beer experience.',
-      'Odell Brewing Company': 'Founded in 1989 in Fort Collins by Doug Odell, Odell Brewing is known for 90 Shilling Scottish Ale and represents the evolution of traditional brewing in the American craft context with Rocky Mountain character.',
-      'Avery Brewing Company': 'Founded in 1993 in Boulder by Adam Avery, Avery created Colorado\'s first packaged IPA, pioneering the state\'s hop-forward beer culture and helping establish Colorado as a major player in the American IPA revolution.',
       'Oskar Blues Brewery': 'Founded in 1997 in Lyons by Dale Katechis, Oskar Blues created America\'s first hand-canned craft beer with Dale\'s Pale Ale in 2002, revolutionizing craft beer packaging and changing perceptions about canned craft beer.',
       'Breckenridge Brewery': 'Founded in 1990 in Breckenridge by Richard Squire, Breckenridge Brewery showcases Colorado\'s creativity in flavor innovation with their famous Vanilla Porter, demonstrating the quality ingredients Colorado brewers source for unique mountain-inspired beers.'
     }
     return breweryDescriptions[breweryName] || `${breweryName} is one of Colorado's craft beer pioneers, contributing to the state's position as America's craft beer capital.`
   }
 
-  // Colorado beer data - 7 authentic Colorado craft beers
-  const coloradoBeers = [
-    {
-      id: 'co-01',
-      beer_name: 'Fat Tire Amber Ale',
-      brewery_name: 'New Belgium Brewing Company',
-      beer_style: 'Belgian-Style Amber Ale',
-      abv: 5.2,
-      ibu: 15,
-      rating: 4,
-      tasting_notes: 'Fat Tire delivers a bright and balanced experience with a subtle malt presence, slightly fruity hop profile, and crisp finish. Expect notes of caramel sweetness, light toasted bread, and a clean, refreshing character that makes it incredibly sessionable.',
-      image_url: '/images/Beer images/Colorado/Fat-Tire-Amber-Ale.jpg',
-      unique_feature: 'America\'s first carbon-neutral beer that introduced an entire generation to craft beer. Born from a bike trip through Belgium, it perfectly embodies Colorado\'s outdoor lifestyle and pioneering spirit.',
-      day_of_week: 1,
-      created_at: new Date(),
-      blog_post_id: ''
-    },
-    {
-      id: 'co-02',
-      beer_name: 'Yeti Imperial Stout',
-      brewery_name: 'Great Divide Brewing Company',
-      beer_style: 'Imperial Stout',
-      abv: 9.5,
-      ibu: 75,
-      rating: 5,
-      tasting_notes: 'An onslaught of roasted malt flavor with rich caramel and toffee notes. Bold hop character from American hops creates complexity, while dark chocolate and coffee notes dominate the finish. Full-bodied with warming alcohol presence.',
-      image_url: '/images/Beer images/Colorado/Great-Divide-Yeti.jpg',
-      unique_feature: 'This legendary imperial stout showcases Colorado\'s willingness to push boundaries and create beers that stand up to the rugged Rocky Mountain environment.',
-      day_of_week: 2,
-      created_at: new Date(),
-      blog_post_id: ''
-    },
-    {
-      id: 'co-03',
-      beer_name: 'Milk Stout Nitro',
-      brewery_name: 'Left Hand Brewing Company',
-      beer_style: 'Sweet Stout (Nitro)',
-      abv: 6.0,
-      ibu: 25,
-      rating: 5,
-      tasting_notes: 'Super smooth and creamy with a cascading nitro pour. Aromas of roasted coffee, milk chocolate, brown sugar, and vanilla cream. The lactose creates a silky sweetness that balances the roasted bitterness beautifully.',
-      image_url: '/images/Beer images/Colorado/Left-Hand-Milk-Stout.jpg',
-      unique_feature: 'Left Hand pioneered nitro canning technology, bringing the draft nitro experience home. This innovation represents Colorado\'s technical brewing excellence.',
-      day_of_week: 3,
-      created_at: new Date(),
-      blog_post_id: ''
-    },
-    {
-      id: 'co-04',
-      beer_name: '90 Shilling Scottish Ale',
-      brewery_name: 'Odell Brewing Company',
-      beer_style: 'Scottish-Style Ale',
-      abv: 4.7,
-      ibu: 26,
-      rating: 4,
-      tasting_notes: 'A smooth, medium-bodied amber ale with a burnished copper color. Complex malty backbone with notes of toffee, caramel, and toasted bread. Balanced hop character provides structure without overwhelming the malt profile.',
-      image_url: '/images/Beer images/Colorado/Odell-90-Shilling.jpg',
-      unique_feature: 'Odell\'s flagship beer since 1989, representing the evolution of traditional Scottish brewing in the American craft context with Rocky Mountain character.',
-      day_of_week: 4,
-      created_at: new Date(),
-      blog_post_id: ''
-    },
-    {
-      id: 'co-05',
-      beer_name: 'Avery IPA',
-      brewery_name: 'Avery Brewing Company',
-      beer_style: 'American IPA',
-      abv: 6.5,
-      ibu: 69,
-      rating: 4,
-      tasting_notes: 'Vibrant citrus and pine aromas with grapefruit, tangerine, and resinous hop character. Flavors of orange, peach, and stone fruit supported by a solid malt backbone. Clean, dry finish with lingering hop complexity.',
-      image_url: '/images/Beer images/Colorado/Avery-IPA.jpg',
-      unique_feature: 'Colorado\'s first packaged IPA, pioneering the state\'s hop-forward beer culture and helping establish Colorado as a major player in the American IPA revolution.',
-      day_of_week: 5,
-      created_at: new Date(),
-      blog_post_id: ''
-    },
-    {
-      id: 'co-06',
-      beer_name: "Dale's Pale Ale",
-      brewery_name: 'Oskar Blues Brewery',
-      beer_style: 'American Pale Ale',
-      abv: 6.5,
-      ibu: 65,
-      rating: 5,
-      tasting_notes: 'Hoppy nose with assertive but balanced pale malt and citrusy floral hop flavors. Medium body with a clean, crisp finish. Notable citrus and pine hop character supported by a solid malt foundation.',
-      image_url: '/images/Beer images/Colorado/Oskar-Blues-Dales.jpg',
-      unique_feature: 'America\'s first hand-canned craft beer (2002), revolutionizing craft beer packaging and changing perceptions about canned craft beer forever.',
-      day_of_week: 6,
-      created_at: new Date(),
-      blog_post_id: ''
-    },
-    {
-      id: 'co-07',
-      beer_name: 'Vanilla Porter',
-      brewery_name: 'Breckenridge Brewery',
-      beer_style: 'Flavored Porter',
-      abv: 5.4,
-      ibu: 16,
-      rating: 4,
-      tasting_notes: 'Rich chocolate and roasted nut flavors typical of porter style, enhanced by authentic Madagascar vanilla. Dark mahogany color with creamy mouthfeel. The vanilla adds sweetness and complexity without overwhelming the base beer.',
-      image_url: '/images/Beer images/Colorado/Breckenridge-Vanilla-Porter.jpg',
-      unique_feature: 'Showcases Colorado\'s creativity in flavor innovation while respecting traditional styles, using Madagascar vanilla beans to create unique mountain-inspired beers.',
-      day_of_week: 7,
-      created_at: new Date(),
-      blog_post_id: ''
-    }
-  ]
+  // Use the centralized Colorado beer data from stateProgress.ts
+  const coloradoBeers = coloradoState?.featuredBeers.map(beer => ({
+    id: beer.id,
+    beer_name: beer.name,
+    brewery_name: beer.brewery,
+    beer_style: beer.style,
+    abv: beer.abv,
+    ibu: beer.ibu,
+    rating: beer.rating,
+    tasting_notes: beer.tastingNotes,
+    image_url: beer.imageUrl,
+    unique_feature: beer.description,
+    day_of_week: beer.dayOfWeek,
+    created_at: new Date(),
+    blog_post_id: ''
+  })) || []
 
   if (!coloradoState) {
     return <div>Colorado data not found</div>
