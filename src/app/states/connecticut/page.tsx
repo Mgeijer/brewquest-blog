@@ -268,9 +268,7 @@ export default function ConnecticutWeeklyPage() {
               {availableBeers.map((beer) => (
                 <BeerReviewCard
                   key={beer.id}
-                  {...beer}
-                  breweryWebsite={getBreweryWebsite(beer.brewery_name)}
-                  breweryDescription={getBreweryDescription(beer.brewery_name)}
+                  review={beer}
                 />
               ))}
             </div>
