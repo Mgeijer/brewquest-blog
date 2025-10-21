@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { emailService } from '@/lib/email/resendService'
+import { invalidateStateCache } from '@/lib/supabase/queries/stateQueries'
+import { revalidatePath } from 'next/cache'
 
 /**
  * Weekly State Transition Cron Job
@@ -83,9 +85,8 @@ export async function GET(request: NextRequest) {
     // 2. Make next state current
     const { error: activateError } = await supabase
       .from('state_progress')
-      .update({ 
+      .update({
         status: 'current',
-        start_date: new Date().toISOString(),
         updated_at: new Date().toISOString()
       })
       .eq('id', nextState.id)
@@ -96,6 +97,15 @@ export async function GET(request: NextRequest) {
     }
 
     updates.push(`Activated ${nextState.state_name} as current`)
+
+    // 2.5. Clear server-side cache and revalidate key pages
+    console.log('[CRON] Invalidating cache and revalidating pages...')
+    invalidateStateCache() // Clear all state progress cache
+    revalidatePath('/') // Revalidate homepage
+    revalidatePath('/states') // Revalidate states page
+    revalidatePath('/blog') // Revalidate blog page
+    revalidatePath('/api/states/progress') // Force API cache refresh
+    updates.push('Cache cleared and pages revalidated')
 
     // 3. Archive old social media posts (older than 2 weeks)
     const twoWeeksAgo = new Date()
