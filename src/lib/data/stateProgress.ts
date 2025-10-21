@@ -582,7 +582,7 @@ export const stateProgressData: StateData[] = [
   {
     code: 'CO',
     name: 'Colorado',
-    status: 'current',
+    status: 'completed',
     weekNumber: 6,
     featuredBeers: [
       {
@@ -689,7 +689,7 @@ export const stateProgressData: StateData[] = [
   {
     code: 'CT',
     name: 'Connecticut',
-    status: 'upcoming',
+    status: 'current',
     weekNumber: 7,
     featuredBeers: [
       {
