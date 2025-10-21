@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { getAllStatesData, getJourneyProgress, getRegionalStatistics } from '@/lib/data/stateProgress'
-import { MapPin, Calendar, Star, Users, ExternalLink, Map } from 'lucide-react'
+import { MapPin, Calendar, Star, Users, ExternalLink, Map, Loader2 } from 'lucide-react'
+import { supabase } from '@/lib/supabase/client'
 
 const regions = {
   northeast: { name: 'Northeast', color: 'bg-blue-500' },
@@ -13,13 +13,65 @@ const regions = {
   west: { name: 'West', color: 'bg-purple-500' }
 }
 
+interface StateProgress {
+  id: string
+  state_code: string
+  state_name: string
+  status: 'upcoming' | 'current' | 'completed'
+  week_number: number
+  region: string
+  description?: string
+  total_breweries: number
+  featured_breweries: string[]
+}
+
 export default function StatesPage() {
   const [selectedRegion, setSelectedRegion] = useState<string>('all')
   const [selectedStatus, setSelectedStatus] = useState<string>('all')
-  
-  const allStates = getAllStatesData()
-  const journeyProgress = getJourneyProgress()
-  const regionalStats = getRegionalStatistics()
+  const [allStates, setAllStates] = useState<StateProgress[]>([])
+  const [loading, setLoading] = useState(true)
+
+  // Fetch states from database
+  useEffect(() => {
+    async function fetchStates() {
+      try {
+        const { data, error } = await supabase
+          .from('state_progress')
+          .select('*')
+          .order('week_number', { ascending: true })
+
+        if (error) throw error
+        setAllStates(data || [])
+      } catch (error) {
+        console.error('Error fetching states:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchStates()
+  }, [])
+
+  // Calculate journey progress from database data
+  const journeyProgress = {
+    completed: allStates.filter(s => s.status === 'completed').length,
+    current: allStates.filter(s => s.status === 'current').length,
+    percentage: Math.round((allStates.filter(s => s.status === 'completed').length / 50) * 100)
+  }
+
+  // Calculate regional statistics from database data
+  const regionalStats = allStates.reduce((acc, state) => {
+    if (!acc[state.region]) {
+      acc[state.region] = {
+        count: 0,
+        totalBreweries: 0,
+        avgDensity: 0
+      }
+    }
+    acc[state.region].count++
+    acc[state.region].totalBreweries += state.total_breweries || 0
+    return acc
+  }, {} as Record<string, { count: number; totalBreweries: number; avgDensity: number }>)
 
   // Filter states based on selected region and status
   const filteredStates = allStates.filter(state => {
@@ -54,6 +106,17 @@ export default function StatesPage() {
     }
   }
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-beer-cream flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-12 h-12 animate-spin text-amber-600 mx-auto mb-4" />
+          <p className="text-gray-600">Loading states journey...</p>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-beer-cream">
       {/* Hero Section */}
@@ -78,7 +141,7 @@ export default function StatesPage() {
                 <div className="text-sm opacity-90">Journey Complete</div>
               </div>
               <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
-                <div className="text-3xl font-bold">{allStates.reduce((sum, state) => sum + (state.totalBreweries || 0), 0)}</div>
+                <div className="text-3xl font-bold">{allStates.reduce((sum, state) => sum + (state.total_breweries || 0), 0)}</div>
                 <div className="text-sm opacity-90">Breweries to Explore</div>
               </div>
             </div>
@@ -166,14 +229,14 @@ export default function StatesPage() {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
                     <h3 className="state-name text-xl font-bold text-amber-100 mb-1 group-hover:text-beer-cream transition-colors duration-300">
-                      {state.name}
+                      {state.state_name}
                     </h3>
                     <div className="flex items-center gap-2 text-sm text-amber-300 mb-2">
                       <MapPin className="w-4 h-4" />
                       <span>{regions[state.region].name}</span>
                       <span className="text-amber-500">•</span>
                       <Calendar className="w-4 h-4" />
-                      <span>Week {state.weekNumber}</span>
+                      <span>Week {state.week_number}</span>
                     </div>
                   </div>
                   
@@ -192,31 +255,31 @@ export default function StatesPage() {
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div className="text-center bg-amber-800/50 rounded-lg p-3 border border-amber-700">
                     <div className="text-lg font-bold text-amber-100">
-                      {state.totalBreweries}
+                      {state.total_breweries}
                     </div>
                     <div className="text-xs text-amber-300">Breweries</div>
                   </div>
                   <div className="text-center bg-amber-800/50 rounded-lg p-3 border border-amber-700">
                     <div className="text-lg font-bold text-amber-100">
-                      {state.breweryDensity}
+                      {(state.total_breweries / 100).toFixed(1)}
                     </div>
                     <div className="text-xs text-amber-300">Per 100k Pop</div>
                   </div>
                 </div>
 
                 {/* Featured Beers Count */}
-                {state.featuredBeers && state.featuredBeers.length > 0 && (
+                {state.featured_breweries && state.featured_breweries.length > 0 && (
                   <div className="flex items-center gap-2 mb-4">
                     <Star className="w-4 h-4 text-beer-amber" />
                     <span className="text-sm text-amber-200">
-                      {state.featuredBeers.length} featured beers
+                      {state.featured_breweries.length} featured breweries
                     </span>
                   </div>
                 )}
 
                 {/* Action Button */}
                 <Link
-                  href={`/states/${state.name.toLowerCase().replace(/\s+/g, '-')}`}
+                  href={`/states/${state.state_name.toLowerCase().replace(/\s+/g, '-')}`}
                   className={`w-full inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium transition-colors ${
                     state.status === 'completed'
                       ? 'bg-green-600 hover:bg-green-500 text-white border border-green-500'
